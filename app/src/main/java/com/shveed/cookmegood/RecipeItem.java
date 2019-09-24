@@ -5,16 +5,16 @@ import android.media.Image;
 public class RecipeItem {
     private String recipeTheme;
     private String recipeName;
-    private String recipeImage;
+    private String recipeHref;
 
-    public RecipeItem(String theme, String name, String image){
+    public RecipeItem(String theme, String name, String href){
         this.recipeTheme = theme;
         this.recipeName = name;
-        this.recipeImage = image;
+        this.recipeHref = href;
     }
 
-    public String getRecipeImage() {
-        return recipeImage;
+    public String getRecipeHref() {
+        return recipeHref;
     }
 
     public String getRecipeName() {
@@ -25,8 +25,8 @@ public class RecipeItem {
         return recipeTheme;
     }
 
-    public void setRecipeImage(String recipeImage) {
-        this.recipeImage = recipeImage;
+    public void setRecipeHref(String href) {
+        this.recipeHref = href;
     }
 
     public void setRecipeName(String recipeName) {

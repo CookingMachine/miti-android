@@ -2,12 +2,11 @@ package com.shveed.cookmegood;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.net.Uri;
 
 import com.shveed.wallpapperparser.R;
 
@@ -25,14 +24,14 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = inflater.inflate(R.layout.list_item, parent, false);
+        View view = inflater.inflate(R.layout.curr_list_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(DataAdapter.ViewHolder holder, int position) {
         RecipeItem currRec = Recipes.get(position);
-        holder.recipeImage.setImageURI(Uri.parse("https://kedem.ru" + currRec.getRecipeImage()));
+        holder.hrefView.setText(currRec.getRecipeHref());
         holder.nameView.setText(currRec.getRecipeName());
         holder.themeView.setText(currRec.getRecipeTheme());
     }
@@ -43,11 +42,10 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView recipeImage;
-        private TextView nameView, themeView;
+        private TextView nameView, themeView, hrefView;
         ViewHolder(View view){
             super(view);
-            recipeImage = (ImageView)view.findViewById(R.id.recipe_image);
+            hrefView = (TextView)view.findViewById(R.id.recipe_href);
             nameView = (TextView)view.findViewById(R.id.recipe_name);
             themeView = (TextView)view.findViewById(R.id.recipe_theme);
         }

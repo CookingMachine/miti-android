@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private Spinner themeSpinner;
-    private final String LINK1 = "https://kedem.ru/recipe";
+    private final String LINK1 = "https://www.bankreceptov.ru/";
     private HashMap<String, String> themesURLs = new HashMap<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -70,13 +71,17 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_spinner_item, parsedThemes);
-        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.layout.spinner_dropdown_item, parsedThemes);
+        adapterSpinner.setDropDownViewResource(R.layout.spinner_dropdown_item);
         themeSpinner.setAdapter(adapterSpinner);
     }
-
+    /*
+    * Кнопка "показать". Выбирает текущую тему из Spinner, перекидывает
+    * пользователя на соответствующую Activity и передаёт туда ссылку на
+    * тему и название темы. Ссылки хранятся в HashMap после парса тем.
+    * Найти каждую ссылку можно по ключу (теме).
+    * */
     public void onButtonClick(View v){
         String currentTheme = "";
         if(themeSpinner.getSelectedItem() != ""){
@@ -103,18 +108,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    *  Парсим страницу с меню для сбора тем
+    * */
+
     public class ParsePageThemes extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... arg) {
             String pageLine = "";
             try {
                 Document page = Jsoup.connect(LINK1).get();
-                Elements themeElements = page.select(".rmenu").select("a");
+                Elements themeElements = page.select(".mdv").select("a");
                 String pageRefs = "";
-                for (Element elem : themeElements) {
-                    pageLine += elem.text() + ",";
-                    pageRefs += elem.attr("href") + ",";
-                    themesURLs.put(elem.text(), elem.attr("href"));
+                Element currElem = themeElements.first();
+                for (int i = 0; i < 29; i++) {
+                    //Log.d("CHECKPOINT", currElem.text());
+                    if(currElem.text() != "") {
+                        pageLine += currElem.text() + ",";
+                        pageRefs += currElem.attr("href") + ",";
+                        themesURLs.put(currElem.text(), currElem.attr("href"));
+                    }
+                    currElem = currElem.nextElementSibling();
                 }
             }
             catch(IOException ioe){}
