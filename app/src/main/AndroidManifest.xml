@@ -12,8 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name="com.shveed.cookmegood.Favourites"
+            android:label="@string/title_activity_favourites"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.shveed.cookmegood.RecipePage"
+            android:label="@string/title_activity_recipe_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.shveed.cookmegood.RecipeActivity"
-            android:label="@string/title_activity_recipe"></activity>
+            android:label="@string/title_activity_recipe" />
         <activity
             android:name="com.shveed.cookmegood.MainActivity"
             android:label="@string/app_name">
