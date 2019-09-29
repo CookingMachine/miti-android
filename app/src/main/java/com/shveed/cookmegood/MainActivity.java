@@ -88,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
         String currentTheme = "";
         if(themeSpinner.getSelectedItem() != ""){
             currentTheme = themeSpinner.getSelectedItem().toString();
+
+            //////////////////////////////////////////////////////////////ВЫБРАТЬ АКТИВИТИ//////
             Intent toRecipe = new Intent(MainActivity.this, RecipeActivity.class);
+            ////////////////////////////////////////////////////////////////////////////////////
+
             toRecipe.putExtra("url", themesURLs.get(currentTheme));
             toRecipe.putExtra("theme", currentTheme);
             startActivity(toRecipe);

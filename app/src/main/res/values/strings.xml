@@ -7,4 +7,5 @@
     <string name="title_result">Результат поиска:</string>
     <string name="title_activity_recipe_page">RecipePage</string>
     <string name="title_activity_favourites">Favourites</string>
+    <string name="list_result"> По вышему запросу найдены следующие рецепты: </string>
 </resources>
