@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Make.It.Taste.It.</string>
     <string name="title_home">Рецепты</string>
+    <string name="title_recipe">Рецепт</string>
+    <string name="title_kbju">КБЖУ</string>
+    <string name="title_ingr">Ингредиенты</string>
     <string name="title_dashboard">Предложить</string>
     <string name="title_notifications">Избранное</string>
     <string name="title_activity_recipe">RecipeActivity</string>
