@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Make.It.Taste.It.</string>
-    <string name="title_home">Рецепты</string>
+    <string name="app_name" translatable="false">Make.It.Taste.It.</string>
+    <string name="title_home" translatable="false">Рецепты</string>
     <string name="title_recipe">Рецепт</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingr">Ингредиенты</string>
-    <string name="title_dashboard">Предложить</string>
-    <string name="title_notifications">Избранное</string>
-    <string name="title_activity_recipe">RecipeActivity</string>
-    <string name="title_result">Результат поиска:</string>
+    <string name="title_dashboard" translatable="false">Предложить</string>
+    <string name="title_notifications" translatable="false">Избранное</string>
+    <string name="title_activity_recipe" translatable="false">RecipeActivity</string>
+    <string name="title_result" translatable="false">Результат поиска:</string>
     <string name="title_activity_recipe_page">RecipePage</string>
     <string name="title_activity_favourites">Favourites</string>
     <string name="list_result"> По вышему запросу найдены следующие рецепты: </string>

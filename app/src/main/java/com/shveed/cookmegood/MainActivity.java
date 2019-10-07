@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             currentTheme = themeSpinner.getSelectedItem().toString();
 
             //////////////////////////////////////////////////////////////ВЫБРАТЬ АКТИВИТИ//////
-            Intent toRecipe = new Intent(MainActivity.this, RecipePage.class);
+            Intent toRecipe = new Intent(MainActivity.this, RecipeActivity.class);
             ////////////////////////////////////////////////////////////////////////////////////
 
             toRecipe.putExtra("url", themesURLs.get(currentTheme));

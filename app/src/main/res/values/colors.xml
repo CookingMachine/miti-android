@@ -7,4 +7,5 @@
     <color name="bottomColor">#d6e4aa</color>
     <color name="objectsColor">#ffffc5</color>
     <color name="text_color">#83b582</color>
+    <color name="backColor">#323535</color>
 </resources>
