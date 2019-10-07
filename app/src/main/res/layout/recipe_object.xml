@@ -9,11 +9,13 @@
 
     <TextView
         android:id="@+id/recipesTextView"
-        android:textSize="40sp"
-        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle=""
+        android:textColor="@color/white"
         android:textAlignment="center"
+        android:gravity="center_vertical|center_horizontal"
         android:layout_width="408dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
@@ -30,28 +32,6 @@
         app:layout_constraintVertical_bias="0.0"
         />
 
-    <Button
-        android:id="@+id/searchButton1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recipesTextView"
-        app:layout_constraintEnd_toEndOf="@+id/recipesTextView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/recipesTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/menuButton1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recipesTextView"
-        app:layout_constraintEnd_toEndOf="@+id/recipesTextView"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/recipesTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -66,7 +46,8 @@
 
     <Button
         android:id="@+id/kbju_button"
-        android:layout_width="138dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="136dp"
         android:layout_height="30dp"
         android:background="@color/backgroundColor"
         android:text="@string/title_kbju"
@@ -75,12 +56,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
-        style="@style/Widget.AppCompat.Button.Borderless" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/rec_button"
-        android:layout_width="138dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="139dp"
         android:layout_height="30dp"
         android:background="@color/backgroundColor"
         android:text="@string/title_recipe"
@@ -89,20 +70,62 @@
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
-        style="@style/Widget.AppCompat.Button.Borderless"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/ingr_button"
-        android:layout_width="138dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="136dp"
         android:layout_height="30dp"
         android:background="@color/backgroundColor"
         android:text="@string/title_ingr"
+        android:textColor="@color/bottomColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
-        style="@style/Widget.AppCompat.Button.Borderless"/>
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/timeView"
+        android:layout_width="137dp"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:drawableTop="@drawable/time_18dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/portionView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingr_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/callView"
+        android:layout_width="136dp"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:drawableTop="@drawable/stats_18dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/portionView"
+        app:layout_constraintTop_toBottomOf="@+id/kbju_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/portionView"
+        android:layout_width="138dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:background="@color/white"
+        android:drawableTop="@drawable/portion_18dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingr_button"
+        app:layout_constraintVertical_bias="0.0" />
+
 </android.support.constraint.ConstraintLayout>
