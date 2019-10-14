@@ -19,7 +19,7 @@
         android:background="@color/backgroundColor"
         android:text="@string/title_result"
         android:textAlignment="center"
-        android:textColor="@color/text_color"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -2,16 +2,86 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backColor">
 
+    <LinearLayout
+        android:id="@+id/buttonsLinear"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/backgroundColor"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        <Button
+            android:id="@+id/rec_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/backgroundColor"
+            android:text="@string/title_recipe" />
+        <Button
+            android:id="@+id/ingr_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/backgroundColor"
+            android:text="@string/title_ingr" />
+        <Button
+            android:id="@+id/kbju_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/backgroundColor"
+            android:text="@string/title_kbju" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonsLinear">
+
+        <Button
+            android:id="@+id/timeView"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/time_18dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/callView"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/stats_18dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/portionView"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/portion_18dp"
+            android:text="" />
+    </LinearLayout>
     <TextView
         android:id="@+id/recipesTextView"
         android:textSize="30sp"
         android:textStyle=""
-        android:textColor="@color/white"
         android:textAlignment="center"
         android:gravity="center_vertical|center_horizontal"
         android:layout_width="408dp"
@@ -31,7 +101,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -43,89 +112,5 @@
         app:layout_constraintTop_toBottomOf="@+id/recipesTextView"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_launcher_background" />
-
-    <Button
-        android:id="@+id/kbju_button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="136dp"
-        android:layout_height="30dp"
-        android:background="@color/backgroundColor"
-        android:text="@string/title_kbju"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/rec_button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="139dp"
-        android:layout_height="30dp"
-        android:background="@color/backgroundColor"
-        android:text="@string/title_recipe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/ingr_button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="136dp"
-        android:layout_height="30dp"
-        android:background="@color/backgroundColor"
-        android:text="@string/title_ingr"
-        android:textColor="@color/bottomColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/timeView"
-        android:layout_width="137dp"
-        android:layout_height="80dp"
-        android:background="@color/white"
-        android:drawableTop="@drawable/time_18dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/portionView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingr_button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/callView"
-        android:layout_width="136dp"
-        android:layout_height="80dp"
-        android:background="@color/white"
-        android:drawableTop="@drawable/stats_18dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/portionView"
-        app:layout_constraintTop_toBottomOf="@+id/kbju_button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/portionView"
-        android:layout_width="138dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:background="@color/white"
-        android:drawableTop="@drawable/portion_18dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingr_button"
-        app:layout_constraintVertical_bias="0.0" />
-
 </android.support.constraint.ConstraintLayout>
+
