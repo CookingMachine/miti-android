@@ -3,7 +3,7 @@
     <string name="title_home" translatable="false">Рецепты</string>
     <string name="title_recipe">Рецепт</string>
     <string name="title_kbju">КБЖУ</string>
-    <string name="title_ingr">Ингредиенты</string>
+    <string name="title_ingred">Ингредиенты</string>
     <string name="title_dashboard" translatable="false">Предложить</string>
     <string name="title_notifications" translatable="false">Избранное</string>
     <string name="title_activity_recipe" translatable="false">RecipeActivity</string>

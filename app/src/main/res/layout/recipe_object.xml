@@ -1,116 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backColor">
+    android:background="@color/backgroundColor"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/buttonsLinear"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/backgroundColor"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-        <Button
-            android:id="@+id/rec_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/backgroundColor"
-            android:text="@string/title_recipe" />
-        <Button
-            android:id="@+id/ingr_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/backgroundColor"
-            android:text="@string/title_ingr" />
-        <Button
-            android:id="@+id/kbju_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/backgroundColor"
-            android:text="@string/title_kbju" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonsLinear">
-
-        <Button
-            android:id="@+id/timeView"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/time_18dp"
-            android:text="" />
-
-        <Button
-            android:id="@+id/callView"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/stats_18dp"
-            android:text="" />
-
-        <Button
-            android:id="@+id/portionView"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/portion_18dp"
-            android:text="" />
-    </LinearLayout>
     <TextView
         android:id="@+id/recipesTextView"
-        android:textSize="30sp"
-        android:textStyle=""
-        android:textAlignment="center"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_width="408dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/backgroundColor"
+        android:gravity="center_vertical|center_horizontal"
         android:text="@string/title_home"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="320dp"
+        android:layout_below="@+id/recipesTextView"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/rounded_corners_image"
+        android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipesTextView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_background" />
-</android.support.constraint.ConstraintLayout>
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.constraint.ConstraintLayout
+        android:backgroundTint="@color/backgroundColor"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/rounded_corners_image">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <Button
+                style="@style/recButton"
+                android:id="@+id/recipeButton"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="@string/title_recipe"
+                android:background="@drawable/rounded_corners_button"
+                android:textColor="@color/objectsColor">
+            </Button>
+            <Button
+                android:id="@+id/ingredButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="@string/title_ingred"
+                android:background="@drawable/rounded_corners_button"
+                android:textColor="@color/objectsColor">
+            </Button>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</RelativeLayout>
 
