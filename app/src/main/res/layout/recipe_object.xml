@@ -22,6 +22,7 @@
         android:textAlignment="center"
         android:textSize="28sp"
         android:textColor="@color/black"
+        android:fontFamily="@font/roboto_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
@@ -36,7 +37,6 @@
         android:layout_below="@+id/recipesTextView"
         android:layout_marginTop="1dp"
         android:background="@drawable/rounded_corners_image"
-        android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.500"
@@ -45,55 +45,156 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <android.support.constraint.ConstraintLayout
-        android:backgroundTint="@color/backgroundColor"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="470dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/rounded_corners_image">
+        android:background="@drawable/rounded_corners_background">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="40dp"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:text="@string/title_recipe"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:fontFamily="@font/roboto_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
         </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/recipeText"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:text="@string/recipe_text"
+            android:textColor="@color/black"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeText">
 
             <Button
-                style="@style/recButton"
                 android:id="@+id/recipeButton"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/rounded_corners_button_inversed"
                 android:text="@string/title_recipe"
-                android:background="@drawable/rounded_corners_button"
-                android:textColor="@color/objectsColor">
+                android:textColor="@color/backgroundColor"
+                android:textSize="12sp">
             </Button>
+
             <Button
                 android:id="@+id/ingredButton"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:text="@string/title_ingred"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_corners_button"
-                android:textColor="@color/objectsColor">
+                android:text="@string/title_ingred"
+                android:textColor="@color/objectsColor"
+                android:textSize="12sp">
             </Button>
 
+            <Button
+                android:id="@+id/kbjuButton"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/rounded_corners_button"
+                android:text="@string/title_kbju"
+                android:textColor="@color/objectsColor"
+                android:textSize="12sp">
+            </Button>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <Button
+                android:id="@+id/minusButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circle_button"
+                android:text="-"
+                android:textColor="@color/objectsColor">
+
+            </Button>
+
+            <TextView
+                android:id="@+id/countPor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center|center_horizontal"
+                android:text="@string/countPor"
+                android:textColor="@color/black">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/plusButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circle_button"
+                android:text="+"
+                android:textColor="@color/objectsColor">
+            </Button>
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/bottomFragment"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <GridView
+                style="@android:style/Animation"
+                android:id="@+id/gridIngred"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+        </fragment>
+
+
 
     </android.support.constraint.ConstraintLayout>
 
