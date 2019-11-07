@@ -15,4 +15,7 @@
         вместо которого должно находиться
     описание рецепта, выбранного пользователем</string>
     <string name="countPor">Количество порций:</string>
+    <string name="sign_guest">войти как гость</string>
+    <string name="btn_signIn">войти</string>
+    <string name="btn_registration">регистрация</string>
 </resources>
