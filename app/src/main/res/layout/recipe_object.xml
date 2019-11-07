@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,6 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -174,25 +174,25 @@
             </Button>
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/bottomFragment"
-            android:orientation="horizontal"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <GridView
-                style="@android:style/Animation"
-                android:id="@+id/gridIngred"
+
+            <fragment
+                android:id="@+id/bottomFragment"
+                android:name="com.shveed.cookmegood.fragments.RecipeFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                android:orientation="horizontal"
+                tools:layout="@layout/recipe_layout">
+            </fragment>
 
-        </fragment>
+        </LinearLayout>
+
 
 
 

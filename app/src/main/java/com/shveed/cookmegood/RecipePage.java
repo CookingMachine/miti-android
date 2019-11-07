@@ -1,36 +1,29 @@
 package com.shveed.cookmegood;
 
-import android.os.AsyncTask;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ExpandableListView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 
 import com.shveed.wallpapperparser.R;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
 public class RecipePage extends AppCompatActivity {
+    private GridView gridView;
+    String[] data = {"Помидорчик", "Салатик", "Хлеб", "Мазик", "Чесночёк", "Сырок"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_object);
-
-
+        Log.d("CHECKPOINT", "ACTIVITY LOADED");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.grid_element, R.id.ingredText, data); //error here
+//        gridView.setAdapter(adapter);
+//        initGridView();
     }
 
+    private void initGridView(){
+
+    }
 }
