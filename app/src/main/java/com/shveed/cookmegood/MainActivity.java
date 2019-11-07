@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         goToRecipe = (Button)findViewById(R.id.accept_button);
     }
-
         public void toRecipe(View view){
             Intent intent = new Intent(MainActivity.this, RecipePage.class);
             startActivity(intent);

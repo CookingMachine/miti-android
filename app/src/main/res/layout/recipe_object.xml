@@ -188,7 +188,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                tools:layout="@layout/recipe_layout">
+                tools:layout="@layout/recipe_layout"
+                >
             </fragment>
 
         </LinearLayout>
