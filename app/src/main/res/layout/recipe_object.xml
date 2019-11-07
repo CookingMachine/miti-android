@@ -13,22 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="2dp"
         android:background="@color/backgroundColor"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/title_home"
         android:textAlignment="center"
         android:textSize="28sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/roboto_light"
+        app:fontFamily="@font/roboto_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <ImageView
         android:id="@+id/imageView"
@@ -59,7 +58,6 @@
             android:id="@+id/textView"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:fontFamily="@font/roboto_light"
             android:gravity="center"
             android:text="@string/title_recipe"
             android:textColor="@color/black"
@@ -67,8 +65,7 @@
             app:fontFamily="@font/roboto_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </TextView>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/recipeText"
@@ -81,8 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -104,8 +100,7 @@
                 android:background="@drawable/rounded_corners_button_inversed"
                 android:text="@string/title_recipe"
                 android:textColor="@color/backgroundColor"
-                android:textSize="12sp">
-            </Button>
+                android:textSize="12sp"/>
 
             <Button
                 android:id="@+id/ingredButton"
@@ -116,8 +111,7 @@
                 android:background="@drawable/rounded_corners_button"
                 android:text="@string/title_ingred"
                 android:textColor="@color/objectsColor"
-                android:textSize="12sp">
-            </Button>
+                android:textSize="12sp"/>
 
             <Button
                 android:id="@+id/kbjuButton"
@@ -128,8 +122,7 @@
                 android:background="@drawable/rounded_corners_button"
                 android:text="@string/title_kbju"
                 android:textColor="@color/objectsColor"
-                android:textSize="12sp">
-            </Button>
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -148,9 +141,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/circle_button"
                 android:text="-"
-                android:textColor="@color/objectsColor">
-
-            </Button>
+                android:textColor="@color/objectsColor"/>
 
             <TextView
                 android:id="@+id/countPor"
@@ -160,9 +151,7 @@
                 android:layout_marginRight="10dp"
                 android:gravity="center|center_horizontal"
                 android:text="@string/countPor"
-                android:textColor="@color/black">
-
-            </TextView>
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/plusButton"
@@ -170,8 +159,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/circle_button"
                 android:text="+"
-                android:textColor="@color/objectsColor">
-            </Button>
+                android:textColor="@color/objectsColor"/>
         </LinearLayout>
 
         <LinearLayout
@@ -188,9 +176,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                tools:layout="@layout/recipe_layout"
-                >
-            </fragment>
+                tools:layout="@layout/recipe_layout"/>
 
         </LinearLayout>
 

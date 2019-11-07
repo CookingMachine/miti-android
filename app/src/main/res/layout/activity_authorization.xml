@@ -23,7 +23,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/logo"
             android:layout_marginTop="110dp"
-            ></ImageView>
+            />
 
     </LinearLayout>
 
@@ -40,6 +40,7 @@
             android:layout_height="43dp"
             android:background="@drawable/rounded_corners_button_inversed"
             android:text="@string/btn_signIn"
+            android:onClick="toMainPage"
             android:textColor="@color/white"
             android:textSize="9sp" />
 

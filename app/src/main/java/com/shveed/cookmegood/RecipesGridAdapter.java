@@ -9,14 +9,14 @@ import android.widget.TextView;
 
 import com.shveed.wallpapperparser.R;
 
-public class IngredientAdapter extends BaseAdapter {
+public class RecipesGridAdapter extends BaseAdapter {
     private Context mContext;
 
-    private String[] data = {"Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук"};
+    private String[] data = {"Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки"};
 
-    private String[] amount = {"400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г"};
+    private String amount = "101 позиция";
 
-    public IngredientAdapter(Context c){
+    public RecipesGridAdapter(Context c){
         this.mContext = c;
     }
 
@@ -41,15 +41,15 @@ public class IngredientAdapter extends BaseAdapter {
         if (convertView == null) {
             grid = new View(mContext);
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-            grid = inflater.inflate(R.layout.grid_element, parent, false);
+            grid = inflater.inflate(R.layout.grid_recipe_element, parent, false);
         } else {
             grid = (View) convertView;
         }
 
-        TextView ingredText = (TextView) grid.findViewById(R.id.ingredText);
-        TextView ingredAmount = (TextView) grid.findViewById(R.id.ingredAmount);
+        TextView ingredText = (TextView) grid.findViewById(R.id.recipeName);
+        TextView ingredAmount = (TextView) grid.findViewById(R.id.recipeAmount);
         ingredText.setText(data[position]);
-        ingredAmount.setText(amount[position]);
+        ingredAmount.setText(amount);
 
         return grid;
     }
