@@ -45,13 +45,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        goToRecipe = (Button)findViewById(R.id.accept_button);
 
         Bundle arguments = getIntent().getExtras();
         this.loggedIn = Boolean.valueOf(arguments.get("loggedIn").toString());
 
-        //GridView gridView = (GridView) findViewById(R.id.recipesGridView);
-        //gridView.setAdapter(new RecipesGridAdapter(this));
+        GridView gridView = (GridView) findViewById(R.id.recipesGridView);
+        gridView.setAdapter(new RecipesGridAdapter(this));
     }
 
     private void toAuth(){

@@ -36,7 +36,6 @@ public class RecipesGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View grid;
         if (convertView == null) {
             grid = new View(mContext);
