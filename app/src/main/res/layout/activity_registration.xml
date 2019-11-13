@@ -41,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="44dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/hint_nameSurname"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold">
