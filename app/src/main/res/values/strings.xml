@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">Make.It.Taste.It.</string>
     <string name="title_home" translatable="false">Рецепты</string>
     <string name="title_recipe">Рецепт</string>
-    <string name="title_recipes">Рецепты</string>
+    <string name="title_recipes">РЕЦЕПТЫ</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingred">Ингредиенты</string>
     <string name="title_dashboard" translatable="false">Предложить</string>
