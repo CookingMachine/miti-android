@@ -21,7 +21,7 @@
         android:layout_marginLeft="44dp"
         android:layout_marginRight="44dp"
         android:layout_marginTop="4dp"
-        android:text="CATEGORY"
+        android:text="@string/title_category"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/backButton"
         app:layout_constraintRight_toLeftOf="@+id/searchButton"
@@ -40,8 +40,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <view
-        class="android.support.v7.app.AlertController$RecycleListView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recipeRecycler"
+        app:layoutManager="LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="44dp"
@@ -50,7 +51,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryText">
-
-    </view>
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
