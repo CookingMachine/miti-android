@@ -19,6 +19,12 @@
     <string name="countPor">Количество порций:</string>
     <string name="sign_guest">Войти как гость</string>
     <string name="btn_signIn">Войти</string>
+    <string name="btn_register">Зарегистрироваться</string>
     <string name="btn_registration">Регистрация</string>
     <string name="btn_show">Показать</string>
+    <string name="i_have_account">У меня есть аккаунт</string>
+    <string name="hint_nameSurname">Имя и фамилия</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="hint_password">Придумайте пароль</string>
+    <string name="checkbox_text">Я согласен с пользовательским соглашением</string>
 </resources>
