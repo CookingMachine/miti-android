@@ -5,20 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/auth_bg"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scaleType="center">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
-        >
-
+        android:gravity="center">
         <ImageView
             android:layout_width="@dimen/pic_width"
             android:layout_height="@dimen/pic_height"
             android:gravity="center"
+            android:layout_marginVertical="90dp"
             android:scaleType="centerCrop"
             android:src="@drawable/logo"
             android:layout_marginTop="110dp"
@@ -30,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
+        android:layout_marginVertical="200dp"
         android:gravity="center"
         android:orientation="vertical">
 
