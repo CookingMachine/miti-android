@@ -32,27 +32,26 @@
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
             >
+
             <TextView
                 android:id="@+id/recipeTitle"
-                android:text="@string/title_recipe"
-                android:gravity="center_vertical"
-                android:textSize="24sp"
-                android:textColor="@color/black"
-                app:fontFamily="@font/roboto"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                />
+                android:layout_height="35dp"
+                android:gravity="center_vertical"
+                android:text="@string/title_recipe"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/recipeNationality"
-                android:text="@string/title_recipe"
-                android:gravity="center_vertical"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                app:fontFamily="@font/roboto_light"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                />
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="@string/title_recipe"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:fontFamily="@font/roboto_light" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,14 +65,13 @@
 
             <Button
                 android:id="@+id/addToFavouritesButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/recipe_basket"
-                />
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/recipe_basket" />
             <Button
                 android:id="@+id/addToBasketButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:background="@drawable/favourites_icon"
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
