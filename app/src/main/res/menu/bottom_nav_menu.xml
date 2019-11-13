@@ -4,7 +4,8 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/bean_icon"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        />
 
     <item
         android:id="@+id/navigation_dashboard"
@@ -16,5 +17,14 @@
         android:icon="@drawable/favourites_icon"
         android:title="@string/title_notifications" />
 
+    <item
+        android:id="@+id/navigation_basket"
+        android:icon="@drawable/recipe_basket"
+        android:title="@string/title_basket" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile_icon"
+        android:title="@string/title_profile" />
 
 </menu>
