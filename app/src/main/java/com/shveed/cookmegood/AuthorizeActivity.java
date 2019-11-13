@@ -23,4 +23,10 @@ public class AuthorizeActivity extends AppCompatActivity {
         intent.putExtra("loggedIn", loggedIn);
         startActivity(intent);
     }
+
+    public void toRegistrationPage(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("loggedIn", loggedIn);
+        startActivity(intent);
+    }
 }
