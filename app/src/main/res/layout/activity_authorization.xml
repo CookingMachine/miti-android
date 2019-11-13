@@ -91,6 +91,7 @@
             android:text="@string/btn_registration"
             android:textColor="@color/white"
             android:textSize="9sp"
+            android:onClick="toRegistrationPage"
             />
 
     </LinearLayout>

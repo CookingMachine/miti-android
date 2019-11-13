@@ -1,28 +1,27 @@
 package com.shveed.cookmegood;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.util.Log;
 
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
     List<Recipe> recipes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_cart);
 
         setRecipeData();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recipeRecycler);
-        CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(this, recipes);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cartRecycler);
+        CartRecipeAdapter adapter = new CartRecipeAdapter(this, recipes);
         recyclerView.setAdapter(adapter);
     }
 
@@ -32,15 +31,5 @@ public class CategoryActivity extends AppCompatActivity {
         recipes.add(new Recipe("Пицца", "Италия"));
         recipes.add(new Recipe("Плов", "Узбекистан"));
         recipes.add(new Recipe("Лаваш", "Армения"));
-    }
-
-    public void toRecipe(View view){
-        Intent intent = new Intent(CategoryActivity.this, RecipePage.class);
-        startActivity(intent);
-    }
-
-    public void toCart(View view){
-        Intent intent = new Intent(CategoryActivity.this, CartActivity.class);
-        startActivity(intent);
     }
 }

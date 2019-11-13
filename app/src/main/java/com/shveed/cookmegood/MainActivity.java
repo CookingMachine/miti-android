@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        Bundle arguments = getIntent().getExtras();
-        this.loggedIn = Boolean.valueOf(arguments.get("loggedIn").toString());
-
         GridView gridView = (GridView) findViewById(R.id.recipesGridView);
         gridView.setAdapter(new RecipesGridAdapter(this));
     }
@@ -60,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void toRecipe(View view){
-        Intent intent = new Intent(MainActivity.this, RecipePage.class);
+    public void toCategories(View view){
+        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
         startActivity(intent);
     }
 }

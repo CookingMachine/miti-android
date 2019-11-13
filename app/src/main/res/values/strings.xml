@@ -12,6 +12,8 @@
     <string name="title_activity_recipe_page">RecipePage</string>
     <string name="title_activity_favourites">Favourites</string>
     <string name="title_authorize_activity">Авторизация</string>
+    <string name="title_category">КАТЕГОРИИ</string>
+    <string name="title_cart">КОРЗИНА</string>
     <string name="list_result"> По вышему запросу найдены следующие рецепты: </string>
     <string name="recipe_text"> Здесь я решил написать дефолтное сообщение
         вместо которого должно находиться
@@ -22,9 +24,11 @@
     <string name="btn_register">Зарегистрироваться</string>
     <string name="btn_registration">Регистрация</string>
     <string name="btn_show">Показать</string>
+    <string name="btn_toPurchases">К ПОКУПКАМ</string>
     <string name="i_have_account">У меня есть аккаунт</string>
     <string name="hint_nameSurname">Имя и фамилия</string>
     <string name="hint_email">E-Mail</string>
     <string name="hint_password">Придумайте пароль</string>
     <string name="checkbox_text">Я согласен с пользовательским соглашением</string>
+    
 </resources>
