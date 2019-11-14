@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Button goToRecipe;
     private boolean loggedIn = false;
 
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

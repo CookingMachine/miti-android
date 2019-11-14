@@ -88,6 +88,7 @@
             android:background="@drawable/rounded_corners_button_inversed"
             android:fontFamily="@font/roboto"
             android:insetBottom="6dp"
+            android:onClick="toRegistrationPage"
             android:text="@string/btn_registration"
             android:textColor="@color/white"
             android:textSize="9sp"
