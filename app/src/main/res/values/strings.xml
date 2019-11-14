@@ -14,6 +14,8 @@
     <string name="title_authorize_activity">Авторизация</string>
     <string name="title_category">КАТЕГОРИИ</string>
     <string name="title_cart">КОРЗИНА</string>
+    <string name="title_basket">Корзина</string>
+    <string name="title_profile">Профиль</string>
     <string name="list_result"> По вышему запросу найдены следующие рецепты: </string>
     <string name="recipe_text"> Здесь я решил написать дефолтное сообщение
         вместо которого должно находиться

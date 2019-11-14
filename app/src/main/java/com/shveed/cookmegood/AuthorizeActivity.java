@@ -14,6 +14,11 @@ public class AuthorizeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        User user = new User();
+        intent.putExtra("userObject", user);
+        startActivity(intent);
     }
 
     public void toMainPage(View view){
