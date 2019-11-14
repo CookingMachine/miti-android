@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Make.It.Taste.It.</string>
+    <string name="app_name">Cook Delicious</string>
     <string name="title_home" translatable="false">РЕЦЕПТЫ</string>
     <string name="title_recipe">Рецепт</string>
     <string name="title_recipes">РЕЦЕПТЫ</string>
@@ -7,8 +7,8 @@
     <string name="title_ingred">Ингредиенты</string>
     <string name="title_dashboard" translatable="false">ПРЕДЛОЖИТЬ</string>
     <string name="title_notifications" translatable="false">ИЗБРАННОЕ</string>
-    <string name="title_basket" translatable="false">КОРЗИНА</string>
-    <string name="title_profile" translatable="false">ПРОФИЛЬ</string>
+    <string name="navigation_basket" translatable="false">КОРЗИНА</string>
+    <string name="navigation_profile" translatable="false">ПРОФИЛЬ</string>
     <string name="title_activity_recipe" translatable="false">RecipeActivity</string>
     <string name="title_result" translatable="false">Результат поиска:</string>
     <string name="title_activity_recipe_page">RecipePage</string>
