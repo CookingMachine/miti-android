@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         GridView gridView = (GridView) findViewById(R.id.recipesGridView);
         gridView.setAdapter(new RecipesGridAdapter(this));
+
+        User user = (User)getIntent().getSerializableExtra("userObject");
     }
 
     private void toAuth(){
