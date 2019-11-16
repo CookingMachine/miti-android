@@ -25,146 +25,141 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </LinearLayout>
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="250dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="44dp"
-            android:layout_marginStart="44dp"
-            android:text="@string/hint_nameSurname"
-            app:fontFamily="@font/roboto"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <EditText
-            android:id="@+id/edit_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="40dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:inputType="text"
-            android:paddingBottom="17dp"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:textColorHint="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold">
-        </EditText>
-    </LinearLayout>
+            android:layout_marginVertical="250dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="44dp"
+                android:layout_marginStart="44dp"
+                android:text="@string/hint_nameSurname"
+                app:fontFamily="@font/roboto"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold">
+            </TextView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="325dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="44dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/hint_email"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold">
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/roboto"
+                android:inputType="text"
+                android:paddingBottom="17dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </EditText>
+        </LinearLayout>
 
-        </TextView>
-
-        <EditText
-            android:id="@+id/edit_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="40dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:inputType="textEmailAddress"
-            android:paddingBottom="17dp"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textColorHint="@color/white"
-            android:textStyle="bold">
-        </EditText>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="410dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="44dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/hint_password"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold">
-        </TextView>
-
-        <EditText
-            android:id="@+id/edit_password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="40dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:inputType="textPassword"
-            android:paddingBottom="17dp"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:textColorHint="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold">
-        </EditText>
+            android:layout_marginVertical="325dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="44dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/hint_email"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold">
 
-        <CheckBox
-            android:id="@+id/checkBox"
+           </TextView>
+
+           <EditText
+               android:id="@+id/edit_email"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_marginLeft="40dp"
+               android:layout_marginTop="0dp"
+               android:layout_marginRight="40dp"
+               android:backgroundTint="@color/white"
+                android:fontFamily="@font/roboto"
+                android:inputType="textEmailAddress"
+                android:paddingBottom="17dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textColorHint="@color/white"
+                android:textStyle="bold">
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:gravity="left"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="44dp"
-            android:layout_marginTop="7dp"
-            android:paddingLeft="7dp"
-            android:paddingTop="9dp"
-            android:text="Я согласен с пользовательским соглашением"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            android:theme="@style/MyCheckBox" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="410dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="44dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/hint_password"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold">
+            </TextView>
 
-</RelativeLayout>
+            <EditText
+                android:id="@+id/edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/roboto"
+                android:inputType="textPassword"
+                android:paddingBottom="17dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </EditText>
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="start"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="7dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="9dp"
+                android:text="Я согласен с пользовательским соглашением"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:theme="@style/MyCheckBox" />
+        </LinearLayout>
 
     <Button
         android:id="@+id/btn_register"
         android:layout_width="127dp"
         android:layout_height="43dp"
+        android:layout_alignTop="@+id/textBottom"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="-60dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/rounded_corners_button_inversed"
         android:fontFamily="@font/roboto"

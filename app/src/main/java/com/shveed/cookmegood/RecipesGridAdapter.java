@@ -36,6 +36,8 @@ public class RecipesGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        // TODO заменить gridview на cardview
         View grid;
         if (convertView == null) {
             grid = new View(mContext);

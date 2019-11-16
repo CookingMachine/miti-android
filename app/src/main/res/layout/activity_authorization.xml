@@ -40,7 +40,6 @@
             android:layout_height="43dp"
             android:background="@drawable/rounded_corners_button_inversed"
             android:fontFamily="@font/roboto"
-            android:onClick="toMainPage"
             android:text="@string/btn_signIn"
             android:textColor="@color/white"
             android:textSize="9sp"
@@ -82,7 +81,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_registration"
+            android:id="@+id/btn_signUp"
             android:layout_width="117dp"
             android:layout_height="43dp"
             android:background="@drawable/rounded_corners_button_inversed"
@@ -91,7 +90,6 @@
             android:text="@string/btn_registration"
             android:textColor="@color/white"
             android:textSize="9sp"
-            android:onClick="toRegistrationPage"
             />
 
     </LinearLayout>

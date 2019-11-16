@@ -8,7 +8,7 @@ import android.widget.GridView;
 
 import com.shveed.wallpapperparser.R;
 
-public class RecipePage extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity {
 
     Button btnRecipe;
     Button btnIngred;
@@ -22,10 +22,12 @@ public class RecipePage extends AppCompatActivity {
         GridView gridView = (GridView) findViewById(R.id.gridIngred);
         gridView.setAdapter(new IngredientAdapter(this));
 
+
+
+
         btnRecipe = (Button) findViewById(R.id.recipeButton);
         btnIngred = (Button) findViewById(R.id.ingredButton);
         btnKbju = (Button) findViewById(R.id.kbjuButton);
-
         View.OnClickListener recipeListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

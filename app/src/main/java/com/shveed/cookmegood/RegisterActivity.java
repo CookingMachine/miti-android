@@ -20,6 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     Toast errorToast;
 
+    // TODO доверстать страницу
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +51,12 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                     User user = new User(name, email, password);
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    intent.putExtra("userObject", user);
+                    //intent.putExtra("userObject", user);
                     startActivity(intent);
                 }
             }
         };
         regButton.setOnClickListener(regListener);
-
     }
 
     private boolean checkEmptyInput(String line){

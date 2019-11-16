@@ -35,7 +35,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void toRecipe(View view){
-        Intent intent = new Intent(CategoryActivity.this, RecipePage.class);
+        Intent intent = new Intent(CategoryActivity.this, RecipeActivity.class);
         startActivity(intent);
     }
 

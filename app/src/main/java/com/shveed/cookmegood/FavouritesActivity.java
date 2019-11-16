@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.shveed.wallpapperparser.R;
 
-public class Favourites extends AppCompatActivity {
+public class FavouritesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

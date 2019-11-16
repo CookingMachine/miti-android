@@ -169,14 +169,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-
             <fragment
                 android:id="@+id/bottomFragment"
                 android:name="com.shveed.cookmegood.fragments.RecipeFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                tools:layout="@layout/recipe_layout"/>
+                tools:layout="@layout/f_ingredient"/>
 
         </LinearLayout>
 
