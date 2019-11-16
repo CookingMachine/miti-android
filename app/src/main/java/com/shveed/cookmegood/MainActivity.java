@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private Spinner themeSpinner;
     private Button goToRecipe;
-    private boolean loggedIn = false;
 
 
 
@@ -52,13 +51,6 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(new RecipesGridAdapter(this));
 
         User user = (User)getIntent().getSerializableExtra("userObject");
-    }
-
-    private void toAuth(){
-        if(!loggedIn){
-            Intent intent = new Intent(this, AuthorizeActivity.class);
-            startActivity(intent);
-        }
     }
 
     public void toCategories(View view){

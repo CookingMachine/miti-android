@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/auth_bg"
     android:scaleType="center">
 
@@ -37,8 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"
             android:text="@string/hint_nameSurname"
-            android:fontFamily="@font/roboto"
+            app:fontFamily="@font/roboto"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold">

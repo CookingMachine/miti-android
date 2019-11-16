@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.shveed.wallpapperparser">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name="com.shveed.cookmegood.CartActivity">
-
-        </activity>
-        <activity android:name="com.shveed.cookmegood.CategoryActivity" />
-        <activity android:name="com.shveed.cookmegood.RegisterActivity" />
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
             android:name="com.shveed.cookmegood.AuthorizeActivity"
-            android:label="@string/app_name">
+            android:label="@string/title_activity_authorize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.shveed.cookmegood.CartActivity"
+            android:label="@string/title_activity_cart">
+        </activity>
+
+        <activity
+            android:name="com.shveed.cookmegood.CategoryActivity"
+            android:label="@string/title_activity_category">
+        </activity>
+
+        <activity android:name="com.shveed.cookmegood.RegisterActivity"
+            android:label="@string/title_activity_register">
+        </activity>
+
+
         <activity
             android:name="com.shveed.cookmegood.Favourites"
-            android:label="@string/title_activity_favourites"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_favourites" />
         <activity
             android:name="com.shveed.cookmegood.RecipePage"
-            android:label="@string/title_activity_recipe_page"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_recipe_page" />
         <activity
             android:name="com.shveed.cookmegood.MainActivity"
             android:label="@string/app_name" />
