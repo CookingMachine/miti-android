@@ -107,5 +107,6 @@
         android:textColor="#eaeaea"
         android:textSize="10sp"
         android:textStyle="normal"
-        app:fontFamily="@font/roboto_light" />
+        app:fontFamily="@font/roboto_light"
+        android:onClick="asGuest"/>
 </RelativeLayout>

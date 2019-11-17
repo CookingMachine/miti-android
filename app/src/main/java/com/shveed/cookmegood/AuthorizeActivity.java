@@ -52,4 +52,10 @@ public class AuthorizeActivity extends AppCompatActivity {
         Intent intent = new Intent(AuthorizeActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
+    public void asGuest(View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        User user = new User();
+        intent.putExtra("userObject", user);
+        startActivity(intent);
+    }
 }

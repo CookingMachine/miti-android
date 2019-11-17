@@ -4,13 +4,15 @@
     android:layout_height="190dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:background="@drawable/rounded_corners_image">
+    android:background="@drawable/rounded_corners_image"
+    android:layout_marginLeft="8dp">
 
     <LinearLayout
         android:background="@drawable/rounded_corners_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="#99121212"
+
         >
         <ImageView
             android:background="@drawable/rounded_corners_image"
