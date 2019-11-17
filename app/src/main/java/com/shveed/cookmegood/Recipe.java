@@ -15,12 +15,13 @@ public class Recipe {
 
     private String time;
 
-    private String image;
+    private int image;
 
     private String kitchen;
 
-    public Recipe(String name, String kitchen){
+    public Recipe(String name, String kitchen, int image){
         this.name = name;
         this.kitchen = kitchen;
+        this.image = image;
     }
 }

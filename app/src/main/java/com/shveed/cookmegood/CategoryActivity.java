@@ -22,20 +22,40 @@ public class CategoryActivity extends AppCompatActivity {
 
         setRecipeData();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recipeRecycler);
+        recyclerView.addOnItemTouchListener(
+                new RecipeItemClickListener(this, recyclerView, new RecipeItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        String name = recipes.get(position).getName();
+                        int image = recipes.get(position).getImage();
+                        toRecipe(name, image);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        String name = recipes.get(position).getName();
+                        int image = recipes.get(position).getImage();
+                        toRecipe(name, image);
+                    }
+                })
+        );
+
         CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(this, recipes);
         recyclerView.setAdapter(adapter);
     }
 
 
     private void setRecipeData(){
-        recipes.add(new Recipe("Борщ", "Украина"));
-        recipes.add(new Recipe("Пицца", "Италия"));
-        recipes.add(new Recipe("Плов", "Узбекистан"));
-        recipes.add(new Recipe("Лаваш", "Армения"));
+        recipes.add(new Recipe("Борщ", "Украина", R.drawable.pic1));
+        recipes.add(new Recipe("Пицца", "Италия", R.drawable.pic1));
+        recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic1));
+        recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic1));
     }
 
-    public void toRecipe(View view){
+    public void toRecipe(String name, int image){
         Intent intent = new Intent(CategoryActivity.this, RecipeActivity.class);
+        intent.putExtra("recipeName", name);
+        intent.putExtra("recipeImage", image);
         startActivity(intent);
     }
 

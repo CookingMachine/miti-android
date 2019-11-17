@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:onClick="toRecipe">
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/recipeImage"

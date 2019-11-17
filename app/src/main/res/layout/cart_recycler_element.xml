@@ -18,7 +18,7 @@
         android:id="@+id/cartRecipeName"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="@string/title_recipe"
+        android:text="@string/title_activity_recipe"
         android:gravity="center"
         android:textSize="24sp"
         android:textColor="@color/black"

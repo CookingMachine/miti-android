@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.shveed.wallpapperparser.R;
 
@@ -14,20 +16,36 @@ public class RecipeActivity extends AppCompatActivity {
     Button btnIngred;
     Button btnKbju;
 
+    TextView mainTitle;
+    TextView lowerTitle;
+
+    ImageView recipeImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
 
+        String name = getIntent().getExtras().get("recipeName").toString();
+        int image = Integer.valueOf(getIntent().getExtras().get("recipeImage").toString());
+
         GridView gridView = (GridView) findViewById(R.id.gridIngred);
         gridView.setAdapter(new IngredientAdapter(this));
 
+        mainTitle = (TextView) findViewById(R.id.recipesTextView);
+        lowerTitle = (TextView) findViewById(R.id.textView);
 
-
+        recipeImage = (ImageView) findViewById(R.id.imageView);
 
         btnRecipe = (Button) findViewById(R.id.recipeButton);
         btnIngred = (Button) findViewById(R.id.ingredButton);
         btnKbju = (Button) findViewById(R.id.kbjuButton);
+
+        mainTitle.setText(name);
+        lowerTitle.setText(name);
+
+        recipeImage.setImageResource(image);
+
         View.OnClickListener recipeListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

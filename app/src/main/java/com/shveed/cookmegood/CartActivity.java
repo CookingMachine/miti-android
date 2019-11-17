@@ -27,9 +27,9 @@ public class CartActivity extends AppCompatActivity {
 
 
     private void setRecipeData(){
-        recipes.add(new Recipe("Борщ", "Украина"));
-        recipes.add(new Recipe("Пицца", "Италия"));
-        recipes.add(new Recipe("Плов", "Узбекистан"));
-        recipes.add(new Recipe("Лаваш", "Армения"));
+        recipes.add(new Recipe("Борщ", "Украина", R.drawable.pic1));
+        recipes.add(new Recipe("Пицца", "Италия", R.drawable.pic1));
+        recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic1));
+        recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic1));
     }
 }

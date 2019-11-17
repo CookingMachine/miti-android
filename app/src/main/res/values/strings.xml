@@ -1,23 +1,26 @@
 <resources>
-    <string name="app_name">Cook Delicious</string>
-    <string name="title_home" translatable="false">РЕЦЕПТЫ</string>
-    <string name="title_recipe">Рецепт</string>
+    <string name="title_activity_authorize">Авторизация</string>
+    <string name="title_activity_register">Регистрация</string>
+    <string name="title_activity_cart">Корзина</string>
+    <string name="title_activity_category">Категории</string>
+    <string name="title_activity_recipe">Рецепт</string>
+    <string name="title_activity_recipes">Рецепты</string>
+    <string name="title_activity_favourites">Favourites</string>
+
+    <string name="app_name">M.I.T.I.</string>
+    <string name="title_home">Рецепты</string>
+
     <string name="title_recipes">РЕЦЕПТЫ</string>
+    <string name="title_recipe">Рецепт</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingred">Ингредиенты</string>
-    <string name="title_dashboard" translatable="false">ПРЕДЛОЖИТЬ</string>
-    <string name="title_notifications" translatable="false">ИЗБРАННОЕ</string>
-    <string name="navigation_basket" translatable="false">КОРЗИНА</string>
-    <string name="navigation_profile" translatable="false">ПРОФИЛЬ</string>
-    <string name="title_activity_recipe" translatable="false">RecipeActivity</string>
-    <string name="title_result" translatable="false">Результат поиска:</string>
-    <string name="title_activity_recipe_page">RecipePage</string>
-    <string name="title_activity_favourites">Favourites</string>
-    <string name="title_authorize_activity">Авторизация</string>
-    <string name="title_category">КАТЕГОРИИ</string>
-    <string name="title_cart">КОРЗИНА</string>
-    <string name="title_basket">Корзина</string>
+    <string name="title_dashboard">Предложить</string>
+    <string name="title_notifications">Избранное</string>
+    <string name="title_result">Результат поиска:</string>
     <string name="title_profile">Профиль</string>
+
+    <string name="title_category">КАТЕГОРИИ</string>
+    <string name="title_cart">Корзина</string>
     <string name="list_result"> По вышему запросу найдены следующие рецепты: </string>
     <string name="recipe_text"> Здесь я решил написать дефолтное сообщение
         вместо которого должно находиться

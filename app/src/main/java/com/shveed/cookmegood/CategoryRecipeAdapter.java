@@ -31,7 +31,7 @@ class CategoryRecipeAdapter extends RecyclerView.Adapter<CategoryRecipeAdapter.V
     @Override
     public void onBindViewHolder(CategoryRecipeAdapter.ViewHolder holder, int position) {
         Recipe recipe = recipes.get(position);
-        holder.imageView.setImageResource(R.drawable.pic1);
+        holder.imageView.setImageResource(recipe.getImage());
         holder.nameView.setText(recipe.getName());
         holder.kitchenView.setText(recipe.getKitchen());
     }

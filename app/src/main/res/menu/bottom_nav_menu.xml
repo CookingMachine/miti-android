@@ -20,7 +20,7 @@
     <item
         android:id="@+id/navigation_basket"
         android:icon="@drawable/recipe_basket"
-        android:title="@string/title_basket" />
+        android:title="@string/title_cart" />
 
     <item
         android:id="@+id/navigation_profile"
