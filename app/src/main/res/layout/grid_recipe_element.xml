@@ -18,9 +18,8 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/title_recipe"
             android:src="@drawable/pic1"
-            android:onClick="toCategories"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"/>
+            android:scaleType="center"/>
     </LinearLayout>
     <TextView
         android:id="@+id/recipeName"

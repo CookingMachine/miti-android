@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +17,15 @@ import android.widget.TextView;
 
 import com.shveed.wallpapperparser.R;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Arrays;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements RecipesGridAdapter.ItemClickListener{
     private TextView mTextMessage;
     private Spinner themeSpinner;
     private Button goToRecipe;
 
-
+    private RecipesGridAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,13 +53,17 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        GridView gridView = (GridView) findViewById(R.id.recipesGridView);
-        gridView.setAdapter(new RecipesGridAdapter(this));
+        List<String> data = Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки");
+        RecyclerView recyclerView = findViewById(R.id.recipesRecyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        adapter = new RecipesGridAdapter(this, data);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
         User user = (User)getIntent().getSerializableExtra("userObject");
     }
-
-    public void toCategories(View view){
+    @Override
+    public void onItemClick(View view, int position) {
         Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
         startActivity(intent);
     }
