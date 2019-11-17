@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.shveed.wallpapperparser.R;
 
-// TODO реализовать фрагмент Kbju + логика
 public class KbjuFragment extends Fragment {
     @Nullable
     @Override

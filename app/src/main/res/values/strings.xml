@@ -37,5 +37,10 @@
     <string name="hint_email">E-Mail</string>
     <string name="hint_password">Придумайте пароль</string>
     <string name="checkbox_text">Я согласен с пользовательским соглашением</string>
-    
+
+    <string name="f_calories">кКал</string>
+    <string name="f_proteins">Белки</string>
+    <string name="f_fats">Жиры</string>
+    <string name="f_carbo">Углеводы</string>
+
 </resources>

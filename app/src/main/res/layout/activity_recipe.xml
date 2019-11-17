@@ -162,7 +162,8 @@
                 android:textColor="@color/objectsColor"/>
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/frameRecipe"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,11 +174,9 @@
                 android:id="@+id/bottomFragment"
                 android:name="com.shveed.cookmegood.fragments.RecipeFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                tools:layout="@layout/f_ingredient"/>
+                android:layout_height="match_parent"/>
 
-        </LinearLayout>
+        </FrameLayout>
 
 
 

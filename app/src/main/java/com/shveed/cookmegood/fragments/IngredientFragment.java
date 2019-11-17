@@ -10,12 +10,10 @@ import android.view.ViewGroup;
 
 import com.shveed.wallpapperparser.R;
 
-// TODO реализовать фрагмент Ingredent + логика
-
 public class IngredientFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.f_recipe, container, false);
+        return inflater.inflate(R.layout.f_ingredient, container, false);
     }
 }

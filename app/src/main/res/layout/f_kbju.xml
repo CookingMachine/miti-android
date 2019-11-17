@@ -1,6 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginHorizontal="10dp">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.25"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <View
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/rounded_view_circle">
+        </View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/f_calories">
+        </TextView>
+        <TextView
+            android:id="@+id/kbju_calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/f_calories">
+        </TextView>
+    </LinearLayout>
+
+    <View
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_height="75dp"
+        android:background="@color/objectsColor"
+        android:layout_width="1sp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.25"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <View
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/rounded_view_circle">
+        </View>
+
+        <TextView
+            android:text="@string/f_proteins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/f_proteins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/f_proteins">
+        </TextView>
+    </LinearLayout>
+
+    <View
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_height="75dp"
+        android:background="@color/objectsColor"
+        android:layout_width="1sp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.25"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <View
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/rounded_view_circle">
+        </View>
+
+        <TextView
+            android:text="@string/f_fats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/f_fats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/f_fats">
+        </TextView>
+    </LinearLayout>
+
+    <View
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_height="75dp"
+        android:background="@color/objectsColor"
+        android:layout_width="1sp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.25"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <View
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/rounded_view_circle">
+        </View>
+
+        <TextView
+            android:text="@string/f_carbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/f_carbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/f_carbo">
+        </TextView>
+    </LinearLayout>
+</LinearLayout>
