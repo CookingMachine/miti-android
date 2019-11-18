@@ -1,5 +1,5 @@
 <resources>
-    <string name="title_activity_authorize">Авторизация</string>
+    <string name="title_activity_authorize">M.I.T.I.</string>
     <string name="title_activity_register">Регистрация</string>
     <string name="title_activity_cart">Корзина</string>
     <string name="title_activity_category">Категории</string>
