@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="168dp"
-    android:layout_height="168dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:layout_weight="1">
 
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         >
         <ImageView
             android:layout_width="match_parent"
@@ -20,27 +23,33 @@
             android:src="@drawable/pic2"
             android:background="@color/backgroundColor"/>
 
-    <TextView
-        android:id="@+id/recipeName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:gravity="center"
-        android:text="@string/title_recipe"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:fontFamily="@font/roboto_light"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true">
+            <TextView
+                android:id="@+id/recipeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_recipe"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:fontFamily="@font/roboto_light"/>
 
-    <TextView
-        android:id="@+id/recipeAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:gravity="center"
-        android:text="@string/title_recipe"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:fontFamily="@font/roboto_light"/>
+            <TextView
+                android:id="@+id/recipeAmount"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_recipe"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:fontFamily="@font/roboto_light" />
+        </LinearLayout>
     </RelativeLayout>
     </android.support.v7.widget.CardView>
-</RelativeLayout>
+</LinearLayout>
