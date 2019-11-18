@@ -40,5 +40,6 @@
         android:layout_height="50dp"
         android:background="@color/backgroundColor"
         android:layout_alignParentBottom="true"
+        app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
         app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>
