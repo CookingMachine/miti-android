@@ -1,45 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="190dp"
-    android:layout_height="190dp"
+    android:layout_width="168dp"
+    android:layout_height="168dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:background="@drawable/rounded_corners_image"
-    android:layout_marginLeft="8dp">
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:background="@drawable/rounded_corners_image"
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:foreground="#99121212"
-
+        android:layout_gravity="center"
         >
         <ImageView
-            android:background="@drawable/rounded_corners_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/title_recipe"
-            android:src="@drawable/pic1"
-            android:adjustViewBounds="true"
-            android:scaleType="center"/>
-    </LinearLayout>
+            android:src="@drawable/pic2"
+            android:background="@color/backgroundColor"/>
+
     <TextView
         android:id="@+id/recipeName"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_above="@+id/recipeAmount"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
         android:text="@string/title_recipe"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -48,20 +34,13 @@
     <TextView
         android:id="@+id/recipeAmount"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginRight="-2dp"
-        android:layout_marginBottom="39dp"
-        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
         android:text="@string/title_recipe"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:fontFamily="@font/roboto_light"/>
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

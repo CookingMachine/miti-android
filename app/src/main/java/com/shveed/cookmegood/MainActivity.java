@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements RecipesGridAdapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        BottomNavigationView navView = findViewById(R.id.nav_view_main);
 
         List<String> data = Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки");
         RecyclerView recyclerView = findViewById(R.id.recipesRecyclerView);
