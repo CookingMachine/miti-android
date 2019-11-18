@@ -30,6 +30,8 @@ public class RecipeActivity extends AppCompatActivity {
     Fragment f_ingred;
     Fragment f_kbju;
 
+    GridView gridView;
+
     FragmentTransaction fragmentTransaction;
 
     @Override
@@ -39,9 +41,6 @@ public class RecipeActivity extends AppCompatActivity {
 
         String name = getIntent().getExtras().get("recipeName").toString();
         int image = Integer.valueOf(getIntent().getExtras().get("recipeImage").toString());
-
-        GridView gridView = (GridView) findViewById(R.id.gridIngred);
-        gridView.setAdapter(new IngredientAdapter(RecipeActivity.this));
 
         mainTitle = (TextView) findViewById(R.id.recipesTextView);
         lowerTitle = (TextView) findViewById(R.id.textView);
@@ -75,6 +74,8 @@ public class RecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 clickIngred();
+                gridView = (GridView) findViewById(R.id.gridIngred);
+                gridView.setAdapter(new IngredientAdapter(RecipeActivity.this));
             }
         };
         View.OnClickListener kbjuListener = new View.OnClickListener() {

@@ -44,21 +44,18 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-
     private void setRecipeData(){
         recipes.add(new Recipe("Борщ", "Украина", R.drawable.pic1));
         recipes.add(new Recipe("Пицца", "Италия", R.drawable.pic1));
         recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic1));
         recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic1));
     }
-
     public void toRecipe(String name, int image){
         Intent intent = new Intent(CategoryActivity.this, RecipeActivity.class);
         intent.putExtra("recipeName", name);
         intent.putExtra("recipeImage", image);
         startActivity(intent);
     }
-
     public void toCart(View view){
         Intent intent = new Intent(CategoryActivity.this, CartActivity.class);
         startActivity(intent);
