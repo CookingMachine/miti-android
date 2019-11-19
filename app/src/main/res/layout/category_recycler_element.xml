@@ -12,15 +12,15 @@
         android:layout_height="150dp"
         android:contentDescription="@string/title_ingred"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:src="@drawable/pic1"
         />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginStart="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp">
 
         <LinearLayout
@@ -53,15 +53,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/rounded_corners_ingred_elem"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
+            android:layout_width="85dp"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp">
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/addToFavouritesButton"
