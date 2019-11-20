@@ -153,7 +153,7 @@
                 android:textColor="@color/objectsColor"/>
         </LinearLayout>
 
-        <android.support.v4.view.ViewPager
+        <FrameLayout
             android:id="@+id/frameRecipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -164,7 +164,7 @@
                 android:name="com.shveed.cookmegood.fragments.RecipeFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-        </android.support.v4.view.ViewPager>
+        </FrameLayout>
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/nav_view_recipe"

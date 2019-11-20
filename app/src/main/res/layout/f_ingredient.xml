@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
         style="@android:style/Animation"
         android:id="@+id/gridIngred"
         android:layout_width="match_parent"

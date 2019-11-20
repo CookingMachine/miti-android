@@ -1,19 +1,43 @@
 package com.shveed.cookmegood.fragments;
 
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shveed.cookmegood.IngredientsGridAdapter;
+import com.shveed.cookmegood.entity.Ingredient;
 import com.shveed.wallpapperparser.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class IngredientFragment extends Fragment {
+
+    List<Ingredient> ingredients = new ArrayList<>();
+
+    private String[] data = {"Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук"};
+
+    private String[] amount = {"400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г"};
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.f_ingredient, container, false);
+        for(int i = 0; i < 8; i++){
+            Ingredient ingredient = new Ingredient(data[i], amount[i]);
+            this.ingredients.add(ingredient);
+        }
+        View view = inflater.inflate(R.layout.f_ingredient, container, false);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.gridIngred);
+        IngredientsGridAdapter adapter = new IngredientsGridAdapter(getActivity(), ingredients);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setAdapter(adapter);
+        return view;
     }
 }

@@ -2,8 +2,10 @@ package com.shveed.cookmegood;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -27,10 +29,7 @@ public class RecipeActivity extends AppCompatActivity {
     ImageView recipeImage;
 
     Fragment f_recipe;
-    Fragment f_ingred;
     Fragment f_kbju;
-
-    GridView gridView;
 
     FragmentTransaction fragmentTransaction;
 
@@ -42,6 +41,14 @@ public class RecipeActivity extends AppCompatActivity {
         String name = getIntent().getExtras().get("recipeName").toString();
         int image = Integer.valueOf(getIntent().getExtras().get("recipeImage").toString());
 
+        IngredientFragment ingredientFragment = new IngredientFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.frameRecipe, ingredientFragment);
+        transaction.commit();
+
+        Log.d("MEME", "MEME");
+
         mainTitle = (TextView) findViewById(R.id.recipesTextView);
         lowerTitle = (TextView) findViewById(R.id.textView);
 
@@ -52,17 +59,14 @@ public class RecipeActivity extends AppCompatActivity {
         btnKbju = (Button) findViewById(R.id.kbjuButton);
 
         f_recipe = new RecipeFragment();
-        f_ingred = new IngredientFragment();
         f_kbju = new KbjuFragment();
-
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameRecipe, f_ingred);
-        fragmentTransaction.commit();
 
         mainTitle.setText(name);
         lowerTitle.setText(name);
 
         recipeImage.setImageResource(image);
+
+
 
         View.OnClickListener recipeListener = new View.OnClickListener() {
             @Override
@@ -73,9 +77,7 @@ public class RecipeActivity extends AppCompatActivity {
         View.OnClickListener ingredListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickIngred();
-                gridView = (GridView) findViewById(R.id.gridIngred);
-                gridView.setAdapter(new IngredientAdapter(RecipeActivity.this));
+                clickIngred(ingredientFragment);
             }
         };
         View.OnClickListener kbjuListener = new View.OnClickListener() {
@@ -104,7 +106,7 @@ public class RecipeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void clickIngred(){
+    private void clickIngred(IngredientFragment ingredientFragment){
         btnRecipe.setBackgroundResource(R.drawable.rounded_corners_button);
         btnRecipe.setTextColor(getResources().getColor(R.color.objectsColor));
 
@@ -115,7 +117,7 @@ public class RecipeActivity extends AppCompatActivity {
         btnKbju.setTextColor(getResources().getColor(R.color.objectsColor));
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameRecipe, f_ingred);
+        fragmentTransaction.replace(R.id.frameRecipe, ingredientFragment);
         fragmentTransaction.commit();
     }
 
@@ -133,6 +135,4 @@ public class RecipeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameRecipe, f_kbju);
         fragmentTransaction.commit();
     }
-
-
 }
