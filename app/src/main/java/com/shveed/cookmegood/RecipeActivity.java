@@ -28,8 +28,9 @@ public class RecipeActivity extends AppCompatActivity {
 
     ImageView recipeImage;
 
-    Fragment f_recipe;
-    Fragment f_kbju;
+    RecipeFragment recipeFragment;
+    IngredientFragment ingredientFragment;
+    KbjuFragment kbjuFragment;
 
     FragmentTransaction fragmentTransaction;
 
@@ -41,13 +42,15 @@ public class RecipeActivity extends AppCompatActivity {
         String name = getIntent().getExtras().get("recipeName").toString();
         int image = Integer.valueOf(getIntent().getExtras().get("recipeImage").toString());
 
-        IngredientFragment ingredientFragment = new IngredientFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.frameRecipe, ingredientFragment);
-        transaction.commit();
+        ingredientFragment = new IngredientFragment();
+        recipeFragment = new RecipeFragment();
+        kbjuFragment = new KbjuFragment();
 
-        Log.d("MEME", "MEME");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.frameRecipe, recipeFragment);
+        transaction.commit();
 
         mainTitle = (TextView) findViewById(R.id.recipesTextView);
         lowerTitle = (TextView) findViewById(R.id.textView);
@@ -58,15 +61,10 @@ public class RecipeActivity extends AppCompatActivity {
         btnIngred = (Button) findViewById(R.id.ingredButton);
         btnKbju = (Button) findViewById(R.id.kbjuButton);
 
-        f_recipe = new RecipeFragment();
-        f_kbju = new KbjuFragment();
-
         mainTitle.setText(name);
         lowerTitle.setText(name);
 
         recipeImage.setImageResource(image);
-
-
 
         View.OnClickListener recipeListener = new View.OnClickListener() {
             @Override
@@ -102,7 +100,7 @@ public class RecipeActivity extends AppCompatActivity {
         btnKbju.setTextColor(getResources().getColor(R.color.objectsColor));
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameRecipe, f_recipe);
+        fragmentTransaction.replace(R.id.frameRecipe, recipeFragment);
         fragmentTransaction.commit();
     }
 
@@ -132,7 +130,7 @@ public class RecipeActivity extends AppCompatActivity {
         btnKbju.setTextColor(getResources().getColor(R.color.backgroundColor));
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameRecipe, f_kbju);
+        fragmentTransaction.replace(R.id.frameRecipe, kbjuFragment);
         fragmentTransaction.commit();
     }
 }
