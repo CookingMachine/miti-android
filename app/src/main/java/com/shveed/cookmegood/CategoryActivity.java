@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.shveed.cookmegood.entity.Recipe;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ public class CategoryActivity extends AppCompatActivity {
         setRecipeData();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recipeRecycler);
         recyclerView.addOnItemTouchListener(
-                new RecipeItemClickListener(this, recyclerView, new RecipeItemClickListener.OnItemClickListener() {
+                new RecipeItemClickListener(this, recyclerView,
+                        new RecipeItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         String name = recipes.get(position).getName();

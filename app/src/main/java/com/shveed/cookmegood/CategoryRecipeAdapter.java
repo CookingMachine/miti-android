@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.shveed.cookmegood.entity.Recipe;
 import com.shveed.wallpapperparser.R;
 
 import java.util.List;

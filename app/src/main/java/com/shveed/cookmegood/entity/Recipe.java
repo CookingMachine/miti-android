@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.shveed.cookmegood.entity.User;
 import com.shveed.wallpapperparser.R;
 
 import java.util.Arrays;

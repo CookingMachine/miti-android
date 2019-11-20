@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:id="@+id/constaintlayout"
     android:background="@color/backgroundColor"
     android:layout_width="match_parent"
@@ -32,7 +31,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/recipesTextView1"
         android:layout_above="@+id/nav_view_main"
-        android:layout_marginLeft="-5dp"/>
+        android:layout_marginStart="-5dp"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view_main"
