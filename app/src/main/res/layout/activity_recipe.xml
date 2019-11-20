@@ -25,31 +25,27 @@
         app:fontFamily="@font/roboto_light" />
 
     <ImageView
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:layout_below="@+id/recipesTextView"
         android:layout_marginTop="1dp"
         android:background="@drawable/rounded_corners_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipesTextView"
         android:scaleType="centerCrop"/>
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
+        android:layout_marginTop="200dp"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginBottom="0dp"
         android:background="@drawable/rounded_corners_background">
 
         <TextView
+            android:layout_centerHorizontal="true"
             android:id="@+id/textView"
             android:layout_width="250dp"
             android:layout_height="40dp"
@@ -58,11 +54,10 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             app:fontFamily="@font/roboto_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_alignParentTop="true"/>
 
         <TextView
+            android:layout_centerHorizontal="true"
             android:id="@+id/recipeText"
             android:layout_width="250dp"
             android:layout_height="70dp"
@@ -70,10 +65,7 @@
             android:text="@string/recipe_text"
             android:textColor="@color/black"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
+            android:layout_below="@+id/textView"/>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -82,8 +74,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_below="@+id/recipeText"
             app:layout_constraintTop_toBottomOf="@+id/recipeText">
 
             <Button
@@ -124,6 +115,8 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/linearLayout"
             android:id="@+id/linearLayout2"
             android:layout_width="250dp"
             android:layout_height="50dp"
@@ -160,27 +153,26 @@
                 android:textColor="@color/objectsColor"/>
         </LinearLayout>
 
-        <FrameLayout
+        <android.support.v4.view.ViewPager
             android:id="@+id/frameRecipe"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_above="@+id/nav_view_recipe">
             <fragment
                 android:id="@+id/bottomFragment"
                 android:name="com.shveed.cookmegood.fragments.RecipeFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+        </android.support.v4.view.ViewPager>
 
-        </FrameLayout>
-
-
-
-
-    </android.support.constraint.ConstraintLayout>
-
-
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/nav_view_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/backgroundColor"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_nav_menu" />
+    </RelativeLayout>
 </RelativeLayout>
 

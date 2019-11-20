@@ -21,8 +21,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     Toast errorToast;
 
-    // TODO доверстать страницу
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
