@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginVertical="250dp"
+            android:layout_marginTop="250dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -54,13 +55,14 @@
                 android:textColorHint="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:fontFamily="@font/roboto"/>
+                app:fontFamily="@font/roboto"
+                tools:visibility="visible" />
         </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginVertical="320dp"
+        android:layout_marginTop="320dp"
         android:orientation="vertical">
 
         <TextView
@@ -74,7 +76,7 @@
             app:fontFamily="@font/roboto"/>
 
         <EditText
-            android:id="@+id/edit_email"
+            android:id="@+id/edit_emaifffl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -83,20 +85,22 @@
             android:layout_marginRight="40dp"
             android:backgroundTint="@color/white"
             app:fontFamily="@font/roboto"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:paddingBottom="17dp"
             android:text=""
             android:textColor="#FFFFFF"
             android:textColorHint="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            >
+
         </EditText>
     </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="430dp"
+            android:layout_marginVertical="390dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -127,7 +131,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold">
             </EditText>
-
             <CheckBox
                 android:id="@+id/checkBox"
                 android:layout_width="match_parent"
@@ -144,6 +147,42 @@
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:theme="@style/MyCheckBox" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="320dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="44dp"
+            app:fontFamily="@font/roboto"
+            android:text="@string/hint_email"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edit_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="40dp"
+            android:backgroundTint="@color/white"
+            app:fontFamily="@font/roboto"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="17dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold">
+        </EditText>
         </LinearLayout>
 
     <Button
