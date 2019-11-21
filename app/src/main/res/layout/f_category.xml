@@ -46,19 +46,11 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/title_category"
-        android:layout_above="@+id/nav_view_category"
+        android:layout_alignParentBottom="true"
         android:id="@+id/recipeRecycler"
         app:layoutManager="LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/nav_view_category"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/backgroundColor"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

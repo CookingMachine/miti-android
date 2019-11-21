@@ -1,30 +1,35 @@
 package com.shveed.cookmegood;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.shveed.cookmegood.entity.Recipe;
+import com.shveed.cookmegood.interfaces.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryFragment extends Fragment {
 
-    List<Recipe> recipes = new ArrayList<>();
+    private List<Recipe> recipes = new ArrayList<>();
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.f_category);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.f_category, container, false);
 
         setRecipeData();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recipeRecycler);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recipeRecycler);
         recyclerView.addOnItemTouchListener(
-                new RecipeItemClickListener(this, recyclerView,
+                new RecipeItemClickListener(getContext(), recyclerView,
                         new RecipeItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
@@ -42,8 +47,9 @@ public class CategoryActivity extends AppCompatActivity {
                 })
         );
 
-        CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(this, recipes);
+        CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(getContext(), recipes);
         recyclerView.setAdapter(adapter);
+        return view;
     }
 
     private void setRecipeData(){
@@ -53,13 +59,13 @@ public class CategoryActivity extends AppCompatActivity {
         recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic1));
     }
     public void toRecipe(String name, int image){
-        Intent intent = new Intent(CategoryActivity.this, RecipeActivity.class);
+        Intent intent = new Intent(getContext(), RecipeActivity.class);
         intent.putExtra("recipeName", name);
         intent.putExtra("recipeImage", image);
         startActivity(intent);
     }
     public void toCart(View view){
-        Intent intent = new Intent(CategoryActivity.this, CartFragment.class);
+        Intent intent = new Intent(getContext(), CartFragment.class);
         startActivity(intent);
     }
 }

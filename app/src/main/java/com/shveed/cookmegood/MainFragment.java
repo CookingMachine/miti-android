@@ -1,16 +1,16 @@
 package com.shveed.cookmegood;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shveed.cookmegood.interfaces.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.Arrays;
@@ -36,7 +36,9 @@ public class MainFragment extends Fragment implements RecipesGridAdapter.ItemCli
     }
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(getContext(), CategoryActivity.class);
-        startActivity(intent);
+        String recipe = adapter.getItem(position);
+        Fragment category = new CategoryFragment();
+        FragmentChangeListener fc = (FragmentChangeListener)getActivity();
+        fc.replaceFragment(category);
     }
 }

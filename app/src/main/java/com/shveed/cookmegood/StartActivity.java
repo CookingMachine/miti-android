@@ -4,21 +4,27 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.shveed.cookmegood.entity.User;
+import com.shveed.cookmegood.interfaces.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends FragmentActivity implements FragmentChangeListener {
 
     private User currentUser;
 
     private Fragment selectedFragment;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             selectedFragment = new MainFragment();
@@ -54,5 +60,14 @@ public class StartActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(navListener);
 
         currentUser = (User)getIntent().getSerializableExtra("userObject");
+    }
+
+    @Override
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.f_start, fragment, fragment.toString());
+        fragmentTransaction.addToBackStack(fragment.toString());
+        fragmentTransaction.commit();
     }
 }

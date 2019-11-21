@@ -157,22 +157,13 @@
             android:id="@+id/frameRecipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/linearLayout2"
-            android:layout_above="@+id/nav_view_recipe">
+            android:layout_below="@+id/linearLayout2">
             <fragment
                 android:id="@+id/bottomFragment"
                 android:name="com.shveed.cookmegood.fragments.RecipeFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </FrameLayout>
-
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/nav_view_recipe"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/backgroundColor"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_nav_menu" />
     </RelativeLayout>
 </RelativeLayout>
 
