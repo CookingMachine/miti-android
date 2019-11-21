@@ -30,7 +30,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="44dp"
                 android:layout_marginStart="44dp"
                 android:text="@string/hint_nameSurname"
                 app:fontFamily="@font/roboto"
@@ -66,9 +65,9 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
             android:text="@string/hint_email"
             android:textColor="@color/white"
             android:textSize="10sp"
@@ -76,7 +75,7 @@
             app:fontFamily="@font/roboto"/>
 
         <EditText
-            android:id="@+id/edit_emaifffl"
+            android:id="@+id/edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -85,7 +84,7 @@
             android:layout_marginRight="40dp"
             android:backgroundTint="@color/white"
             app:fontFamily="@font/roboto"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:paddingBottom="17dp"
             android:text=""
             android:textColor="#FFFFFF"
@@ -105,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="44dp"
+                android:layout_marginStart="44dp"
                 app:fontFamily="@font/roboto"
                 android:text="@string/hint_password"
                 android:textColor="@color/white"
@@ -138,9 +137,9 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="start"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="44dp"
+                android:layout_marginStart="44dp"
                 android:layout_marginTop="7dp"
-                android:paddingLeft="7dp"
+                android:paddingStart="7dp"
                 android:paddingTop="9dp"
                 android:text="Я согласен с пользовательским соглашением"
                 android:textColor="#FFFFFF"
@@ -157,7 +156,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"
             app:fontFamily="@font/roboto"
             android:text="@string/hint_email"
             android:textColor="@color/white"

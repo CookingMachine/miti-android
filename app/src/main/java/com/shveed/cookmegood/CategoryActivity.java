@@ -19,7 +19,7 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.f_category);
 
         setRecipeData();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recipeRecycler);

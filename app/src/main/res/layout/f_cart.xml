@@ -52,18 +52,4 @@
         android:layout_centerHorizontal="true"
         />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/nav_view_main"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textAlignment="center"
-        android:background="@color/backgroundColor"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
-        app:itemTextAppearanceInactive="@style/BottomNavigationView"
-        app:labelVisibilityMode="labeled"
-        app:itemIconSize="22dp"
-        />
-
 </RelativeLayout>

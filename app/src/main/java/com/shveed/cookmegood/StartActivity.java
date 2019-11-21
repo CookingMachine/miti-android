@@ -16,10 +16,12 @@ public class StartActivity extends AppCompatActivity {
 
     private User currentUser;
 
+    private Fragment selectedFragment;
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
+            selectedFragment = new MainFragment();
             switch (item.getItemId()) {
                 case R.id.navigation_suggest:
                     selectedFragment = new SuggestFragment();

@@ -10,7 +10,6 @@
         android:id="@+id/favouritesTitle"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="2dp"
         android:background="@color/backgroundColor"
         android:gravity="center_vertical|center_horizontal"
@@ -20,13 +19,5 @@
         app:fontFamily="@font/roboto_light"
         android:text="@string/title_favourites"
         android:layout_alignParentTop="true"/>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/nav_view_favourites"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/backgroundColor"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

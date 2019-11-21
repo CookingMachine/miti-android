@@ -23,19 +23,11 @@
         android:layout_alignParentTop="true"/>
 
     <android.support.v7.widget.RecyclerView
+        android:paddingHorizontal="3dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/recipesRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/recipesTextView1"
-        android:layout_above="@+id/nav_view_main"
         android:layout_marginStart="-5dp"/>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/nav_view_main"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/backgroundColor"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>
