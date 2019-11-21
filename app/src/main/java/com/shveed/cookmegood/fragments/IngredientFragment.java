@@ -10,12 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.shveed.cookmegood.IngredientsGridAdapter;
 import com.shveed.cookmegood.entity.Ingredient;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class IngredientFragment extends Fragment {
@@ -25,6 +27,8 @@ public class IngredientFragment extends Fragment {
     private String[] data = {"Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук"};
 
     private String[] amount = {"400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г"};
+
+    private HashMap<Ingredient, Integer> buyMap = new HashMap<>();
 
     @Nullable
     @Override
@@ -39,5 +43,9 @@ public class IngredientFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerView.setAdapter(adapter);
         return view;
+    }
+
+    public HashMap<Ingredient, Integer> getBuyMap() {
+        return buyMap;
     }
 }

@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_suggest"
+        android:icon="@drawable/offer_recipe_icon"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navigation_favourites"
+        android:icon="@drawable/favourites_icon"
+        android:title="@string/title_notifications" />
+
+    <item
+        android:id="@+id/navigation_recipe"
         android:icon="@drawable/bean_icon"
         android:title="@string/title_home"
         />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/offer_recipe_icon"
-        android:title="@string/title_dashboard" />
-
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/favourites_icon"
-        android:title="@string/title_notifications" />
-
-    <item
-        android:id="@+id/navigation_basket"
+        android:id="@+id/navigation_cart"
         android:icon="@drawable/recipe_basket"
         android:title="@string/title_cart" />
 

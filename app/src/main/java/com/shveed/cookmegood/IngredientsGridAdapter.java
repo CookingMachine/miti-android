@@ -5,16 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.shveed.cookmegood.entity.Ingredient;
 import com.shveed.wallpapperparser.R;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class IngredientsGridAdapter extends RecyclerView.Adapter<IngredientsGridAdapter.ViewHolder> {
 
     private List<Ingredient> ingredients;
+
+    private HashMap<Ingredient, Integer> buyMap = new HashMap<>();
 
     private LayoutInflater mInflater;
     private IngredientsGridAdapter.ItemClickListener mClickListener;
@@ -47,17 +51,35 @@ public class IngredientsGridAdapter extends RecyclerView.Adapter<IngredientsGrid
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameView;
         TextView amountView;
+        Button addToBuyList;
 
         ViewHolder(View itemView) {
             super(itemView);
             nameView = itemView.findViewById(R.id.ingredText);
             amountView = itemView.findViewById(R.id.ingredAmount);
+            addToBuyList = itemView.findViewById(R.id.addIngredientButton);
+
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) {
+                if(view.getId() == addToBuyList.getId()){
+                    Ingredient currIngredient = getItem(getAdapterPosition());
+                    if(buyMap.containsKey(currIngredient)){
+                        Integer value = buyMap.get(currIngredient);
+                        buyMap.remove(currIngredient);
+                        buyMap.put(currIngredient, value + 1);
+                    }
+                    else{
+                        buyMap.put(currIngredient, 1);
+                    }
+                }
+                else {
+                    mClickListener.onItemClick(view, getAdapterPosition());
+                }
+            }
         }
     }
     // convenience method for getting data at click position
@@ -68,6 +90,14 @@ public class IngredientsGridAdapter extends RecyclerView.Adapter<IngredientsGrid
     // allows clicks events to be caught
     void setClickListener(IngredientsGridAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
+    }
+
+    public HashMap<Ingredient, Integer> getBuyMap() {
+        return buyMap;
+    }
+
+    public void setBuyMap(HashMap<Ingredient, Integer> buyMap) {
+        this.buyMap = buyMap;
     }
 
     // parent activity will implement this method to respond to click events

@@ -12,10 +12,13 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.shveed.cookmegood.entity.Ingredient;
 import com.shveed.cookmegood.fragments.IngredientFragment;
 import com.shveed.cookmegood.fragments.KbjuFragment;
 import com.shveed.cookmegood.fragments.RecipeFragment;
 import com.shveed.wallpapperparser.R;
+
+import java.util.HashMap;
 
 public class RecipeActivity extends AppCompatActivity {
 
@@ -33,6 +36,8 @@ public class RecipeActivity extends AppCompatActivity {
     KbjuFragment kbjuFragment;
 
     FragmentTransaction fragmentTransaction;
+
+    private HashMap<Ingredient, Integer> buyMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,7 @@ public class RecipeActivity extends AppCompatActivity {
                 clickKbju();
             }
         };
+
         btnRecipe.setOnClickListener(recipeListener);
         btnIngred.setOnClickListener(ingredListener);
         btnKbju.setOnClickListener(kbjuListener);
@@ -133,4 +139,6 @@ public class RecipeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameRecipe, kbjuFragment);
         fragmentTransaction.commit();
     }
+
+    public void setBuyMap(HashMap<Ingredient, Integer> buyMap){ this.buyMap = buyMap; }
 }

@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else{
                     User user = new User(name, email, password);
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, StartActivity.class);
                     //intent.putExtra("userObject", user);
                     startActivity(intent);
                 }

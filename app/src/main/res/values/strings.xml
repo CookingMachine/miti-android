@@ -6,6 +6,7 @@
     <string name="title_activity_recipe">Рецепт</string>
     <string name="title_activity_recipes">Рецепты</string>
     <string name="title_activity_favourites">Favourites</string>
+    <string name="title_activity_start">Главная Страница</string>
 
     <string name="app_name">M.I.T.I.</string>
     <string name="title_home">Рецепты</string>

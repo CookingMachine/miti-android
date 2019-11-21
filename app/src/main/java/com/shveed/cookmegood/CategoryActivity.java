@@ -59,7 +59,7 @@ public class CategoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void toCart(View view){
-        Intent intent = new Intent(CategoryActivity.this, CartActivity.class);
+        Intent intent = new Intent(CategoryActivity.this, CartFragment.class);
         startActivity(intent);
     }
 }

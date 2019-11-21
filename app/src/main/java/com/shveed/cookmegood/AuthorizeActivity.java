@@ -43,7 +43,7 @@ public class AuthorizeActivity extends AppCompatActivity {
 
     private void clickSignIn(){
         if(user != null) {
-            Intent intent = new Intent(AuthorizeActivity.this, MainActivity.class);
+            Intent intent = new Intent(AuthorizeActivity.this, StartActivity.class);
             intent.putExtra("userObject", user);
             startActivity(intent);
         }
@@ -53,7 +53,7 @@ public class AuthorizeActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void asGuest(View v){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, StartActivity.class);
         User user = new User();
         intent.putExtra("userObject", user);
         startActivity(intent);
