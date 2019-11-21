@@ -23,11 +23,15 @@
     <string name="title_cart">Корзина</string>
     <string name="title_favourites">Избранное</string>
 
+    <string name="text_login">Логин:</string>
+    <string name="text_password">Пароль:</string>
+
     <string name="btn_signIn">Войти</string>
     <string name="btn_register">Зарегистрироваться</string>
     <string name="btn_registration">Регистрация</string>
     <string name="btn_show">Показать</string>
     <string name="btn_toPurchases">К ПОКУПКАМ</string>
+    <string name="btn_toRecipe">Смотреть</string>
 
     <string name="hint_nameSurname">Имя и фамилия</string>
     <string name="hint_email">E-Mail</string>

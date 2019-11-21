@@ -61,4 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean checkEmptyInput(String line){
         return line.equals("");
     }
+
+    public void toAuth(View view){
+        Intent intent = new Intent(this, AuthorizeActivity.class);
+        startActivity(intent);
+    }
 }

@@ -24,7 +24,6 @@ class CategoryRecipeAdapter extends RecyclerView.Adapter<CategoryRecipeAdapter.V
     }
     @Override
     public CategoryRecipeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = inflater.inflate(R.layout.category_recycler_element, parent, false);
         return new ViewHolder(view);
     }

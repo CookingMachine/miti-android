@@ -198,9 +198,10 @@
         android:insetBottom="6dp"
         android:text="@string/btn_register"
         android:textColor="@color/white"
-        android:textSize="9sp" />
+        android:textSize="10sp" />
 
     <TextView
+        android:onClick="toAuth"
         android:id="@+id/textBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

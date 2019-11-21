@@ -50,6 +50,7 @@
         android:layout_below="@+id/cartTitle"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        app:layoutManager="LinearLayoutManager"
         />
 
 </RelativeLayout>
