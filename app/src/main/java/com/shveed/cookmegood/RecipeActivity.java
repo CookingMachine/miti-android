@@ -26,7 +26,6 @@ public class RecipeActivity extends AppCompatActivity {
     Button btnIngred;
     Button btnKbju;
 
-    TextView mainTitle;
     TextView lowerTitle;
     TextView portionText;
 
@@ -58,7 +57,6 @@ public class RecipeActivity extends AppCompatActivity {
         transaction.add(R.id.frameRecipe, recipeFragment);
         transaction.commit();
 
-        mainTitle = (TextView) findViewById(R.id.recipesTextView);
         lowerTitle = (TextView) findViewById(R.id.textView);
         portionText = (TextView) findViewById(R.id.countPor);
 
@@ -68,7 +66,6 @@ public class RecipeActivity extends AppCompatActivity {
         btnIngred = (Button) findViewById(R.id.ingredButton);
         btnKbju = (Button) findViewById(R.id.kbjuButton);
 
-        mainTitle.setText(name);
         lowerTitle.setText(name);
 
         recipeImage.setImageResource(image);
