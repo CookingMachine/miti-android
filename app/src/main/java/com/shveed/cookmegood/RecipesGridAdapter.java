@@ -21,7 +21,7 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    RecipesGridAdapter(Context context, List<String> data) {
+    public RecipesGridAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -61,12 +61,12 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
         }
     }
     // convenience method for getting data at click position
-    String getItem(int id) {
+    public String getItem(int id) {
         return mData.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 

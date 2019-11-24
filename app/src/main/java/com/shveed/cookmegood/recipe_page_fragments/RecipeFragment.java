@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.fragments;
+package com.shveed.cookmegood.recipe_page_fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,11 +18,12 @@ import java.util.List;
 
 public class RecipeFragment extends Fragment {
 
-    List<Step> steps = new ArrayList<>();
+    List<Step> steps;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        steps  = new ArrayList<>();
         View view = inflater.inflate(R.layout.f_recipe, container, false);
         setData();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recipeStepRecycler);

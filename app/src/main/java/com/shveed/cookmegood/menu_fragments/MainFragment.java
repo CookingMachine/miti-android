@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.menu_fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shveed.cookmegood.CategoryFragment;
+import com.shveed.cookmegood.RecipesGridAdapter;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class MainFragment extends Fragment implements RecipesGridAdapter.ItemClickListener{
+public class MainFragment extends Fragment implements RecipesGridAdapter.ItemClickListener {
 
     private RecipesGridAdapter adapter;
 

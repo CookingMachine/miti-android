@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.entity.Recipe;
-import com.shveed.cookmegood.interfaces.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;

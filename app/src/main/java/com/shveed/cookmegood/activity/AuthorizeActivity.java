@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.activity;
 
 
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.shveed.cookmegood.LoginDialog;
 import com.shveed.cookmegood.entity.User;
 import com.shveed.wallpapperparser.R;
 

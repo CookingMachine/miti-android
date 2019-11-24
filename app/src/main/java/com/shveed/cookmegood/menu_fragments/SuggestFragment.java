@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.menu_fragments;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 
 import com.shveed.wallpapperparser.R;
 
-public class CabinetFragment extends Fragment {
+public class SuggestFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.f_cabinet, container, false);
+        View view = inflater.inflate(R.layout.f_suggest, container, false);
         return view;
     }
 }

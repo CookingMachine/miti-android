@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -13,6 +13,11 @@ import android.view.View;
 
 import com.shveed.cookmegood.entity.User;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
+import com.shveed.cookmegood.menu_fragments.CabinetFragment;
+import com.shveed.cookmegood.menu_fragments.CartFragment;
+import com.shveed.cookmegood.menu_fragments.FavouritesFragment;
+import com.shveed.cookmegood.menu_fragments.MainFragment;
+import com.shveed.cookmegood.menu_fragments.SuggestFragment;
 import com.shveed.wallpapperparser.R;
 
 public class StartActivity extends FragmentActivity implements FragmentChangeListener {

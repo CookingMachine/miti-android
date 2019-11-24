@@ -1,19 +1,18 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.shveed.cookmegood.entity.Ingredient;
-import com.shveed.cookmegood.fragments.IngredientFragment;
-import com.shveed.cookmegood.fragments.KbjuFragment;
-import com.shveed.cookmegood.fragments.RecipeFragment;
+import com.shveed.cookmegood.recipe_page_fragments.IngredientFragment;
+import com.shveed.cookmegood.recipe_page_fragments.KbjuFragment;
+import com.shveed.cookmegood.recipe_page_fragments.RecipeFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.HashMap;

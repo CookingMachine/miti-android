@@ -13,12 +13,12 @@ import com.shveed.wallpapperparser.R;
 
 import java.util.List;
 
-class CartRecipeAdapter extends RecyclerView.Adapter<CartRecipeAdapter.ViewHolder> {
+public class CartRecipeAdapter extends RecyclerView.Adapter<CartRecipeAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
     private List<Recipe> recipes;
 
-    CartRecipeAdapter(Context context, List<Recipe> recipes) {
+    public CartRecipeAdapter(Context context, List<Recipe> recipes) {
         this.recipes = recipes;
         this.inflater = LayoutInflater.from(context);
     }

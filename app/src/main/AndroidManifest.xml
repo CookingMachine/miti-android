@@ -14,15 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.shveed.cookmegood.StartActivity"
+        <activity android:name="com.shveed.cookmegood.activity.StartActivity"
             android:label="@string/title_activity_start">
         </activity>
-        <activity android:name="com.shveed.cookmegood.CabinetFragment" />
-        <activity android:name="com.shveed.cookmegood.BuylistActivity" />
-        <activity android:name="com.shveed.cookmegood.SuggestFragment" />
-        <activity android:name="com.shveed.cookmegood.SearchActivity" />
+        <activity android:name="com.shveed.cookmegood.menu_fragments.CabinetFragment" />
+        <activity android:name="com.shveed.cookmegood.activity.BuylistActivity" />
+        <activity android:name="com.shveed.cookmegood.menu_fragments.SuggestFragment" />
+        <activity android:name="com.shveed.cookmegood.activity.SearchActivity" />
         <activity
-            android:name="com.shveed.cookmegood.AuthorizeActivity"
+            android:name="com.shveed.cookmegood.activity.AuthorizeActivity"
             android:label="@string/title_activity_authorize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,22 +31,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.shveed.cookmegood.CartFragment"
+            android:name="com.shveed.cookmegood.menu_fragments.CartFragment"
             android:label="@string/title_activity_cart" />
         <activity
             android:name="com.shveed.cookmegood.CategoryFragment"
             android:label="@string/title_activity_recipes" />
         <activity
-            android:name="com.shveed.cookmegood.RegisterActivity"
+            android:name="com.shveed.cookmegood.activity.RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity
-            android:name="com.shveed.cookmegood.FavouritesFragment"
+            android:name="com.shveed.cookmegood.menu_fragments.FavouritesFragment"
             android:label="@string/title_activity_favourites" />
         <activity
-            android:name="com.shveed.cookmegood.RecipeActivity"
+            android:name="com.shveed.cookmegood.activity.RecipeActivity"
             android:label="@string/title_activity_recipe" />
         <activity
-            android:name="com.shveed.cookmegood.MainFragment"
+            android:name="com.shveed.cookmegood.menu_fragments.MainFragment"
             android:label="@string/title_activity_category" />
 
         <meta-data

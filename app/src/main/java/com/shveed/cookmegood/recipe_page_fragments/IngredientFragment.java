@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.fragments;
+package com.shveed.cookmegood.recipe_page_fragments;
 
 
 import android.os.Bundle;
