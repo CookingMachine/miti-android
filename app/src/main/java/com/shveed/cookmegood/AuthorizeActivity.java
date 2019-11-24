@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.shveed.cookmegood.entity.User;
 import com.shveed.wallpapperparser.R;
 
-public class AuthorizeActivity extends AppCompatActivity {
+public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.LoginDialogListener {
 
     Button signIn;
     Button signUp;
@@ -24,10 +25,16 @@ public class AuthorizeActivity extends AppCompatActivity {
 
     User user;
 
+    EditText loginEdit;
+    EditText passwordEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
+
+        loginEdit = (EditText)findViewById(R.id.loginEdit);
+        passwordEdit = (EditText)findViewById(R.id.passwordEdit);
 
         signIn = (Button) findViewById(R.id.btn_signIn);
         signUp = (Button) findViewById(R.id.btn_signUp);
@@ -50,66 +57,45 @@ public class AuthorizeActivity extends AppCompatActivity {
     }
 
     private void clickSignUp(){
-
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
     public void clickSignIn(){
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View loginDialog = layoutInflater.inflate(R.layout.login_alert, null);
-
-        AlertDialog.Builder loginDialogBuilder = new AlertDialog.Builder(this);
-        loginDialogBuilder.setView(loginDialog);
-
-        EditText loginEdit = (EditText)findViewById(R.id.loginEdit);
-        EditText passwordEdit = (EditText)findViewById(R.id.passwordEdit);
-
-        loginDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("Войти", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        loginText = loginEdit.getText().toString();
-                        passwordText = passwordEdit.getText().toString();
-                        user = new User();
-                        //checkUser();
-                        if(loginText.equals("") || passwordText.equals("")){
-//                            Toast errorToast = Toast.makeText(getApplicationContext(),
-//                                    "Пустое поле!", Toast.LENGTH_SHORT);
-//                            errorToast.show();
-                        }
-                        else {
-                            if (checkUserAccess(loginText, passwordText)) {
-//                                Toast errorToast = Toast.makeText(getApplicationContext(),
-//                                        "Добро пожаловать.", Toast.LENGTH_SHORT);
-//                                errorToast.show();
-                            }
-                            else{
-//                                Toast errorToast = Toast.makeText(getApplicationContext(),
-//                                        "Неправильный логин или пароль", Toast.LENGTH_SHORT);
-//                                errorToast.show();
-                            }
-                        }
-                    }
-                })
-                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alertDialog = loginDialogBuilder.create();
-        alertDialog.show();
-        if(user != null) {
-            Intent intent = new Intent(AuthorizeActivity.this, StartActivity.class);
-            intent.putExtra("userObject", user);
-            startActivity(intent);
-        }
+        openDialog();
     }
     public void asGuest(View v){
         Intent intent = new Intent(this, StartActivity.class);
         user = new User();
         intent.putExtra("userObject", user);
         startActivity(intent);
+    }
+
+    public void openDialog(){
+        LoginDialog loginDialog = new LoginDialog();
+        loginDialog.show(getSupportFragmentManager(), "Login dialog");
+    }
+
+    @Override
+    public void loginUser(String login, String password) {
+        if(login.equals("") || password.equals("")){
+            goToast("Пустое поле!");
+        }
+        else {
+            if (checkUserAccess(login, password)) {
+                goToast("Добро пожаловать");
+                Intent intent = new Intent(this, StartActivity.class);
+                startActivity(intent);
+            }
+            else{
+                goToast("Неправильный логин или пароль");
+            }
+        }
+    }
+
+    public void goToast(String output){
+        Toast errorToast = Toast.makeText(this,
+                output, Toast.LENGTH_SHORT);
+        errorToast.show();
     }
 
     public boolean checkUserAccess(String loginText, String passwordText){
