@@ -48,7 +48,7 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/textView"
             android:layout_width="250dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:gravity="center"
             android:text="@string/title_recipe"
             android:textColor="@color/black"
@@ -127,6 +127,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <Button
+                android:onClick="countPortion"
                 android:id="@+id/minusButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -142,9 +143,10 @@
                 android:layout_marginRight="10dp"
                 android:gravity="center|center_horizontal"
                 android:text="@string/countPor"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <Button
+                android:onClick="countPortion"
                 android:id="@+id/plusButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

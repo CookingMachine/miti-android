@@ -20,12 +20,15 @@ import java.util.HashMap;
 
 public class RecipeActivity extends AppCompatActivity {
 
+    private int portions = 1;
+
     Button btnRecipe;
     Button btnIngred;
     Button btnKbju;
 
     TextView mainTitle;
     TextView lowerTitle;
+    TextView portionText;
 
     ImageView recipeImage;
 
@@ -57,6 +60,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         mainTitle = (TextView) findViewById(R.id.recipesTextView);
         lowerTitle = (TextView) findViewById(R.id.textView);
+        portionText = (TextView) findViewById(R.id.countPor);
 
         recipeImage = (ImageView) findViewById(R.id.imageView);
 
@@ -138,5 +142,19 @@ public class RecipeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void setBuyMap(HashMap<Ingredient, Integer> buyMap){ this.buyMap = buyMap; }
+    public void countPortion(View view){
+        String line;
+        if(view.getId() == R.id.minusButton){
+            if(portions > 1){
+                portions--;
+                line = "Порции: " + portions;
+                portionText.setText(line);
+            }
+        }
+        else if(view.getId() == R.id.plusButton){
+            portions++;
+            line = "Порции: " + portions;
+            portionText.setText(line);
+        }
+    }
 }

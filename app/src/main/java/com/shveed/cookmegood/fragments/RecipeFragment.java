@@ -35,8 +35,8 @@ public class RecipeFragment extends Fragment {
     public void setData(){
         for(int i = 1; i < 5; i++) {
             this.steps.add(new Step(i,
-                    "неторопясь нарезаем вкусненькую отваренную курочку",
-                    "нарезаем курицу"));
+                    "Неторопясь нарезаем вкусненькую отваренную курочку",
+                    "Нарезаем курицу"));
         }
     }
 }

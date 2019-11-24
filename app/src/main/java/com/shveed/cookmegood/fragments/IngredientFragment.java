@@ -21,7 +21,7 @@ import java.util.List;
 
 public class IngredientFragment extends Fragment {
 
-    List<Ingredient> ingredients = new ArrayList<>();
+    List<Ingredient> ingredients;
 
     private String[] data = {"Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук"};
 
@@ -32,6 +32,7 @@ public class IngredientFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ingredients = new ArrayList<>();
         for(int i = 0; i < 8; i++){
             Ingredient ingredient = new Ingredient(data[i], amount[i]);
             this.ingredients.add(ingredient);

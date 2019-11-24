@@ -17,7 +17,12 @@
         <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:background="@drawable/rounded_view_login">
+            android:background="@drawable/rounded_view_login"
+            android:textSize="20sp"
+            android:text="@string/f_calories_inside"
+            android:gravity="center"
+            android:textColor="@color/white"
+            >
         </TextView>
 
         <TextView
@@ -53,7 +58,11 @@
         <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:background="@drawable/rounded_view_login">
+            android:background="@drawable/rounded_view_login"
+            android:textSize="20sp"
+            android:text="@string/f_carbo_inside"
+            android:gravity="center"
+            android:textColor="@color/white">
         </TextView>
 
         <TextView
@@ -90,7 +99,11 @@
         <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:background="@drawable/rounded_view_login">
+            android:background="@drawable/rounded_view_login"
+            android:textSize="20sp"
+            android:text="@string/f_fats_inside"
+            android:gravity="center"
+            android:textColor="@color/white">
         </TextView>
 
         <TextView
@@ -127,7 +140,11 @@
         <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:background="@drawable/rounded_view_login">
+            android:background="@drawable/rounded_view_login"
+            android:textSize="20sp"
+            android:text="@string/f_proteins_inside"
+            android:gravity="center"
+            android:textColor="@color/white">
         </TextView>
 
         <TextView

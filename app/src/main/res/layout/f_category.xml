@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/title_category">
         <Button
+            android:onClick="toCategories"
             android:layout_alignParentStart="true"
             android:id="@+id/backButton"
             android:layout_width="44dp"
@@ -41,7 +42,8 @@
             android:layout_width="44dp"
             android:layout_height="44dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="toSearch"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

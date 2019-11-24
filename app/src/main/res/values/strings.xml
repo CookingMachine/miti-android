@@ -43,12 +43,16 @@
     <string name="f_proteins">Белки</string>
     <string name="f_fats">Жиры</string>
     <string name="f_carbo">Углеводы</string>
+    <string name="f_calories_inside">Cal</string>
+    <string name="f_proteins_inside">Pr</string>
+    <string name="f_fats_inside">Fa</string>
+    <string name="f_carbo_inside">Ca</string>
 
     <string name="list_result"> По вашему запросу найдены следующие рецепты: </string>
     <string name="recipe_text"> Здесь я решил написать дефолтное сообщение
         вместо которого должно находиться
     описание рецепта, выбранного пользователем</string>
-    <string name="countPor">Количество порций:</string>
+    <string name="countPor">Порции: 1</string>
     <string name="sign_guest">Войти как гость</string>
     <string name="i_have_account">У меня есть аккаунт</string>
     <string name="checkbox_text">Я согласен с пользовательским соглашением</string>

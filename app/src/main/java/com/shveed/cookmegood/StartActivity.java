@@ -1,5 +1,6 @@
 package com.shveed.cookmegood;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.shveed.cookmegood.entity.User;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
@@ -68,5 +70,15 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
         fragmentTransaction.replace(R.id.f_start, fragment, fragment.toString());
         fragmentTransaction.addToBackStack(fragment.toString());
         fragmentTransaction.commit();
+    }
+
+    public void toSearch(View view){
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
+
+    public void toCategories(View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.f_start, new MainFragment())
+                .commit();
     }
 }

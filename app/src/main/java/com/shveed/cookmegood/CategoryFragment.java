@@ -64,8 +64,4 @@ public class CategoryFragment extends Fragment {
         intent.putExtra("recipeImage", image);
         startActivity(intent);
     }
-    public void toCart(View view){
-        Intent intent = new Intent(getContext(), CartFragment.class);
-        startActivity(intent);
-    }
 }
