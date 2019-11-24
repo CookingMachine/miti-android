@@ -20,9 +20,6 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
     Button signIn;
     Button signUp;
 
-    String loginText;
-    String passwordText;
-
     User user;
 
     EditText loginEdit;

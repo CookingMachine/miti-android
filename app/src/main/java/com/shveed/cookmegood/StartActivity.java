@@ -1,17 +1,13 @@
 package com.shveed.cookmegood;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.shveed.cookmegood.entity.User;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
@@ -55,6 +51,9 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.f_start, new MainFragment())
+                .commit();
 
         BottomNavigationView navView = findViewById(R.id.nav_view_start);
         navView.setOnNavigationItemSelectedListener(navListener);

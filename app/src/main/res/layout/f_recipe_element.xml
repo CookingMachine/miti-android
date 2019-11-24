@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearStepTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/recipeStepNumber"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/rounded_view_login"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="@string/text_step_number"/>
+        <TextView
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:id="@+id/recipeStepTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            app:fontFamily="@font/roboto_light"
+            android:textColor="@color/black"
+            android:text="@string/text_step_title"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/recipeStepDescription"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearStepTop"
+        android:layout_centerHorizontal="true"
+        android:text="@string/recipe_text"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        />
+
+    <View
+        android:layout_below="@+id/recipeStepDescription"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        android:layout_width="150dp"
+        android:background="@color/objectsColor"
+        android:layout_height="1sp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

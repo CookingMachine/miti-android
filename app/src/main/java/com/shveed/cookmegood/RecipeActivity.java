@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -77,7 +78,7 @@ public class RecipeActivity extends AppCompatActivity {
         View.OnClickListener ingredListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickIngred(ingredientFragment);
+                clickIngred();
             }
         };
         View.OnClickListener kbjuListener = new View.OnClickListener() {
@@ -107,7 +108,7 @@ public class RecipeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void clickIngred(IngredientFragment ingredientFragment){
+    private void clickIngred(){
         btnRecipe.setBackgroundResource(R.drawable.rounded_corners_button);
         btnRecipe.setTextColor(getResources().getColor(R.color.objectsColor));
 

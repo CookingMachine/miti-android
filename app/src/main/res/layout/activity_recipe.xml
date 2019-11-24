@@ -158,11 +158,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/linearLayout2">
-            <fragment
-                android:id="@+id/bottomFragment"
-                android:name="com.shveed.cookmegood.fragments.RecipeFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
         </FrameLayout>
     </RelativeLayout>
 </RelativeLayout>

@@ -2,6 +2,8 @@ package com.shveed.cookmegood.pdf_parser;
 
 import android.graphics.pdf.PdfDocument;
 
+import com.shveed.cookmegood.entity.Step;
+
 import java.util.ArrayList;
 import java.util.List;
 

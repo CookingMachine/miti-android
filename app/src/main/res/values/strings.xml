@@ -25,6 +25,8 @@
 
     <string name="text_login">Логин:</string>
     <string name="text_password">Пароль:</string>
+    <string name="text_step_title">Нарезаем курицу</string>
+    <string name="text_step_number">1</string>
 
     <string name="btn_signIn">Войти</string>
     <string name="btn_register">Зарегистрироваться</string>
@@ -42,7 +44,7 @@
     <string name="f_fats">Жиры</string>
     <string name="f_carbo">Углеводы</string>
 
-    <string name="list_result"> По вышему запросу найдены следующие рецепты: </string>
+    <string name="list_result"> По вашему запросу найдены следующие рецепты: </string>
     <string name="recipe_text"> Здесь я решил написать дефолтное сообщение
         вместо которого должно находиться
     описание рецепта, выбранного пользователем</string>

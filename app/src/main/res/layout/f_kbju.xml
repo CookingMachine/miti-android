@@ -14,11 +14,11 @@
         android:layout_gravity="center"
         android:gravity="center">
 
-        <View
+        <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login">
-        </View>
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,11 +50,11 @@
         android:layout_gravity="center"
         android:gravity="center">
 
-        <View
+        <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login">
-        </View>
+        </TextView>
 
         <TextView
             android:text="@string/f_proteins"
@@ -87,11 +87,11 @@
         android:layout_gravity="center"
         android:gravity="center">
 
-        <View
+        <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login">
-        </View>
+        </TextView>
 
         <TextView
             android:text="@string/f_fats"
@@ -124,11 +124,11 @@
         android:layout_gravity="center"
         android:gravity="center">
 
-        <View
+        <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login">
-        </View>
+        </TextView>
 
         <TextView
             android:text="@string/f_carbo"
