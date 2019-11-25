@@ -57,5 +57,9 @@
     <string name="i_have_account">У меня есть аккаунт</string>
     <string name="checkbox_text">Я согласен с пользовательским соглашением</string>
 
+    <string name="profile_settings">Настройки</string>
+    <string name="profile_notifications">Уведомления</string>
+    <string name="profile_my_recipe">Мои рецепты</string>
+
 
 </resources>
