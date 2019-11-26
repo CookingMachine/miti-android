@@ -8,4 +8,6 @@
     <color name="objectsColor">#fc3a3b</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+    <color name="dividerColor">#1F000000</color>
+
 </resources>
