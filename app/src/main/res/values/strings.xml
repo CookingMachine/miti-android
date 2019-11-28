@@ -12,7 +12,8 @@
     <string name="title_home">Рецепты</string>
 
     <string name="title_recipes">РЕЦЕПТЫ</string>
-    <string name="title_recipe">Рецепт</string>
+    <string name="title_recipe">РЕЦЕПТ</string>
+    <string name="title_count_positions">101 позиция</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingred">Ингредиенты</string>
     <string name="title_dashboard">Предложить</string>
