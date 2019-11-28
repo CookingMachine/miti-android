@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/addIngredientButton"
         android:gravity="center_horizontal|center_vertical"
-        android:layout_width="25dp"
+        android:layout_width="20dp"
         android:layout_height="25dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
