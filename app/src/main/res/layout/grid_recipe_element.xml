@@ -27,6 +27,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layout_centerInParent="true">
+
             <TextView
                 android:id="@+id/recipeName"
                 android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
                 android:text="@string/title_recipe"
                 android:textColor="@color/white"
                 android:textSize="28sp"
-                app:fontFamily="@font/roboto_light"/>
+                app:fontFamily="@font/roboto_thin" />
 
             <TextView
                 android:id="@+id/recipeAmount"
@@ -43,9 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/title_recipe"
+                android:text="@string/title_count_positions"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:fontFamily="@font/roboto_light" />
         </LinearLayout>
     </RelativeLayout>
