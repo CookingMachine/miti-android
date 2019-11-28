@@ -2,50 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
+    android:layout_marginVertical="20dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_marginHorizontal="10dp">
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="0.25"
+        android:layout_height="114dp"
         android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_weight="0.25"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login"
-            android:textSize="20sp"
-            android:text="@string/f_calories_inside"
+            android:fontFamily="@font/roboto_thin"
             android:gravity="center"
+            android:text="@string/f_calories_inside"
             android:textColor="@color/white"
-            >
+            android:textSize="20sp">
+
         </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/f_calories">
-        </TextView>
+            android:fontFamily="@font/roboto_thin"
+            android:text="@string/f_calories"
+            android:textColor="@color/black"></TextView>
+
         <TextView
             android:id="@+id/kbju_calories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/f_calories">
-        </TextView>
+            android:fontFamily="@font/roboto_thin"
+            android:text="@string/f_calories"
+            android:textColor="@color/black"></TextView>
     </LinearLayout>
 
     <View
-        android:layout_marginBottom="26dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="1sp"
         android:layout_height="75dp"
-        android:background="@color/objectsColor"
-        android:layout_width="1sp"/>
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="26dp"
+        android:background="@color/objectsColor" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -56,6 +61,7 @@
         android:gravity="center">
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login"
@@ -66,12 +72,16 @@
         </TextView>
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
             android:text="@string/f_proteins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
             android:id="@+id/f_proteins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,13 +90,12 @@
     </LinearLayout>
 
     <View
-        android:layout_marginBottom="26dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="1sp"
         android:layout_height="75dp"
-        android:background="@color/objectsColor"
-        android:layout_width="1sp"/>
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="26dp"
+        android:background="@color/objectsColor" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -97,6 +106,7 @@
         android:gravity="center">
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login"
@@ -107,12 +117,16 @@
         </TextView>
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
             android:text="@string/f_fats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
             android:id="@+id/f_fats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,13 +135,12 @@
     </LinearLayout>
 
     <View
-        android:layout_marginBottom="26dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="1sp"
         android:layout_height="75dp"
-        android:background="@color/objectsColor"
-        android:layout_width="1sp"/>
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="26dp"
+        android:background="@color/objectsColor" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -138,6 +151,7 @@
         android:gravity="center">
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_view_login"
@@ -148,12 +162,16 @@
         </TextView>
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
             android:text="@string/f_carbo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
 
         <TextView
+            android:fontFamily="@font/roboto_thin"
+            android:textColor="@color/black"
             android:id="@+id/f_carbo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -19,7 +19,7 @@
             android:background="@drawable/rounded_view_login"
             android:gravity="center"
             android:textSize="10sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="@string/text_step_number"/>
         <TextView
             android:gravity="center"
