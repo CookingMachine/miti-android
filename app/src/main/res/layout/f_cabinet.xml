@@ -1,86 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/recipesTextView1"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/backgroundColor"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/title_profile"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        app:fontFamily="@font/roboto_light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/img_profile"
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipesTextView1"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/textv_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="30dp"
-        tools:text="Имя профиля"
-        app:layout_constraintStart_toEndOf="@+id/img_profile"
-        app:layout_constraintTop_toTopOf="@+id/img_profile" />
-
-    <View
-        android:id="@+id/view"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/dividerColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_settings"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/profile_settings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        <TextView
+            android:id="@+id/recipesTextView1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/backgroundColor"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/title_profile"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:fontFamily="@font/roboto_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_notifications"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/profile_notifications"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipesTextView1"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/btn_recipes"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/profile_my_recipe"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_notifications" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toEndOf="@+id/img_profile"
+            app:layout_constraintTop_toTopOf="@+id/img_profile"
+            tools:text="Имя профиля" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/dividerColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+
+        <Button
+            android:id="@+id/btn_settings"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <Button
+            android:id="@+id/btn_notifications"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_notifications"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
+
+        <Button
+            android:id="@+id/btn_recipes"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_my_recipe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_notifications" />
+
+        <Button
+            android:id="@+id/btn_about"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_about_us"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_share" />
+
+        <Button
+            android:id="@+id/btn_share"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_share"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_recipes" />
+
+        <Button
+            android:id="@+id/btn_rate_app"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_rate_app"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_about" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
