@@ -61,6 +61,9 @@
     <string name="profile_settings">Настройки</string>
     <string name="profile_notifications">Уведомления</string>
     <string name="profile_my_recipe">Мои рецепты</string>
+    <string name="profile_about_us">КОНТАКТЫ</string>
+    <string name="profile_share">ПОДЕЛИТЬСЯ</string>
+    <string name="profile_rate_app">ОЦЕНИТЬ</string>
 
 
 </resources>
