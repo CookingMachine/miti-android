@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:background="@drawable/shape_shadow_background"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/recipeImage"
-        android:layout_width="150dp"
-        android:layout_height="match_parent"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:contentDescription="@string/title_ingred"
-        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/pic2"
         />
     <RelativeLayout
@@ -53,13 +59,15 @@
 
     </RelativeLayout>
 
+    </RelativeLayout>
+
     <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/relativeInfo"
         android:layout_width="85dp"
         android:layout_height="25dp"
         android:layout_alignParentEnd="true"
-        android:orientation="horizontal">
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <Button
             android:id="@+id/addToFavouritesButton"

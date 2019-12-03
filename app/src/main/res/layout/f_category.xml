@@ -10,40 +10,40 @@
         android:layout_height="wrap_content"
         android:id="@+id/title_category">
         <Button
-            android:onClick="toCategories"
-            android:layout_alignParentStart="true"
             android:id="@+id/backButton"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <TextView
-            android:id="@+id/categoryText"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="@string/title_category"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/backButton"
-            app:layout_constraintRight_toLeftOf="@+id/searchButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:textAlignment="center"
-            app:fontFamily="@font/roboto_light"
-            android:textSize="24sp"
-            android:textColor="@color/black"
+            android:background="@drawable/ic_back"
+            android:layout_width="15dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentStart="true"
+            android:onClick="toCategories"
+            style="@style/Widget.AppCompat.Button.Borderless"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="@string/title_category"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:fontFamily="@font/roboto_light" />
+
         <Button
-            android:layout_alignParentEnd="true"
             android:id="@+id/searchButton"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="toSearch"/>
+            android:background="@drawable/ic_search"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentEnd="true"
+            android:onClick="toSearch"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
