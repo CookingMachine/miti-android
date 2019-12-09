@@ -1,5 +1,7 @@
 package com.shveed.cookmegood.service;
 
+import com.shveed.cookmegood.data.Api;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -20,5 +22,9 @@ public class NetworkService {
             mInstance = new NetworkService();
         }
         return mInstance;
+    }
+
+    public Api getApi(){
+        return mRetrofit.create(Api.class);
     }
 }

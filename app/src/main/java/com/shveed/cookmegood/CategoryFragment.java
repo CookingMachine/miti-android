@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.shveed.cookmegood.activity.RecipeActivity;
+import com.shveed.cookmegood.activity.SearchActivity;
 import com.shveed.cookmegood.entity.Recipe;
+import com.shveed.cookmegood.interfaces.FragmentChangeListener;
+import com.shveed.cookmegood.menu_fragments.MainFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
@@ -38,9 +43,21 @@ public class CategoryFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recipeRecycler);
 
-        backButton.setOnClickListener(v -> goToast("НАЖАТА КНОПУЛЯ"));
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Fragment mainFragment = new MainFragment();
+                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+                fc.replaceFragment(mainFragment);
+            }
+        });
 
-        searchButton.setOnClickListener(v -> goToast("НАЖАТА КНОПУЛЯ"));
+        searchButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
 
         recyclerView.addOnItemTouchListener(
                 new RecipeItemClickListener(getContext(), recyclerView,
