@@ -63,6 +63,7 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
         user = new User();
         intent.putExtra("userObject", user);
         startActivity(intent);
+        finish();
     }
 
     public void openDialog(){

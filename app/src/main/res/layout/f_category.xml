@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_category">
+
         <Button
             android:id="@+id/backButton"
             android:background="@drawable/ic_back"
@@ -47,9 +49,9 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recipeRecycler"
         android:layout_below="@+id/title_category"
         android:layout_alignParentBottom="true"
-        android:id="@+id/recipeRecycler"
         app:layoutManager="LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

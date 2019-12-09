@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:background="@drawable/shape_shadow_background"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/category_element"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -70,13 +70,13 @@
         android:layout_marginBottom="10dp">
 
         <Button
-            android:id="@+id/addToFavouritesButton"
+            android:id="@+id/addToCartButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@drawable/recipe_basket" />
 
         <Button
-            android:id="@+id/addToBasketButton"
+            android:id="@+id/addToFavouritesButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="15dp"

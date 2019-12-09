@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.entity.Recipe;
@@ -20,31 +22,43 @@ public class CategoryFragment extends Fragment {
 
     private List<Recipe> recipes = new ArrayList<>();
 
+    Button backButton;
+    Button searchButton;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.f_category, container, false);
 
+        View view = inflater.inflate(R.layout.f_category, container, false);
         setRecipeData();
+
+        backButton = (Button) view.findViewById(R.id.backButton);
+        searchButton = (Button) view.findViewById(R.id.searchButton);
+
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recipeRecycler);
+
+        backButton.setOnClickListener(v -> goToast("НАЖАТА КНОПУЛЯ"));
+
+        searchButton.setOnClickListener(v -> goToast("НАЖАТА КНОПУЛЯ"));
+
         recyclerView.addOnItemTouchListener(
                 new RecipeItemClickListener(getContext(), recyclerView,
                         new RecipeItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        String name = recipes.get(position).getName();
-                        int image = recipes.get(position).getImage();
-                        toRecipe(name, image);
-                    }
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                String name = recipes.get(position).getName();
+                                int image = recipes.get(position).getImage();
+                                toRecipe(name, image);
+                            }
 
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-                        String name = recipes.get(position).getName();
-                        int image = recipes.get(position).getImage();
-                        toRecipe(name, image);
-                    }
-                })
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                String name = recipes.get(position).getName();
+                                int image = recipes.get(position).getImage();
+                                toRecipe(name, image);
+                            }
+                        })
         );
 
         CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(getContext(), recipes);
@@ -63,5 +77,10 @@ public class CategoryFragment extends Fragment {
         intent.putExtra("recipeName", name);
         intent.putExtra("recipeImage", image);
         startActivity(intent);
+    }
+    public void goToast(String output){
+        Toast errorToast = Toast.makeText(getActivity(),
+                output, Toast.LENGTH_SHORT);
+        errorToast.show();
     }
 }
