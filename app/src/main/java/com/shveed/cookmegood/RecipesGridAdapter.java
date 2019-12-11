@@ -1,6 +1,7 @@
 package com.shveed.cookmegood;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.shveed.wallpapperparser.R;
 import java.util.List;
 
 public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.ViewHolder> {
+
 
     private List<String> mData;
 
@@ -37,6 +39,7 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
         String name = mData.get(position);
         holder.nameView.setText(name);
         holder.amountView.setText(amount);
+
     }
     @Override
     public int getItemCount() {

@@ -17,8 +17,15 @@
         android:id="@+id/nav_view_start"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/backgroundColor"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bottom_nav_border"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconSize="22dp"
+        app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+        app:itemTextAppearanceInactive="@style/BottomNavigationView"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/bottom_nav_menu" />
+
 
 </RelativeLayout>
