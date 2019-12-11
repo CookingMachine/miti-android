@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -7,9 +7,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
+        android:id="@+id/title_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_category">
+        android:layout_height="44dp">
 
         <Button
             android:id="@+id/backButton"
@@ -25,7 +25,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="44dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="4dp"
@@ -50,11 +50,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recipeRecycler"
-        android:layout_below="@+id/title_category"
-        android:layout_alignParentBottom="true"
         app:layoutManager="LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</LinearLayout>
