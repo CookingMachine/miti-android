@@ -11,15 +11,15 @@
     <string name="app_name">M.I.T.I.</string>
     <string name="title_home">Рецепты</string>
 
-    <string name="title_recipes">РЕЦЕПТЫ</string>
+    <string name="title_recipes">Рецепты</string>
     <string name="title_recipe">РЕЦЕПТ</string>
     <string name="title_count_positions">101 позиция</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingred">Ингредиенты</string>
-    <string name="title_dashboard">Предложить</string>
+    <string name="title_dashboard">Добавить</string>
     <string name="title_notifications">Избранное</string>
     <string name="title_result">Результат поиска:</string>
-    <string name="title_profile">ПРОФИЛЬ</string>
+    <string name="title_profile">Профиль</string>
     <string name="title_category">Категории</string>
     <string name="title_cart">Корзина</string>
     <string name="title_favourites">Избранное</string>

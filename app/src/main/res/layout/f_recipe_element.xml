@@ -18,6 +18,7 @@
             android:layout_height="25dp"
             android:background="@drawable/rounded_view_login"
             android:gravity="center"
+            android:fontFamily="@font/roboto_light"
             android:textSize="10sp"
             android:textColor="@color/white"
             android:text="@string/text_step_number"/>
@@ -40,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearStepTop"
+        android:fontFamily="@font/roboto_thin"
         android:layout_centerHorizontal="true"
         android:text="@string/recipe_text"
         android:textColor="@color/black"
@@ -51,7 +53,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="4dp"
-        android:layout_width="150dp"
+        android:layout_width="250dp"
         android:background="@color/objectsColor"
         android:layout_height="1sp"
         android:layout_centerHorizontal="true"/>

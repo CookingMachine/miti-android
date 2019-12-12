@@ -36,5 +36,19 @@
         <item name="colorControlActivated">@color/objectsColor</item>
     </style>
 
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+    <!-- стиль для bottom_navigation_bar -->
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10.5sp</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">@color/objectsColor</item>
+    </style>
+
+
+
 
 </resources>
