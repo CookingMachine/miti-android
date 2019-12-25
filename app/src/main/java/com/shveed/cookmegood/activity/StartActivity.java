@@ -20,11 +20,16 @@ import com.shveed.cookmegood.menu_fragments.MainFragment;
 import com.shveed.cookmegood.menu_fragments.SuggestFragment;
 import com.shveed.wallpapperparser.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StartActivity extends FragmentActivity implements FragmentChangeListener {
 
     private User currentUser;
 
     private Fragment selectedFragment;
+
+    private List<Fragment> fragments = new ArrayList<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,19 +38,19 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
             selectedFragment = new MainFragment();
             switch (item.getItemId()) {
                 case R.id.navigation_suggest:
-                    selectedFragment = new SuggestFragment();
+                    selectedFragment = fragments.get(0);
                     break;
                 case R.id.navigation_favourites:
-                    selectedFragment = new FavouritesFragment();
+                    selectedFragment = fragments.get(1);
                     break;
                 case R.id.navigation_recipe:
-                    selectedFragment = new MainFragment();
+                    selectedFragment = fragments.get(2);
                     break;
                 case R.id.navigation_cart:
-                    selectedFragment = new CartFragment();
+                    selectedFragment = fragments.get(3);
                     break;
                 case R.id.navigation_profile:
-                    selectedFragment = new CabinetFragment();
+                    selectedFragment = fragments.get(4);
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.f_start, selectedFragment)
@@ -58,6 +63,12 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        fragments.add(new SuggestFragment());
+        fragments.add(new FavouritesFragment());
+        fragments.add(new MainFragment());
+        fragments.add(new CartFragment());
+        fragments.add(new CabinetFragment());
 
         getSupportFragmentManager().beginTransaction().replace(R.id.f_start, new MainFragment())
                 .commit();

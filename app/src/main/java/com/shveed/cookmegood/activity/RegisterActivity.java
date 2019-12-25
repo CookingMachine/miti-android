@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                     errorToast.show();
                 }
                 else{
-                    User user = new User(name, email, password);
+                    User user = null;
                     Intent intent = new Intent(RegisterActivity.this, StartActivity.class);
                     //intent.putExtra("userObject", user);
                     startActivity(intent);

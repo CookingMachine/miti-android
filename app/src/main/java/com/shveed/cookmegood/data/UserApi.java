@@ -9,16 +9,24 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface UserApi {
-    @GET("/users/{id}")
-    public Call<User> getUserByID(@Path("id") Long id);
 
-    @GET("/users")
-    public Call<List<User>> getAllUsers();
+    String API_PATH = "http://localhost:8080/users";
 
-    @POST("/users")
-    public Call<User> addUser(@Body User user);
+    @GET(API_PATH + "")
+    Call<User> getUserByLogin(@Query("login") Long login);
+
+    @GET(API_PATH + "/all")
+    Call<List<User>> getAllUsers();
+
+    @POST(API_PATH + "")
+    Call<User> addUser(@Body User user);
+
+    @GET(API_PATH + "/auth")
+    Call<User> checkUser(@Query("login") String login,
+                         @Query("pass") String pass);
 
 
 }

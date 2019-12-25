@@ -10,9 +10,11 @@ import retrofit2.http.POST;
 
 public interface CategoryApi {
 
-    @GET("/categories")
-    public Call<List<Category>> getAllCategories();
+    String API_PATH = "http://localhost:8080";
 
-    @GET("/categories/{id}")
-    public Call<Category> getCategoryByID();
+    @GET(API_PATH + "/categories")
+    Call<List<Category>> getAllCategories();
+
+    @GET(API_PATH + "/categories/{id}")
+    Call<Category> getCategoryByID();
 }

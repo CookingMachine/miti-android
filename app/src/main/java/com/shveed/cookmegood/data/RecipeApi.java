@@ -11,12 +11,15 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface RecipeApi {
-    @POST("/recipes")
-    public Call<Recipe> createRecipe(@Body Recipe recipe);
 
-    @GET("/recipes/{id}")
-    public Call<Recipe> getRecipeById(@Path("id") Long id);
+    String API_PATH = "http://localhost:8080/recipes";
 
-    @GET("/recipes")
-    public Call<List<Recipe>> getAllRecipes();
+    @POST(API_PATH)
+    Call<Recipe> createRecipe(@Body Recipe recipe);
+
+    @GET(API_PATH + "/{id}")
+    Call<Recipe> getRecipeById(@Path("id") Long id);
+
+    @GET(API_PATH)
+    Call<List<Recipe>> getAllRecipes();
 }

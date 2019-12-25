@@ -46,6 +46,7 @@
         <item name="android:textSize">10.5sp</item>
         <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/objectsColor</item>
+        <item name="android:itemBackground">@color/black</item>
     </style>
 
 

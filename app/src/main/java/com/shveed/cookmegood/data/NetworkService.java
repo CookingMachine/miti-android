@@ -1,21 +1,19 @@
-package com.shveed.cookmegood.service;
-
-import com.shveed.cookmegood.data.RecipeApi;
-import com.shveed.cookmegood.data.UserApi;
-import com.shveed.cookmegood.entity.User;
+package com.shveed.cookmegood.data;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class NetworkService {
     private static NetworkService mInstance;
-    private static final String BASE_URL = "localhost:8080";
+
+    private static final String BASE_URL = "http://localhost:8080/";
+
     private Retrofit mRetrofit;
 
     private NetworkService() {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create())
                 .build();
     }
 

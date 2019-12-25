@@ -2,7 +2,6 @@ package com.shveed.cookmegood.activity;
 
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.shveed.cookmegood.LoginDialog;
+import com.shveed.cookmegood.data.NetworkService;
 import com.shveed.cookmegood.entity.User;
-import com.shveed.cookmegood.service.NetworkService;
 import com.shveed.wallpapperparser.R;
 
 import retrofit2.Call;
@@ -68,7 +67,6 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
     public void asGuest(View v){
         Intent intent = new Intent(this, StartActivity.class);
         user = new User();
-        intent.putExtra("userObject", user);
         startActivity(intent);
         finish();
     }
@@ -84,14 +82,7 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
             goToast("Пустое поле!");
         }
         else {
-            if (checkUserAccess(login, password)) {
-                goToast("Добро пожаловать");
-                Intent intent = new Intent(this, StartActivity.class);
-                startActivity(intent);
-            }
-            else{
-                goToast("Неправильный логин или пароль");
-            }
+            doAuth(login, password);
         }
     }
 
@@ -101,12 +92,28 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
         errorToast.show();
     }
 
-    public boolean checkUserAccess(String loginText, String passwordText){
-        if(loginText.equals("1") && passwordText.equals("1")){
-            return true;
-        }
-        else{
-            return false;
-        }
+    private void doAuth(String login, String pass){
+        NetworkService.getInstance()
+                .getUserApi()
+                .checkUser(login, pass)
+                .enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        User user = response.body();
+                        if(user == null){
+                            goToast("Неправильный логин или пароль");
+                        }
+                        else{
+                            goToast("Добро пожаловать");
+                            Intent intent = new Intent(AuthorizeActivity.this, StartActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        goToast("Ошибка подключения");
+                    }
+                });
     }
 }
