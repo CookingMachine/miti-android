@@ -1,10 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OfferRecipeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/suggestToolbar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/suggestTitle"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            app:fontFamily="@font/roboto_light"
+            android:text="@string/title_suggest" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/suggestForm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/suggestToolbar">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/stepName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_step_name"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/stepEditName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/stepDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_step_desc"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/stepEditDesc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

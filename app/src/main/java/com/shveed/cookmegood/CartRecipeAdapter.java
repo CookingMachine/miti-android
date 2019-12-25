@@ -24,7 +24,7 @@ public class CartRecipeAdapter extends RecyclerView.Adapter<CartRecipeAdapter.Vi
     }
     @Override
     public CartRecipeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.cart_recycler_element, parent, false);
+        View view = inflater.inflate(R.layout.item_cart_recipe, parent, false);
         return new ViewHolder(view);
     }
 

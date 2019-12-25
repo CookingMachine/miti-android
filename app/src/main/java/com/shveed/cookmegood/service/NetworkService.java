@@ -1,6 +1,8 @@
 package com.shveed.cookmegood.service;
 
-import com.shveed.cookmegood.data.Api;
+import com.shveed.cookmegood.data.RecipeApi;
+import com.shveed.cookmegood.data.UserApi;
+import com.shveed.cookmegood.entity.User;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,7 +26,13 @@ public class NetworkService {
         return mInstance;
     }
 
-    public Api getApi(){
-        return mRetrofit.create(Api.class);
+    public UserApi getUserApi() {
+        return mRetrofit.create(UserApi.class);
     }
+
+    public RecipeApi getRecipeApi(){
+        return mRetrofit.create(RecipeApi.class);
+    }
+
+
 }

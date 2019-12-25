@@ -2,6 +2,7 @@ package com.shveed.cookmegood.activity;
 
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,12 @@ import android.widget.Toast;
 
 import com.shveed.cookmegood.LoginDialog;
 import com.shveed.cookmegood.entity.User;
+import com.shveed.cookmegood.service.NetworkService;
 import com.shveed.wallpapperparser.R;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.LoginDialogListener {
 
@@ -19,6 +25,7 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
     Button signUp;
 
     User user;
+    User currentUser;
 
     EditText loginEdit;
     EditText passwordEdit;

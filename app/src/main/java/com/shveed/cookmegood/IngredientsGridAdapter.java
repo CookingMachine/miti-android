@@ -31,7 +31,7 @@ public class IngredientsGridAdapter extends RecyclerView.Adapter<IngredientsGrid
     // inflates the row layout from xml when needed
     @Override
     public IngredientsGridAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.grid_element, parent, false);
+        View view = mInflater.inflate(R.layout.item_ingredient, parent, false);
         return new IngredientsGridAdapter.ViewHolder(view);
     }
     // binds the data to the TextView in each row

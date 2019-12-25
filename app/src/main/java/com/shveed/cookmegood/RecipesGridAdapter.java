@@ -1,7 +1,6 @@
 package com.shveed.cookmegood;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +29,7 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.grid_recipe_element, parent, false);
+        View view = mInflater.inflate(R.layout.item_category, parent, false);
         return new ViewHolder(view);
     }
     // binds the data to the TextView in each row

@@ -23,11 +23,14 @@
     <string name="title_category">Категории</string>
     <string name="title_cart">Корзина</string>
     <string name="title_favourites">Избранное</string>
+    <string name="title_suggest">Предложить</string>
 
     <string name="text_login">Логин:</string>
     <string name="text_password">Пароль:</string>
     <string name="text_step_title">Нарезаем курицу</string>
     <string name="text_step_number">1</string>
+    <string name="text_step_name">Шаг 1</string>
+    <string name="text_step_desc">Описание</string>
 
     <string name="btn_signIn">Войти</string>
     <string name="btn_register">Зарегистрироваться</string>
