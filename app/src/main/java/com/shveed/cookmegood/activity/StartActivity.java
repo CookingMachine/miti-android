@@ -10,7 +10,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.shveed.cookmegood.data.NetworkService;
+import com.shveed.cookmegood.data.RuntimeStorage;
+import com.shveed.cookmegood.entity.Category;
 import com.shveed.cookmegood.entity.User;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
 import com.shveed.cookmegood.menu_fragments.CabinetFragment;
@@ -21,7 +25,13 @@ import com.shveed.cookmegood.menu_fragments.SuggestFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StartActivity extends FragmentActivity implements FragmentChangeListener {
 
@@ -61,6 +71,14 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        try {
+            getCategories();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
@@ -96,5 +114,33 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
     public void toCategories(View view){
         getSupportFragmentManager().beginTransaction().replace(R.id.f_start, new MainFragment())
                 .commit();
+    }
+
+    public void getCategories() throws InterruptedException{
+        //TimeUnit.SECONDS.sleep(3);
+        NetworkService.getInstance()
+                .getCategoryApi()
+                .getAllCategories()
+                .enqueue(new Callback<List<Category>>() {
+                    @Override
+                    public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                        for(Category category: response.body()){
+                            RuntimeStorage.newInstance().categories.add(category.getName());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Category>> call, Throwable t) {
+                        goToast("failure");
+                        RuntimeStorage.newInstance().categories =
+                                Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки");
+                    }
+                });
+    }
+
+    public void goToast(String output){
+        Toast errorToast = Toast.makeText(this,
+                output, Toast.LENGTH_SHORT);
+        errorToast.show();
     }
 }

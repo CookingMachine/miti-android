@@ -32,5 +32,9 @@ public class NetworkService {
         return mRetrofit.create(RecipeApi.class);
     }
 
+    public CategoryApi getCategoryApi(){
+        return mRetrofit.create(CategoryApi.class);
+    }
+
 
 }

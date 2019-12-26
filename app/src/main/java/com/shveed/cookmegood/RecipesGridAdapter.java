@@ -13,7 +13,6 @@ import java.util.List;
 
 public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.ViewHolder> {
 
-
     private List<String> mData;
 
     private String amount = "101 позиция";
