@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 
 public interface RecipeApi {
 
-    String API_PATH = "http://localhost:8080/recipes";
+    String API_PATH = "http://10.0.2.2:8080";
 
     @POST(API_PATH)
     Call<Recipe> createRecipe(@Body Recipe recipe);

@@ -14,6 +14,7 @@ import com.shveed.cookmegood.data.NetworkService;
 import com.shveed.cookmegood.entity.User;
 import com.shveed.wallpapperparser.R;
 
+import lombok.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,7 +25,6 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
     Button signUp;
 
     User user;
-    User currentUser;
 
     EditText loginEdit;
     EditText passwordEdit;
@@ -98,22 +98,23 @@ public class AuthorizeActivity extends AppCompatActivity implements LoginDialog.
                 .checkUser(login, pass)
                 .enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        User user = response.body();
+                    public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                        user = response.body();
                         if(user == null){
                             goToast("Неправильный логин или пароль");
                         }
                         else{
-                            goToast("Добро пожаловать");
+                            goToast("Добро пожаловать, " + login);
                             Intent intent = new Intent(AuthorizeActivity.this, StartActivity.class);
                             startActivity(intent);
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        goToast("Ошибка подключения");
+                    public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                        goToast(t.getLocalizedMessage());
                     }
                 });
+
     }
 }

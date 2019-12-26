@@ -6,7 +6,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class NetworkService {
     private static NetworkService mInstance;
 
-    private static final String BASE_URL = "http://localhost:8080/";
+    private static final String BASE_URL = "http://localhost:8080";
 
     private Retrofit mRetrofit;
 
