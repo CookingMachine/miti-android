@@ -22,7 +22,6 @@ import java.util.List;
 public class MainFragment extends Fragment implements RecipesGridAdapter.ItemClickListener {
 
     private RecipesGridAdapter adapter;
-    private TextView nameView;
     private List<String> data = new ArrayList<>();
 
     @Nullable

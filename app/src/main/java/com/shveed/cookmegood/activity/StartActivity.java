@@ -27,7 +27,6 @@ import com.shveed.wallpapperparser.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,8 +115,7 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
                 .commit();
     }
 
-    public void getCategories() throws InterruptedException{
-        //TimeUnit.SECONDS.sleep(3);
+    public void getCategories(){
         NetworkService.getInstance()
                 .getCategoryApi()
                 .getAllCategories()
@@ -131,16 +129,9 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
 
                     @Override
                     public void onFailure(Call<List<Category>> call, Throwable t) {
-                        goToast("failure");
                         RuntimeStorage.newInstance().categories =
                                 Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки");
                     }
                 });
-    }
-
-    public void goToast(String output){
-        Toast errorToast = Toast.makeText(this,
-                output, Toast.LENGTH_SHORT);
-        errorToast.show();
     }
 }
