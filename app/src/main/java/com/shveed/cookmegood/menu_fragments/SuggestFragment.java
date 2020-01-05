@@ -1,11 +1,11 @@
 package com.shveed.cookmegood.menu_fragments;
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +14,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.shveed.cookmegood.SuggestAdapter;
-import com.shveed.cookmegood.activity.StartActivity;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class SuggestFragment extends Fragment {
 
     private SuggestAdapter adapter;
 
-    private EditText stepEditText;
-    private EditText descriptionEditText;
+    @BindView(R.id.stepEditName) EditText stepEditText;
+    @BindView(R.id.stepEditDesc) EditText descriptionEditText;
 
-    private Button clearButton;
-    private Button addButton;
-    private Button deleteStep;
+    @BindView(R.id.btnClearStep) Button clearButton;
+    @BindView(R.id.btnAddStep) Button addButton;
+    Button deleteStep;
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.stepRecycler) RecyclerView recyclerView;
 
     public List<String> titles = new ArrayList<>();
 
@@ -41,49 +44,7 @@ public class SuggestFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.f_suggest, container, false);
 
-        recyclerView = view.findViewById(R.id.stepRecycler);
-        stepEditText = view.findViewById(R.id.stepEditName);
-        descriptionEditText = view.findViewById(R.id.stepEditDesc);
-        clearButton = view.findViewById(R.id.btnClearStep);
-        addButton = view.findViewById(R.id.btnAddStep);
-
-        View.OnClickListener clearListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stepEditText.setText("");
-                descriptionEditText.setText("");
-            }
-        };
-
-        View.OnClickListener addListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!stepEditText.getText().toString().equals("") &&
-                        !descriptionEditText.getText().toString().equals("")) {
-                    String stepName = stepEditText.getText().toString();
-                    String stepDescription = descriptionEditText.getText().toString();
-
-                    titles.add(stepName);
-                    recyclerView.setAdapter(new SuggestAdapter(getContext(), titles));
-
-                    stepEditText.setText("");
-                    descriptionEditText.setText("");
-                }
-                else{
-                    goToast("Заполните оба поля");
-                }
-            }
-        };
-
-        View.OnClickListener deleteListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-            }
-        };
-
-        clearButton.setOnClickListener(clearListener);
-        addButton.setOnClickListener(addListener);
+        ButterKnife.bind(this, view);
 
         adapter = new SuggestAdapter(getContext(), titles);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -96,5 +57,33 @@ public class SuggestFragment extends Fragment {
         Toast errorToast = Toast.makeText(getContext(),
                 output, Toast.LENGTH_SHORT);
         errorToast.show();
+    }
+
+    @OnClick(R.id.btnClearStep)
+    public void clearFields(Button button){
+        stepEditText.setText("");
+        descriptionEditText.setText("");
+    }
+
+    @OnClick(R.id.btnAddStep)
+    public void addStep(Button button){
+        if(!stepEditText.getText().toString().equals("") &&
+                !descriptionEditText.getText().toString().equals("")) {
+            String stepName = stepEditText.getText().toString();
+            String stepDescription = descriptionEditText.getText().toString();
+
+            titles.add(stepName);
+            recyclerView.setAdapter(new SuggestAdapter(getContext(), titles));
+
+            stepEditText.setText("");
+            descriptionEditText.setText("");
+        }
+        else{
+            goToast("Заполните оба поля");
+        }
+    }
+
+    public void deleteStep(Button button){
+
     }
 }

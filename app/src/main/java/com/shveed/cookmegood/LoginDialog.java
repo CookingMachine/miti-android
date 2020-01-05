@@ -5,17 +5,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDialogFragment;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
 import com.shveed.wallpapperparser.R;
 
+import butterknife.BindView;
+
 public class LoginDialog extends AppCompatDialogFragment {
 
-    private EditText loginEdit;
-    private EditText passwordEdit;
+    @BindView(R.id.loginEdit) EditText loginEdit;
+    @BindView(R.id.passwordEdit) EditText passwordEdit;
 
     private LoginDialogListener listener;
 
@@ -40,8 +42,6 @@ public class LoginDialog extends AppCompatDialogFragment {
                         dialog.cancel();
                     }
                 });
-        loginEdit = (EditText) view.findViewById(R.id.loginEdit);
-        passwordEdit = (EditText) view.findViewById(R.id.passwordEdit);
 
         return builder.create();
     }

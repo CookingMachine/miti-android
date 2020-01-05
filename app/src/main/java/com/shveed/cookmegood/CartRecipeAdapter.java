@@ -1,7 +1,7 @@
 package com.shveed.cookmegood;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +15,8 @@ import java.util.List;
 
 public class CartRecipeAdapter extends RecyclerView.Adapter<CartRecipeAdapter.ViewHolder> {
 
-    private LayoutInflater inflater;
-    private List<Recipe> recipes;
+    LayoutInflater inflater;
+    List<Recipe> recipes;
 
     public CartRecipeAdapter(Context context, List<Recipe> recipes) {
         this.recipes = recipes;

@@ -1,12 +1,11 @@
 package com.shveed.cookmegood;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,41 +22,26 @@ import com.shveed.wallpapperparser.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class CategoryFragment extends Fragment {
 
     private List<Recipe> recipes = new ArrayList<>();
 
-    Button backButton;
-    Button searchButton;
+    @BindView(R.id.backButton) Button backButton;
+    @BindView(R.id.searchButton) Button searchButton;
+    @BindView(R.id.recipeRecycler) RecyclerView recyclerView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.f_category, container, false);
+        ButterKnife.bind(this, view);
+
         setRecipeData();
-
-        backButton = (Button) view.findViewById(R.id.backButton);
-        searchButton = (Button) view.findViewById(R.id.searchButton);
-
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recipeRecycler);
-
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Fragment mainFragment = new MainFragment();
-                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-                fc.replaceFragment(mainFragment);
-            }
-        });
-
-        searchButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                startActivity(new Intent(getActivity(), SearchActivity.class));
-            }
-        });
 
         recyclerView.addOnItemTouchListener(
                 new RecipeItemClickListener(getContext(), recyclerView,
@@ -99,5 +83,17 @@ public class CategoryFragment extends Fragment {
         Toast errorToast = Toast.makeText(getActivity(),
                 output, Toast.LENGTH_SHORT);
         errorToast.show();
+    }
+
+    @OnClick(R.id.backButton)
+    public void backButtonListener(Button button){
+        Fragment mainFragment = new MainFragment();
+        FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+        fc.replaceFragment(mainFragment);
+    }
+
+    @OnClick(R.id.searchButton)
+    public void searchButtonListener(Button button){
+        startActivity(new Intent(getActivity(), SearchActivity.class));
     }
 }

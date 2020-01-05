@@ -1,4 +1,9 @@
 <resources>
+
+    <string name="app_name">M.I.T.I.</string>
+
+    <!-- ACTIVITIES -->
+
     <string name="title_activity_authorize">M.I.T.I.</string>
     <string name="title_activity_register">Регистрация</string>
     <string name="title_activity_cart">Корзина</string>
@@ -8,9 +13,9 @@
     <string name="title_activity_favourites">Favourites</string>
     <string name="title_activity_start">Главная Страница</string>
 
-    <string name="app_name">M.I.T.I.</string>
-    <string name="title_home">Рецепты</string>
+    <!-- TITLES -->
 
+    <string name="title_home">Рецепты</string>
     <string name="title_recipes">Рецепты</string>
     <string name="title_recipe">РЕЦЕПТ</string>
     <string name="title_count_positions">101 позиция</string>
@@ -25,12 +30,21 @@
     <string name="title_favourites">Избранное</string>
     <string name="title_suggest">Предложить</string>
 
+    <!-- TEXT -->
+
     <string name="text_login">Логин:</string>
     <string name="text_password">Пароль:</string>
     <string name="text_step_title">Нарезаем курицу</string>
     <string name="text_step_number">1</string>
     <string name="text_step_name">Шаг</string>
     <string name="text_step_desc">Описание</string>
+    <string name="text_recipe"> Здесь я решил написать дефолтное сообщение
+        вместо которого должно находиться
+    описание рецепта, выбранного пользователем</string>
+    <string name="text_minus">-</string>
+    <string name="text_plus">+</string>
+
+    <!-- BUTTONS -->
 
     <string name="btn_signIn">Войти</string>
     <string name="btn_register">Зарегистрироваться</string>
@@ -39,9 +53,13 @@
     <string name="btn_toPurchases">К ПОКУПКАМ</string>
     <string name="btn_toRecipe">Смотреть</string>
 
+    <!-- HINTS -->
+
     <string name="hint_nameSurname">Имя и фамилия</string>
     <string name="hint_email">E-Mail</string>
     <string name="hint_password">Придумайте пароль</string>
+
+    <!-- KBJU FRAGMENT -->
 
     <string name="f_calories">кКал</string>
     <string name="f_proteins">Белки</string>
@@ -53,13 +71,13 @@
     <string name="f_carbo_inside">Ca</string>
 
     <string name="list_result"> По вашему запросу найдены следующие рецепты: </string>
-    <string name="recipe_text"> Здесь я решил написать дефолтное сообщение
-        вместо которого должно находиться
-    описание рецепта, выбранного пользователем</string>
+
     <string name="countPor">Порции: 1</string>
     <string name="sign_guest">Войти как гость</string>
     <string name="i_have_account">У меня есть аккаунт</string>
     <string name="checkbox_text">Я согласен с пользовательским соглашением</string>
+
+    <!-- PROFILE -->
 
     <string name="profile_settings">Настройки</string>
     <string name="profile_notifications">Уведомления</string>

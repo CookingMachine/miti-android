@@ -1,9 +1,12 @@
 package com.shveed.cookmegood.activity;
 
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,22 +20,27 @@ import com.shveed.wallpapperparser.R;
 
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RecipeActivity extends AppCompatActivity {
 
     private int portions = 1;
 
-    Button btnRecipe;
-    Button btnIngred;
-    Button btnKbju;
+    @BindView(R.id.recipeButton) Button btnRecipe;
+    @BindView(R.id.ingredButton) Button btnIngred;
+    @BindView(R.id.kbjuButton) Button btnKbju;
 
-    TextView lowerTitle;
-    TextView portionText;
+    @BindView(R.id.recipeTitleTextView) TextView lowerTitle;
+    @BindView(R.id.countPor) TextView portionText;
 
-    ImageView recipeImage;
+    @BindView(R.id.recipeImageView) ImageView recipeImage;
 
     RecipeFragment recipeFragment;
     IngredientFragment ingredientFragment;
     KbjuFragment kbjuFragment;
+
+    @BindView(R.id.recipeSwipeRefresh) SwipeRefreshLayout recipeSwipe;
 
     FragmentTransaction fragmentTransaction;
 
@@ -42,6 +50,8 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        ButterKnife.bind(this);
 
         String name = getIntent().getExtras().get("recipeName").toString();
         int image = Integer.valueOf(getIntent().getExtras().get("recipeImage").toString());
@@ -55,15 +65,6 @@ public class RecipeActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.frameRecipe, recipeFragment);
         transaction.commit();
-
-        lowerTitle = (TextView) findViewById(R.id.textView);
-        portionText = (TextView) findViewById(R.id.countPor);
-
-        recipeImage = (ImageView) findViewById(R.id.imageView);
-
-        btnRecipe = (Button) findViewById(R.id.recipeButton);
-        btnIngred = (Button) findViewById(R.id.ingredButton);
-        btnKbju = (Button) findViewById(R.id.kbjuButton);
 
         lowerTitle.setText(name);
 
@@ -87,6 +88,7 @@ public class RecipeActivity extends AppCompatActivity {
                 clickKbju();
             }
         };
+
 
         btnRecipe.setOnClickListener(recipeListener);
         btnIngred.setOnClickListener(ingredListener);
