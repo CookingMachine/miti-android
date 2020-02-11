@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/title_category"
         android:layout_width="match_parent"
-        android:layout_height="44dp">
+        android:layout_height="@dimen/toolbar_default">
 
         <Button
             android:id="@+id/backButton"
@@ -23,17 +23,10 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:text="@string/title_category"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:fontFamily="@font/roboto_light" />
+        <Toolbar
+            android:id="@+id/categoryFragmentToolbar"
+            android:layout_height="@dimen/toolbar_default"
+            android:layout_width="match_parent"/>
 
         <Button
             android:id="@+id/searchButton"
