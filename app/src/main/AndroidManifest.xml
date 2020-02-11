@@ -18,9 +18,9 @@
         <activity android:name="com.shveed.cookmegood.activity.StartActivity"
             android:label="@string/title_activity_start">
         </activity>
-        <activity android:name="com.shveed.cookmegood.menu_fragments.CabinetFragment" />
+        <activity android:name="com.shveed.cookmegood.fragment_activity.CabinetFragment" />
         <activity android:name="com.shveed.cookmegood.activity.BuylistActivity" />
-        <activity android:name="com.shveed.cookmegood.menu_fragments.SuggestFragment" />
+        <activity android:name="com.shveed.cookmegood.fragment_activity.SuggestFragment" />
         <activity android:name="com.shveed.cookmegood.activity.SearchActivity" />
         <activity
             android:name="com.shveed.cookmegood.activity.AuthorizeActivity"
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.shveed.cookmegood.menu_fragments.CartFragment"
+            android:name="com.shveed.cookmegood.fragment_activity.CartFragment"
             android:label="@string/title_activity_cart" />
         <activity
             android:name="com.shveed.cookmegood.CategoryFragment"
@@ -41,13 +41,13 @@
             android:name="com.shveed.cookmegood.activity.RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity
-            android:name="com.shveed.cookmegood.menu_fragments.FavouritesFragment"
+            android:name="com.shveed.cookmegood.fragment_activity.FavouritesFragment"
             android:label="@string/title_activity_favourites" />
         <activity
             android:name="com.shveed.cookmegood.activity.RecipeActivity"
             android:label="@string/title_activity_recipe" />
         <activity
-            android:name="com.shveed.cookmegood.menu_fragments.MainFragment"
+            android:name="com.shveed.cookmegood.fragment_activity.MainFragment"
             android:label="@string/title_activity_category" />
 
         <meta-data

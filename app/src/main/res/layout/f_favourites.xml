@@ -5,34 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.shveed.cookmegood.menu_fragments.FavouritesFragment">
+    tools:context="com.shveed.cookmegood.fragment_activity.FavouritesFragment">
 
-    <LinearLayout
-        android:id="@+id/favouritesToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true">
-
-        <TextView
-            android:id="@+id/favouritesTitle"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginBottom="2dp"
-            android:background="@color/backgroundColor"
-            android:gravity="center_vertical|center_horizontal"
-            android:textAlignment="center"
-            android:textSize="28sp"
-            android:textColor="@color/black"
-            app:fontFamily="@font/roboto_light"
-            android:text="@string/title_favourites" />
-
-    </LinearLayout>
+    <Toolbar
+        android:id="@+id/favouritesFragmentToolbar"
+        android:layout_height="@dimen/toolbar_default"
+        android:layout_width="match_parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/favouritesToolbar"/>
+        android:layout_below="@+id/favouritesFragmentToolbar"/>
 
 </RelativeLayout>

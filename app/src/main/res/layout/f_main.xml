@@ -7,27 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/recipesTextView1"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="2dp"
-        android:background="@color/backgroundColor"
-        android:gravity="center_vertical|center_horizontal"
-        android:textAlignment="center"
-        android:textSize="28sp"
-        android:textColor="@color/black"
-        app:fontFamily="@font/roboto_light"
-        android:text="@string/title_recipes"
-        android:layout_alignParentTop="true"/>
+    <Toolbar
+        android:id="@+id/mainFragmentToolbar"
+        android:layout_height="@dimen/toolbar_default"
+        android:layout_width="match_parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:paddingHorizontal="3dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/recipesRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@+id/recipesTextView1"
+        android:layout_below="@+id/mainFragmentToolbar"
         android:layout_marginStart="-5dp"/>
 </RelativeLayout>

@@ -16,7 +16,7 @@ import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.activity.SearchActivity;
 import com.shveed.cookmegood.entity.Recipe;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
-import com.shveed.cookmegood.menu_fragments.MainFragment;
+import com.shveed.cookmegood.fragment_activity.MainFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;

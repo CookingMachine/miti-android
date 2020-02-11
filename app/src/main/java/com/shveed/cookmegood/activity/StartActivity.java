@@ -16,16 +16,17 @@ import com.shveed.cookmegood.data.RuntimeStorage;
 import com.shveed.cookmegood.entity.Category;
 import com.shveed.cookmegood.entity.User;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
-import com.shveed.cookmegood.menu_fragments.CabinetFragment;
-import com.shveed.cookmegood.menu_fragments.CartFragment;
-import com.shveed.cookmegood.menu_fragments.FavouritesFragment;
-import com.shveed.cookmegood.menu_fragments.MainFragment;
-import com.shveed.cookmegood.menu_fragments.SuggestFragment;
+import com.shveed.cookmegood.fragment_activity.CabinetFragment;
+import com.shveed.cookmegood.fragment_activity.CartFragment;
+import com.shveed.cookmegood.fragment_activity.FavouritesFragment;
+import com.shveed.cookmegood.fragment_activity.MainFragment;
+import com.shveed.cookmegood.fragment_activity.SuggestFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -121,6 +122,12 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
                 .enqueue(new Callback<List<Category>>() {
                     @Override
                     public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                        try {
+                            TimeUnit.SECONDS.sleep(3);
+                        }
+                        catch(Exception e){
+                            e.printStackTrace();
+                        }
                         for(Category category: response.body()){
                             RuntimeStorage.newInstance().categories.add(category.getName());
                         }

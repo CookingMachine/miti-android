@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.menu_fragments;
+package com.shveed.cookmegood.fragment_activity;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;

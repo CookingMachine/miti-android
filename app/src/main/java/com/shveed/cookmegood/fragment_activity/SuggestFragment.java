@@ -1,23 +1,28 @@
-package com.shveed.cookmegood.menu_fragments;
+package com.shveed.cookmegood.fragment_activity;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
+import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
 
-import com.shveed.cookmegood.SuggestAdapter;
+import com.shveed.cookmegood.SuggestStepListAdapter;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,18 +30,18 @@ import butterknife.OnClick;
 
 public class SuggestFragment extends Fragment {
 
-    private SuggestAdapter adapter;
-
     @BindView(R.id.stepEditName) EditText stepEditText;
     @BindView(R.id.stepEditDesc) EditText descriptionEditText;
 
     @BindView(R.id.btnClearStep) Button clearButton;
     @BindView(R.id.btnAddStep) Button addButton;
+
+    @BindView(R.id.stepExpandable) ExpandableListView stepListView;
     Button deleteStep;
 
-    @BindView(R.id.stepRecycler) RecyclerView recyclerView;
+    public ArrayList<ArrayList<String>> stepHeadersList = new ArrayList<>();
 
-    public List<String> titles = new ArrayList<>();
+    SuggestStepListAdapter adapter;
 
     @Nullable
     @Override
@@ -45,10 +50,6 @@ public class SuggestFragment extends Fragment {
         View view = inflater.inflate(R.layout.f_suggest, container, false);
 
         ButterKnife.bind(this, view);
-
-        adapter = new SuggestAdapter(getContext(), titles);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
 
         return view;
     }
@@ -66,14 +67,19 @@ public class SuggestFragment extends Fragment {
     }
 
     @OnClick(R.id.btnAddStep)
-    public void addStep(Button button){
+    public void addStep(){
         if(!stepEditText.getText().toString().equals("") &&
                 !descriptionEditText.getText().toString().equals("")) {
+            ArrayList<String> step = new ArrayList<>();
             String stepName = stepEditText.getText().toString();
             String stepDescription = descriptionEditText.getText().toString();
+            step.add("Шаг " + (stepHeadersList.size() + 1));
+            step.add(stepName);
+            step.add(stepDescription);
 
-            titles.add(stepName);
-            recyclerView.setAdapter(new SuggestAdapter(getContext(), titles));
+            stepHeadersList.add(step);
+
+            stepListView.setAdapter(new SuggestStepListAdapter(getContext(), stepHeadersList));
 
             stepEditText.setText("");
             descriptionEditText.setText("");
