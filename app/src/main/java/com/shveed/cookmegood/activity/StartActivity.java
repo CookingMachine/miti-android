@@ -11,26 +11,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.shveed.cookmegood.data.NetworkService;
-import com.shveed.cookmegood.data.RuntimeStorage;
-import com.shveed.cookmegood.entity.Category;
 import com.shveed.cookmegood.entity.User;
 import com.shveed.cookmegood.interfaces.FragmentChangeListener;
-import com.shveed.cookmegood.fragment_activity.CabinetFragment;
-import com.shveed.cookmegood.fragment_activity.CartFragment;
-import com.shveed.cookmegood.fragment_activity.FavouritesFragment;
-import com.shveed.cookmegood.fragment_activity.MainFragment;
-import com.shveed.cookmegood.fragment_activity.SuggestFragment;
+import com.shveed.cookmegood.fragment.CabinetFragment;
+import com.shveed.cookmegood.fragment.CartFragment;
+import com.shveed.cookmegood.fragment.FavouritesFragment;
+import com.shveed.cookmegood.fragment.MainFragment;
+import com.shveed.cookmegood.fragment.SuggestFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class StartActivity extends FragmentActivity implements FragmentChangeListener {
 
@@ -62,7 +53,7 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
                     selectedFragment = fragments.get(4);
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.f_start, selectedFragment)
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentStartFrameLayout, selectedFragment)
             .commit();
             return true;
         }
@@ -70,13 +61,6 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        try {
-            getCategories();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
@@ -87,7 +71,7 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
         fragments.add(new CartFragment());
         fragments.add(new CabinetFragment());
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.f_start, new MainFragment())
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentStartFrameLayout, new MainFragment())
                 .commit();
 
         BottomNavigationView navView = findViewById(R.id.nav_view_start);
@@ -100,7 +84,7 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
     public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.f_start, fragment, fragment.toString());
+        fragmentTransaction.replace(R.id.fragmentStartFrameLayout, fragment, fragment.toString());
         fragmentTransaction.addToBackStack(fragment.toString());
         fragmentTransaction.commit();
     }
@@ -111,33 +95,7 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
     }
 
     public void toCategories(View view){
-        getSupportFragmentManager().beginTransaction().replace(R.id.f_start, new MainFragment())
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentStartFrameLayout, new MainFragment())
                 .commit();
-    }
-
-    public void getCategories(){
-        NetworkService.getInstance()
-                .getCategoryApi()
-                .getAllCategories()
-                .enqueue(new Callback<List<Category>>() {
-                    @Override
-                    public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                        try {
-                            TimeUnit.SECONDS.sleep(3);
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
-                        for(Category category: response.body()){
-                            RuntimeStorage.newInstance().categories.add(category.getName());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Category>> call, Throwable t) {
-                        RuntimeStorage.newInstance().categories =
-                                Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки");
-                    }
-                });
     }
 }

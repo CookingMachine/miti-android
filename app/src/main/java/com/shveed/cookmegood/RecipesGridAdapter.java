@@ -20,18 +20,17 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    // data is passed into the constructor
     public RecipesGridAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
-    // inflates the row layout from xml when needed
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_category, parent, false);
         return new ViewHolder(view);
     }
-    // binds the data to the TextView in each row
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String name = mData.get(position);
@@ -44,7 +43,11 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
         return mData.size();
     }
 
-    // stores and recycles views as they are scrolled off screen
+    public void onUpdateList(List<String> newList){
+        this.mData = newList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameView;
         TextView amountView;
@@ -61,17 +64,15 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }
-    // convenience method for getting data at click position
+
     public String getItem(int id) {
         return mData.get(id);
     }
 
-    // allows clicks events to be caught
     public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
-    // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }

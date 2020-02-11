@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/constaintlayout"
     android:background="@color/backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,10 +11,17 @@
         android:layout_width="match_parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_centerHorizontal="true"
-        android:id="@+id/recipesRecyclerView"
+        android:id="@+id/mainFragmentRecycler"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/mainFragmentToolbar"
-        android:layout_marginStart="-5dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-5dp"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@+id/mainFragmentProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>
