@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.entity;
+package com.shveed.cookmegood.data.dto;
 
 import lombok.Data;
 

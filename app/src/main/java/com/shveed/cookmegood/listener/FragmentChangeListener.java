@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.interfaces;
+package com.shveed.cookmegood.listener;
 
 import androidx.fragment.app.Fragment;
 

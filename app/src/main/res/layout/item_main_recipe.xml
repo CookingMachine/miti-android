@@ -32,6 +32,8 @@
                 android:id="@+id/recipeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:gravity="center"
                 android:text="@string/title_recipe"
                 android:textColor="@color/white"

@@ -1,6 +1,6 @@
 package com.shveed.cookmegood.data;
 
-import com.shveed.cookmegood.entity.User;
+import com.shveed.cookmegood.data.dto.User;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.shveed.cookmegood.fragment_activity.CartFragment">
+    tools:context="com.shveed.cookmegood.fragment.CartFragment">
 
     <Toolbar
         android:id="@+id/cartFragmentToolbar"
-        android:layout_height="@dimen/toolbar_default"
+        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -17,9 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/cartFragmentToolbar"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        app:layoutManager="LinearLayoutManager"
         />
 
 </RelativeLayout>

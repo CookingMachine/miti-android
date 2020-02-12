@@ -8,7 +8,7 @@
     tools:context="com.shveed.cookmegood.activity.StartActivity">
 
     <FrameLayout
-        android:id="@+id/f_start"
+        android:id="@+id/fragmentStartFrameLayout"
         android:layout_above="@+id/nav_view_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="4dp"
         android:background="@drawable/bottom_nav_border"
         app:itemHorizontalTranslationEnabled="false"
         app:itemIconSize="22dp"

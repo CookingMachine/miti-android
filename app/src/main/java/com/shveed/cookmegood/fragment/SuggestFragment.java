@@ -1,10 +1,9 @@
-package com.shveed.cookmegood.fragment_activity;
+package com.shveed.cookmegood.fragment;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
 
-import com.shveed.cookmegood.SuggestStepListAdapter;
+import com.shveed.cookmegood.adapter.SuggestStepListAdapter;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

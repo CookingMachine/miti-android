@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.fragment;
 
 import android.content.Intent;
 import androidx.annotation.Nullable;
@@ -14,9 +14,10 @@ import android.widget.Toast;
 
 import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.activity.SearchActivity;
-import com.shveed.cookmegood.entity.Recipe;
-import com.shveed.cookmegood.interfaces.FragmentChangeListener;
-import com.shveed.cookmegood.fragment_activity.MainFragment;
+import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
+import com.shveed.cookmegood.adapter.RecipeItemClickListener;
+import com.shveed.cookmegood.data.dto.Recipe;
+import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
@@ -30,8 +31,6 @@ public class CategoryFragment extends Fragment {
 
     private List<Recipe> recipes = new ArrayList<>();
 
-    @BindView(R.id.backButton) Button backButton;
-    @BindView(R.id.searchButton) Button searchButton;
     @BindView(R.id.recipeRecycler) RecyclerView recyclerView;
 
     @Nullable
@@ -73,7 +72,7 @@ public class CategoryFragment extends Fragment {
         recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic2));
         recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic2));
     }
-    public void toRecipe(String name, int image){
+    private void toRecipe(String name, int image){
         Intent intent = new Intent(getContext(), RecipeActivity.class);
         intent.putExtra("recipeName", name);
         intent.putExtra("recipeImage", image);
@@ -83,17 +82,5 @@ public class CategoryFragment extends Fragment {
         Toast errorToast = Toast.makeText(getActivity(),
                 output, Toast.LENGTH_SHORT);
         errorToast.show();
-    }
-
-    @OnClick(R.id.backButton)
-    public void backButtonListener(Button button){
-        Fragment mainFragment = new MainFragment();
-        FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-        fc.replaceFragment(mainFragment);
-    }
-
-    @OnClick(R.id.searchButton)
-    public void searchButtonListener(Button button){
-        startActivity(new Intent(getActivity(), SearchActivity.class));
     }
 }

@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
@@ -6,16 +6,16 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-class RecipeItemClickListener implements RecyclerView.OnItemTouchListener {
+public class RecipeItemClickListener implements RecyclerView.OnItemTouchListener {
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
-        public void onItemClick(View view, int position);
+        void onItemClick(View view, int position);
 
-        public void onLongItemClick(View view, int position);
+        void onLongItemClick(View view, int position);
     }
 
-    GestureDetector mGestureDetector;
+    private GestureDetector mGestureDetector;
 
     public RecipeItemClickListener(Context context, final RecyclerView recyclerView,
                                    OnItemClickListener listener){
@@ -45,7 +45,8 @@ class RecipeItemClickListener implements RecyclerView.OnItemTouchListener {
         return false;
     }
 
-    @Override public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) { }
+    @Override
+    public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) { }
 
     @Override
     public void onRequestDisallowInterceptTouchEvent (boolean disallowIntercept){}

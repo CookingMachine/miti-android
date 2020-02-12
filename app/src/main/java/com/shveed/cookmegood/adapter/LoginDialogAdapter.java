@@ -1,10 +1,12 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.adapter;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,7 @@ import com.shveed.wallpapperparser.R;
 
 import butterknife.BindView;
 
-public class LoginDialog extends AppCompatDialogFragment {
+public class LoginDialogAdapter extends AppCompatDialogFragment {
 
     @BindView(R.id.loginEdit) EditText loginEdit;
     @BindView(R.id.passwordEdit) EditText passwordEdit;
@@ -22,6 +24,7 @@ public class LoginDialog extends AppCompatDialogFragment {
     private LoginDialogListener listener;
 
     @Override
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

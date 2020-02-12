@@ -12,10 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.shveed.cookmegood.entity.Ingredient;
-import com.shveed.cookmegood.recipe_page_fragments.IngredientFragment;
-import com.shveed.cookmegood.recipe_page_fragments.KbjuFragment;
-import com.shveed.cookmegood.recipe_page_fragments.RecipeFragment;
+import com.shveed.cookmegood.data.dto.Ingredient;
+import com.shveed.cookmegood.fragment.IngredientFragment;
+import com.shveed.cookmegood.fragment.KbjuFragment;
+import com.shveed.cookmegood.fragment.RecipeFragment;
 import com.shveed.wallpapperparser.R;
 
 import java.util.HashMap;

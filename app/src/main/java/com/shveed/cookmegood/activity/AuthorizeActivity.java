@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.shveed.cookmegood.LoginDialog;
+import com.shveed.cookmegood.adapter.LoginDialogAdapter;
 import com.shveed.cookmegood.data.NetworkService;
-import com.shveed.cookmegood.entity.User;
+import com.shveed.cookmegood.data.dto.User;
 import com.shveed.wallpapperparser.R;
 
 import butterknife.BindView;
@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AuthorizeActivity extends AppCompatActivity
-        implements LoginDialog.LoginDialogListener {
+        implements LoginDialogAdapter.LoginDialogListener {
 
     @BindView(R.id.btn_signIn) Button signIn;
     @BindView(R.id.btn_signUp) Button signUp;
@@ -40,7 +40,7 @@ public class AuthorizeActivity extends AppCompatActivity
 
     @OnClick(R.id.btn_signIn)
     public void clickSignIn(Button button){
-        LoginDialog loginDialog = new LoginDialog();
+        LoginDialogAdapter loginDialog = new LoginDialogAdapter();
         loginDialog.show(getSupportFragmentManager(), "Login dialog");
     }
 

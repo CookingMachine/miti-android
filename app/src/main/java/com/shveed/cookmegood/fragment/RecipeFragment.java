@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.recipe_page_fragments;
+package com.shveed.cookmegood.fragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shveed.cookmegood.RecipeStepAdapter;
-import com.shveed.cookmegood.entity.Step;
+import com.shveed.cookmegood.adapter.RecipeStepAdapter;
+import com.shveed.cookmegood.data.dto.Step;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
