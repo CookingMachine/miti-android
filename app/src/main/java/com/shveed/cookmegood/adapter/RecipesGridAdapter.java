@@ -1,10 +1,15 @@
 package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
+
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.shveed.wallpapperparser.R;
@@ -37,6 +42,8 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
         holder.nameView.setText(name);
         holder.amountView.setText(amount);
 
+        holder.layout.setLayoutParams(setMargins(holder, position % 2 == 0));
+
     }
     @Override
     public int getItemCount() {
@@ -51,11 +58,13 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameView;
         TextView amountView;
+        RelativeLayout layout;
 
         ViewHolder(View itemView) {
             super(itemView);
             nameView = itemView.findViewById(R.id.recipeName);
             amountView = itemView.findViewById(R.id.recipeAmount);
+            layout = itemView.findViewById(R.id.gridRecipeLayout);
             itemView.setOnClickListener(this);
         }
 
@@ -75,5 +84,16 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    private ViewGroup.LayoutParams setMargins(ViewHolder holder, boolean isEven){
+        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) holder.layout.getLayoutParams();
+        if(isEven){
+            p.setMargins(15, 20, 15, 0);
+        }
+        else{
+            p.setMargins(15, 20, 15, 0);
+        }
+        return p;
     }
 }

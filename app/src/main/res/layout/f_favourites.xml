@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.shveed.cookmegood.fragment.FavouritesFragment">
 
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/favouritesFragmentToolbar"
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"/>

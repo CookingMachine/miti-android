@@ -2,6 +2,7 @@ package com.shveed.cookmegood.fragment;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,15 +23,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainFragment extends Fragment implements RecipesGridAdapter.ItemClickListener {
 
+    @BindView(R.id.mainFragmentProgressBar)
+    ProgressBar progressBar;
+
+    @BindView(R.id.mainFragmentToolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.mainFragmentRecycler)
+    RecyclerView recyclerView;
+
     private RecipesGridAdapter adapter;
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
     private List<String> data = new ArrayList<>();
     private View view;
 
@@ -40,15 +50,16 @@ public class MainFragment extends Fragment implements RecipesGridAdapter.ItemCli
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.f_main, container, false);
 
-        progressBar = view.findViewById(R.id.mainFragmentProgressBar);
+        ButterKnife.bind(this, view);
 
         data = RuntimeStorage.newInstance().categories;
 
-        recyclerView = view.findViewById(R.id.mainFragmentRecycler);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         adapter = new RecipesGridAdapter(getContext(), data);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.setVisibility(View.GONE);
 
         try {
             getCategoriesFromServer();
