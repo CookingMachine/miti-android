@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,12 +13,12 @@ import com.shveed.wallpapperparser.R;
 
 import java.util.List;
 
-class CategoryRecipeAdapter extends RecyclerView.Adapter<CategoryRecipeAdapter.ViewHolder> {
+public class CategoryRecipeAdapter extends RecyclerView.Adapter<CategoryRecipeAdapter.ViewHolder> {
 
-    private LayoutInflater inflater;
-    private List<Recipe> recipes;
+    LayoutInflater inflater;
+    List<Recipe> recipes;
 
-    CategoryRecipeAdapter(Context context, List<Recipe> recipes) {
+    public CategoryRecipeAdapter(Context context, List<Recipe> recipes) {
         this.recipes = recipes;
         this.inflater = LayoutInflater.from(context);
     }
@@ -41,7 +41,7 @@ class CategoryRecipeAdapter extends RecyclerView.Adapter<CategoryRecipeAdapter.V
         return recipes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView imageView;
         final TextView nameView, kitchenView;
         ViewHolder(View view){

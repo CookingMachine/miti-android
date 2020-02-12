@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.shveed.cookmegood.entity.User;
-import com.shveed.cookmegood.interfaces.FragmentChangeListener;
+import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.cookmegood.fragment.CabinetFragment;
 import com.shveed.cookmegood.fragment.CartFragment;
 import com.shveed.cookmegood.fragment.FavouritesFragment;

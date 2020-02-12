@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.shveed.cookmegood.CategoryFragment;
-import com.shveed.cookmegood.RecipesGridAdapter;
+import com.shveed.cookmegood.adapter.RecipesGridAdapter;
 import com.shveed.cookmegood.data.NetworkService;
 import com.shveed.cookmegood.data.RuntimeStorage;
 import com.shveed.cookmegood.entity.Category;
-import com.shveed.cookmegood.interfaces.FragmentChangeListener;
+import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;

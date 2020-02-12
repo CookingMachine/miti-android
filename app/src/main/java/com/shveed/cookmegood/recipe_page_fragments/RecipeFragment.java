@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shveed.cookmegood.RecipeStepAdapter;
+import com.shveed.cookmegood.adapter.RecipeStepAdapter;
 import com.shveed.cookmegood.entity.Step;
 import com.shveed.wallpapperparser.R;
 

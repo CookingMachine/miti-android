@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.fragment;
 
 import android.content.Intent;
 import androidx.annotation.Nullable;
@@ -14,9 +14,10 @@ import android.widget.Toast;
 
 import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.activity.SearchActivity;
+import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
+import com.shveed.cookmegood.adapter.RecipeItemClickListener;
 import com.shveed.cookmegood.entity.Recipe;
-import com.shveed.cookmegood.interfaces.FragmentChangeListener;
-import com.shveed.cookmegood.fragment.MainFragment;
+import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;

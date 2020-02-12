@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shveed.cookmegood.CartRecipeAdapter;
+import com.shveed.cookmegood.adapter.CartRecipeAdapter;
 import com.shveed.cookmegood.entity.Recipe;
 import com.shveed.wallpapperparser.R;
 

@@ -35,7 +35,7 @@
             android:name="com.shveed.cookmegood.fragment.CartFragment"
             android:label="@string/title_activity_cart" />
         <activity
-            android:name="com.shveed.cookmegood.CategoryFragment"
+            android:name="com.shveed.cookmegood.fragment.CategoryFragment"
             android:label="@string/title_activity_recipes" />
         <activity
             android:name="com.shveed.cookmegood.activity.RegisterActivity"

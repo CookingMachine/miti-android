@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;

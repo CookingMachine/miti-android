@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.adapter;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,7 +14,7 @@ import com.shveed.wallpapperparser.R;
 
 import butterknife.BindView;
 
-public class LoginDialog extends AppCompatDialogFragment {
+public class LoginDialogAdapter extends AppCompatDialogFragment {
 
     @BindView(R.id.loginEdit) EditText loginEdit;
     @BindView(R.id.passwordEdit) EditText passwordEdit;

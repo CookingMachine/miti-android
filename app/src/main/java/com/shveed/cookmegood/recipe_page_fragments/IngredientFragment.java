@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shveed.cookmegood.IngredientsGridAdapter;
+import com.shveed.cookmegood.adapter.IngredientsGridAdapter;
 import com.shveed.cookmegood.entity.Ingredient;
 import com.shveed.wallpapperparser.R;
 

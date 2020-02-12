@@ -1,4 +1,4 @@
-package com.shveed.cookmegood;
+package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,7 +40,7 @@ public class CartRecipeAdapter extends RecyclerView.Adapter<CartRecipeAdapter.Vi
         return recipes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView imageView;
         final TextView nameView;
         ViewHolder(View view){

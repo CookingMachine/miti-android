@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.shveed.cookmegood.SuggestStepListAdapter;
+import com.shveed.cookmegood.adapter.SuggestStepListAdapter;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
