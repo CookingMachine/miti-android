@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.shveed.cookmegood.entity.User;
+import com.shveed.cookmegood.data.dto.User;
 import com.shveed.wallpapperparser.R;
 
 import butterknife.BindView;

@@ -21,6 +21,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/f_main_include" />
+    <include layout="@layout/include_fragment_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

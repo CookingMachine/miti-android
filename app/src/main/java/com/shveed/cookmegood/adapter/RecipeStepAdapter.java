@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.shveed.cookmegood.entity.Step;
+import com.shveed.cookmegood.data.dto.Step;
 import com.shveed.wallpapperparser.R;
 
 import java.util.List;

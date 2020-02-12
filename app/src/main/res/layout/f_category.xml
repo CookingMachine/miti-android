@@ -9,36 +9,13 @@
     <RelativeLayout
         android:id="@+id/title_category"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_default">
-
-        <Button
-            android:id="@+id/backButton"
-            android:background="@drawable/ic_back"
-            android:layout_width="15dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentStart="true"
-            android:onClick="toCategories"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            />
+        android:layout_height="?attr/actionBarSize">
 
         <Toolbar
             android:id="@+id/categoryFragmentToolbar"
             android:layout_height="@dimen/toolbar_default"
             android:layout_width="match_parent"/>
 
-        <Button
-            android:id="@+id/searchButton"
-            android:background="@drawable/ic_search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_alignParentEnd="true"
-            android:onClick="toSearch"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

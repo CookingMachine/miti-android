@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.shveed.cookmegood.adapter.LoginDialogAdapter;
 import com.shveed.cookmegood.data.NetworkService;
-import com.shveed.cookmegood.entity.User;
+import com.shveed.cookmegood.data.dto.User;
 import com.shveed.wallpapperparser.R;
 
 import butterknife.BindView;

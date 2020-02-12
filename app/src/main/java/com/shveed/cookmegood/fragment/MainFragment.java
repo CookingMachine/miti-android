@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.shveed.cookmegood.adapter.RecipesGridAdapter;
 import com.shveed.cookmegood.data.NetworkService;
 import com.shveed.cookmegood.data.RuntimeStorage;
-import com.shveed.cookmegood.entity.Category;
+import com.shveed.cookmegood.data.dto.Category;
 import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 

@@ -1,6 +1,6 @@
 package com.shveed.cookmegood.data;
 
-import com.shveed.cookmegood.entity.Category;
+import com.shveed.cookmegood.data.dto.Category;
 
 import java.util.List;
 

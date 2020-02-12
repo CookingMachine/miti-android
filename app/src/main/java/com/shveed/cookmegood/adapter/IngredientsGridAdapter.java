@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.shveed.cookmegood.entity.Ingredient;
+import com.shveed.cookmegood.data.dto.Ingredient;
 import com.shveed.wallpapperparser.R;
 
 import java.util.HashMap;

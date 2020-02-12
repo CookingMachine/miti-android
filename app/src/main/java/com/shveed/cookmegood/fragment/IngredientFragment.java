@@ -1,4 +1,4 @@
-package com.shveed.cookmegood.recipe_page_fragments;
+package com.shveed.cookmegood.fragment;
 
 
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.shveed.cookmegood.adapter.IngredientsGridAdapter;
-import com.shveed.cookmegood.entity.Ingredient;
+import com.shveed.cookmegood.data.dto.Ingredient;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;

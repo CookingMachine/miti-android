@@ -16,7 +16,7 @@ import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.activity.SearchActivity;
 import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
 import com.shveed.cookmegood.adapter.RecipeItemClickListener;
-import com.shveed.cookmegood.entity.Recipe;
+import com.shveed.cookmegood.data.dto.Recipe;
 import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
@@ -31,8 +31,6 @@ public class CategoryFragment extends Fragment {
 
     private List<Recipe> recipes = new ArrayList<>();
 
-    @BindView(R.id.backButton) Button backButton;
-    @BindView(R.id.searchButton) Button searchButton;
     @BindView(R.id.recipeRecycler) RecyclerView recyclerView;
 
     @Nullable
@@ -84,17 +82,5 @@ public class CategoryFragment extends Fragment {
         Toast errorToast = Toast.makeText(getActivity(),
                 output, Toast.LENGTH_SHORT);
         errorToast.show();
-    }
-
-    @OnClick(R.id.backButton)
-    void backButtonListener(Button button){
-        Fragment mainFragment = new MainFragment();
-        FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-        fc.replaceFragment(mainFragment);
-    }
-
-    @OnClick(R.id.searchButton)
-    void searchButtonListener(Button button){
-        startActivity(new Intent(getActivity(), SearchActivity.class));
     }
 }
