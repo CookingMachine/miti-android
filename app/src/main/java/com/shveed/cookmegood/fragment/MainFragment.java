@@ -90,7 +90,7 @@ public class MainFragment extends Fragment implements RecipesGridAdapter.ItemCli
                         Toast.makeText(getContext(), "Нет связи с сервером", Toast.LENGTH_SHORT).show();
 
                         RuntimeStorage.newInstance().categories =
-                                Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки");
+                                Arrays.asList("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки", "Заготовки на зиму");
 
                         adapter.onUpdateList(RuntimeStorage.newInstance().categories);
                     }

@@ -74,7 +74,7 @@ public class CategoryFragment extends Fragment {
         recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic2));
         recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic2));
     }
-    public void toRecipe(String name, int image){
+    private void toRecipe(String name, int image){
         Intent intent = new Intent(getContext(), RecipeActivity.class);
         intent.putExtra("recipeName", name);
         intent.putExtra("recipeImage", image);
@@ -87,14 +87,14 @@ public class CategoryFragment extends Fragment {
     }
 
     @OnClick(R.id.backButton)
-    public void backButtonListener(Button button){
+    void backButtonListener(Button button){
         Fragment mainFragment = new MainFragment();
         FragmentChangeListener fc = (FragmentChangeListener) getActivity();
         fc.replaceFragment(mainFragment);
     }
 
     @OnClick(R.id.searchButton)
-    public void searchButtonListener(Button button){
+    void searchButtonListener(Button button){
         startActivity(new Intent(getActivity(), SearchActivity.class));
     }
 }

@@ -27,7 +27,7 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_category, parent, false);
+        View view = mInflater.inflate(R.layout.item_main_recipe, parent, false);
         return new ViewHolder(view);
     }
 
