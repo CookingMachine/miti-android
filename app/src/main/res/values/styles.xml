@@ -49,6 +49,11 @@
         <item name="android:itemBackground">@color/black</item>
     </style>
 
+    <!-- ProgressBarCircular -->
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/objectsColor</item>
+    </style>
+
 
 
 
