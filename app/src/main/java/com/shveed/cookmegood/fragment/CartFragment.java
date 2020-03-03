@@ -26,7 +26,7 @@ public class CartFragment extends Fragment {
         View view = inflater.inflate(R.layout.f_cart, container, false);
         setRecipeData();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cartRecycler);
-        CartRecipeAdapter adapter = new CartRecipeAdapter(getContext(), recipes);
+        CartRecipeAdapter adapter = new CartRecipeAdapter(recipes, getContext());
         recyclerView.setAdapter(adapter);
         return view;
     }
