@@ -17,7 +17,7 @@ import java.util.List;
 
 public class CartFragment extends Fragment {
 
-    List<Recipe> recipes = new ArrayList<>();
+    private List<Recipe> recipes = new ArrayList<>();
 
     @Nullable
     @Override
@@ -33,9 +33,5 @@ public class CartFragment extends Fragment {
 
 
     private void setRecipeData(){
-        recipes.add(new Recipe("Борщ", "Украина", R.drawable.pic1));
-        recipes.add(new Recipe("Пицца", "Италия", R.drawable.pic1));
-        recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic1));
-        recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic1));
     }
 }

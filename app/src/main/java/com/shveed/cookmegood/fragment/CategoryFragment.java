@@ -9,15 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.shveed.cookmegood.activity.RecipeActivity;
-import com.shveed.cookmegood.activity.SearchActivity;
 import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
 import com.shveed.cookmegood.adapter.RecipeItemClickListener;
 import com.shveed.cookmegood.data.dto.Recipe;
-import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
@@ -25,7 +22,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class CategoryFragment extends Fragment {
 
@@ -48,29 +44,25 @@ public class CategoryFragment extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
                                 String name = recipes.get(position).getName();
-                                int image = recipes.get(position).getImage();
+                                int image = Integer.parseInt(recipes.get(position).getImage());
                                 toRecipe(name, image);
                             }
 
                             @Override
                             public void onLongItemClick(View view, int position) {
                                 String name = recipes.get(position).getName();
-                                int image = recipes.get(position).getImage();
+                                int image = Integer.parseInt(recipes.get(position).getImage());
                                 toRecipe(name, image);
                             }
                         })
         );
 
-        CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(getContext(), recipes);
+        CategoryRecipeAdapter adapter = new CategoryRecipeAdapter(recipes, getContext());
         recyclerView.setAdapter(adapter);
         return view;
     }
 
     private void setRecipeData(){
-        recipes.add(new Recipe("Борщ", "Украина", R.drawable.pic2));
-        recipes.add(new Recipe("Пицца", "Италия", R.drawable.pic2));
-        recipes.add(new Recipe("Плов", "Узбекистан", R.drawable.pic2));
-        recipes.add(new Recipe("Лаваш", "Армения", R.drawable.pic2));
     }
     private void toRecipe(String name, int image){
         Intent intent = new Intent(getContext(), RecipeActivity.class);
