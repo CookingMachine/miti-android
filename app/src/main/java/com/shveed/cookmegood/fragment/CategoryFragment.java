@@ -63,6 +63,8 @@ public class CategoryFragment extends Fragment {
     }
 
     private void setRecipeData(){
+        recipes.add(new Recipe("Борщ", "Подавать теплым", "3:00", String.valueOf(R.drawable.pic2), "Украинская"));
+        recipes.add(new Recipe("Пиууа", "Для большоц компании", "2:00", String.valueOf(R.drawable.pic1), "Итальянская"));
     }
     private void toRecipe(String name, int image){
         Intent intent = new Intent(getContext(), RecipeActivity.class);
