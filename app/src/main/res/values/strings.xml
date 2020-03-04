@@ -85,6 +85,7 @@
     <string name="profile_about_us">КОНТАКТЫ</string>
     <string name="profile_share">ПОДЕЛИТЬСЯ</string>
     <string name="profile_rate_app">ОЦЕНИТЬ</string>
+    <string name="title_activity_reg">RegActivity</string>
 
 
 </resources>

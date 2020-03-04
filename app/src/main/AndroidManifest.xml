@@ -15,15 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.shveed.cookmegood.activity.StartActivity"
-            android:label="@string/title_activity_start">
-        </activity>
-        <activity android:name="com.shveed.cookmegood.fragment.CabinetFragment" />
-        <activity android:name="com.shveed.cookmegood.activity.BuylistActivity" />
-        <activity android:name="com.shveed.cookmegood.fragment.SuggestFragment" />
-        <activity android:name="com.shveed.cookmegood.activity.SearchActivity" />
-        <activity
-            android:name="com.shveed.cookmegood.activity.AuthorizeActivity"
+        <activity android:name="com.shveed.cookmegood.activity.LoginActivity"
             android:label="@string/title_activity_authorize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,14 +24,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.shveed.cookmegood.activity.RegActivity"
+            android:label="@string/title_activity_reg"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.shveed.cookmegood.activity.StartActivity"
+            android:label="@string/title_activity_start" />
+        <activity android:name="com.shveed.cookmegood.fragment.CabinetFragment" />
+        <activity android:name="com.shveed.cookmegood.activity.BuylistActivity" />
+        <activity android:name="com.shveed.cookmegood.fragment.SuggestFragment" />
+        <activity android:name="com.shveed.cookmegood.activity.SearchActivity" />
+
+        <activity
             android:name="com.shveed.cookmegood.fragment.CartFragment"
             android:label="@string/title_activity_cart" />
         <activity
             android:name="com.shveed.cookmegood.fragment.CategoryFragment"
             android:label="@string/title_activity_recipes" />
-        <activity
-            android:name="com.shveed.cookmegood.activity.RegisterActivity"
-            android:label="@string/title_activity_register" />
         <activity
             android:name="com.shveed.cookmegood.fragment.FavouritesFragment"
             android:label="@string/title_activity_favourites" />

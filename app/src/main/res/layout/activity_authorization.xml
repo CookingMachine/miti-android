@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/auth_bg"
     android:layout_height="match_parent"
@@ -99,7 +97,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textBottom"
+        android:id="@+id/textAsGuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -109,6 +107,5 @@
         android:textColor="#eaeaea"
         android:textSize="12sp"
         android:textStyle="normal"
-        app:fontFamily="@font/roboto"
-        android:onClick="asGuest"/>
+        app:fontFamily="@font/roboto" />
 </RelativeLayout>
