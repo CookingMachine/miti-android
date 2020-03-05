@@ -30,27 +30,23 @@ class StartActivity: FragmentActivity(), FragmentChangeListener  {
         (menuItem.itemId){
         R.id.navigation_suggest ->{
             val fragment = SuggestFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, fragment,fragment.javaClass.simpleName)
-                    .commit()
+            replaceFragment(fragment)
             Log.d("tag","sjd")
             return@OnNavigationItemSelectedListener true
         }
         R.id.navigation_favourites ->{
             val fragment = FavouritesFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, fragment,fragment.javaClass.simpleName)
-                    .commit()
+            replaceFragment(fragment)
             return@OnNavigationItemSelectedListener true
         }
         R.id.navigation_cart ->{
             val fragment = CartFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, fragment,fragment.javaClass.simpleName)
-                    .commit()
+            replaceFragment(fragment)
             return@OnNavigationItemSelectedListener true
         }
         R.id.navigation_profile ->{
             val fragment = CabinetFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, fragment,fragment.javaClass.simpleName)
-                    .commit()
+            replaceFragment(fragment)
             return@OnNavigationItemSelectedListener true
         }
         R.id.navigation_recipe ->{
