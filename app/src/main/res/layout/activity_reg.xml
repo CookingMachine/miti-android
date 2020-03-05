@@ -167,30 +167,31 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/btn_register"
             android:layout_width="148dp"
             android:layout_height="43dp"
-            android:layout_marginBottom="20dp"
             android:layout_alignTop="@+id/textBottom"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corners_button_inversed"
-            app:fontFamily="@font/roboto_light"
             android:insetBottom="6dp"
             android:text="@string/btn_register"
             android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold" />
 
         <TextView
             android:id="@+id/textBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/roboto_bold"
             android:gravity="fill"
             android:onClick="toAuth"
             android:text="@string/i_have_account"
             android:textAlignment="center"
             android:textColor="#eaeaea"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             app:fontFamily="@font/roboto_light" />
     </LinearLayout>
