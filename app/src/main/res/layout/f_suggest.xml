@@ -36,43 +36,43 @@
                 android:id="@+id/suggestForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp">
+                    android:layout_marginStart="50dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/stepName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:text="@string/text_step_name"
-                        android:textColor="@color/black"
-                        android:layout_marginStart="5dp"/>
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/stepEditName"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:backgroundTint="@color/black"/>
+                        android:backgroundTint="@color/black" />
 
                     <TextView
                         android:id="@+id/stepDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:text="@string/text_step_desc"
-                        android:textColor="@color/black"
-                        android:layout_marginStart="5dp"/>
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/stepEditDesc"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:backgroundTint="@color/black"/>
+                        android:backgroundTint="@color/black" />
 
                 </LinearLayout>
 
@@ -81,16 +81,16 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_alignParentStart="true"
-                    android:background="@drawable/rounded_corners_button_inversed"/>
+                    android:background="@drawable/rounded_corners_button_inversed" />
 
                 <Button
                     android:id="@+id/btnAddStep"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/btnClearStep"
+                    android:layout_alignParentStart="true"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/rounded_corners_button_inversed"/>
+                    android:background="@drawable/rounded_corners_button_inversed" />
 
             </RelativeLayout>
 
@@ -113,8 +113,8 @@
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/rounded_corners_button_inversed"/>
 
         </LinearLayout>
