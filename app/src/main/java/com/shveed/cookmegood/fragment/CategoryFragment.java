@@ -15,7 +15,7 @@ import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
 import com.shveed.cookmegood.adapter.RecipeItemClickListener;
 import com.shveed.cookmegood.data.dto.Recipe;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 import java.util.List;

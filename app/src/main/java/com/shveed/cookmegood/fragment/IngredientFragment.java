@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.shveed.cookmegood.adapter.IngredientsGridAdapter;
 import com.shveed.cookmegood.data.dto.Ingredient;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

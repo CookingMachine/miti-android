@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shveed.cookmegood.data.dto.Recipe
-import com.shveed.wallpapperparser.R
+import com.shveed.cookmegood.R
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
 class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context): RecyclerView.Adapter<CartRecipeAdapter.ViewHolder>() {

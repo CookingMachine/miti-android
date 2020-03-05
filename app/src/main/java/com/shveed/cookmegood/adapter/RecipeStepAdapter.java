@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shveed.cookmegood.data.dto.Step;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.List;
 

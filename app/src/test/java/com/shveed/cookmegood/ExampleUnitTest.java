@@ -1,4 +1,4 @@
-package com.shveed.wallpapperparser;
+package com.shveed.cookmegood;
 
 import org.junit.Test;
 
