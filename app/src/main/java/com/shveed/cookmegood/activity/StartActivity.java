@@ -1,23 +1,24 @@
 package com.shveed.cookmegood.activity;
 
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shveed.cookmegood.data.dto.User;
-import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.cookmegood.fragment.CabinetFragment;
 import com.shveed.cookmegood.fragment.CartFragment;
 import com.shveed.cookmegood.fragment.FavouritesFragment;
 import com.shveed.cookmegood.fragment.MainFragment;
 import com.shveed.cookmegood.fragment.SuggestFragment;
+import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
@@ -76,7 +77,6 @@ public class StartActivity extends FragmentActivity implements FragmentChangeLis
 
         BottomNavigationView navView = findViewById(R.id.nav_view_start);
         navView.setOnNavigationItemSelectedListener(navListener);
-
         currentUser = (User)getIntent().getSerializableExtra("userObject");
     }
 
