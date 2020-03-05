@@ -14,7 +14,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.shveed.cookmegood.adapter.SuggestStepListAdapter;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 

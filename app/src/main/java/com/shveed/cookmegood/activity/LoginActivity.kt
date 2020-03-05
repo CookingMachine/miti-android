@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.shveed.cookmegood.adapter.LogInDialogAdapter
 import com.shveed.cookmegood.data.NetworkService
 import com.shveed.cookmegood.data.dto.User
-import com.shveed.wallpapperparser.R
+import com.shveed.cookmegood.R
 import kotlinx.android.synthetic.main.activity_authorization.*
 import retrofit2.Call
 import retrofit2.Callback

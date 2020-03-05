@@ -3,7 +3,7 @@ package com.shveed.cookmegood.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 public class SearchActivity extends AppCompatActivity {
 

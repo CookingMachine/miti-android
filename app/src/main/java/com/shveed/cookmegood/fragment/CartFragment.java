@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.shveed.cookmegood.adapter.CartRecipeAdapter;
 import com.shveed.cookmegood.data.dto.Recipe;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 import java.util.List;
