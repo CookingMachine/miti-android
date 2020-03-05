@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.shveed.cookmegood.adapter.RecipeStepAdapter;
 import com.shveed.cookmegood.data.dto.Step;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 import java.util.List;

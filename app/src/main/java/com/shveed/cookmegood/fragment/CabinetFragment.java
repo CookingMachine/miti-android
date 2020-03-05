@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 public class CabinetFragment extends Fragment {
 

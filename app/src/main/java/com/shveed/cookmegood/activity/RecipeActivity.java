@@ -16,7 +16,7 @@ import com.shveed.cookmegood.data.dto.Ingredient;
 import com.shveed.cookmegood.fragment.IngredientFragment;
 import com.shveed.cookmegood.fragment.KbjuFragment;
 import com.shveed.cookmegood.fragment.RecipeFragment;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.HashMap;
 

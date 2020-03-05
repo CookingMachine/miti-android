@@ -6,7 +6,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDialogFragment
-import com.shveed.wallpapperparser.R
+import com.shveed.cookmegood.R
 import kotlinx.android.synthetic.main.login_alert.view.*
 
 class LogInDialogAdapter : AppCompatDialogFragment() {

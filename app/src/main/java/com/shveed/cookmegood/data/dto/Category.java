@@ -10,5 +10,5 @@ import lombok.Data;
 public class Category {
 
     @JsonProperty("name")
-    String name;
+    public String name;
 }

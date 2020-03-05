@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.shveed.cookmegood.data.dto.User
-import com.shveed.wallpapperparser.R
+import com.shveed.cookmegood.R
 import kotlinx.android.synthetic.main.activity_reg.*
 
 class RegActivity : AppCompatActivity() {
