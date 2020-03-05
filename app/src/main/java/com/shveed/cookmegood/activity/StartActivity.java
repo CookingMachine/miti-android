@@ -12,13 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.shveed.cookmegood.data.dto.User;
+import com.shveed.cookmegood.fragment.MainFragment;
 import com.shveed.cookmegood.listener.FragmentChangeListener;
 import com.shveed.cookmegood.fragment.CabinetFragment;
 import com.shveed.cookmegood.fragment.CartFragment;
 import com.shveed.cookmegood.fragment.FavouritesFragment;
-import com.shveed.cookmegood.fragment.MainFragment;
 import com.shveed.cookmegood.fragment.SuggestFragment;
-import com.shveed.wallpapperparser.R;
+import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 import java.util.List;
