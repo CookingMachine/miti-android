@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.shveed.cookmegood.R
 import com.shveed.cookmegood.fragment.CategoryFragment
-import com.shveed.cookmegood.listener.FragmentChangeListener
+import com.shveed.cookmegood.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.item_main_recipe.view.*
 
-class RecipesGridAdapter(val context: Context, categoryList: List<String>): RecyclerView.Adapter<RecipesGridAdapter.ViewHolder>() {
+class RecipesGridAdapter(val context: Context, categoryList: List<String>,
+                         private val changeListener: OnFragmentChangeListener):
+        RecyclerView.Adapter<RecipesGridAdapter.ViewHolder>() {
+
 
     private var categoryList: List<String> = categoryList
         set(value){
@@ -36,11 +38,8 @@ class RecipesGridAdapter(val context: Context, categoryList: List<String>): Recy
 
         holder.name.text = this.categoryList[position]
         holder.amount.text = "101 позиция"
-
-        holder.layout.setOnClickListener {
-            val category: Fragment = CategoryFragment()
-            val fc = category.activity as FragmentChangeListener?
-            fc!!.replaceFragment(category)
+        holder.layout.layoutParams = setMargins(holder, position % 2 == 0)
+        holder.layout.setOnClickListener {changeListener.replaceFragment(CategoryFragment())
         }
     }
 

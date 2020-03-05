@@ -27,10 +27,8 @@
             android:name="com.shveed.cookmegood.activity.RegActivity"
             android:label="@string/title_activity_reg"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.shveed.cookmegood.activity.StartActivity"
-            android:label="@string/title_activity_start" />
         <activity android:name="com.shveed.cookmegood.fragment.CabinetFragment" />
+        <activity android:name="com.shveed.cookmegood.activity.StartActivity" />
         <activity android:name="com.shveed.cookmegood.activity.BuylistActivity" />
         <activity android:name="com.shveed.cookmegood.fragment.SuggestFragment" />
         <activity android:name="com.shveed.cookmegood.activity.SearchActivity" />
