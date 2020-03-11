@@ -1,15 +1,15 @@
 package com.shveed.cookmegood.fragment;
 
 import android.content.Intent;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
@@ -19,6 +19,7 @@ import com.shveed.wallpapperparser.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +45,7 @@ public class CategoryFragment extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
                                 String name = recipes.get(position).getName();
-                                int image = Integer.parseInt(recipes.get(position).getImage());
+                                int image = Integer.parseInt(Objects.requireNonNull(recipes.get(position).getImage()));
                                 toRecipe(name, image);
                             }
 

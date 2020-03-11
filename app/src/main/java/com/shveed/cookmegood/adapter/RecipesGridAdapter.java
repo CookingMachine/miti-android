@@ -1,18 +1,17 @@
 package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
-
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.shveed.wallpapperparser.R;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -30,6 +29,7 @@ public class RecipesGridAdapter extends RecyclerView.Adapter<RecipesGridAdapter.
         this.mData = data;
     }
 
+    @NotNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_main_recipe, parent, false);
