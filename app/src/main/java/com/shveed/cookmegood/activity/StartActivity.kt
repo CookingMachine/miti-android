@@ -9,9 +9,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.shveed.cookmegood.R
 import com.shveed.cookmegood.fragment.*
 import com.shveed.cookmegood.listener.FragmentChangeListener
-import com.shveed.wallpapperparser.R
 import kotlinx.android.synthetic.main.activity_start.*
 
 
