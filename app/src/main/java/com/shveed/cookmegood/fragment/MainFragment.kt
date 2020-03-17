@@ -6,11 +6,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.shveed.cookmegood.R
+import com.shveed.cookmegood.activity.SuperActivity
 import com.shveed.cookmegood.adapter.RecipesGridAdapter
 import com.shveed.cookmegood.data.NetworkService
 import com.shveed.cookmegood.data.RuntimeStorage
 import com.shveed.cookmegood.data.dto.Category
 import com.shveed.cookmegood.listener.OnFragmentChangeListener
+import kotlinx.android.synthetic.main.f_main.*
 import kotlinx.android.synthetic.main.include_fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +32,9 @@ class MainFragment: SuperFragment() {
     }
 
     override fun initInterface(view: View?) {
+
+        (activity as SuperActivity).setSupportActionBar(mainFragmentToolbar)
+        mainFragmentToolbar.title = getString(R.string.title_category)
 
         recipesAdapter = RecipesGridAdapter(context!!, categoryList!!, changeListener)
         mainFragmentRecycler.layoutManager = GridLayoutManager(context, 2)
