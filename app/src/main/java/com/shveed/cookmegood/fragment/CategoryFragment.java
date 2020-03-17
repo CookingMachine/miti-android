@@ -11,11 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shveed.cookmegood.R;
 import com.shveed.cookmegood.activity.RecipeActivity;
 import com.shveed.cookmegood.adapter.CategoryRecipeAdapter;
 import com.shveed.cookmegood.adapter.RecipeItemClickListener;
 import com.shveed.cookmegood.data.dto.Recipe;
-import com.shveed.cookmegood.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +65,7 @@ public class CategoryFragment extends Fragment {
 
     private void setRecipeData(){
         recipes.add(new Recipe("Борщ", "Подавать теплым", "3:00", String.valueOf(R.drawable.pic2), "Украинская"));
-        recipes.add(new Recipe("Пиууа", "Для большоц компании", "2:00", String.valueOf(R.drawable.pic1), "Итальянская"));
+        recipes.add(new Recipe("Пиууа", "Для большоц компании", "2:00", String.valueOf(R.drawable.pic3), "Итальянская"));
     }
     private void toRecipe(String name, int image){
         Intent intent = new Intent(getContext(), RecipeActivity.class);

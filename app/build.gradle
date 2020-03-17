@@ -46,6 +46,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.makeramen:roundedimageview:2.3.0' //RoundedImageView https://github.com/vinc3m1/RoundedImageView
 
 }
 repositories {

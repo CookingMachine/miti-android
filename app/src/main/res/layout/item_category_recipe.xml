@@ -16,7 +16,7 @@
         app:cardCornerRadius="6dp"
         app:cardElevation="3dp">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/recipeImage"
             android:layout_width="130dp"
             android:layout_height="130dp"
@@ -24,6 +24,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
+            app:riv_corner_radius="10dip"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/title_ingred"
             android:src="@drawable/pic2" />
 
