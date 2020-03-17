@@ -34,7 +34,6 @@ class MainFragment: SuperFragment() {
         recipesAdapter = RecipesGridAdapter(context!!, categoryList!!, changeListener)
         mainFragmentRecycler.layoutManager = GridLayoutManager(context, 2)
         mainFragmentRecycler.adapter = recipesAdapter
-
         mainFragmentRecycler.visibility = View.GONE
         getCategoriesFromServer()
 

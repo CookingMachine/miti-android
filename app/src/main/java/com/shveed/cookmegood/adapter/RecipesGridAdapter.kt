@@ -15,6 +15,7 @@ class RecipesGridAdapter(val context: Context, categoryList: List<String>,
                          private val changeListener: OnFragmentChangeListener):
         RecyclerView.Adapter<RecipesGridAdapter.ViewHolder>() {
 
+
     private var categoryList: List<String> = categoryList
         set(value){
             field = value
@@ -37,9 +38,8 @@ class RecipesGridAdapter(val context: Context, categoryList: List<String>,
 
         holder.name.text = this.categoryList[position]
         holder.amount.text = "101 позиция"
-
-        holder.layout.setOnClickListener {
-            changeListener.replaceFragment(CategoryFragment())
+        holder.layout.layoutParams = setMargins(holder, position % 2 == 0)
+        holder.layout.setOnClickListener {changeListener.replaceFragment(CategoryFragment())
         }
     }
 

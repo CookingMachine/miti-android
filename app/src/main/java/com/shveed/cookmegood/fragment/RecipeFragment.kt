@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.shveed.cookmegood.R
 import com.shveed.cookmegood.adapter.RecipeStepAdapter
 import com.shveed.cookmegood.data.dto.Step
-import com.shveed.wallpapperparser.R
 import java.util.*
 
 class RecipeFragment : Fragment() {

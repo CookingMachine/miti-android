@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shveed.cookmegood.R
 import com.shveed.cookmegood.adapter.IngredientsGridAdapter
 import com.shveed.cookmegood.data.dto.Ingredient
-import com.shveed.wallpapperparser.R
 import java.util.*
 
 

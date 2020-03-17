@@ -5,11 +5,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.shveed.cookmegood.R
 import com.shveed.cookmegood.data.dto.Ingredient
 import com.shveed.cookmegood.fragment.IngredientFragment
 import com.shveed.cookmegood.fragment.KbjuFragment
 import com.shveed.cookmegood.fragment.RecipeFragment
-import com.shveed.wallpapperparser.R
 import kotlinx.android.synthetic.main.activity_recipe.*
 import java.util.*
 
