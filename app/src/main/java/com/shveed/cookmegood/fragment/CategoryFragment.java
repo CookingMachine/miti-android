@@ -36,7 +36,6 @@ public class CategoryFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.f_category, container, false);
         ButterKnife.bind(this, view);
-
         setRecipeData();
 
         recyclerView.addOnItemTouchListener(
