@@ -11,12 +11,10 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.shveed.cookmegood.R
 import com.shveed.cookmegood.fragment.*
-import com.shveed.cookmegood.listener.FragmentChangeListener
+import com.shveed.cookmegood.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.activity_start.*
 
-
-class StartActivity: FragmentActivity(), FragmentChangeListener  {
-
+class StartActivity: FragmentActivity(), OnFragmentChangeListener  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
