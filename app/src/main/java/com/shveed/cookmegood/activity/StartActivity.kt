@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -14,16 +15,18 @@ import com.shveed.cookmegood.fragment.*
 import com.shveed.cookmegood.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.activity_start.*
 
-class StartActivity: FragmentActivity(), OnFragmentChangeListener  {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
+class StartActivity: SuperActivity(), OnFragmentChangeListener  {
+    override fun initInterface() {
         nav_view_start.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
         supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, MainFragment())
                 .commit()
-     //   val currentUser = intent.getSerializableExtra("userObject") as User
+        //   val currentUser = intent.getSerializableExtra("userObject") as User
     }
+
+    override fun setAttr() {
+        setLayout(R.layout.activity_start)
+    }
+
     private val mOnNavigationItemSelected = BottomNavigationView.OnNavigationItemSelectedListener {menuItem -> when
         (menuItem.itemId){
         R.id.navigation_suggest ->{
