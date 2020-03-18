@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.shveed.cookmegood.data.dto.Recipe
 import com.shveed.cookmegood.R
+import com.shveed.cookmegood.data.dto.Recipe
 import kotlinx.android.synthetic.main.item_category_recipe.view.*
 
-class CategoryRecipeAdapter(private val recipes: List<Recipe>, val context: Context): RecyclerView.Adapter<CategoryRecipeAdapter.ViewHolder>(){
+class CategoryRecipeAdapter(private val recipes: List<Recipe>, val context: Context?): RecyclerView.Adapter<CategoryRecipeAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
                 LayoutInflater.from(context).inflate(
