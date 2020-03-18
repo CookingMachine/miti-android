@@ -1,7 +1,8 @@
 package com.shveed.cookmegood.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.shveed.cookmegood.R;
 
