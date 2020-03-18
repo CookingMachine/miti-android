@@ -52,22 +52,22 @@ class MainFragment: SuperFragment() {
     }
 
     private fun getCategoriesFromServer() {
-        NetworkService.getInstance()
+        NetworkService()
                 .categoryApi
                 .allCategories
-                .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                ?.enqueue(object : Callback<List<Category?>?> {
+                    override fun onResponse(call: Call<List<Category?>?>, response: Response<List<Category?>?>) {
                         showList()
                         for (category in response.body()!!) {
-                            RuntimeStorage.newInstance().categories.add(category.name)
+                            RuntimeStorage.newInstance()?.categories?.add(category?.name!!)
                         }
                     }
 
-                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
+                    override fun onFailure(call: Call<List<Category?>?>, t: Throwable) {
                         showList()
                         Toast.makeText(context, "Нет связи с сервером", Toast.LENGTH_SHORT).show()
-                        RuntimeStorage.newInstance().categories = listOf("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки", "Заготовки на зиму")
-                        recipesAdapter!!.onUpdateList(RuntimeStorage.newInstance().categories)
+                        RuntimeStorage.newInstance()!!.categories = arrayListOf("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки", "Заготовки на зиму")
+                        recipesAdapter!!.onUpdateList(RuntimeStorage.newInstance()!!.categories)
                     }
                 })
     }

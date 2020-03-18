@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.shveed.cookmegood.R
 import com.shveed.cookmegood.adapter.LogInDialogAdapter
 import com.shveed.cookmegood.data.NetworkService
 import com.shveed.cookmegood.data.dto.User
-import com.shveed.cookmegood.R
 import kotlinx.android.synthetic.main.activity_authorization.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -54,10 +54,10 @@ class LoginActivity  : AppCompatActivity(), LogInDialogAdapter.LoginDialogListen
     }
 
     private fun doAuth(login: String, pass: String) {
-        NetworkService.getInstance()
+        NetworkService()
                 .userApi
                 .checkUser(login, pass)
-                .enqueue(object : Callback<User?> {
+                ?.enqueue(object : Callback<User?> {
                     override fun onResponse(
                             call: Call<User?>,
                             response: Response<User?>) {
