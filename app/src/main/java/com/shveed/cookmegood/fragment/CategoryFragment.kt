@@ -23,15 +23,14 @@ class CategoryFragment: Fragment() {
         setRecipeData()
         val recyclerView: RecyclerView = view.findViewById(R.id.recipeRecycler)
         recyclerView.addOnItemTouchListener(
-                RecipeItemClickListener(context, recyclerView,
-                        object : RecipeItemClickListener.OnItemClickListener {
-                            override fun onItemClick(view: View, position: Int) {
+                RecipeItemClickListener(context, recyclerView, object: RecipeItemClickListener.OnItemClickListener{
+                            override fun onItemClick(view: View?, position: Int) {
                                 val name = recipes[position].name
                                 val image = Objects.requireNonNull(recipes[position].image)!!.toInt()
                                 toRecipe(name!!, image)
                             }
 
-                            override fun onLongItemClick(view: View, position: Int) {
+                            override fun onLongItemClick(view: View?, position: Int) {
                                 val name = recipes[position].name
                                 val image = recipes[position].image!!.toInt()
                                 toRecipe(name!!, image)
@@ -45,7 +44,7 @@ class CategoryFragment: Fragment() {
 
     private fun setRecipeData() {
         recipes.add(Recipe("Борщ", "Подавать теплым", "3:00", java.lang.String.valueOf(R.drawable.pic2), "Украинская"))
-        recipes.add(Recipe("Пиууа", "Для большоц компании", "2:00", java.lang.String.valueOf(R.drawable.pic2), "Итальянская"))
+        recipes.add(Recipe("Пиууа", "Для большоц компании", "2:00", java.lang.String.valueOf(R.drawable.pic1), "Итальянская"))
     }
 
     private fun toRecipe(name: String, image: Int) {
@@ -61,3 +60,4 @@ class CategoryFragment: Fragment() {
         errorToast.show()
     }
 }
+
