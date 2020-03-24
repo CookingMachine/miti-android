@@ -1,19 +1,19 @@
 package com.shveed.cookmegood.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.shveed.cookmegood.data.dto.Ingredient;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.shveed.cookmegood.R;
+import com.shveed.cookmegood.data.dto.Ingredient;
 
 import java.util.HashMap;
 import java.util.List;
-
 public class IngredientsGridAdapter extends RecyclerView.Adapter<IngredientsGridAdapter.ViewHolder> {
 
     private List<Ingredient> ingredients;
