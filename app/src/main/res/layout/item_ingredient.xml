@@ -38,7 +38,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/ingredText"
+            android:id="@+id/ingredientName"
             android:text="@string/title_ingred"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -49,7 +49,7 @@
             />
 
         <TextView
-            android:id="@+id/ingredAmount"
+            android:id="@+id/ingredientAmount"
             android:text="60г."
             android:textColor="@color/black"
             android:textSize="12sp"

@@ -25,7 +25,7 @@ class IngredientFragment : Fragment() {
         }
         val view = inflater.inflate(R.layout.f_ingredient, container, false)
         val recyclerView = view.findViewById<View>(R.id.gridIngred) as RecyclerView
-        val adapter = IngredientsGridAdapter(activity, ingredients)
+        val adapter = IngredientsGridAdapter(context!!, ingredients)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
         recyclerView.adapter = adapter
         return view
