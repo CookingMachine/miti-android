@@ -19,18 +19,22 @@ class IngredientFragment : Fragment() {
     private val buyMap = HashMap<Ingredient, Int>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        for (i in 0..7) {
-            val ingredient = Ingredient(data[i], amount[i])
-            ingredients.add(ingredient)
+        if(ingredients.isNullOrEmpty()) {
+            for (i in 0..7) {
+                val ingredient = Ingredient(data[i], amount[i])
+                ingredients.add(ingredient)
+            }
         }
+
         val view = inflater.inflate(R.layout.f_ingredient, container, false)
         val recyclerView = view.findViewById<View>(R.id.gridIngred) as RecyclerView
         val adapter = IngredientsGridAdapter(context!!, ingredients)
+
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
         recyclerView.adapter = adapter
         return view
     }
-    fun getBuyMap(): HashMap<Ingredient, Int>? {
+    private fun getBuyMap(): HashMap<Ingredient, Int>? {
         return buyMap
     }
 }
