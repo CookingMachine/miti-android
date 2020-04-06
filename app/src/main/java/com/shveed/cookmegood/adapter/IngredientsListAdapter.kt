@@ -9,7 +9,7 @@ import com.shveed.cookmegood.R
 import com.shveed.cookmegood.data.dto.Ingredient
 import kotlinx.android.synthetic.main.item_ingredient.view.*
 
-class IngredientsGridAdapter(val context: Context, var ingredients: List<Ingredient>): RecyclerView.Adapter<IngredientsGridAdapter.ViewHolder>() {
+class IngredientsListAdapter(val context: Context, private var ingredients: List<Ingredient>): RecyclerView.Adapter<IngredientsListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
