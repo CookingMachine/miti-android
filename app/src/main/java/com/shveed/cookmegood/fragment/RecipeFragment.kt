@@ -12,7 +12,9 @@ import com.shveed.cookmegood.data.dto.Step
 import java.util.*
 
 class RecipeFragment : Fragment() {
-    var steps: MutableList<Step>? = null
+
+    private var steps: MutableList<Step>? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         steps = ArrayList()
         val view = inflater.inflate(R.layout.f_recipe, container, false)
@@ -23,7 +25,7 @@ class RecipeFragment : Fragment() {
         return view
     }
 
-    fun setData() {
+    private fun setData() {
         for (i in 1..4) {
             steps!!.add(Step(i,
                     "Неторопясь нарезаем вкусненькую отваренную курочку",

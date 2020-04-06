@@ -1,165 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor">
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/recipeSwipeRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="180dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    tools:context=".activity.RecipeActivity">
 
         <ImageView
             android:id="@+id/recipeImageView"
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:contentDescription="@string/text_recipe"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/rounded_corners_image"
             android:scaleType="centerCrop"/>
 
-        <RelativeLayout
-            android:layout_marginTop="170dp"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/rounded_corners_background">
+            <include layout="@layout/layout_recipe_bottom_sheet"/>
 
-            <TextView
-                android:layout_centerHorizontal="true"
-                android:id="@+id/recipeTitleTextView"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="@string/title_recipe"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:fontFamily="@font/roboto_light"
-                android:layout_alignParentTop="true"/>
-
-            <TextView
-                android:layout_centerHorizontal="true"
-                android:id="@+id/recipeText"
-                android:layout_width="250dp"
-                android:layout_height="70dp"
-                android:gravity="center"
-                android:text="@string/text_recipe"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:layout_below="@+id/recipeTitleTextView"/>
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:layout_below="@+id/recipeText"
-                app:layout_constraintTop_toBottomOf="@+id/recipeText">
-
-                <Button
-                    android:id="@+id/recipeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/rounded_corners_button_inversed"
-                    android:text="@string/title_recipe"
-                    android:textColor="@color/backgroundColor"
-                    android:textSize="12sp"
-                    style="?android:attr/buttonBarButtonStyle"/>
-
-                <Button
-                    android:id="@+id/ingredButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/rounded_corners_button"
-                    android:text="@string/title_ingred"
-                    android:textColor="@color/objectsColor"
-                    android:textSize="12sp"
-                    style="?android:attr/buttonBarButtonStyle"/>
-
-                <Button
-                    android:id="@+id/kbjuButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/rounded_corners_button"
-                    android:text="@string/title_kbju"
-                    android:textColor="@color/objectsColor"
-                    android:textSize="12sp"
-                    style="?android:attr/buttonBarButtonStyle"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/linearLayout"
-                android:id="@+id/linearLayout2"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                <Button
-                    android:onClick="countPortion"
-                    android:id="@+id/minusButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/circle_button"
-                    android:text="@string/text_minus"
-                    android:textColor="@color/objectsColor"/>
-
-                <TextView
-                    android:id="@+id/countPor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center|center_horizontal"
-                    android:text="@string/countPor"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:onClick="countPortion"
-                    android:id="@+id/plusButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/circle_button"
-                    android:text="@string/text_plus"
-                    android:textColor="@color/objectsColor"/>
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/frameRecipe"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout2">
-            </FrameLayout>
-        </RelativeLayout>
-        </RelativeLayout>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
