@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.shveed.cookmegood.R
+import com.shveed.cookmegood.adapter.IngredientsListAdapter
+import com.shveed.cookmegood.adapter.RecipeStepAdapter
 import com.shveed.cookmegood.data.dto.Ingredient
-import com.shveed.cookmegood.fragment.IngredientFragment
-import com.shveed.cookmegood.fragment.KbjuFragment
-import com.shveed.cookmegood.fragment.RecipeFragment
+import com.shveed.cookmegood.data.dto.Step
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
 import java.util.*
@@ -19,11 +18,15 @@ import java.util.*
 class RecipeActivity : AppCompatActivity(){
 
     private var portions = 1
-    
-    private var recipeFragment: RecipeFragment? = null
-    private var ingredientFragment: IngredientFragment? = null
-    private var kbjuFragment: KbjuFragment? = null
-    private var fragmentTransaction: FragmentTransaction? = null
+
+    private var steps = mutableListOf<Step>()
+
+    private var stepListAdapter: RecipeStepAdapter? = null
+    private var ingredientsListAdapter: IngredientsListAdapter? = null
+
+    private var ingredients = arrayListOf<Ingredient>()
+    private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
+    private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
     private val buyMap = HashMap<Ingredient, Int>()
 
@@ -33,19 +36,21 @@ class RecipeActivity : AppCompatActivity(){
 
         val name: String = intent.extras?.get("recipeName").toString()
         val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
+
         val bottomSheetBehaviour = BottomSheetBehavior.from(bottomSheet)
 
-        ingredientFragment = IngredientFragment()
-        recipeFragment = RecipeFragment()
-        kbjuFragment = KbjuFragment()
+        stepListAdapter = RecipeStepAdapter(applicationContext, steps)
+        recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        recipeStepList.adapter = stepListAdapter
 
-        transaction.add(R.id.frameRecipe, recipeFragment!!)
-        transaction.commit()
+        ingredientsListAdapter = IngredientsListAdapter(applicationContext, ingredients)
+        recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recipeIngredientsList.adapter = ingredientsListAdapter
 
         recipeTitleTextView.text = name
         recipeImageView.setImageResource(image)
+
+        clickRecipe()
         
         recipeButton.setOnClickListener { clickRecipe()  }
         kbjuButton.setOnClickListener { clickKbju()  }
@@ -61,9 +66,11 @@ class RecipeActivity : AppCompatActivity(){
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
 
-        fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction!!.replace(R.id.frameRecipe, recipeFragment!!)
-        fragmentTransaction!!.commit()
+        recipeStepList.visibility = View.VISIBLE
+        recipeIngredientsList.visibility = View.GONE
+        recipeKBJU.visibility = View.GONE
+
+        setStepList()
     }
 
     private fun clickIngred() {
@@ -75,9 +82,11 @@ class RecipeActivity : AppCompatActivity(){
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
 
-        fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction!!.replace(R.id.frameRecipe, ingredientFragment!!)
-        fragmentTransaction!!.commit()
+        recipeStepList.visibility = View.GONE
+        recipeIngredientsList.visibility = View.VISIBLE
+        recipeKBJU.visibility = View.GONE
+
+        setIngredientsList()
     }
 
     private fun clickKbju() {
@@ -89,9 +98,9 @@ class RecipeActivity : AppCompatActivity(){
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button_inversed)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
 
-        fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction!!.replace(R.id.frameRecipe, kbjuFragment!!)
-        fragmentTransaction!!.commit()
+        recipeStepList.visibility = View.GONE
+        recipeIngredientsList.visibility = View.GONE
+        recipeKBJU.visibility = View.VISIBLE
     }
 
     fun countPortion(view: View) {
@@ -106,6 +115,25 @@ class RecipeActivity : AppCompatActivity(){
             portions++
             line = "Порции: $portions"
             countPor.text = line
+        }
+    }
+
+    private fun setStepList() {
+        if(steps.isNullOrEmpty()) {
+            for (i in 1..4) {
+                steps.add(Step(i,
+                        "Неторопясь нарезаем вкусненькую отваренную курочку",
+                        "Нарезаем курицу"))
+            }
+        }
+    }
+
+    private fun setIngredientsList(){
+        if(ingredients.isNullOrEmpty()) {
+            for (i in 0..7) {
+                val ingredient = Ingredient(data[i], amount[i])
+                ingredients.add(ingredient)
+            }
         }
     }
 
