@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/bottomSheet"
-    android:orientation="vertical"
-    android:elevation="2dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
+    android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/rounded_corners_background"
+    android:elevation="2dp"
+    android:orientation="vertical"
     app:behavior_hideable="false"
     app:behavior_peekHeight="210dp"
-    app:layout_behavior="@string/bottom_sheet_behavior"
-    android:background="@drawable/rounded_corners_background">
+    app:layout_behavior="@string/bottom_sheet_behavior">
 
     <TextView
         android:id="@+id/recipeTitleTextView"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:gravity="center"
         android:layout_gravity="center"
+        android:gravity="center"
         android:text="@string/title_recipe"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:fontFamily="@font/roboto_light"/>
+        app:fontFamily="@font/roboto_light" />
 
     <TextView
         android:id="@+id/recipeText"
@@ -32,58 +31,58 @@
         android:gravity="center"
         android:text="@string/text_recipe"
         android:textColor="@color/black"
-        android:textSize="12sp"/>
+        android:textSize="12sp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:gravity="center"
         android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal"
         android:padding="5dp">
 
         <Button
             android:id="@+id/recipeButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:fontFamily="@font/roboto_light"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_corners_button_inversed"
+            android:fontFamily="@font/roboto_light"
             android:text="@string/title_recipe"
             android:textColor="@color/backgroundColor"
-            android:textSize="12sp"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/ingredButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:fontFamily="@font/roboto_light"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_corners_button"
+            android:fontFamily="@font/roboto_light"
             android:text="@string/title_ingred"
             android:textColor="@color/objectsColor"
-            android:textSize="12sp"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/kbjuButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:fontFamily="@font/roboto_light"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_corners_button"
+            android:fontFamily="@font/roboto_light"
             android:text="@string/title_kbju"
             android:textColor="@color/objectsColor"
-            android:textSize="12sp"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -95,13 +94,13 @@
         android:orientation="horizontal">
 
         <Button
-            android:onClick="countPortion"
             android:id="@+id/minusButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/circle_button"
+            android:onClick="countPortion"
             android:text="@string/text_minus"
-            android:textColor="@color/objectsColor"/>
+            android:textColor="@color/objectsColor" />
 
         <TextView
             android:id="@+id/countPor"
@@ -114,45 +113,45 @@
             android:textColor="@color/black" />
 
         <Button
-            android:onClick="countPortion"
             android:id="@+id/plusButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/circle_button"
+            android:onClick="countPortion"
             android:text="@string/text_plus"
-            android:textColor="@color/objectsColor"/>
+            android:textColor="@color/objectsColor" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeStepList"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:overScrollMode="never" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeIngredientsList"
+        style="@android:style/Animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2"
-        android:verticalSpacing="2dp"
-        android:horizontalSpacing="2dp"
-        android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginEnd="5dp"
-        style="@android:style/Animation"/>
+        android:layout_marginRight="5dp"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:verticalSpacing="2dp" />
 
     <LinearLayout
         android:id="@+id/recipeKBJU"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -179,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_calories"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/kbju_calories"
@@ -187,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_calories"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <View
@@ -201,38 +200,35 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="0.25"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:background="@drawable/rounded_view_login"
-                android:textSize="20sp"
-                android:text="@string/f_carbo_inside"
+                android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
-                android:textColor="@color/white">
-            </TextView>
+                android:text="@string/f_carbo_inside"
+                android:textColor="@color/white"
+                android:textSize="20sp"></TextView>
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/black"
-                android:text="@string/f_proteins"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/f_proteins"
+                android:textColor="@color/black"></TextView>
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/black"
                 android:id="@+id/f_proteins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_proteins">
-            </TextView>
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/f_proteins"
+                android:textColor="@color/black"></TextView>
         </LinearLayout>
 
         <View
@@ -245,38 +241,35 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="0.25"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:background="@drawable/rounded_view_login"
-                android:textSize="20sp"
-                android:text="@string/f_fats_inside"
+                android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
-                android:textColor="@color/white">
-            </TextView>
+                android:text="@string/f_fats_inside"
+                android:textColor="@color/white"
+                android:textSize="20sp"></TextView>
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/black"
-                android:text="@string/f_fats"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/f_fats"
+                android:textColor="@color/black"></TextView>
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/black"
                 android:id="@+id/f_fats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_fats">
-            </TextView>
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/f_fats"
+                android:textColor="@color/black"></TextView>
         </LinearLayout>
 
         <View
@@ -289,38 +282,35 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="0.25"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:background="@drawable/rounded_view_login"
-                android:textSize="20sp"
-                android:text="@string/f_proteins_inside"
+                android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
-                android:textColor="@color/white">
-            </TextView>
+                android:text="@string/f_proteins_inside"
+                android:textColor="@color/white"
+                android:textSize="20sp"></TextView>
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/black"
-                android:text="@string/f_carbo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/f_carbo"
+                android:textColor="@color/black"></TextView>
 
             <TextView
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/black"
                 android:id="@+id/f_carbo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_carbo">
-            </TextView>
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/f_carbo"
+                android:textColor="@color/black"></TextView>
         </LinearLayout>
     </LinearLayout>
 

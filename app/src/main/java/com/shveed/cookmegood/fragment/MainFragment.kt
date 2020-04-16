@@ -1,6 +1,7 @@
 package com.shveed.cookmegood.fragment
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -13,7 +14,6 @@ import com.shveed.cookmegood.data.RuntimeStorage
 import com.shveed.cookmegood.data.dto.Category
 import com.shveed.cookmegood.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.f_main.*
-import kotlinx.android.synthetic.main.include_fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
