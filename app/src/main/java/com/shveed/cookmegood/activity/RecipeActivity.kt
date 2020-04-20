@@ -37,7 +37,20 @@ class RecipeActivity : AppCompatActivity(){
         val name: String = intent.extras?.get("recipeName").toString()
         val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
 
-        val bottomSheetBehaviour = BottomSheetBehavior.from(bottomSheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.setPeekHeight(350, true)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+        bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+
+            }
+
+        })
 
         stepListAdapter = RecipeStepAdapter(applicationContext, steps)
         recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
@@ -49,8 +62,6 @@ class RecipeActivity : AppCompatActivity(){
 
         recipeTitleTextView.text = name
         recipeImageView.setImageResource(image)
-
-        clickRecipe()
         
         recipeButton.setOnClickListener { clickRecipe()  }
         kbjuButton.setOnClickListener { clickKbju()  }
@@ -59,7 +70,7 @@ class RecipeActivity : AppCompatActivity(){
     }
     private fun clickRecipe() {
 
-        recipeButton.setBackgroundResource(R.drawable.rounded_corners_button_inversed)
+        recipeButton.setBackgroundResource(R.drawable.rounded_corners_button_pressed)
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
@@ -77,7 +88,7 @@ class RecipeActivity : AppCompatActivity(){
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
-        ingredButton.setBackgroundResource(R.drawable.rounded_corners_button_inversed)
+        ingredButton.setBackgroundResource(R.drawable.rounded_corners_button_pressed)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
@@ -95,7 +106,7 @@ class RecipeActivity : AppCompatActivity(){
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
-        kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button_inversed)
+        kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button_pressed)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
 
         recipeStepList.visibility = View.GONE
