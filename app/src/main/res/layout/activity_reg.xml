@@ -174,7 +174,7 @@
             android:layout_height="43dp"
             android:layout_alignTop="@+id/textBottom"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_corners_button_inversed"
+            android:background="@drawable/rounded_corners_button_pressed"
             android:insetBottom="6dp"
             android:text="@string/btn_register"
             android:textColor="@color/white"
