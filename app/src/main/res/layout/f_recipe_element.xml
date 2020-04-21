@@ -16,7 +16,7 @@
             android:id="@+id/recipeStepNumber"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/rounded_view_login"
+            android:background="@drawable/shape_lound_login"
             android:gravity="center"
             android:fontFamily="@font/roboto_light"
             android:textSize="10sp"

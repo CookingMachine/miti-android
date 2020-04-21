@@ -34,6 +34,6 @@ class IngredientsListAdapter(val context: Context, private var ingredients: List
     class ViewHolder(item: View): RecyclerView.ViewHolder(item){
         var name = item.ingredientName!!
         var amount = item.ingredientAmount!!
-        var addButton = item.addIngredientButton!!
+        var chackBox = item.ingredientCheckBox!!
     }
 }

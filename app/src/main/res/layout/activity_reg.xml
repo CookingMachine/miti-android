@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/auth_bg"
+    android:background="@drawable/image_auth_background"
     android:scaleType="center">
 
     <LinearLayout
@@ -174,7 +174,7 @@
             android:layout_height="43dp"
             android:layout_alignTop="@+id/textBottom"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_corners_button_pressed"
+            android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"
             android:text="@string/btn_register"
             android:textColor="@color/white"
