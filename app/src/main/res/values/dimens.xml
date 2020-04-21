@@ -7,4 +7,5 @@
     <dimen name="pic_height">105dp</dimen>
     <dimen name="toolbar_default">44dp</dimen>
     <dimen name="half_margin">8dp</dimen>
+    <dimen name="marginSide">16dp</dimen>
 </resources>

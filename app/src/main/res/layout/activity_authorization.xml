@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/auth_bg"
+    android:background="@drawable/image_auth_background"
     android:layout_height="match_parent"
     android:scaleType="center">
 
@@ -36,7 +36,7 @@
             android:id="@+id/btn_signIn"
             android:layout_width="117dp"
             android:layout_height="43dp"
-            android:background="@drawable/rounded_corners_button_pressed"
+            android:background="@drawable/shape_round_button_pressed"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/btn_signIn"
             android:textColor="@color/white"
@@ -85,7 +85,7 @@
             android:id="@+id/btn_signUp"
             android:layout_width="117dp"
             android:layout_height="43dp"
-            android:background="@drawable/rounded_corners_button_pressed"
+            android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"
             android:text="@string/btn_registration"
             android:textColor="@color/white"

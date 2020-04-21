@@ -26,7 +26,7 @@
             android:layout_marginBottom="5dp"
             app:riv_corner_radius="10dip"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/title_ingred"
+            android:contentDescription="@string/title_ingredient"
             android:src="@drawable/pic2" />
 
         <RelativeLayout

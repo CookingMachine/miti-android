@@ -70,7 +70,7 @@ class RecipeActivity : AppCompatActivity(){
     }
     private fun clickRecipe() {
 
-        recipeButton.setBackgroundResource(R.drawable.rounded_corners_button_pressed)
+        recipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
@@ -88,7 +88,7 @@ class RecipeActivity : AppCompatActivity(){
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
-        ingredButton.setBackgroundResource(R.drawable.rounded_corners_button_pressed)
+        ingredButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
@@ -106,7 +106,7 @@ class RecipeActivity : AppCompatActivity(){
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
-        kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button_pressed)
+        kbjuButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
 
         recipeStepList.visibility = View.GONE

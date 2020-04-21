@@ -20,7 +20,7 @@
     <string name="title_recipe">РЕЦЕПТ</string>
     <string name="title_count_positions">101 позиция</string>
     <string name="title_kbju">КБЖУ</string>
-    <string name="title_ingred">Ингредиенты</string>
+    <string name="title_ingredient">Ингредиенты</string>
     <string name="title_dashboard">Добавить</string>
     <string name="title_notifications">Избранное</string>
     <string name="title_result">Результат поиска:</string>
@@ -87,5 +87,9 @@
     <string name="profile_rate_app">ОЦЕНИТЬ</string>
     <string name="title_activity_reg">RegActivity</string>
 
+    <!-- EXAMPLE -->
+
+    <string name="example_ingredient_amount">1200г.</string>
+    <string name="example_ingredient_name">Луковые кольца</string>
 
 </resources>

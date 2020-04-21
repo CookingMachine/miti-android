@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/navigation_suggest"
-        android:icon="@drawable/offer_recipe_icon"
+        android:icon="@drawable/ic_offer_recipe"
         android:title="@string/title_dashboard" />
 
     <item

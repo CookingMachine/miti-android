@@ -33,7 +33,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_corners_button_pressed"
+        android:background="@drawable/shape_round_button_pressed"
         android:fontFamily="@font/roboto"
         android:text="@string/btn_toPurchases"
         android:textColor="@color/white"

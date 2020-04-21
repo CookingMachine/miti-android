@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_nav_border"
+        android:background="@drawable/shape_bottom_nav_border"
         app:itemHorizontalTranslationEnabled="false"
         app:itemIconSize="22dp"
         app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
