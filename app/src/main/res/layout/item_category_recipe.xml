@@ -24,8 +24,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            app:riv_corner_radius="10dip"
-            android:scaleType="fitCenter"
+            app:riv_corner_radius="10dp"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/title_ingredient"
             android:src="@drawable/pic2" />
 
