@@ -6,24 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     tools:context=".activity.RecipeActivity">
-    
-    <RelativeLayout
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/recipeToolbar"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
-        
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/recipeToolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="2dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-        <ImageView
-            android:id="@+id/recipeImageView"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:contentDescription="@string/text_recipe"
-            android:scaleType="centerCrop"/>
-
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/text_recipe"
+        android:scaleType="centerCrop"/>
 
     <include layout="@layout/layout_recipe_bottom_sheet"/>
 

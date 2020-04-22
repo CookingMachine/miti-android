@@ -2,16 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170dp"
     android:background="@drawable/shape_recipe_bottom_sheet"
     android:elevation="2dp"
     android:orientation="vertical"
     app:behavior_hideable="false"
-    android:minHeight="410dp"
-    android:maxHeight="700dp"
-    app:layout_behavior="@string/bottom_sheet_behavior">
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    tools:showIn="@layout/activity_recipe">
 
     <TextView
         android:id="@+id/recipeTitleTextView"
@@ -35,7 +35,7 @@
         android:textSize="12sp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/recipeButtonsLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -143,6 +143,7 @@
         android:horizontalSpacing="2dp"
         android:numColumns="2"
         android:verticalSpacing="2dp"
+        android:overScrollMode="never"
         android:visibility="gone"/>
 
     <LinearLayout
