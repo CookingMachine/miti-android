@@ -44,6 +44,11 @@
     <string name="text_minus">-</string>
     <string name="text_plus">+</string>
 
+    <!-- MENU -->
+
+    <string name="menu_basket">Добавить</string>
+    <string name="menu_like">Нравится</string>
+
     <!-- BUTTONS -->
 
     <string name="btn_signIn">Войти</string>

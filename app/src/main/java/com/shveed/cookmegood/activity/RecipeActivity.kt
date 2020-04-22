@@ -2,9 +2,7 @@ package com.shveed.cookmegood.activity
 
 import android.graphics.Point
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -170,6 +168,23 @@ class RecipeActivity : AppCompatActivity(){
 
     private fun onChangeSheetState(pixels: Int){
         bottomSheet.layoutParams.height = pixels
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_recipe, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_basket -> {
+
+            }
+            R.id.action_like -> {
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
