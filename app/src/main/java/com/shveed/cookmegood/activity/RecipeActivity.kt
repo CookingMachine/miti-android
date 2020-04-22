@@ -1,7 +1,13 @@
 package com.shveed.cookmegood.activity
 
+import android.graphics.Point
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,22 +34,36 @@ class RecipeActivity : AppCompatActivity(){
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
-    private val buyMap = HashMap<Ingredient, Int>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe)
 
+        setSupportActionBar(recipeToolbar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val name: String = intent.extras?.get("recipeName").toString()
         val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
 
+        val peekHeight = recipeTitleTextView.layoutParams.height +
+                recipeText.layoutParams.height +
+                recipeButtonsLayout.layoutParams.height
+
+        val display = windowManager.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        val screenHeight = point.y
+
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.setPeekHeight(350, true)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetBehavior.setPeekHeight(peekHeight, true)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        onChangeSheetState(screenHeight / 10 * 6)
+
+        clickRecipe()
 
         bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-
+                recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
             }
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -53,7 +73,7 @@ class RecipeActivity : AppCompatActivity(){
         })
 
         stepListAdapter = RecipeStepAdapter(applicationContext, steps)
-        recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeStepList.adapter = stepListAdapter
 
         ingredientsListAdapter = IngredientsListAdapter(applicationContext, ingredients)
@@ -146,6 +166,10 @@ class RecipeActivity : AppCompatActivity(){
                 ingredients.add(ingredient)
             }
         }
+    }
+
+    private fun onChangeSheetState(pixels: Int){
+        bottomSheet.layoutParams.height = pixels
     }
 
 }

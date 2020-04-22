@@ -7,7 +7,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDialogFragment
 import com.shveed.cookmegood.R
-import kotlinx.android.synthetic.main.login_alert.view.*
+import kotlinx.android.synthetic.main.item_login_alert.view.*
 
 class LogInDialogAdapter : AppCompatDialogFragment() {
     var listener: LoginDialogListener? = null
@@ -15,7 +15,7 @@ class LogInDialogAdapter : AppCompatDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
         val inflater = activity!!.layoutInflater
-        val view = inflater.inflate(R.layout.login_alert,null)
+        val view = inflater.inflate(R.layout.item_login_alert,null)
         builder.setView(view)
                 .setPositiveButton("Войти") { dialog, which ->
                     val login: String = view.loginEdit.text.toString()
