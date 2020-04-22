@@ -34,7 +34,6 @@
 
     <string name="text_login">Логин:</string>
     <string name="text_password">Пароль:</string>
-    <string name="text_step_title">Нарезаем курицу</string>
     <string name="text_step_number">1</string>
     <string name="text_step_name">Шаг</string>
     <string name="text_step_desc">Описание</string>
