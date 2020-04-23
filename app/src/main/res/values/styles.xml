@@ -54,5 +54,10 @@
         <item name="colorAccent">@color/objectsColor</item>
     </style>
 
+    <style name="RecipeRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:minHeight">16dp</item>
+        <item name="android:minWidth">16dp</item>
+        <item name="android:progressDrawable">@drawable/shape_rating_bar</item>
+    </style>
 
 </resources>
