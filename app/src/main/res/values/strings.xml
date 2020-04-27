@@ -37,9 +37,7 @@
     <string name="text_step_number">1</string>
     <string name="text_step_name">Шаг</string>
     <string name="text_step_desc">Описание</string>
-    <string name="text_recipe"> Здесь я решил написать дефолтное сообщение
-        вместо которого должно находиться
-    описание рецепта, выбранного пользователем</string>
+    <string name="text_recipe"> Важным условием настоящей пиццы bbq является ее запекание на углях или дровах. Для этого существуют специальные печи. Только тогда лепешка приобретет вкус и аромат дымка. Рецептуру можно менять по своим вкусовым пристрастиям.</string>
     <string name="text_minus">-</string>
     <string name="text_plus">+</string>
 

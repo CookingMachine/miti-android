@@ -16,6 +16,7 @@ import com.shveed.cookmegood.adapter.RecipeStepAdapter
 import com.shveed.cookmegood.data.dto.Ingredient
 import com.shveed.cookmegood.data.dto.Step
 import kotlinx.android.synthetic.main.activity_recipe.*
+import kotlinx.android.synthetic.main.item_recipe_step.*
 import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
 import java.util.*
 
@@ -40,37 +41,17 @@ class RecipeActivity : AppCompatActivity(){
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val name: String = intent.extras?.get("recipeName").toString()
-        val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
-
-        val peekHeight = recipeTitleTextView.layoutParams.height +
-                recipeText.layoutParams.height +
-                recipeButtonsLayout.layoutParams.height
-
         val display = windowManager.defaultDisplay
         val point = Point()
         display.getSize(point)
         val screenHeight = point.y
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.setPeekHeight(peekHeight, true)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        onChangeSheetState(screenHeight / 10 * 6)
+        val name: String = intent.extras?.get("recipeName").toString()
+        val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
+        recipeTitleTextView.text = name
+        recipeImageView.setImageResource(image)
 
-        clickRecipe()
-
-        bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
-            }
-
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-
-            }
-
-        })
-
-        stepListAdapter = RecipeStepAdapter(applicationContext, steps)
+        stepListAdapter = RecipeStepAdapter(steps, applicationContext)
         recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeStepList.adapter = stepListAdapter
 
@@ -78,8 +59,30 @@ class RecipeActivity : AppCompatActivity(){
         recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeIngredientsList.adapter = ingredientsListAdapter
 
-        recipeTitleTextView.text = name
-        recipeImageView.setImageResource(image)
+        recipeText.post(Runnable(){
+            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+
+            val peekHeight = recipeTitleTextView.layoutParams.height +
+                    recipeText.height +
+                    recipeButtonsLayout.layoutParams.height
+
+            bottomSheetBehavior.setPeekHeight(peekHeight, true)
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            onChangeSheetState(screenHeight / 10 * 7)
+
+            bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
+                }
+
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+
+                }
+
+            })
+        })
+
+        clickRecipe()
         
         recipeButton.setOnClickListener { clickRecipe()  }
         kbjuButton.setOnClickListener { clickKbju()  }
@@ -89,7 +92,7 @@ class RecipeActivity : AppCompatActivity(){
     private fun clickRecipe() {
 
         recipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
+        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
@@ -107,7 +110,7 @@ class RecipeActivity : AppCompatActivity(){
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
         ingredButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
+        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
         kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
 
@@ -125,26 +128,11 @@ class RecipeActivity : AppCompatActivity(){
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
         ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
         kbjuButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.backgroundColor))
+        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.GONE
         recipeKBJU.visibility = View.VISIBLE
-    }
-
-    fun countPortion(view: View) {
-        val line: String
-        if (view.id == R.id.minusButton) {
-            if (portions > 1) {
-                portions--
-                line = "Порции: $portions"
-                countPor.text = line
-            }
-        } else if (view.id == R.id.plusButton) {
-            portions++
-            line = "Порции: $portions"
-            countPor.text = line
-        }
     }
 
     private fun setStepList() {
