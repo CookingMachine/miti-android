@@ -43,8 +43,8 @@ class CategoryFragment: Fragment() {
     }
 
     private fun setRecipeData() {
-        recipes.add(Recipe("Борщ", "Подавать теплым", "3:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская"))
-        recipes.add(Recipe("Пиууа", "Для большоц компании", "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская"))
+        recipes.add(Recipe("Пицца", "Для большой компании", "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская"))
+        recipes.add(Recipe("Борщ", "Хватит на всю семью", "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская"))
     }
 
     private fun toRecipe(name: String, image: Int) {

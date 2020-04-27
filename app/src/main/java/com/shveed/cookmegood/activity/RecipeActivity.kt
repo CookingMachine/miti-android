@@ -59,27 +59,19 @@ class RecipeActivity : AppCompatActivity(){
         recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeIngredientsList.adapter = ingredientsListAdapter
 
-        recipeText.post(Runnable(){
-            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        onChangeSheetHeight(screenHeight / 10 * 7)
 
-            val peekHeight = recipeTitleTextView.layoutParams.height +
-                    recipeText.height +
-                    recipeButtonsLayout.layoutParams.height
+        bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
+            }
 
-            bottomSheetBehavior.setPeekHeight(peekHeight, true)
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-            onChangeSheetState(screenHeight / 10 * 7)
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
 
-            bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
-                }
+            }
 
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-
-                }
-
-            })
         })
 
         clickRecipe()
@@ -87,6 +79,15 @@ class RecipeActivity : AppCompatActivity(){
         recipeButton.setOnClickListener { clickRecipe()  }
         kbjuButton.setOnClickListener { clickKbju()  }
         ingredButton.setOnClickListener { clickIngred()  }
+
+        recipeText.post(Runnable(){
+
+            val peekHeight = recipeTitleTextView.layoutParams.height +
+                    recipeText.height +
+                    recipeButtonsLayout.layoutParams.height
+
+            bottomSheetBehavior.setPeekHeight(peekHeight, true)
+        })
 
     }
     private fun clickRecipe() {
@@ -154,7 +155,7 @@ class RecipeActivity : AppCompatActivity(){
         }
     }
 
-    private fun onChangeSheetState(pixels: Int){
+    private fun onChangeSheetHeight(pixels: Int){
         bottomSheet.layoutParams.height = pixels
     }
 
