@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             android:layout_marginLeft="4dp"
             android:textSize="12sp"
             android:fontFamily="@font/roboto"
@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:fontFamily="@font/roboto"
-            android:backgroundTint="@color/objectsColor"
+            android:backgroundTint="@color/primaryColor"
             android:textSize="16sp"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             />
 
     </LinearLayout>
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             android:fontFamily="@font/roboto"
             android:textSize="12sp"
             android:text="@string/text_password"/>
@@ -64,9 +64,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:backgroundTint="@color/objectsColor"
+            android:backgroundTint="@color/primaryColor"
             android:textSize="16sp"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             android:fontFamily="@font/roboto"
             />
 

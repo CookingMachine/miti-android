@@ -35,7 +35,7 @@
                 android:layout_height="35dp"
                 android:gravity="center_vertical"
                 android:text="@string/title_recipe"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:fontFamily="@font/roboto" />
 
@@ -45,7 +45,7 @@
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
                 android:text="@string/title_recipe"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp"
                 app:fontFamily="@font/roboto_light" />
 

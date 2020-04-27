@@ -8,4 +8,6 @@
     <dimen name="toolbar_default">44dp</dimen>
     <dimen name="half_margin">8dp</dimen>
     <dimen name="marginSide">16dp</dimen>
+    <dimen name="portionTextSelected">18sp</dimen>
+    <dimen name="portionText">14sp</dimen>
 </resources>

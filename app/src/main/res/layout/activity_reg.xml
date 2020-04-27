@@ -38,7 +38,7 @@
             android:layout_marginStart="44dp"
             android:text="@string/hint_nameSurname"
             app:fontFamily="@font/roboto"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold">
         </TextView>
@@ -50,12 +50,12 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/colorWhite"
             android:inputType="text"
             android:paddingBottom="17dp"
             android:text=""
             android:textColor="#FFFFFF"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/roboto"
@@ -78,7 +78,7 @@
             android:layout_marginStart="44dp"
             app:fontFamily="@font/roboto"
             android:text="@string/hint_email"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold">
         </TextView>
@@ -90,12 +90,12 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/colorWhite"
             app:fontFamily="@font/roboto"
             android:inputType="textEmailAddress"
             android:paddingBottom="17dp"
             android:textColor="#FFFFFF"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold">
         </EditText>
@@ -116,7 +116,7 @@
             android:layout_marginStart="44dp"
             app:fontFamily="@font/roboto"
             android:text="@string/hint_password"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold">
         </TextView>
@@ -128,12 +128,12 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/colorWhite"
             app:fontFamily="@font/roboto"
             android:inputType="textPassword"
             android:paddingBottom="17dp"
             android:textColor="#FFFFFF"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold">
         </EditText>
@@ -177,7 +177,7 @@
             android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"
             android:text="@string/btn_register"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="10sp"
             app:fontFamily="@font/roboto_bold" />
 

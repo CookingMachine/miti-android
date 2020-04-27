@@ -39,7 +39,7 @@
 
                 <ImageView
                     android:id="@+id/cabinetUserImage"
-                    android:background="@color/black"
+                    android:background="@color/colorBlack"
                     android:layout_width="112dp"
                     android:layout_height="112dp"
                     android:layout_marginStart="16dp"
