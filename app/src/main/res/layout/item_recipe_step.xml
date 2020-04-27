@@ -21,7 +21,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="@dimen/marginSide"
             app:fontFamily="@font/roboto_light"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:text="@string/text_step_name" />
 
         <TextView
@@ -32,15 +32,14 @@
             android:gravity="center"
             android:fontFamily="@font/roboto_light"
             android:textSize="12sp"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:text="@string/text_step_number"/>
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/recipeStepDescription"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="@dimen/marginSide"
+        android:layout_marginBottom="10dp"
         android:layout_marginStart="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
         android:fontFamily="@font/roboto_light"
         android:layout_centerHorizontal="true"
         android:text="@string/text_recipe"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textAlignment="textStart" />
 
 </RelativeLayout>

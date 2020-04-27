@@ -37,7 +37,7 @@
                 android:paddingEnd="20dp"
                 android:gravity="center"
                 android:text="@string/title_recipe"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="28sp"
                 app:fontFamily="@font/roboto_thin" />
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/title_count_positions"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 app:fontFamily="@font/roboto_light" />
         </LinearLayout>

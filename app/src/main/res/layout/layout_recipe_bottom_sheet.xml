@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="500dp"
     android:background="@drawable/shape_recipe_bottom_sheet"
     android:elevation="2dp"
     android:orientation="vertical"
@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/title_recipe"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:fontFamily="@font/roboto_light" />
 
@@ -33,7 +33,7 @@
         android:layout_marginEnd="40dp"
         android:gravity="center"
         android:text="@string/text_recipe"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="12sp" />
 
     <LinearLayout
@@ -56,7 +56,7 @@
             android:background="@drawable/rounded_corners_button"
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_recipe"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             android:textSize="12sp" />
 
         <Button
@@ -70,7 +70,7 @@
             android:background="@drawable/rounded_corners_button"
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_ingredient"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             android:textSize="12sp" />
 
         <Button
@@ -84,20 +84,21 @@
             android:background="@drawable/rounded_corners_button"
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_kbju"
-            android:textColor="@color/objectsColor"
+            android:textColor="@color/primaryColor"
             android:textSize="12sp" />
     </LinearLayout>
 
-    <NumberPicker
+    <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/recipePortionPicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeStepList"
-        android:layout_width="wrap_content"
+        style="@android:style/Animation"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginEnd="@dimen/marginSide"
         android:overScrollMode="never"
@@ -112,9 +113,6 @@
         android:layout_marginLeft="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:horizontalSpacing="2dp"
-        android:numColumns="2"
-        android:verticalSpacing="2dp"
         android:overScrollMode="never"
         android:visibility="gone"/>
 
@@ -132,7 +130,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.25"
             android:gravity="center"
@@ -145,7 +143,7 @@
                 android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
                 android:text="@string/f_calories_inside"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="20sp">
 
             </TextView>
@@ -155,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_calories"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
 
             <TextView
                 android:id="@+id/kbju_calories"
@@ -163,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_calories"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
         </LinearLayout>
 
         <View
@@ -172,11 +170,11 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="26dp"
-            android:background="@color/objectsColor" />
+            android:background="@color/primaryColor" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.25"
             android:gravity="center"
@@ -189,7 +187,7 @@
                 android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
                 android:text="@string/f_carbo_inside"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="20sp"/>
 
             <TextView
@@ -197,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_proteins"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorBlack"/>
 
             <TextView
                 android:id="@+id/f_proteins"
@@ -205,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_proteins"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorBlack"/>
         </LinearLayout>
 
         <View
@@ -213,11 +211,11 @@
             android:layout_height="75dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="26dp"
-            android:background="@color/objectsColor" />
+            android:background="@color/primaryColor" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.25"
             android:gravity="center"
@@ -230,7 +228,7 @@
                 android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
                 android:text="@string/f_fats_inside"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="20sp"/>
 
             <TextView
@@ -238,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_fats"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorBlack"/>
 
             <TextView
                 android:id="@+id/f_fats"
@@ -246,7 +244,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_fats"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorBlack"/>
         </LinearLayout>
 
         <View
@@ -254,11 +252,11 @@
             android:layout_height="75dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="26dp"
-            android:background="@color/objectsColor" />
+            android:background="@color/primaryColor" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.25"
             android:gravity="center"
@@ -271,7 +269,7 @@
                 android:fontFamily="@font/roboto_thin"
                 android:gravity="center"
                 android:text="@string/f_proteins_inside"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="20sp"/>
 
             <TextView
@@ -279,7 +277,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_carbo"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorBlack"/>
 
             <TextView
                 android:id="@+id/f_carbo"
@@ -287,7 +285,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_thin"
                 android:text="@string/f_carbo"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorBlack"/>
 
         </LinearLayout>
 

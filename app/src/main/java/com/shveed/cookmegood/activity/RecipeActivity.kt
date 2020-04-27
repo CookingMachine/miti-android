@@ -3,9 +3,6 @@ package com.shveed.cookmegood.activity
 import android.graphics.Point
 import android.os.Bundle
 import android.view.*
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,9 +13,7 @@ import com.shveed.cookmegood.adapter.RecipeStepAdapter
 import com.shveed.cookmegood.data.dto.Ingredient
 import com.shveed.cookmegood.data.dto.Step
 import kotlinx.android.synthetic.main.activity_recipe.*
-import kotlinx.android.synthetic.main.item_recipe_step.*
 import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
-import java.util.*
 
 class RecipeActivity : AppCompatActivity(){
 
@@ -50,6 +45,8 @@ class RecipeActivity : AppCompatActivity(){
         val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
         recipeTitleTextView.text = name
         recipeImageView.setImageResource(image)
+
+        setPortionPicker()
 
         stepListAdapter = RecipeStepAdapter(steps, applicationContext)
         recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
@@ -93,15 +90,17 @@ class RecipeActivity : AppCompatActivity(){
     private fun clickRecipe() {
 
         recipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
+        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
+        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
 
         recipeStepList.visibility = View.VISIBLE
         recipeIngredientsList.visibility = View.GONE
         recipeKBJU.visibility = View.GONE
+
+        recipePortionPicker.visibility = View.GONE
 
         setStepList()
     }
@@ -109,15 +108,17 @@ class RecipeActivity : AppCompatActivity(){
     private fun clickIngred() {
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
+        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
         ingredButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         kbjuButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
+        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.VISIBLE
         recipeKBJU.visibility = View.GONE
+
+        recipePortionPicker.visibility = View.VISIBLE
 
         setIngredientsList()
     }
@@ -125,15 +126,17 @@ class RecipeActivity : AppCompatActivity(){
     private fun clickKbju() {
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
+        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.objectsColor))
+        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
         kbjuButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+        kbjuButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.GONE
         recipeKBJU.visibility = View.VISIBLE
+
+        recipePortionPicker.visibility = View.VISIBLE
     }
 
     private fun setStepList() {
@@ -174,6 +177,17 @@ class RecipeActivity : AppCompatActivity(){
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setPortionPicker(){
+        recipePortionPicker.maxValue = 100
+        recipePortionPicker.minValue = 1
+        recipePortionPicker.setFormatter { i -> "Порций: $i" }
+        recipePortionPicker.setSelectedTextColorResource(R.color.primaryColor)
+        recipePortionPicker.textSize = resources.getDimension(R.dimen.portionText)
+        recipePortionPicker.selectedTextSize = resources.getDimension(R.dimen.portionTextSelected)
+        recipePortionPicker.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        recipePortionPicker.dividerColor = ContextCompat.getColor(applicationContext, R.color.colorBlack80)
     }
 
 }
