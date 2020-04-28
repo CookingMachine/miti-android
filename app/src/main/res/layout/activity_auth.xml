@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/image_auth_background"
+    android:layout_height="match_parent"
+    android:scaleType="center"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/pic_width"
+            android:layout_height="@dimen/pic_height"
+            android:gravity="center"
+            android:layout_marginVertical="90dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"
+            android:layout_marginTop="110dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="200dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_signIn"
+            android:layout_width="117dp"
+            android:layout_height="43dp"
+            android:background="@drawable/shape_round_button_pressed"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/btn_signIn"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+
+            app:fontFamily="@font/roboto" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_marginBottom="26dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_width="75dp"
+                android:background="@color/colorWhite"
+                android:layout_height="1sp"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="&amp;"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif" />
+
+            <View
+                android:layout_marginBottom="26dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_width="75dp"
+                android:background="@color/colorWhite"
+                android:layout_height="1sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_signUp"
+            android:layout_width="117dp"
+            android:layout_height="43dp"
+            android:background="@drawable/shape_round_button_pressed"
+            android:insetBottom="6dp"
+            android:text="@string/btn_registration"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+
+            app:fontFamily="@font/roboto_bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textAsGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        android:text="@string/sign_guest"
+        android:textColor="#eaeaea"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:fontFamily="@font/roboto" />
+</RelativeLayout>
