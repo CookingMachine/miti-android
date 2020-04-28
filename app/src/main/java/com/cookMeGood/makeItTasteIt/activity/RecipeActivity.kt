@@ -12,6 +12,7 @@ import com.cookMeGood.makeItTasteIt.adapter.IngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.RecipeStepAdapter
 import com.cookMeGood.makeItTasteIt.data.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.data.dto.Step
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
 
@@ -77,14 +78,14 @@ class RecipeActivity : AppCompatActivity(){
         kbjuButton.setOnClickListener { clickKbju()  }
         ingredButton.setOnClickListener { clickIngred()  }
 
-        recipeText.post(Runnable(){
+        recipeText.post {
 
             val peekHeight = recipeTitleTextView.layoutParams.height +
                     recipeText.height +
                     recipeButtonsLayout.layoutParams.height
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
-        })
+        }
 
     }
     private fun clickRecipe() {
@@ -170,10 +171,10 @@ class RecipeActivity : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_basket -> {
-
+                HelpUtils.goToast(applicationContext, "Добавлено в корзину")
             }
             R.id.action_like -> {
-
+                HelpUtils.goToast(applicationContext, "Нравится!")
             }
         }
         return super.onOptionsItemSelected(item)
