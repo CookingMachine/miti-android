@@ -1,43 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_centerHorizontal="true"
-    android:gravity="center_horizontal"
-    android:paddingVertical="5dp"
-    android:elevation="20dp">
-    
-    <ImageView
-        android:id="@+id/cartRecipeImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/pic1"
-        />
+    android:layout_marginStart="@dimen/marginSide"
+    android:layout_marginTop="@dimen/marginSide"
+    android:layout_marginEnd="@dimen/marginSide">
 
-    <TextView
-        android:id="@+id/cartRecipeName"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cartRecipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/cartRecipeImage"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/marginSide"
+                    android:layout_marginEnd="@dimen/marginSide"
+                    app:riv_corner_radius="90dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/title_ingredient"
+                    android:src="@drawable/pic2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/cartRecipeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/title_recipe"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp"
+                            app:fontFamily="@font/roboto" />
+
+                        <TextView
+                            android:id="@+id/cartRecipeNationality"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/title_recipe"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp"
+                            app:fontFamily="@font/roboto_light" />
+
+                    </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <View
+                android:id="@+id/cartRecipeDivider"
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:background="@color/colorGreyLight"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartIngredientList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_activity_recipe"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textColor="@color/colorBlack"
-        app:fontFamily="@font/roboto_light"
-        />
+        android:visibility="gone"/>
 
-    <Button
-        android:id="@+id/toPurchasesButton"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/shape_round_button_pressed"
-        android:fontFamily="@font/roboto"
-        android:text="@string/btn_toPurchases"
-        android:textColor="@color/colorWhite"
-        android:textSize="10sp"
-        />
 
-</LinearLayout>
+</RelativeLayout>

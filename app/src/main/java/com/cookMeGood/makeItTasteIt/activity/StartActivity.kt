@@ -1,8 +1,6 @@
 package com.cookMeGood.makeItTasteIt.activity
 
-import android.content.Intent
 import android.util.Log
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -61,16 +59,6 @@ class StartActivity: SuperActivity(), OnFragmentChangeListener  {
         fragmentTransaction.replace(R.id.fragmentStartFrameLayout, fragment, fragment.toString())
         fragmentTransaction.addToBackStack(fragment.toString())
         fragmentTransaction.commit()
-    }
-
-    fun toSearch(view: View?) {
-        val intent = Intent(this, SearchActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun toCategories(view: View?) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, MainFragment())
-                .commit()
     }
 
 }

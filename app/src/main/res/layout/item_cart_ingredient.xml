@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginStart="@dimen/marginSide"
+    android:layout_marginEnd="@dimen/marginSide"
+    android:layout_marginBottom="12dp">
+
+    <TextView
+        android:id="@+id/cartIngredientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:text="@string/title_ingredient"
+        android:textSize="16sp"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:fontFamily="@font/roboto_light"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/cartIngredientAmount"/>
+
+    <TextView
+        android:id="@+id/cartIngredientAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="46dp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/example_ingredient_amount"
+        android:textSize="16sp"
+        android:layout_toStartOf="@+id/cartIngredientCheckBox"
+        android:textAlignment="textEnd"
+        android:fontFamily="@font/roboto_light"
+        android:layout_centerVertical="true"/>
+
+    <CheckBox
+        android:id="@+id/cartIngredientCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:button="@drawable/shape_check_box_ingredient"
+        android:layout_toStartOf="@id/ingredientCartImage"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/ingredientCartImage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/title_ingredient"
+        android:src="@drawable/ic_close"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

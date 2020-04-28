@@ -12,7 +12,7 @@ import com.cookMeGood.makeItTasteIt.data.NetworkService
 import com.cookMeGood.makeItTasteIt.data.RuntimeStorage
 import com.cookMeGood.makeItTasteIt.data.dto.Category
 import com.cookMeGood.makeItTasteIt.listener.OnFragmentChangeListener
-import kotlinx.android.synthetic.main.f_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +33,7 @@ class MainFragment: SuperFragment() {
     override fun initInterface(view: View?) {
 
         (activity as SuperActivity).setSupportActionBar(mainFragmentToolbar)
-        mainFragmentToolbar.title = getString(R.string.title_category)
+        (activity as SuperActivity).title = getString(R.string.title_category)
 
         recipesAdapter = RecipesGridAdapter(context!!, categoryList!!, changeListener)
         mainFragmentRecycler.layoutManager = GridLayoutManager(context, 2)
@@ -44,7 +44,7 @@ class MainFragment: SuperFragment() {
     }
 
     override fun setAttr() {
-        setLayout(R.layout.f_main)
+        setLayout(R.layout.fragment_main)
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
