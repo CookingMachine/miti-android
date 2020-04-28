@@ -3,78 +3,85 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/marginSide"
+    android:layout_marginTop="@dimen/marginSide"
+    android:layout_marginEnd="@dimen/marginSide">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/category_element"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="3dp"
-        app:cardCornerRadius="6dp"
+        android:id="@+id/categoryRecipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="12dp"
         app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/recipeImage"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginEnd="@dimen/marginSide"
             app:riv_corner_radius="90dp"
             android:scaleType="centerCrop"
             android:contentDescription="@string/title_ingredient"
             android:src="@drawable/pic2" />
 
-        <RelativeLayout
-            android:id="@+id/relativeInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="100dp">
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:gravity="center_vertical"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/recipeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/title_recipe"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp"
-                    app:fontFamily="@font/roboto" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
 
-                <TextView
-                    android:id="@+id/recipeNationality"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/title_recipe"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    app:fontFamily="@font/roboto_light" />
+                    <TextView
+                        android:id="@+id/recipeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/title_recipe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/roboto" />
+
+                    <TextView
+                        android:id="@+id/recipeNationality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/title_recipe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/roboto_light" />
+
+                </LinearLayout>
 
                 <RatingBar
                     style="@style/RecipeRatingBar"
                     android:id="@+id/recipeRatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/marginSide"
                     android:numStars="5"
                     android:rating="2"
                     android:stepSize="1"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
