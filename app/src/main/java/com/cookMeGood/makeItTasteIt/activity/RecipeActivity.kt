@@ -16,7 +16,7 @@ import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
 
-class RecipeActivity : AppCompatActivity(){
+class RecipeActivity : SuperActivity(){
 
     private var portions = 1
 
@@ -29,9 +29,11 @@ class RecipeActivity : AppCompatActivity(){
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recipe)
+    override fun setAttr() {
+        setLayout(R.layout.activity_recipe)
+    }
+
+    override fun initInterface() {
 
         setSupportActionBar(recipeToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -71,6 +73,8 @@ class RecipeActivity : AppCompatActivity(){
             }
 
         })
+
+        recipePortionPicker.setOnValueChangedListener { _, _, newVal -> portions = newVal }
 
         clickRecipe()
         
@@ -168,8 +172,8 @@ class RecipeActivity : AppCompatActivity(){
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
             R.id.action_basket -> {
                 HelpUtils.goToast(applicationContext, "Добавлено в корзину")
             }
