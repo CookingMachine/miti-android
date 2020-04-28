@@ -9,6 +9,7 @@
     <color name="colorBlack">#000</color>
     <color name="dividerColor">#1F000000</color>
     <color name="objectsDarkColor">#D02B2C</color>
+    <color name="colorGreyLight">#888877</color>
 
     <!-- TRANSPARENCIES -->
 

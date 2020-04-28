@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import kotlinx.android.synthetic.main.f_favourites.*
+import kotlinx.android.synthetic.main.fragment_favourites.*
 
 class FavouritesFragment: SuperFragment() {
     override fun initInterface(view: View?) {
@@ -13,7 +13,7 @@ class FavouritesFragment: SuperFragment() {
     }
 
     override fun setAttr() {
-        setLayout(R.layout.f_favourites)
+        setLayout(R.layout.fragment_favourites)
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {

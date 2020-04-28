@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import kotlinx.android.synthetic.main.f_suggest.*
+import kotlinx.android.synthetic.main.fragment_suggest.*
 
 class SuggestFragment: SuperFragment() {
     override fun initInterface(view: View?) {
@@ -13,7 +13,7 @@ class SuggestFragment: SuperFragment() {
     }
 
     override fun setAttr() {
-        setLayout(R.layout.f_suggest)
+        setLayout(R.layout.fragment_suggest)
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,21 +1,14 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.CategoryRecipeAdapter
-import com.cookMeGood.makeItTasteIt.adapter.RecipeItemClickListener
 import com.cookMeGood.makeItTasteIt.data.dto.Recipe
 import com.cookMeGood.makeItTasteIt.listener.OnOpenRecipeListener
-import kotlinx.android.synthetic.main.f_category.*
+import kotlinx.android.synthetic.main.fragment_category.*
 
 class CategoryFragment: SuperFragment() {
 
@@ -40,7 +33,7 @@ class CategoryFragment: SuperFragment() {
     }
 
     override fun setAttr() {
-        setLayout(R.layout.f_category)
+        setLayout(R.layout.fragment_category)
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {

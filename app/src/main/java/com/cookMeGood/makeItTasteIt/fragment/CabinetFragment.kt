@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import kotlinx.android.synthetic.main.f_cabinet.*
+import kotlinx.android.synthetic.main.fragment_cabinet.*
 
 class CabinetFragment: SuperFragment() {
     override fun initInterface(view: View?) {
@@ -14,7 +14,7 @@ class CabinetFragment: SuperFragment() {
     }
 
     override fun setAttr() {
-        setLayout(R.layout.f_cabinet)
+        setLayout(R.layout.fragment_cabinet)
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
