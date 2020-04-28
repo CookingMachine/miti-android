@@ -30,9 +30,7 @@ class RecipesGridAdapter(val context: Context, categoryList: List<String>,
                 ))
     }
 
-    override fun getItemCount(): Int {
-        return categoryList.size
-    }
+    override fun getItemCount(): Int = categoryList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
