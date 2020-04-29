@@ -69,7 +69,11 @@
 
             </LinearLayout>
 
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartIngredientList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"/>
 
             <View
                 android:id="@+id/cartRecipeDivider"
@@ -82,12 +86,5 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cartIngredientList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
-
 
 </RelativeLayout>

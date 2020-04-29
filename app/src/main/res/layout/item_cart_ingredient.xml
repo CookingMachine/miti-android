@@ -43,11 +43,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:button="@drawable/shape_check_box_ingredient"
-        android:layout_toStartOf="@id/ingredientCartImage"
+        android:layout_toStartOf="@id/ingredientCartIcon"
         android:layout_centerVertical="true"/>
 
     <ImageView
-        android:id="@+id/ingredientCartImage"
+        android:id="@+id/ingredientCartIcon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:contentDescription="@string/title_ingredient"

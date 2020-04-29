@@ -11,6 +11,7 @@ import android.view.animation.AccelerateInterpolator
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.data.dto.Recipe
@@ -27,8 +28,8 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
     private lateinit var recyclerView: RecyclerView
 
     private var expandedModel: Recipe? = null
-    private var originalHeight : Int = 0
-    private var expandedHeight : Int = 0
+    private var originalHeight : Int = -1
+    private var expandedHeight : Int = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -49,18 +50,22 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val recipe = recipes[position]
-        val list = holder.ingredientsList
 
-        holder.image.setImageResource(recipe.image!!.toInt())
-        holder.name.text = recipe.name
+        val list = holder.ingredientsList
 
         holder.layout.doOnLayout { view ->
             originalHeight = view.height
             list.visibility = View.VISIBLE
             setIngredientsData(holder)
-            expandedHeight = (originalHeight * 1.5).toInt()
-            list.post { list.visibility = View.GONE }
+
+            view.doOnPreDraw {
+                expandedHeight = originalHeight + HelpUtils.convertDpToPixel(32 * ingredients.size, context)
+                list.visibility = View.GONE
+            }
         }
+
+        holder.image.setImageResource(recipe.image!!.toInt())
+        holder.name.text = recipe.name
 
         holder.layout.setOnClickListener {
 
@@ -120,12 +125,13 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
     }
 
     private fun setIngredientsData(holder: ViewHolder){
-        if(ingredients.isNotEmpty()) {
+        if(ingredients.isEmpty()) {
             ingredients.add(Ingredient("Томаты", "1 шт"))
             ingredients.add(Ingredient("Салями", "100гр"))
             ingredients.add(Ingredient("Сыр", "200гр"))
             ingredients.add(Ingredient("Лук", "1 головка"))
-
+        }
+        if(holder.ingredientsAdapter == null){
             holder.ingredientsAdapter = CartIngredientsAdapter(context, ingredients)
             holder.ingredientsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             holder.ingredientsList.adapter = holder.ingredientsAdapter
