@@ -10,6 +10,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
+import androidx.core.view.doOnLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.data.dto.Recipe
@@ -19,14 +20,15 @@ import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.SlideAnimation
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
-class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context): RecyclerView.Adapter<CartRecipeAdapter.ViewHolder>() {
+class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context):
+        RecyclerView.Adapter<CartRecipeAdapter.ViewHolder>() {
 
     private val ingredients = arrayListOf<Ingredient>()
+    private lateinit var recyclerView: RecyclerView
 
     private var expandedModel: Recipe? = null
-
-    private var originalHeight : Int = 420
-    private var expandedHeight : Int = 560
+    private var originalHeight : Int = 0
+    private var expandedHeight : Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -39,34 +41,53 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
 
     override fun getItemCount(): Int = recipes.size
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        this.recyclerView = recyclerView
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val recipe = recipes[position]
+        val list = holder.ingredientsList
 
         holder.image.setImageResource(recipe.image!!.toInt())
         holder.name.text = recipe.name
 
+        holder.layout.doOnLayout { view ->
+            originalHeight = view.height
+            list.visibility = View.VISIBLE
+            setIngredientsData(holder)
+            expandedHeight = (originalHeight * 1.5).toInt()
+            list.post { list.visibility = View.GONE }
+        }
+
         holder.layout.setOnClickListener {
 
-            if (expandedModel == null) {
+            expandedModel = when (expandedModel) {
+                null -> {
+                    expand(holder, expand = true)
+                    recipe
+                }
+                recipe -> {
+                    expand(holder, expand = false)
+                    null
+                }
+                else -> {
 
-                expand(holder, expand = true, animate = true)
-                expandedModel = recipe
+                    val expandedModelPosition = recipes.indexOf(expandedModel!!)
+                    val oldViewHolder =
+                            recyclerView.findViewHolderForAdapterPosition(expandedModelPosition) as? ViewHolder
+                    if (oldViewHolder != null) expand(oldViewHolder, expand = false)
 
-            } else if (expandedModel == recipe) {
-
-                expand(holder, expand = false, animate = true)
-                expandedModel = null
-
-            } else {
-
-                expand(holder, expand = true, animate = true)
-                expandedModel = recipe
-
+                    expand(holder, expand = true)
+                    recipe
+                }
             }
+
+
         }
     }
-
 
     private inline fun getValueAnimator(forward: Boolean = true, duration: Long, interpolator: TimeInterpolator,
                                 crossinline updateListener: (progress: Float) -> Unit
@@ -80,27 +101,22 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
         return a
     }
 
-    private fun expand(holder: ViewHolder, expand: Boolean, animate: Boolean) {
-        if (animate) {
-            val animator = getValueAnimator(
-                    expand, 300, AccelerateDecelerateInterpolator()
-            ) { progress ->
-                holder.layout.layoutParams.height =
-                        (originalHeight + (expandedHeight - originalHeight) * progress).toInt()
-//                holder.layout.layoutParams.width =
-//                        (originalWidth + (expandedWidth - originalWidth) * progress).toInt()
-                holder.layout.requestLayout()
+    private fun expand(holder: ViewHolder, expand: Boolean) {
 
-                holder.divider.rotation = 180 * progress
-            }
+        val animator = getValueAnimator(
+                expand, 300, AccelerateDecelerateInterpolator()
+        ) { progress ->
+            holder.layout.layoutParams.height = (originalHeight + (expandedHeight - originalHeight) * progress).toInt()
+            holder.layout.requestLayout()
 
-            if (expand) animator.doOnStart { holder.ingredientsList.visibility = View.VISIBLE }
-            else animator.doOnEnd { holder.ingredientsList.visibility = View.GONE }
-
-            animator.start()
-        } else {
-            // ... Left out for brevity
+            holder.divider.translationY = (expandedHeight - originalHeight) * progress
+            holder.divider.rotation = 180 * progress
         }
+
+        if (expand) animator.doOnStart { holder.ingredientsList.visibility = View.VISIBLE }
+        else animator.doOnEnd { holder.ingredientsList.visibility = View.GONE }
+
+        animator.start()
     }
 
     private fun setIngredientsData(holder: ViewHolder){
@@ -124,6 +140,5 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
         val divider = view.cartRecipeDivider!!
         val ingredientsList = view.cartIngredientList!!
         var ingredientsAdapter : CartIngredientsAdapter? = null
-        var isClosed = true
     }
 }
