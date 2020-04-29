@@ -9,7 +9,8 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.data.dto.Ingredient
 import kotlinx.android.synthetic.main.item_cart_ingredient.view.*
 
-class CartIngredientsAdapter(private val context: Context, private val ingredients: List<Ingredient>) :
+class CartIngredientsAdapter(private val context: Context,
+                             private val ingredients: ArrayList<Ingredient>) :
         RecyclerView.Adapter<CartIngredientsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,11 +31,17 @@ class CartIngredientsAdapter(private val context: Context, private val ingredien
         holder.name.text = ingredient.name
         holder.amount.text = ingredient.amount
 
+        holder.remove.setOnClickListener {
+            ingredients.remove(ingredient)
+            notifyDataSetChanged()
+        }
+
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val name = view.cartIngredientName!!
         val amount = view.cartIngredientAmount!!
+        val remove = view.ingredientCartIcon!!
 
     }
 }
