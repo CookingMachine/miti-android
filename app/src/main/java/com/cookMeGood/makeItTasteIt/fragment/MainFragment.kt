@@ -3,6 +3,7 @@ package com.cookMeGood.makeItTasteIt.fragment
 import android.content.Intent
 import android.graphics.Point
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -41,9 +42,11 @@ class MainFragment: SuperFragment() {
         val point = Point()
         display.getSize(point)
         val screenWidth = point.x
+        val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
 
         recipesAdapter = CategoryGridAdapter(context!!, categoryList!!, changeListener, screenWidth)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        mainFragmentRecycler.layoutAnimation = animation
         mainFragmentRecycler.adapter = recipesAdapter
         mainFragmentRecycler.visibility = View.GONE
         getCategoriesFromServer()
