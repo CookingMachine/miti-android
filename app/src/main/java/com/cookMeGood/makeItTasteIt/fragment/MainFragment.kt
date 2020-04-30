@@ -1,13 +1,15 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
+import android.graphics.Point
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.RecipesGridAdapter
+import com.cookMeGood.makeItTasteIt.adapter.CategoryGridAdapter
 import com.cookMeGood.makeItTasteIt.data.NetworkService
 import com.cookMeGood.makeItTasteIt.data.RuntimeStorage
 import com.cookMeGood.makeItTasteIt.data.dto.Category
@@ -19,7 +21,7 @@ import retrofit2.Response
 
 class MainFragment: SuperFragment() {
 
-    private var recipesAdapter: RecipesGridAdapter? = null
+    private var recipesAdapter: CategoryGridAdapter? = null
     private var categoryList: List<String>? = listOf() //todo Поменять на List<Category> после сервера
 
     private var changeListener = object: OnFragmentChangeListener{
@@ -35,8 +37,13 @@ class MainFragment: SuperFragment() {
         (activity as SuperActivity).setSupportActionBar(mainFragmentToolbar)
         (activity as SuperActivity).title = getString(R.string.title_category)
 
-        recipesAdapter = RecipesGridAdapter(context!!, categoryList!!, changeListener)
-        mainFragmentRecycler.layoutManager = GridLayoutManager(context, 2)
+        val display = activity!!.windowManager.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        val screenWidth = point.x
+
+        recipesAdapter = CategoryGridAdapter(context!!, categoryList!!, changeListener, screenWidth)
+        mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         mainFragmentRecycler.adapter = recipesAdapter
         mainFragmentRecycler.visibility = View.GONE
         getCategoriesFromServer()

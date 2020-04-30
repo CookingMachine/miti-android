@@ -11,9 +11,10 @@ import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
 import com.cookMeGood.makeItTasteIt.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.item_main_recipe.view.*
 
-class RecipesGridAdapter(val context: Context, categoryList: List<String>,
-                         private val changeListener: OnFragmentChangeListener):
-        RecyclerView.Adapter<RecipesGridAdapter.ViewHolder>() {
+class CategoryGridAdapter(val context: Context, categoryList: List<String>,
+                          private val changeListener: OnFragmentChangeListener,
+                          private val windowWidth: Int):
+        RecyclerView.Adapter<CategoryGridAdapter.ViewHolder>() {
 
 
     private var categoryList: List<String> = categoryList
@@ -34,27 +35,32 @@ class RecipesGridAdapter(val context: Context, categoryList: List<String>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.name.text = this.categoryList[position]
-        holder.amount.text = "101 позиция"
-        holder.layout.layoutParams = setMargins(holder, position % 2 == 0)
-        holder.layout.setOnClickListener {changeListener.replaceFragment(CategoryFragment())
+        holder.layoutFirst.layoutParams.width = windowWidth / 2 - 45
+        holder.layoutSecond.layoutParams.width = windowWidth / 2 - 45
+
+        holder.nameFirst.text = this.categoryList[position]
+        holder.amountFirst.text = "101 позиция"
+
+        holder.nameSecond.text = this.categoryList[position]
+        holder.amountSecond.text = "101 позиция"
+
+        holder.layout.setOnClickListener {
+            changeListener.replaceFragment(CategoryFragment())
         }
     }
 
     class ViewHolder(item: View): RecyclerView.ViewHolder(item){
         val layout = item.gridRecipeLayout!!
-        val name = item.recipeName!!
-        val amount = item.recipeAmount!!
-    }
 
-    private fun setMargins(holder: ViewHolder, isSecond: Boolean): ViewGroup.LayoutParams? {
-        val p = holder.layout.layoutParams as MarginLayoutParams
-        if (isSecond) {
-            p.setMargins(15, 20, 15, 0)
-        } else {
-            p.setMargins(15, 20, 15, 0)
-        }
-        return p
+        val layoutFirst = item.categoryFirst!!
+        val nameFirst = item.categoryNameFirst!!
+        val amountFirst = item.categoryAmountFirst!!
+        val imageFirst = item.categoryImageSecond!!
+
+        val layoutSecond = item.categorySecond!!
+        val nameSecond = item.categoryNameSecond!!
+        val amountSecond = item.categoryAmountSecond!!
+        val imageSecond = item.categoryImageSecond!!
     }
 
     fun onUpdateList(newList: List<String>) {
