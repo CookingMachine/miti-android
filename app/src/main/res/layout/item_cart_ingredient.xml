@@ -24,6 +24,7 @@
         android:clickable="false"
         android:layout_marginEnd="20dp"
         android:button="@drawable/shape_check_box_ingredient"
+        android:background="#ffffffff"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"/>
 

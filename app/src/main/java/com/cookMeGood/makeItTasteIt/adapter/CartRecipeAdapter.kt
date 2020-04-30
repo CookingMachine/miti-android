@@ -119,7 +119,7 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
             holder.divider.rotation = 180 * progress
         }
 
-        if (expand) animator.doOnEnd { holder.ingredientsList.visibility = View.VISIBLE }
+        if (expand) animator.doOnStart { holder.ingredientsList.visibility = View.VISIBLE }
         else animator.doOnEnd { holder.ingredientsList.visibility = View.GONE }
 
         animator.start()
