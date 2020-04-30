@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
+import android.widget.LinearLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.doOnLayout
@@ -59,7 +60,7 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
             setIngredientsData(holder)
 
             view.doOnPreDraw {
-                expandedHeight = originalHeight + HelpUtils.convertDpToPixel(32 * ingredients.size, context)
+                expandedHeight = originalHeight + HelpUtils.convertDpToPixel(32 * ingredients.size, context) + 60
                 list.visibility = View.GONE
             }
         }
@@ -114,11 +115,11 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
             holder.layout.layoutParams.height = (originalHeight + (expandedHeight - originalHeight) * progress).toInt()
             holder.layout.requestLayout()
 
-            holder.divider.translationY = (expandedHeight - originalHeight) * progress
+            holder.divider.translationY = (expandedHeight - originalHeight - 30) * progress
             holder.divider.rotation = 180 * progress
         }
 
-        if (expand) animator.doOnStart { holder.ingredientsList.visibility = View.VISIBLE }
+        if (expand) animator.doOnEnd { holder.ingredientsList.visibility = View.VISIBLE }
         else animator.doOnEnd { holder.ingredientsList.visibility = View.GONE }
 
         animator.start()
