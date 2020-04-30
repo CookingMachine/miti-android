@@ -1,64 +1,70 @@
 package com.cookMeGood.makeItTasteIt.activity
 
-import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.content.Intent
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.fragment.*
-import com.cookMeGood.makeItTasteIt.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.activity_start.*
 
-class StartActivity: SuperActivity(), OnFragmentChangeListener  {
+class StartActivity: SuperActivity()  {
+
+    companion object{
+        private const val FRAGMENT_MAIN = 0
+        private const val FRAGMENT_SUGGEST = 1
+        private const val FRAGMENT_FAVOURITES = 2
+        private const val FRAGMENT_CART = 3
+        private const val FRAGMENT_CABINET = 4
+    }
+
+    private val fragments = arrayListOf(
+            MainFragment(),
+            SuggestFragment(),
+            FavouritesFragment(),
+            CartFragment(),
+            CabinetFragment()
+    )
+
     override fun initInterface() {
-        nav_view_start.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentStartFrameLayout, MainFragment())
-                .commit()
+        nav_view_start.selectedItemId = R.id.navigation_main
+        nav_view_start.setOnNavigationItemSelectedListener {
+
+            var currentFragment: Int? = null
+
+            when (it.itemId) {
+                R.id.navigation_main -> currentFragment = FRAGMENT_MAIN
+                R.id.navigation_suggest -> currentFragment = FRAGMENT_SUGGEST
+                R.id.navigation_favourites -> currentFragment = FRAGMENT_FAVOURITES
+                R.id.navigation_cart -> currentFragment = FRAGMENT_CART
+                R.id.navigation_cabinet -> currentFragment = FRAGMENT_CABINET
+            }
+
+            if (currentFragment != null) {
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragmentStartFrameLayout, fragments[currentFragment])
+                fragmentTransaction.commit()
+            }
+
+            true
+
+        }
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.fragmentStartFrameLayout, fragments[FRAGMENT_MAIN])
+        fragmentTransaction.commit()
+
         //   val currentUser = intent.getSerializableExtra("userObject") as User
+
     }
 
     override fun setAttr() {
         setLayout(R.layout.activity_start)
     }
 
-    private val mOnNavigationItemSelected = BottomNavigationView.OnNavigationItemSelectedListener {menuItem -> when
-        (menuItem.itemId){
-        R.id.navigation_suggest ->{
-            val fragment = SuggestFragment()
-            replaceFragment(fragment)
-            Log.d("tag","sjd")
-            return@OnNavigationItemSelectedListener true
-        }
-        R.id.navigation_favourites ->{
-            val fragment = FavouritesFragment()
-            replaceFragment(fragment)
-            return@OnNavigationItemSelectedListener true
-        }
-        R.id.navigation_cart ->{
-            val fragment = CartFragment()
-            replaceFragment(fragment)
-            return@OnNavigationItemSelectedListener true
-        }
-        R.id.navigation_profile ->{
-            val fragment = CabinetFragment()
-            replaceFragment(fragment)
-            return@OnNavigationItemSelectedListener true
-        }
-        R.id.navigation_recipe ->{
-            val fragment = MainFragment()
-            replaceFragment(fragment)
-            return@OnNavigationItemSelectedListener true
-        }
-    };false
-    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-    override fun replaceFragment(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentStartFrameLayout, fragment, fragment.toString())
-        fragmentTransaction.addToBackStack(fragment.toString())
-        fragmentTransaction.commit()
+        for (item in fragments) {
+            item.onResult(requestCode, resultCode, data)
+        }
     }
 
 }

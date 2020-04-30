@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_recipe"
+        android:id="@+id/navigation_main"
         android:icon="@drawable/bean_icon"
         android:title="@string/title_home"
         />
@@ -21,7 +21,7 @@
         android:title="@string/title_cart" />
 
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_cabinet"
         android:icon="@drawable/profile_icon"
         android:title="@string/title_profile" />
 
