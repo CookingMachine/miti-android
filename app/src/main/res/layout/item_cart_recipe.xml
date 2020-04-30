@@ -11,17 +11,18 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cartRecipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="145dp"
         android:layout_margin="4dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="3dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/cartLinear"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:orientation="horizontal">
@@ -69,21 +70,23 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/cartRecipeDivider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/cartLinear"
+                android:src="@drawable/ic_down_arrow"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cartIngredientList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"/>
+                android:visibility="gone"
+                android:layout_below="@id/cartRecipeDivider"/>
 
-            <View
-                android:id="@+id/cartRecipeDivider"
-                android:layout_width="30dp"
-                android:layout_height="1dp"
-                android:background="@color/colorGreyLight"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="4dp"/>
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
