@@ -3,7 +3,7 @@
     android:id="@+id/gridRecipeLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
+    android:layout_height="220dp"
     android:layout_marginBottom="5dp"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">

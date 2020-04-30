@@ -40,9 +40,11 @@ class CategoryGridAdapter(val context: Context, categoryList: List<String>,
 
         holder.nameFirst.text = this.categoryList[position]
         holder.amountFirst.text = "101 позиция"
+        holder.imageFirst.setBackgroundResource(R.drawable.pic2)
 
         holder.nameSecond.text = this.categoryList[position]
         holder.amountSecond.text = "101 позиция"
+        holder.imageSecond.setBackgroundResource(R.drawable.pic3)
 
         holder.layout.setOnClickListener {
             changeListener.replaceFragment(CategoryFragment())
@@ -55,7 +57,7 @@ class CategoryGridAdapter(val context: Context, categoryList: List<String>,
         val layoutFirst = item.categoryFirst!!
         val nameFirst = item.categoryNameFirst!!
         val amountFirst = item.categoryAmountFirst!!
-        val imageFirst = item.categoryImageSecond!!
+        val imageFirst = item.categoryImageFirst!!
 
         val layoutSecond = item.categorySecond!!
         val nameSecond = item.categoryNameSecond!!

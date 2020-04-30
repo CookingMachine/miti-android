@@ -37,8 +37,9 @@
                 android:id="@+id/mainFragmentRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
+                android:layoutAnimation="@anim/layout_list_swipe_right"
                 android:visibility="gone"/>
 
         </RelativeLayout>
