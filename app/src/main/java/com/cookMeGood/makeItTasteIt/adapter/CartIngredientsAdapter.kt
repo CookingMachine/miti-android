@@ -32,7 +32,14 @@ class CartIngredientsAdapter(private val context: Context,
         holder.amount.text = ingredient.amount
 
         holder.remove.setOnClickListener {
-            ingredients.remove(ingredient)
+            if(holder.cancelLine.visibility == View.VISIBLE){
+                holder.cancelLine.visibility = View.GONE
+                holder.chechBox.isChecked = false
+            }
+            else{
+                holder.cancelLine.visibility = View.VISIBLE
+                holder.chechBox.isChecked = true
+            }
             notifyDataSetChanged()
         }
 
@@ -42,6 +49,8 @@ class CartIngredientsAdapter(private val context: Context,
         val name = view.cartIngredientName!!
         val amount = view.cartIngredientAmount!!
         val remove = view.ingredientCartIcon!!
+        val cancelLine = view.cartIngredientCancelLine!!
+        val chechBox = view.cartIngredientCheckBox!!
 
     }
 }
