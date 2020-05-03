@@ -49,7 +49,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation 'androidx.core:core-ktx:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.makeramen:roundedimageview:2.3.0' //RoundedImageView https://github.com/vinc3m1/RoundedImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    //RoundedImageView https://github.com/vinc3m1/RoundedImageView
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     implementation 'com.zolad:zoominimageview:1.0.0'
     implementation 'com.shawnlin:number-picker:2.4.9'
