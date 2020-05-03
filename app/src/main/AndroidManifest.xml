@@ -15,43 +15,40 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name="com.cookMeGood.makeItTasteIt.activity.AuthActivity"
+        <activity android:name=".activity.SplashActivity"></activity>
+        <activity
+            android:name=".activity.AuthActivity"
             android:label="@string/title_activity_authorize">
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.cookMeGood.makeItTasteIt.activity.RegActivity"
+            android:name=".activity.RegActivity"
             android:label="@string/title_activity_reg"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name="com.cookMeGood.makeItTasteIt.fragment.CabinetFragment" />
-        <activity android:name="com.cookMeGood.makeItTasteIt.activity.StartActivity" />
-        <activity android:name="com.cookMeGood.makeItTasteIt.activity.BuylistActivity" />
-        <activity android:name="com.cookMeGood.makeItTasteIt.fragment.SuggestFragment" />
-        <activity android:name="com.cookMeGood.makeItTasteIt.activity.SearchActivity" />
-
+        <activity android:name=".fragment.CabinetFragment" />
+        <activity android:name=".activity.StartActivity" />
+        <activity android:name=".activity.BuylistActivity" />
+        <activity android:name=".fragment.SuggestFragment" />
+        <activity android:name=".activity.SearchActivity" />
         <activity
-            android:name="com.cookMeGood.makeItTasteIt.fragment.CartFragment"
+            android:name=".fragment.CartFragment"
             android:label="@string/title_activity_cart" />
         <activity
-            android:name="com.cookMeGood.makeItTasteIt.fragment.CategoryFragment"
+            android:name=".fragment.CategoryFragment"
             android:label="@string/title_activity_recipes" />
         <activity
-            android:name="com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment"
+            android:name=".fragment.FavouritesFragment"
             android:label="@string/title_activity_favourites" />
         <activity
-            android:name="com.cookMeGood.makeItTasteIt.activity.RecipeActivity"
+            android:name=".activity.RecipeActivity"
             android:label="@string/title_activity_recipe"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.cookMeGood.makeItTasteIt.fragment.MainFragment"
+            android:name=".fragment.MainFragment"
             android:label="@string/title_activity_category" />
 
         <meta-data
