@@ -93,5 +93,6 @@
 
     <string name="example_ingredient_amount">1200г.</string>
     <string name="example_ingredient_name">Луковые кольца</string>
+    <string name="WelcomeText">Welcome to the club body</string>
 
 </resources>
