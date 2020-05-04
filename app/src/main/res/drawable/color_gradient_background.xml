@@ -39,7 +39,7 @@
                         android:type="linear"
                         android:startX="99.5"
                         android:startY="387"
-                        android:endX="360"
+                        android:endX="270"
                         android:endY="387"
                         >
 

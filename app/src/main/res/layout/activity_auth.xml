@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/image_auth_background"
     android:layout_height="match_parent"
-    android:scaleType="center"
-    >
-
+    android:scaleType="centerInside"
+    android:background="@color/colorBlack">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/image_auth_background"
+    android:scaleType="fitStart"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="@dimen/pic_width"
             android:layout_height="@dimen/pic_height"
-            android:gravity="center"
             android:layout_marginVertical="90dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo"
             android:layout_marginTop="110dp"
-            />
+            android:gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
 
     </LinearLayout>
 
@@ -53,13 +54,13 @@
             android:orientation="horizontal">
 
             <View
-                android:layout_marginBottom="26dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
                 android:layout_width="75dp"
-                android:background="@color/colorWhite"
-                android:layout_height="1sp"/>
+                android:layout_height="1sp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="26dp"
+                android:background="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -74,13 +75,13 @@
                 app:fontFamily="sans-serif" />
 
             <View
-                android:layout_marginBottom="26dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginStart="4dp"
                 android:layout_width="75dp"
-                android:background="@color/colorWhite"
-                android:layout_height="1sp"/>
+                android:layout_height="1sp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="26dp"
+                android:background="@color/colorWhite" />
 
         </LinearLayout>
 
