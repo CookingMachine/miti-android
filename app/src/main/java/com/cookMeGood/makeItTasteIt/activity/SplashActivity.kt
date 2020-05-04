@@ -5,8 +5,13 @@ import android.os.Bundle
 import android.os.Handler
 import com.cookMeGood.makeItTasteIt.R
 
-private const val SPLASH_TIME_OUT:Long = 3000
+
 class SplashActivity : SuperActivity() {
+
+    companion object {
+        private const val SPLASH_TIME_OUT = 3000L
+    }
+
     override fun initInterface() {
     }
 
