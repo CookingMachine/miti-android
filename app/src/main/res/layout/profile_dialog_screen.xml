@@ -65,7 +65,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginStart="14dp"
         android:layout_marginBottom="@dimen/marginSide"
         android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_account"
@@ -77,11 +77,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginStart="18dp"
         android:layout_marginBottom="@dimen/marginSide"
         android:textSize="16sp"
-        android:drawableStart="@drawable/ic_star_red"
-        android:drawablePadding="@dimen/marginSide"
+        android:drawableStart="@drawable/ic_star_red_svg"
+        android:drawablePadding="18dp"
         android:text="@string/text_profile_rate"
         android:textColor="@color/colorBlack"
         android:textAlignment="textStart"/>
@@ -93,7 +93,7 @@
         android:layout_marginBottom="@dimen/marginSide"
         android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_seen"
-        android:drawablePadding="@dimen/marginSide"
+        android:drawablePadding="15dp"
         android:text="@string/text_profile_seen"
         android:textColor="@color/colorBlack"
         android:textAlignment="textStart"/>
@@ -105,7 +105,7 @@
         android:layout_marginBottom="32dp"
         android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_settings"
-        android:drawablePadding="@dimen/marginSide"
+        android:drawablePadding="14dp"
         android:text="@string/text_profile_settings"
         android:textColor="@color/colorBlack"
         android:textAlignment="textStart"/>
