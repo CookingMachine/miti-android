@@ -17,9 +17,8 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
     var user: User = User()
 
     override fun initInterface() {
-
+        window.enterTransition = null;
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
-
         btn_signIn.setOnClickListener { clickSignIn() }
         btn_signUp.setOnClickListener { clickSignUp() }
         textAsGuest.setOnClickListener { asGuest() }
