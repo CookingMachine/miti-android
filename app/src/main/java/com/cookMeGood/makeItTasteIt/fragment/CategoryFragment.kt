@@ -25,6 +25,8 @@ class CategoryFragment: SuperFragment() {
 
     override fun initInterface(view: View?) {
         (activity as SuperActivity).setSupportActionBar(categoryFragmentToolbar)
+        (activity as SuperActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
+        (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         (activity as SuperActivity).title = context!!.getString(R.string.title_activity_category)
         setRecipeData()
         val adapter = CategoryRecipeAdapter(recipes,context, openRecipeListener)

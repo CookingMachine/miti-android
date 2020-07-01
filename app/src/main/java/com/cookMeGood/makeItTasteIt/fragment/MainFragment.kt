@@ -1,7 +1,11 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Point
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -36,7 +40,10 @@ class MainFragment: SuperFragment() {
     override fun initInterface(view: View?) {
 
         (activity as SuperActivity).setSupportActionBar(mainFragmentToolbar)
+        (activity as SuperActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
         (activity as SuperActivity).title = getString(R.string.title_category)
+
+        setHasOptionsMenu(true)
 
         val display = activity!!.windowManager.defaultDisplay
         val point = Point()
@@ -84,5 +91,27 @@ class MainFragment: SuperFragment() {
     private fun showList() {
         mainFragmentProgressBar.visibility = View.GONE
         mainFragmentRecycler.visibility = View.VISIBLE
+    }
+
+    private fun showProfileScreen(){
+        val dialog = Dialog(context!!)
+        dialog.setContentView(R.layout.profile_dialog_screen)
+        dialog.setCancelable(true)
+
+        dialog.show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main_fragment, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_profile -> {
+                showProfileScreen()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

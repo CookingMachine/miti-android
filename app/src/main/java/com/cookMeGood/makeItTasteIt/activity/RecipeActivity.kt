@@ -68,9 +68,7 @@ class RecipeActivity : SuperActivity(){
                 recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
             }
 
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-
-            }
+            override fun onStateChanged(bottomSheet: View, newState: Int) {}
 
         })
 

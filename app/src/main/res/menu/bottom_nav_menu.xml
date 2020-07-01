@@ -20,9 +20,4 @@
         android:icon="@drawable/recipe_basket"
         android:title="@string/title_cart" />
 
-    <item
-        android:id="@+id/navigation_cabinet"
-        android:icon="@drawable/profile_icon"
-        android:title="@string/title_profile" />
-
 </menu>

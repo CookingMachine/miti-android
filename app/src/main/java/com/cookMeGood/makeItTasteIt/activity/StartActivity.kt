@@ -12,15 +12,13 @@ class StartActivity: SuperActivity()  {
         private const val FRAGMENT_SUGGEST = 1
         private const val FRAGMENT_FAVOURITES = 2
         private const val FRAGMENT_CART = 3
-        private const val FRAGMENT_CABINET = 4
     }
 
     private val fragments = arrayListOf(
             MainFragment(),
             SuggestFragment(),
             FavouritesFragment(),
-            CartFragment(),
-            CabinetFragment()
+            CartFragment()
     )
 
     override fun initInterface() {
@@ -34,7 +32,6 @@ class StartActivity: SuperActivity()  {
                 R.id.navigation_suggest -> currentFragment = FRAGMENT_SUGGEST
                 R.id.navigation_favourites -> currentFragment = FRAGMENT_FAVOURITES
                 R.id.navigation_cart -> currentFragment = FRAGMENT_CART
-                R.id.navigation_cabinet -> currentFragment = FRAGMENT_CABINET
             }
 
             if (currentFragment != null) {
@@ -67,4 +64,5 @@ class StartActivity: SuperActivity()  {
         }
     }
 
+    override fun onBackPressed() {}
 }
