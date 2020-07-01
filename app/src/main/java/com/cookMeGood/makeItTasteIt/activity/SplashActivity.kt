@@ -1,9 +1,11 @@
 package com.cookMeGood.makeItTasteIt.activity
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.cookMeGood.makeItTasteIt.R
+import kotlinx.android.synthetic.main.activity_splash.*
 
 
 class SplashActivity : SuperActivity() {
@@ -13,6 +15,7 @@ class SplashActivity : SuperActivity() {
     }
 
     override fun initInterface() {
+
     }
 
     override fun setAttr() {
@@ -24,11 +27,13 @@ class SplashActivity : SuperActivity() {
         Handler().postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity
-
-            startActivity(Intent(this,AuthActivity::class.java))
-
+            intent = Intent(this,AuthActivity::class.java)
+            window.exitTransition = null;
+            val options = ActivityOptions.makeSceneTransitionAnimation(this,
+            splashLogo, "logoTransition")
+            startActivity(intent,options.toBundle())
             // close this activity
-            finish()
+            supportFinishAfterTransition()
         }, SPLASH_TIME_OUT)
     }
 }
