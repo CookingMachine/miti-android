@@ -2,7 +2,9 @@ package com.cookMeGood.makeItTasteIt.fragment
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -97,6 +99,7 @@ class MainFragment: SuperFragment() {
         val dialog = Dialog(context!!)
         dialog.setContentView(R.layout.profile_dialog_screen)
         dialog.setCancelable(true)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         dialog.show()
     }
