@@ -1,10 +1,7 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.Point
-import android.graphics.drawable.ColorDrawable
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -12,7 +9,6 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
@@ -47,13 +43,12 @@ class MainFragment: SuperFragment() {
 
         setHasOptionsMenu(true)
 
-        val display = activity!!.windowManager.defaultDisplay
+        val display = requireActivity().windowManager.defaultDisplay
         val point = Point()
         display.getSize(point)
         val screenWidth = point.x
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
-
-        recipesAdapter = CategoryGridAdapter(context!!, categoryList!!, changeListener, screenWidth)
+        recipesAdapter = CategoryGridAdapter(requireContext(), categoryList!!, changeListener, screenWidth)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         mainFragmentRecycler.layoutAnimation = animation
         mainFragmentRecycler.adapter = recipesAdapter
@@ -96,12 +91,16 @@ class MainFragment: SuperFragment() {
     }
 
     private fun showProfileScreen(){
-        val dialog = Dialog(context!!)
+       /* val dialog = Dialog(context!!)
         dialog.setContentView(R.layout.profile_dialog_screen)
         dialog.setCancelable(true)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        dialog.show()
+        dialog.show()*/
+        val dialog = ProfileDialogFragment()
+        val fm = activity?.supportFragmentManager
+        fm?.let { dialog.show(it,"profileDialog") }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

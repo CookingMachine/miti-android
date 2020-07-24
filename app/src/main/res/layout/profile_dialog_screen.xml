@@ -36,7 +36,8 @@
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textColor="@color/colorBlack"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true"
+                />
 
             <TextView
                 android:id="@+id/profileEmail"
@@ -47,7 +48,9 @@
                 android:textSize="14sp"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorBlack"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                android:clickable="true"
+                android:focusable="true"/>
 
         </RelativeLayout>
 
@@ -60,55 +63,68 @@
         android:layout_marginEnd="@dimen/marginSide"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/dividerColor"/>
+        android:background="@color/dividerColor"
+        />
 
     <TextView
+        android:id="@+id/accountButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginBottom="@dimen/marginSide"
-        android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_account"
         android:drawablePadding="@dimen/marginSide"
         android:text="@string/text_profile_account"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
+        android:id="@+id/ratingsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginBottom="@dimen/marginSide"
-        android:textSize="16sp"
         android:drawableStart="@drawable/ic_star_red_svg"
         android:drawablePadding="18dp"
         android:text="@string/text_profile_rate"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
+        android:id="@+id/historyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="@dimen/marginSide"
-        android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_seen"
         android:drawablePadding="15dp"
         android:text="@string/text_profile_seen"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true" />
 
     <TextView
+        android:id="@+id/settingsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginBottom="32dp"
-        android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_settings"
         android:drawablePadding="14dp"
         android:text="@string/text_profile_settings"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <View
         android:layout_width="match_parent"
@@ -119,39 +135,48 @@
         android:background="@color/dividerColor"/>
 
     <TextView
+        android:id="@+id/contactButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginBottom="@dimen/marginSide"
-        android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_developers"
         android:drawablePadding="13dp"
         android:text="@string/text_profile_developers"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
+        android:id="@+id/rateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginBottom="@dimen/marginSide"
-        android:textSize="16sp"
         android:drawableStart="@drawable/ic_profile_rate_app"
         android:drawablePadding="13dp"
         android:text="@string/text_profile_rate_app"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true" />
 
     <TextView
+        android:id="@+id/aboutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginBottom="32dp"
-        android:textSize="16sp"
+        android:clickable="true"
         android:drawableStart="@drawable/ic_profile_account"
         android:drawablePadding="@dimen/marginSide"
+        android:focusable="true"
         android:text="@string/text_profile_about"
+        android:textAlignment="textStart"
         android:textColor="@color/colorBlack"
-        android:textAlignment="textStart"/>
+        android:textSize="16sp" />
 
 </LinearLayout>
