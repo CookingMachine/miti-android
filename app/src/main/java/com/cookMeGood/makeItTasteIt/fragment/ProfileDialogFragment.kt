@@ -26,6 +26,7 @@ open class ProfileDialogFragment: DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        profileCloseButton.setOnClickListener{ dialog!!.dismiss()}
         accountButton.setOnClickListener { goToast("Аккаунт") }
         ratingsButton.setOnClickListener { goToast("Оценки") }
         historyButton.setOnClickListener { goToast("Просмотренные") }
