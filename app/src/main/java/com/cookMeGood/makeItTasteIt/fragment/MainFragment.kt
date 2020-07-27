@@ -91,12 +91,6 @@ class MainFragment: SuperFragment() {
     }
 
     private fun showProfileScreen(){
-       /* val dialog = Dialog(context!!)
-        dialog.setContentView(R.layout.profile_dialog_screen)
-        dialog.setCancelable(true)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        dialog.show()*/
         val dialog = ProfileDialogFragment()
         val fm = activity?.supportFragmentManager
         fm?.let { dialog.show(it,"profileDialog") }
