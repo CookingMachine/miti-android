@@ -26,7 +26,6 @@ class MainFragment: SuperFragment() {
 
     private var recipesAdapter: CategoryGridAdapter? = null
     private var categoryList: List<String>? = listOf() //todo Поменять на List<Category> после сервера
-
     private var changeListener = object: OnFragmentChangeListener{
         override fun replaceFragment(fragment: Fragment) {
             val listener = fragmentManager!!.beginTransaction()
