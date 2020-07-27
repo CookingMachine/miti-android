@@ -2,11 +2,13 @@ package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
 import android.graphics.Point
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
@@ -36,15 +38,17 @@ class MainFragment: SuperFragment() {
     override fun initInterface(view: View?) {
 
         (activity as SuperActivity).setSupportActionBar(mainFragmentToolbar)
+        (activity as SuperActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
         (activity as SuperActivity).title = getString(R.string.title_category)
 
-        val display = activity!!.windowManager.defaultDisplay
+        setHasOptionsMenu(true)
+
+        val display = requireActivity().windowManager.defaultDisplay
         val point = Point()
         display.getSize(point)
         val screenWidth = point.x
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
-
-        recipesAdapter = CategoryGridAdapter(context!!, categoryList!!, changeListener, screenWidth)
+        recipesAdapter = CategoryGridAdapter(requireContext(), categoryList!!, changeListener, screenWidth)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         mainFragmentRecycler.layoutAnimation = animation
         mainFragmentRecycler.adapter = recipesAdapter
@@ -84,5 +88,26 @@ class MainFragment: SuperFragment() {
     private fun showList() {
         mainFragmentProgressBar.visibility = View.GONE
         mainFragmentRecycler.visibility = View.VISIBLE
+    }
+
+    private fun showProfileScreen(){
+        val dialog = ProfileDialogFragment()
+        val fm = activity?.supportFragmentManager
+        fm?.let { dialog.show(it,"profileDialog") }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main_fragment, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_profile -> {
+                showProfileScreen()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

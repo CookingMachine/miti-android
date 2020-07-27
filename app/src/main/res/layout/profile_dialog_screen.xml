@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_profile_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginSide">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/profileImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="45dp"
+            android:src="@drawable/pic1"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/profileImage">
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/marginSide"
+                android:text="Алёша Алёшин"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/profileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/marginSide"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="aleshinaleshka@gmail.com"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"/>
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/profileCloseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:background="@color/design_default_color_background"
+            android:src="@drawable/ic_profile_close" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginBottom="24dp"
+        android:background="@color/dividerColor" />
+
+    <TextView
+        android:id="@+id/accountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="@dimen/marginSide"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_profile_account"
+        android:drawablePadding="@dimen/marginSide"
+        android:focusable="true"
+        android:text="@string/text_profile_account"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"/>
+
+    <TextView
+        android:id="@+id/ratingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="@dimen/marginSide"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_star_red_svg"
+        android:drawablePadding="18dp"
+        android:focusable="true"
+        android:text="@string/text_profile_rate"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"/>
+
+    <TextView
+        android:id="@+id/historyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="@dimen/marginSide"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_profile_seen"
+        android:drawablePadding="15dp"
+        android:focusable="true"
+        android:text="@string/text_profile_seen"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"/>
+
+    <TextView
+        android:id="@+id/settingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_profile_settings"
+        android:drawablePadding="14dp"
+        android:focusable="true"
+        android:text="@string/text_profile_settings"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"/>
+
+
+    <TextView
+        android:id="@+id/contactButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginBottom="@dimen/marginSide"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_profile_developers"
+        android:drawablePadding="13dp"
+        android:focusable="true"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text_profile_developers"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/rateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginBottom="@dimen/marginSide"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_profile_rate_app"
+        android:drawablePadding="13dp"
+        android:focusable="true"
+        android:text="@string/text_profile_rate_app"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginBottom="16dp"
+        android:background="@color/dividerColor" />
+
+    <TextView
+        android:id="@+id/aboutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_profile_account"
+        android:drawablePadding="@dimen/marginSide"
+        android:focusable="true"
+        android:text="@string/text_profile_about"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"/>
+
+</LinearLayout>

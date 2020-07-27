@@ -40,11 +40,19 @@
     <string name="text_recipe"> Важным условием настоящей пиццы bbq является ее запекание на углях или дровах. Для этого существуют специальные печи. Только тогда лепешка приобретет вкус и аромат дымка. Рецептуру можно менять по своим вкусовым пристрастиям.</string>
     <string name="text_minus">-</string>
     <string name="text_plus">+</string>
+    <string name="text_profile_account">Аккаунт</string>
+    <string name="text_profile_rate">Оценки</string>
+    <string name="text_profile_seen">Просмотренные</string>
+    <string name="text_profile_settings">Настройки</string>
+    <string name="text_profile_developers">Написать разработчикам</string>
+    <string name="text_profile_rate_app">Оценить приложение</string>
+    <string name="text_profile_about">О приложении</string>
 
     <!-- MENU -->
 
     <string name="menu_basket">Добавить</string>
     <string name="menu_like">Нравится</string>
+    <string name="menu_profile">Профиль</string>
 
     <!-- BUTTONS -->
 
