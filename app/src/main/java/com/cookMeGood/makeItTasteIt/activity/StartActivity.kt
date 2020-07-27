@@ -2,7 +2,10 @@ package com.cookMeGood.makeItTasteIt.activity
 
 import android.content.Intent
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.fragment.*
+import com.cookMeGood.makeItTasteIt.fragment.CartFragment
+import com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment
+import com.cookMeGood.makeItTasteIt.fragment.MainFragment
+import com.cookMeGood.makeItTasteIt.fragment.SuggestFragment
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity: SuperActivity()  {
@@ -63,6 +66,4 @@ class StartActivity: SuperActivity()  {
             item.onResult(requestCode, resultCode, data)
         }
     }
-
-    override fun onBackPressed() {}
 }

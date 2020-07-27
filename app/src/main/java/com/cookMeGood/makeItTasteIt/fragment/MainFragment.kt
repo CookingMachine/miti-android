@@ -29,7 +29,7 @@ class MainFragment: SuperFragment() {
     private var changeListener = object: OnFragmentChangeListener{
         override fun replaceFragment(fragment: Fragment) {
             val listener = fragmentManager!!.beginTransaction()
-            listener.replace(R.id.fragmentStartFrameLayout, fragment)
+            listener.replace(R.id.fragmentStartFrameLayout, fragment).addToBackStack("TAG")
             listener.commit()
         }
     }
