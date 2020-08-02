@@ -1,10 +1,11 @@
-package com.cookMeGood.makeItTasteIt.data
+package com.cookMeGood.makeItTasteIt.api
 
 class RuntimeStorage {
-    var categories = arrayListOf<String>()
 
     companion object {
+
         private var instance: RuntimeStorage? = null
+
         fun newInstance(): RuntimeStorage? {
             if (instance == null) {
                 instance = RuntimeStorage()

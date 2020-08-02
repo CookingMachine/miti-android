@@ -2,6 +2,7 @@ package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
 import android.graphics.Point
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -13,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.CategoryAdapter
-import com.cookMeGood.makeItTasteIt.data.NetworkService
-import com.cookMeGood.makeItTasteIt.data.RuntimeStorage
-import com.cookMeGood.makeItTasteIt.data.dto.Category
+import com.cookMeGood.makeItTasteIt.api.CategoryApiService
+import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.listener.OnFragmentChangeListener
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,12 +25,18 @@ import retrofit2.Response
 
 class MainFragment: SuperFragment() {
 
-    private var categoryAdapter: CategoryAdapter? = null
-    private var categoryList: List<String>? = listOf() //todo Поменять на List<Category> после сервера
+    private var recipesAdapter: CategoryAdapter? = null
+    private var categoryList: List<Category> = listOf()
+
     private var changeListener = object: OnFragmentChangeListener{
-        override fun replaceFragment(fragment: Fragment) {
-            val listener = fragmentManager!!.beginTransaction()
-            listener.replace(R.id.fragmentStartFrameLayout, fragment).addToBackStack("TAG")
+        override fun replaceFragment(fragment: Fragment, category: Category) {
+
+            val bundle = Bundle()
+            bundle.putSerializable(INTENT_CATEGORY, category)
+            fragment.arguments = bundle
+
+            val listener = parentFragmentManager.beginTransaction()
+            listener.replace(R.id.fragmentStartFrameLayout, fragment)
             listener.commit()
         }
     }
@@ -41,17 +48,15 @@ class MainFragment: SuperFragment() {
         (activity as SuperActivity).title = getString(R.string.title_category)
 
         setHasOptionsMenu(true)
-
-        val display = requireActivity().windowManager.defaultDisplay
-        val point = Point()
-        display.getSize(point)
-        val screenWidth = point.x
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
-        categoryAdapter = CategoryAdapter(categoryList,changeListener)
+
+        recipesAdapter = CategoryAdapter(categoryList, changeListener)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         mainFragmentRecycler.layoutAnimation = animation
-        mainFragmentRecycler.adapter = categoryAdapter
+        mainFragmentRecycler.adapter = recipesAdapter
         mainFragmentRecycler.visibility = View.GONE
+
         getCategoriesFromServer()
 
     }
@@ -64,22 +69,28 @@ class MainFragment: SuperFragment() {
     }
 
     private fun getCategoriesFromServer() {
-        NetworkService()
-                .categoryApi
-                .allCategories
-                ?.enqueue(object : Callback<List<Category?>?> {
-                    override fun onResponse(call: Call<List<Category?>?>, response: Response<List<Category?>?>) {
+        CategoryApiService.getApi()
+                .getAllCategories()
+                .enqueue(object : Callback<List<Category>> {
+                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                        categoryList = response.body() ?: arrayListOf()
+                        recipesAdapter!!.onUpdateList(categoryList)
                         showList()
-                        for (category in response.body()!!) {
-                            RuntimeStorage.newInstance()?.categories?.add(category?.name!!)
-                        }
                     }
 
-                    override fun onFailure(call: Call<List<Category?>?>, t: Throwable) {
+                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
+                        Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
+                        categoryList = arrayListOf(
+                                Category("Первое"),
+                                Category("Второе"),
+                                Category("Салаты"),
+                                Category("Выпечка"),
+                                Category("Закуски"),
+                                Category("Напитки"),
+                                Category("Десерты")
+                        )
+                        recipesAdapter!!.onUpdateList(categoryList)
                         showList()
-                        Toast.makeText(context, "Нет связи с сервером", Toast.LENGTH_SHORT).show()
-                        RuntimeStorage.newInstance()!!.categories = arrayListOf("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки", "Заготовки на зиму")
-                        categoryAdapter!!.onUpdateList(RuntimeStorage.newInstance()!!.categories)
                     }
                 })
     }
@@ -92,8 +103,8 @@ class MainFragment: SuperFragment() {
     private fun showProfileScreen(){
         val dialog = ProfileDialogFragment()
         val fm = activity?.supportFragmentManager
-        fm?.let { dialog.show(it,"profileDialog") }
 
+        fm?.let { dialog.show(it,"profileDialog") }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

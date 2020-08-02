@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="90dp"
         android:gravity="center">
+
         <ImageView
             android:layout_width="@dimen/pic_width"
             android:layout_height="@dimen/pic_height"
@@ -25,8 +26,6 @@
             android:src="@drawable/logo"
             />
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,11 +42,11 @@
             android:textSize="10sp"
             android:textStyle="bold">
         </TextView>
+
         <EditText
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
@@ -63,16 +62,16 @@
             tools:visibility="visible" />
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="320dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,11 +82,11 @@
             android:textSize="10sp"
             android:textStyle="bold">
         </TextView>
+
         <EditText
             android:id="@+id/edit_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
@@ -103,10 +102,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="390dp"
@@ -138,13 +137,12 @@
             android:textSize="16sp"
             android:textStyle="bold">
         </EditText>
+
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:layout_alignParentBottom="true"
             android:layout_marginStart="44dp"
             android:layout_marginTop="7dp"
             android:paddingStart="7dp"
@@ -156,9 +154,6 @@
             android:textStyle="bold"
             android:theme="@style/MyCheckBox" />
     </LinearLayout>
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -176,7 +171,6 @@
             app:cornerRadius="40dp"
             android:layout_width="190dp"
             android:layout_height="55dp"
-            android:layout_alignTop="@+id/textBottom"
             android:layout_marginBottom="20dp"
             android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"

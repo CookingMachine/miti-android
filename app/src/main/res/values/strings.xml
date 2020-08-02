@@ -105,4 +105,8 @@
     <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
     <string name="dish_of_the_day_support_text">Насладитесь вкусным ужином всей семьей</string>
 
+    <!-- CONTENT DESCRIPTION -->
+
+    <string name="content_description_empty">Content</string>
+
 </resources>

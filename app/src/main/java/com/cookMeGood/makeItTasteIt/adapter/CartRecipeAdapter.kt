@@ -7,19 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AccelerateInterpolator
-import android.widget.LinearLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cookMeGood.makeItTasteIt.data.dto.Recipe
+import com.cookMeGood.makeItTasteIt.dto.Recipe
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.data.dto.Ingredient
+import com.cookMeGood.makeItTasteIt.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.SlideAnimation
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
 class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context):

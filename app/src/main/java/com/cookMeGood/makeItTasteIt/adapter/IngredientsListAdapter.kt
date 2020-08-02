@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.data.dto.Ingredient
+import com.cookMeGood.makeItTasteIt.dto.Ingredient
 import kotlinx.android.synthetic.main.item_ingredient.view.*
 
 class IngredientsListAdapter(val context: Context, private var ingredients: List<Ingredient>): RecyclerView.Adapter<IngredientsListAdapter.ViewHolder>() {

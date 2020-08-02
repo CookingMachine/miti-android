@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.data.dto
+package com.cookMeGood.makeItTasteIt.dto
 
 class Ingredient(s: String, s1: String) {
     val name: String? = s
