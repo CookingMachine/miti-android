@@ -1,37 +1,35 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.CategoryRecipeAdapter
-import com.cookMeGood.makeItTasteIt.data.dto.Recipe
+import com.cookMeGood.makeItTasteIt.adapter.RecipeListAdapter
+import com.cookMeGood.makeItTasteIt.dto.Category
+import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.RecipeApiService
 import com.cookMeGood.makeItTasteIt.listener.OnOpenRecipeListener
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
 import kotlinx.android.synthetic.main.fragment_category.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CategoryFragment: SuperFragment() {
 
-    private val recipes = arrayListOf<Recipe>()
+    private var recipesList = listOf<Recipe>()
+    private var recipesListListAdapter: RecipeListAdapter? = null
 
     private val openRecipeListener = object: OnOpenRecipeListener{
-        override fun openRecipe(name: String, image: Int) {
+        override fun openRecipe(recipe: Recipe) {
             val intent = Intent(context, RecipeActivity::class.java)
-            intent.putExtra("recipeName", name)
-            intent.putExtra("recipeImage", image)
+            intent.putExtra(INTENT_RECIPE, recipe)
             startActivity(intent)
         }
-    }
-
-    override fun initInterface(view: View?) {
-        (activity as SuperActivity).setSupportActionBar(categoryFragmentToolbar)
-        (activity as SuperActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
-        (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
-        setRecipeData()
-        val adapter = CategoryRecipeAdapter(recipes,context, openRecipeListener)
-        recipeRecycler.adapter = adapter
-
     }
 
     override fun setAttr() {
@@ -41,9 +39,50 @@ class CategoryFragment: SuperFragment() {
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
     }
 
+    override fun initInterface(view: View?) {
+        (activity as SuperActivity).setSupportActionBar(categoryFragmentToolbar)
+        (activity as SuperActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
+        (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
+
+        val category = requireArguments().getSerializable(IntentContainer.INTENT_CATEGORY) as Category
+
+        recipesListListAdapter = RecipeListAdapter(recipesList,context, openRecipeListener)
+        categoryFragmentRecipeList.adapter = recipesListListAdapter
+
+        getRecipesByCategoryIdFromServer(category.id!!)
+    }
+
     private fun setRecipeData() {
-        recipes.add(Recipe("Пицца", "Для большой компании", "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"))
-        recipes.add(Recipe("Борщ", "Хватит на всю семью", "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
+        recipesList = arrayListOf(
+                Recipe(null,"Пицца", "Для большой компании", null, null, "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
+                Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
+        )
+    }
+
+    private fun getRecipesByCategoryIdFromServer(categoryId: String) {
+
+        RecipeApiService.getApi()
+                .getRecipesByCategoryId(categoryId)
+                .enqueue(object : Callback<List<Recipe>> {
+                    override fun onResponse(call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
+                        recipesList = response.body() ?: arrayListOf()
+                        recipesListListAdapter!!.onUpdateList(recipesList)
+                        showList()
+                    }
+
+                    override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
+                        setRecipeData()
+                        Toast.makeText(context, "Ошибка соединения с сервером", Toast.LENGTH_LONG).show()
+                        recipesListListAdapter!!.onUpdateList(recipesList)
+                        showList()
+                    }
+                })
+    }
+
+    private fun showList(){
+        categoryFragmentProgressBar.visibility = View.GONE
+        categoryFragmentRecipeList.visibility = View.VISIBLE
     }
 }
 

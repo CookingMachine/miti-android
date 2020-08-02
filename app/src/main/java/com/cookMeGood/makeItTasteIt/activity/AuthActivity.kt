@@ -5,19 +5,15 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.LogInDialogAdapter
-import com.cookMeGood.makeItTasteIt.data.NetworkService
-import com.cookMeGood.makeItTasteIt.data.dto.User
+import com.cookMeGood.makeItTasteIt.dto.User
 import kotlinx.android.synthetic.main.activity_auth.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
 
-    var user: User = User()
+    private var user: User = User()
 
     override fun initInterface() {
-        window.enterTransition = null;
+        window.enterTransition = null
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
         btn_signIn.setOnClickListener { clickSignIn() }
         btn_signUp.setOnClickListener { clickSignUp() }
@@ -59,25 +55,25 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
     }
 
     private fun doAuth(login: String, pass: String) {
-        NetworkService().userApi.checkUser(login, pass)!!
-                .enqueue(object : Callback<User?> {
-                    override fun onResponse(call: Call<User?>, response: Response<User?>) {
-
-                        val user = response.body()!!
-
-                        if (user == null) {
-                            goToast("Неправильный логин или пароль")
-                        } else {
-                            goToast("Добро пожаловать, $login")
-                            val intent = Intent(this@AuthActivity,
-                                    StartActivity::class.java)
-                            startActivity(intent)
-                        }
-                    }
-                    override fun onFailure(call: Call<User?>, t: Throwable) {
-                        goToast(t.localizedMessage!!)
-                    }
-                })
+//        NetworkService().userApi.checkUser(login, pass)!!
+//                .enqueue(object : Callback<User?> {
+//                    override fun onResponse(call: Call<User?>, response: Response<User?>) {
+//
+//                        val user = response.body()!!
+//
+//                        if (user == null) {
+//                            goToast("Неправильный логин или пароль")
+//                        } else {
+//                            goToast("Добро пожаловать, $login")
+//                            val intent = Intent(this@AuthActivity,
+//                                    StartActivity::class.java)
+//                            startActivity(intent)
+//                        }
+//                    }
+//                    override fun onFailure(call: Call<User?>, t: Throwable) {
+//                        goToast(t.localizedMessage!!)
+//                    }
+//                })
     }
 }
 

@@ -1,18 +1,19 @@
 package com.cookMeGood.makeItTasteIt.activity
 
 import android.graphics.Point
-import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.IngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.RecipeStepAdapter
-import com.cookMeGood.makeItTasteIt.data.dto.Ingredient
-import com.cookMeGood.makeItTasteIt.data.dto.Step
+import com.cookMeGood.makeItTasteIt.dto.Ingredient
+import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.dto.Step
+import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
 
@@ -20,12 +21,12 @@ class RecipeActivity : SuperActivity(){
 
     private var portions = 1
 
-    private var steps = mutableListOf<Step>()
+    private var stepList = mutableListOf<Step>()
 
     private var stepListAdapter: RecipeStepAdapter? = null
     private var ingredientsListAdapter: IngredientsListAdapter? = null
 
-    private var ingredients = arrayListOf<Ingredient>()
+    private var ingredientsList = arrayListOf<Ingredient>()
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
@@ -34,7 +35,6 @@ class RecipeActivity : SuperActivity(){
     }
 
     override fun initInterface() {
-
         setSupportActionBar(recipeToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -44,20 +44,22 @@ class RecipeActivity : SuperActivity(){
         display.getSize(point)
         val screenHeight = point.y
 
-        val name: String = intent.extras?.get("recipeName").toString()
-        val image: Int = Integer.valueOf(intent.extras?.get("recipeImage").toString())
-        recipeTitleTextView.text = name
-        recipeImageView.setImageResource(image)
+        val currentRecipe = intent.extras!!.getSerializable(IntentContainer.INTENT_RECIPE) as Recipe
 
-        setPortionPicker()
+        recipeTitleTextView.text = currentRecipe.name
+        recipeDescription.text = currentRecipe.description
+        recipeImageView.setImageResource(R.drawable.image_recipe_background)
 
-        stepListAdapter = RecipeStepAdapter(steps, applicationContext)
+        stepListAdapter = RecipeStepAdapter(stepList, applicationContext)
         recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeStepList.adapter = stepListAdapter
 
-        ingredientsListAdapter = IngredientsListAdapter(applicationContext, ingredients)
+        ingredientsListAdapter = IngredientsListAdapter(applicationContext, ingredientsList)
         recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeIngredientsList.adapter = ingredientsListAdapter
+
+        setPortionPicker()
+        clickRecipe()
 
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -74,21 +76,18 @@ class RecipeActivity : SuperActivity(){
 
         recipePortionPicker.setOnValueChangedListener { _, _, newVal -> portions = newVal }
 
-        clickRecipe()
-        
         recipeButton.setOnClickListener { clickRecipe()  }
         kbjuButton.setOnClickListener { clickKbju()  }
         ingredButton.setOnClickListener { clickIngred()  }
 
-        recipeText.post {
+        recipeDescription.post {
 
             val peekHeight = recipeTitleTextView.layoutParams.height +
-                    recipeText.height +
+                    recipeDescription.height +
                     recipeButtonsLayout.layoutParams.height
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
         }
-
     }
     private fun clickRecipe() {
 
@@ -102,7 +101,6 @@ class RecipeActivity : SuperActivity(){
         recipeStepList.visibility = View.VISIBLE
         recipeIngredientsList.visibility = View.GONE
         recipeKBJU.visibility = View.GONE
-
         recipePortionPicker.visibility = View.GONE
 
         setStepList()
@@ -120,7 +118,6 @@ class RecipeActivity : SuperActivity(){
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.VISIBLE
         recipeKBJU.visibility = View.GONE
-
         recipePortionPicker.visibility = View.VISIBLE
 
         setIngredientsList()
@@ -138,14 +135,13 @@ class RecipeActivity : SuperActivity(){
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.GONE
         recipeKBJU.visibility = View.VISIBLE
-
         recipePortionPicker.visibility = View.VISIBLE
     }
 
     private fun setStepList() {
-        if(steps.isNullOrEmpty()) {
+        if(stepList.isNullOrEmpty()) {
             for (i in 1..4) {
-                steps.add(Step(i,
+                stepList.add(Step(i,
                         "Неторопясь нарезаем вкусненькую отваренную курочку",
                         "Нарезаем курицу"))
             }
@@ -153,10 +149,10 @@ class RecipeActivity : SuperActivity(){
     }
 
     private fun setIngredientsList(){
-        if(ingredients.isNullOrEmpty()) {
+        if(ingredientsList.isNullOrEmpty()) {
             for (i in 0..7) {
                 val ingredient = Ingredient(data[i], amount[i])
-                ingredients.add(ingredient)
+                ingredientsList.add(ingredient)
             }
         }
     }
@@ -192,5 +188,4 @@ class RecipeActivity : SuperActivity(){
         recipePortionPicker.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         recipePortionPicker.dividerColor = ContextCompat.getColor(applicationContext, R.color.colorBlack80)
     }
-
 }

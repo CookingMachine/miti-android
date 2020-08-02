@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.data.dto
+package com.cookMeGood.makeItTasteIt.dto
 
 data class Step constructor(val stepNumber: Int, val description: String?, val title: String?) {
     /*

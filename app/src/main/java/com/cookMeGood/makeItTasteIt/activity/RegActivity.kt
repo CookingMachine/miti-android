@@ -1,9 +1,8 @@
 package com.cookMeGood.makeItTasteIt.activity
 
 import android.content.Intent
-import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
+import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.activity_reg.*
@@ -11,7 +10,14 @@ import kotlinx.android.synthetic.main.activity_reg.*
 class RegActivity : SuperActivity() {
 
     override fun initInterface() {
-    btn_register.setOnClickListener { clickRegister() }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
+        }
+
+        btn_register.setOnClickListener {
+            clickRegister()
+        }
     }
 
     override fun setAttr() {

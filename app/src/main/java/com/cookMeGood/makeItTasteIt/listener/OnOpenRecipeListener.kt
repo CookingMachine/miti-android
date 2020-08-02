@@ -1,7 +1,9 @@
 package com.cookMeGood.makeItTasteIt.listener
 
+import com.cookMeGood.makeItTasteIt.dto.Recipe
+
 interface OnOpenRecipeListener {
 
-    fun openRecipe(name: String, image: Int)
+    fun openRecipe(recipe: Recipe)
 
 }

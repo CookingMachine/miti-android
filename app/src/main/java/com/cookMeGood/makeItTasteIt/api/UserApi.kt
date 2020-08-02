@@ -1,6 +1,6 @@
-package com.cookMeGood.makeItTasteIt.data
+package com.cookMeGood.makeItTasteIt.api
 
-import com.cookMeGood.makeItTasteIt.data.dto.User
+import com.cookMeGood.makeItTasteIt.dto.User
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

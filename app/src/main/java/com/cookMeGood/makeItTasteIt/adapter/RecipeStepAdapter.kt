@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.data.dto.Step
+import com.cookMeGood.makeItTasteIt.dto.Step
 import kotlinx.android.synthetic.main.item_recipe_step.view.*
 
 class RecipeStepAdapter(private val steps: List<Step>, val context: Context):
