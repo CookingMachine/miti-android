@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.CategoryGridAdapter
+import com.cookMeGood.makeItTasteIt.adapter.CategoryAdapter
 import com.cookMeGood.makeItTasteIt.data.NetworkService
 import com.cookMeGood.makeItTasteIt.data.RuntimeStorage
 import com.cookMeGood.makeItTasteIt.data.dto.Category
@@ -24,7 +24,7 @@ import retrofit2.Response
 
 class MainFragment: SuperFragment() {
 
-    private var recipesAdapter: CategoryGridAdapter? = null
+    private var categoryAdapter: CategoryAdapter? = null
     private var categoryList: List<String>? = listOf() //todo Поменять на List<Category> после сервера
     private var changeListener = object: OnFragmentChangeListener{
         override fun replaceFragment(fragment: Fragment) {
@@ -47,10 +47,10 @@ class MainFragment: SuperFragment() {
         display.getSize(point)
         val screenWidth = point.x
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
-        recipesAdapter = CategoryGridAdapter(requireContext(), categoryList!!, changeListener, screenWidth)
-        mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        categoryAdapter = CategoryAdapter(categoryList,changeListener)
+        mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         mainFragmentRecycler.layoutAnimation = animation
-        mainFragmentRecycler.adapter = recipesAdapter
+        mainFragmentRecycler.adapter = categoryAdapter
         mainFragmentRecycler.visibility = View.GONE
         getCategoriesFromServer()
 
@@ -79,7 +79,7 @@ class MainFragment: SuperFragment() {
                         showList()
                         Toast.makeText(context, "Нет связи с сервером", Toast.LENGTH_SHORT).show()
                         RuntimeStorage.newInstance()!!.categories = arrayListOf("Каши", "Салаты", "Супы", "Рыба и Мясо", "Выпечка", "Закуски", "Десерты", "Напитки", "Заготовки на зиму")
-                        recipesAdapter!!.onUpdateList(RuntimeStorage.newInstance()!!.categories)
+                        categoryAdapter!!.onUpdateList(RuntimeStorage.newInstance()!!.categories)
                     }
                 })
     }

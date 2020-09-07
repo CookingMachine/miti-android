@@ -20,6 +20,15 @@
         <item name="android:windowBackground">@drawable/color_gradient_background</item>
 
     </style>
+    <style name="MaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="android:titleTextStyle">@style/MyTextAppearance</item>
+        <item name="colorControlActivated">@color/colorWhite</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 
     <!-- стиль для текста -->
     <style name="MyTextAppearance" parent="@android:style/TextAppearance">
