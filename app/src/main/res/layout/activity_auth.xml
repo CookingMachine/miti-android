@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/MaterialTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlack">
@@ -34,17 +35,18 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signIn"
-            android:layout_width="117dp"
-            android:layout_height="43dp"
+            app:cornerRadius="40dp"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
             android:background="@drawable/shape_round_button_pressed"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/btn_signIn"
             android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:textSize="11sp"
 
-            app:fontFamily="@font/roboto" />
+            app:fontFamily="@font/roboto_bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -83,15 +85,16 @@
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signUp"
-            android:layout_width="117dp"
-            android:layout_height="43dp"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
             android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"
+            app:cornerRadius="40dp"
             android:text="@string/btn_registration"
             android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:textSize="11sp"
 
             app:fontFamily="@font/roboto_bold" />
 

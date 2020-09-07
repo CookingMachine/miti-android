@@ -1,101 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     android:id="@+id/gridRecipeLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="220dp"
-    android:layout_marginBottom="5dp"
-    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/categoryFirst"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp">
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Media -->
 
             <ImageView
-                android:id="@+id/categoryImageFirst"
-                android:layout_width="match_parent"
+                android:id="@+id/categoryImage"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:background="@color/colorBlack"/>
+                app:srcCompat="@drawable/image_category1" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_centerInParent="true">
-
-                <TextView
-                    android:id="@+id/categoryNameFirst"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/title_recipe"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="28sp"
-                    app:fontFamily="@font/roboto_thin" />
-
-                <TextView
-                    android:id="@+id/categoryAmountFirst"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/title_count_positions"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp"
-                    app:fontFamily="@font/roboto_light" />
-
-            </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/categorySecond"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp">
-
-            <ImageView
-                android:id="@+id/categoryImageSecond"
+            <TextView
+                android:id="@+id/categoryName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:background="@color/colorBlack"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_centerInParent="true">
+                android:text="PRIMARY"
+                android:textAppearance="@style/BottomNavigationView"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/categoryNameSecond"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/title_recipe"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="28sp"
-                    app:fontFamily="@font/roboto_thin" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/categoryAmountSecond"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_count_positions"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp"
-                    app:fontFamily="@font/roboto_light" />
-            </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-        </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>
