@@ -11,9 +11,10 @@
         android:id="@+id/categoryFirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp">
+        android:layout_margin="@dimen/card_margin"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="5dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,9 +26,9 @@
             <ImageView
                 android:id="@+id/categoryImage"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="125dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/image_category1" />
+                app:srcCompat="@drawable/image_category2"/>
 
             <TextView
                 android:id="@+id/categoryName"
