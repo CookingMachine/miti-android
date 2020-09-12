@@ -19,14 +19,15 @@ class CategoryAdapter(private var categories: List<String>?,var changeListener: 
         listener = changeListener
         holder.categoryName.text = categories!![position]
         holder.categoryImage.setBackgroundResource(R.drawable.image_category1)
+
         holder.categoryImage.setOnClickListener {
             listener.replaceFragment(CategoryFragment())
         }
     }
 
     override fun getItemCount(): Int = categories!!.size
-    fun onUpdateList(mCategories: List<String>) {
-        categories = mCategories
+    fun onUpdateList(newCategories: List<String>) {
+        categories = newCategories
         notifyDataSetChanged()
     }
 

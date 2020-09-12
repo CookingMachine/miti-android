@@ -37,9 +37,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signIn"
-            app:cornerRadius="40dp"
-            android:layout_width="190dp"
-            android:layout_height="50dp"
+            app:cornerRadius="@dimen/auth_button_corner_radius"
+            android:layout_width="@dimen/auth_button_width"
+            android:layout_height="@dimen/auth_button_height"
             android:background="@drawable/shape_round_button_pressed"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/btn_signIn"
@@ -87,11 +87,11 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signUp"
-            android:layout_width="190dp"
-            android:layout_height="55dp"
+            android:layout_width="@dimen/auth_button_width"
+            android:layout_height="@dimen/auth_button_height"
             android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"
-            app:cornerRadius="40dp"
+            app:cornerRadius="@dimen/auth_button_corner_radius"
             android:text="@string/btn_registration"
             android:textColor="@color/colorWhite"
             android:textSize="11sp"
