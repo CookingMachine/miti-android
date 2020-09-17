@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
+package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.dto.Step
 import kotlinx.android.synthetic.main.item_recipe_step.view.*
 
-class RecipeStepAdapter(private val steps: List<Step>, val context: Context):
-        RecyclerView.Adapter<RecipeStepAdapter.ViewHolder>() {
+class RecipeStepListAdapter(private val steps: List<Step>, val context: Context):
+        RecyclerView.Adapter<RecipeStepListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context)
@@ -23,7 +23,7 @@ class RecipeStepAdapter(private val steps: List<Step>, val context: Context):
 
         val item = steps[position]
 
-        holder.stepNumber.text = item.stepNumber.toString()
+        holder.stepNumber.text = item.number.toString()
         holder.stepDescription.text = item.description
     }
 

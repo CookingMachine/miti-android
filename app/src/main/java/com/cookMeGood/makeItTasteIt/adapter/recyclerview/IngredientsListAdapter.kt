@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
+package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,5 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
-
+package com.cookMeGood.makeItTasteIt.adapter.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -10,11 +9,12 @@ import com.cookMeGood.makeItTasteIt.R
 import kotlinx.android.synthetic.main.item_login_alert.view.*
 
 class LogInDialogAdapter : AppCompatDialogFragment() {
+
     var listener: LoginDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
-        val inflater = activity!!.layoutInflater
+        val inflater = requireActivity().layoutInflater
         val view = inflater.inflate(R.layout.item_login_alert,null)
         builder.setView(view)
                 .setPositiveButton("Войти") { _, _ ->
@@ -25,6 +25,7 @@ class LogInDialogAdapter : AppCompatDialogFragment() {
                 .setNegativeButton("Отмена") { dialog, _ -> dialog.cancel() }
         return builder.create()
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
@@ -34,6 +35,7 @@ class LogInDialogAdapter : AppCompatDialogFragment() {
                     "must implement LoginDialogListener")
         }
     }
+
     interface LoginDialogListener {
         fun loginUser(login: String, password: String)
     }

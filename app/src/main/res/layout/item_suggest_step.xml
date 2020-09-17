@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <RelativeLayout
+        android:id="@+id/suggestStepLayout"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/colorWhite"
+        android:elevation="4dp">
+
+        <LinearLayout
+            android:id="@+id/suggestStepInfoLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginEnd="52dp"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/suggestStepTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/marginSide"
+                app:fontFamily="@font/roboto_light"
+                android:textColor="@color/colorBlack"
+                android:text="@string/text_step_name" />
+
+            <TextView
+                android:id="@+id/suggestStepNumber"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/shape_round_login"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_light"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/text_step_number"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/suggestStepChangeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:src="@drawable/ic_suggest_pencil"
+            android:contentDescription="@string/content_description_empty"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/suggestStepAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_suggest_add_step"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        android:contentDescription="@string/content_description_empty"/>
+
+</RelativeLayout>

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.adapter.LogInDialogAdapter
+import com.cookMeGood.makeItTasteIt.adapter.dialog.LogInDialogAdapter
 import com.cookMeGood.makeItTasteIt.dto.User
 import kotlinx.android.synthetic.main.activity_auth.*
 
@@ -15,6 +15,7 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
     override fun initInterface() {
         window.enterTransition = null
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
+
         btn_signIn.setOnClickListener { clickSignIn() }
         btn_signUp.setOnClickListener { clickSignUp() }
         textAsGuest.setOnClickListener { asGuest() }

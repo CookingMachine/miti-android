@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">M.I.T.I.</string>
+    <string name="text_welcome">Welcome to M.I.T.I.</string>
 
     <!-- ACTIVITIES -->
 
@@ -47,6 +48,13 @@
     <string name="text_profile_developers">Написать разработчикам</string>
     <string name="text_profile_rate_app">Оценить приложение</string>
     <string name="text_profile_about">О приложении</string>
+    <string name="text_suggest_empty">У вас пока нет рецептов</string>
+    <string name="text_suggest_save">Сохранить</string>
+    <string name="text_suggest_sheet_name">Наименование</string>
+    <string name="text_suggest_sheet_description">Здесь можно добавить описание блюда!</string>
+    <string name="text_suggest_description">Описание</string>
+    <string name="text_suggest_step_description">Описание шага</string>
+    <string name="text_suggest_title">Название</string>
 
     <!-- MENU -->
 
@@ -62,6 +70,7 @@
     <string name="btn_show">Показать</string>
     <string name="btn_toPurchases">К ПОКУПКАМ</string>
     <string name="btn_toRecipe">Смотреть</string>
+    <string name="btn_add">Добавить</string>
 
     <!-- HINTS -->
 
@@ -101,7 +110,6 @@
 
     <string name="example_ingredient_amount">1200г.</string>
     <string name="example_ingredient_name">Луковые кольца</string>
-    <string name="WelcomeText">Welcome to the club body</string>
     <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
     <string name="dish_of_the_day_support_text">Насладитесь вкусным ужином всей семьей</string>
 

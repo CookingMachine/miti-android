@@ -1,17 +1,16 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.RecipeListAdapter
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.api.RecipeApiService
-import com.cookMeGood.makeItTasteIt.listener.OnOpenRecipeListener
+import com.cookMeGood.makeItTasteIt.api.service.RecipeApiService
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
 import kotlinx.android.synthetic.main.fragment_category.*

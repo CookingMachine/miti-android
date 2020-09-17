@@ -6,12 +6,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.adapter.IngredientsListAdapter
-import com.cookMeGood.makeItTasteIt.adapter.RecipeStepAdapter
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.IngredientsListAdapter
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.dto.Recipe
 import com.cookMeGood.makeItTasteIt.dto.Step
-import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import kotlinx.android.synthetic.main.activity_recipe.*
@@ -23,7 +22,7 @@ class RecipeActivity : SuperActivity(){
 
     private var stepList = mutableListOf<Step>()
 
-    private var stepListAdapter: RecipeStepAdapter? = null
+    private var stepListListAdapter: RecipeStepListAdapter? = null
     private var ingredientsListAdapter: IngredientsListAdapter? = null
 
     private var ingredientsList = arrayListOf<Ingredient>()
@@ -50,9 +49,9 @@ class RecipeActivity : SuperActivity(){
         recipeDescription.text = currentRecipe.description
         recipeImageView.setImageResource(R.drawable.image_recipe_background)
 
-        stepListAdapter = RecipeStepAdapter(stepList, applicationContext)
+        stepListListAdapter = RecipeStepListAdapter(stepList, applicationContext)
         recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        recipeStepList.adapter = stepListAdapter
+        recipeStepList.adapter = stepListListAdapter
 
         ingredientsListAdapter = IngredientsListAdapter(applicationContext, ingredientsList)
         recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
@@ -61,7 +60,7 @@ class RecipeActivity : SuperActivity(){
         setPortionPicker()
         clickRecipe()
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         onChangeSheetHeight(screenHeight / 10 * 7)
 
@@ -141,9 +140,9 @@ class RecipeActivity : SuperActivity(){
     private fun setStepList() {
         if(stepList.isNullOrEmpty()) {
             for (i in 1..4) {
-                stepList.add(Step(i,
-                        "Неторопясь нарезаем вкусненькую отваренную курочку",
-                        "Нарезаем курицу"))
+                stepList.add(Step("Нарезаем курицу",
+                        i,
+                        "Неторопясь нарезаем вкусненькую отваренную курочку"))
             }
         }
     }
@@ -158,7 +157,7 @@ class RecipeActivity : SuperActivity(){
     }
 
     private fun onChangeSheetHeight(pixels: Int){
-        bottomSheet.layoutParams.height = pixels
+        recipeBottomSheet.layoutParams.height = pixels
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

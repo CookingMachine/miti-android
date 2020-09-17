@@ -49,7 +49,6 @@
             android:text="@string/btn_signIn"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-
             app:fontFamily="@font/roboto_bold" />
 
         <LinearLayout
