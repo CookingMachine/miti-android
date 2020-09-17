@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
+package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.listener.OnOpenRecipeListener
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import kotlinx.android.synthetic.main.item_category_recipe.view.*
 
 class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?,

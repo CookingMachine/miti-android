@@ -6,7 +6,7 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.CartRecipeAdapter
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CartRecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Recipe
 import kotlinx.android.synthetic.main.fragment_cart.*
 
@@ -14,7 +14,7 @@ class CartFragment: SuperFragment() {
 
     private val recipes = arrayListOf<Recipe>()
 
-    private var cartAdapter: CartRecipeAdapter? = null
+    private var cartListAdapter: CartRecipeListAdapter? = null
 
     override fun initInterface(view: View?) {
         (activity as SuperActivity).setSupportActionBar(cartFragmentToolbar)
@@ -24,10 +24,10 @@ class CartFragment: SuperFragment() {
 
         setCartData()
 
-        cartAdapter = CartRecipeAdapter(recipes, requireContext())
+        cartListAdapter = CartRecipeListAdapter(recipes, requireContext())
         cartRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         cartRecycler.layoutAnimation = animation
-        cartRecycler.adapter = cartAdapter
+        cartRecycler.adapter = cartListAdapter
 
     }
 

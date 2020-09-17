@@ -1,8 +1,11 @@
 package com.cookMeGood.makeItTasteIt.dto
 
-data class Step constructor(val stepNumber: Int, val description: String?, val title: String?) {
-    /*
-    * @drawable resource of int
-    */
-     val imgResource = 0
-}
+data class Step(
+
+        var name: String? = null,
+
+        var number: Int? = null,
+
+        var description: String? = "Описание отсутствует"
+
+)

@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
+package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.dto.Ingredient
 import kotlinx.android.synthetic.main.item_cart_ingredient.view.*
 
-class CartIngredientsAdapter(private val context: Context,
-                             private val ingredients: ArrayList<Ingredient>) :
-        RecyclerView.Adapter<CartIngredientsAdapter.ViewHolder>() {
+class CartIngredientListAdapter(private val context: Context,
+                                private val ingredients: ArrayList<Ingredient>) :
+        RecyclerView.Adapter<CartIngredientListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(

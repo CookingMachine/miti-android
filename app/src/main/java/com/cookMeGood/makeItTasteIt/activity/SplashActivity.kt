@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 class SplashActivity : SuperActivity() {
 
     companion object {
-        private const val SPLASH_TIME_OUT = 3000L
+        private const val SPLASH_TIME_OUT = 1500L
     }
 
     override fun initInterface() {
@@ -25,14 +25,11 @@ class SplashActivity : SuperActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Handler().postDelayed({
-            // This method will be executed once the timer is over
-            // Start your app main activity
-            intent = Intent(this,AuthActivity::class.java)
+            intent = Intent(this, AuthActivity::class.java)
             window.exitTransition = null;
             val options = ActivityOptions.makeSceneTransitionAnimation(this,
-            splashLogo, "logoTransition")
-            startActivity(intent,options.toBundle())
-            // close this activity
+                    splashLogo, "logoTransition")
+            startActivity(intent, options.toBundle())
             supportFinishAfterTransition()
         }, SPLASH_TIME_OUT)
     }

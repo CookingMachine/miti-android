@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
+package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
@@ -19,13 +19,13 @@ import com.cookMeGood.makeItTasteIt.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
-class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context):
-        RecyclerView.Adapter<CartRecipeAdapter.ViewHolder>() {
+class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Context):
+        RecyclerView.Adapter<CartRecipeListAdapter.ViewHolder>() {
 
     private val ingredients = arrayListOf<Ingredient>()
     private lateinit var recyclerView: RecyclerView
 
-    private var expandedModel: Recipe? = null
+    private var expandedList = ArrayList<Int>()
     private var originalHeight : Int = -1
     private var expandedHeight : Int = -1
 
@@ -66,29 +66,7 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
         holder.name.text = recipe.name
 
         holder.layout.setOnClickListener {
-
-            expandedModel = when (expandedModel) {
-                null -> {
-                    expand(holder, expand = true)
-                    recipe
-                }
-                recipe -> {
-                    expand(holder, expand = false)
-                    null
-                }
-                else -> {
-
-                    val expandedModelPosition = recipes.indexOf(expandedModel!!)
-                    val oldViewHolder =
-                            recyclerView.findViewHolderForAdapterPosition(expandedModelPosition) as? ViewHolder
-                    if (oldViewHolder != null) expand(oldViewHolder, expand = false)
-
-                    expand(holder, expand = true)
-                    recipe
-                }
-            }
-
-
+            expand(holder, !expandedList.contains(position))
         }
     }
 
@@ -116,8 +94,14 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
             holder.divider.rotation = 180 * progress
         }
 
-        if (expand) animator.doOnStart { holder.ingredientsList.visibility = View.VISIBLE }
-        else animator.doOnEnd { holder.ingredientsList.visibility = View.GONE }
+        if (expand) animator.doOnStart {
+            holder.ingredientsList.visibility = View.VISIBLE
+            expandedList.add(holder.adapterPosition)
+        }
+        else animator.doOnEnd {
+            holder.ingredientsList.visibility = View.GONE
+            expandedList.remove(holder.adapterPosition)
+        }
 
         animator.start()
     }
@@ -129,10 +113,10 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
             ingredients.add(Ingredient("Сыр", "200гр"))
             ingredients.add(Ingredient("Лук", "1 головка"))
         }
-        if(holder.ingredientsAdapter == null){
-            holder.ingredientsAdapter = CartIngredientsAdapter(context, ingredients)
+        if(holder.ingredientListAdapter == null){
+            holder.ingredientListAdapter = CartIngredientListAdapter(context, ingredients)
             holder.ingredientsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            holder.ingredientsList.adapter = holder.ingredientsAdapter
+            holder.ingredientsList.adapter = holder.ingredientListAdapter
         }
     }
 
@@ -143,6 +127,6 @@ class CartRecipeAdapter(private val recipes: List<Recipe>, val context: Context)
         val layout = view.cartRecipeLayout!!
         val divider = view.cartRecipeDivider!!
         val ingredientsList = view.cartIngredientList!!
-        var ingredientsAdapter : CartIngredientsAdapter? = null
+        var ingredientListAdapter : CartIngredientListAdapter? = null
     }
 }

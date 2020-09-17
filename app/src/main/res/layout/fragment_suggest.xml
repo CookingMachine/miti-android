@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:theme="@style/MaterialTheme">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/suggestFragmentAppbar"
@@ -15,26 +16,50 @@
             android:id="@+id/suggestFragmentToolbar"
             android:layout_height="?attr/actionBarSize"
             android:layout_width="match_parent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/suggestScrollView"
+    <ProgressBar
+        android:id="@+id/suggestFragmentProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:indeterminateTint="@color/primaryColor"
+        android:layout_gravity="center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/suggestFragmentList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/suggestEmptyListLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/suggestFragmentAppbar">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="240dp"
+        android:visibility="gone">
 
-        <LinearLayout
-            android:id="@+id/suggestScrollLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/suggestFragmentEmptyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/text_suggest_empty"/>
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/suggestAddButton"
+            android:layout_width="@dimen/suggest_button_add_width"
+            android:layout_height="@dimen/suggest_button_add_height"
+            android:layout_marginTop="@dimen/suggest_text_margin"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shape_button_circle"
+            android:text="@string/btn_add"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp" />
 
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.cookMeGood.makeItTasteIt.R
-import kotlinx.android.synthetic.main.profile_dialog_screen.*
+import kotlinx.android.synthetic.main.item_profile_dialog_screen.*
 
 
-open class ProfileDialogFragment: DialogFragment() {
+open class ProfilePageFragment: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return super.onCreateDialog(savedInstanceState)
     }
@@ -21,7 +21,7 @@ open class ProfileDialogFragment: DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.setCancelable(true)
         dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        return inflater.inflate(R.layout.profile_dialog_screen, container, false)
+        return inflater.inflate(R.layout.item_profile_dialog_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

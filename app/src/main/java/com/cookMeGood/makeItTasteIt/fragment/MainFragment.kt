@@ -1,7 +1,6 @@
 package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
-import android.graphics.Point
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -13,10 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.CategoryAdapter
-import com.cookMeGood.makeItTasteIt.api.CategoryApiService
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
+import com.cookMeGood.makeItTasteIt.api.service.CategoryApiService
 import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.listener.OnFragmentChangeListener
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
@@ -25,7 +24,7 @@ import retrofit2.Response
 
 class MainFragment: SuperFragment() {
 
-    private var recipesAdapter: CategoryAdapter? = null
+    private var recipesListAdapter: CategoryListAdapter? = null
     private var categoryList: List<Category> = listOf()
 
     private var changeListener = object: OnFragmentChangeListener{
@@ -50,11 +49,11 @@ class MainFragment: SuperFragment() {
         setHasOptionsMenu(true)
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
 
-        recipesAdapter = CategoryAdapter(categoryList, changeListener)
+        recipesListAdapter = CategoryListAdapter(categoryList, changeListener)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         mainFragmentRecycler.layoutAnimation = animation
-        mainFragmentRecycler.adapter = recipesAdapter
+        mainFragmentRecycler.adapter = recipesListAdapter
         mainFragmentRecycler.visibility = View.GONE
 
         getCategoriesFromServer()
@@ -74,7 +73,7 @@ class MainFragment: SuperFragment() {
                 .enqueue(object : Callback<List<Category>> {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
                         categoryList = response.body() ?: arrayListOf()
-                        recipesAdapter!!.onUpdateList(categoryList)
+                        recipesListAdapter!!.onUpdateList(categoryList)
                         showList()
                     }
 
@@ -89,7 +88,7 @@ class MainFragment: SuperFragment() {
                                 Category("Напитки"),
                                 Category("Десерты")
                         )
-                        recipesAdapter!!.onUpdateList(categoryList)
+                        recipesListAdapter!!.onUpdateList(categoryList)
                         showList()
                     }
                 })
@@ -101,7 +100,7 @@ class MainFragment: SuperFragment() {
     }
 
     private fun showProfileScreen(){
-        val dialog = ProfileDialogFragment()
+        val dialog = ProfilePageFragment()
         val fm = activity?.supportFragmentManager
 
         fm?.let { dialog.show(it,"profileDialog") }

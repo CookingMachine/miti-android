@@ -1,9 +1,10 @@
-package com.cookMeGood.makeItTasteIt.api
+package com.cookMeGood.makeItTasteIt.api.service
 
+import com.cookMeGood.makeItTasteIt.api.RecipeApi
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
-object CategoryApiService {
+object RecipeApiService {
 
     private var retrofit: Retrofit? = null
     private const val API_PATH = "https://miti-serv.herokuapp.com/"
@@ -15,7 +16,7 @@ object CategoryApiService {
                 .build()
     }
 
-    fun getApi(): CategoryApi {
-        return retrofit!!.create(CategoryApi::class.java)
+    fun getApi(): RecipeApi {
+        return retrofit!!.create(RecipeApi::class.java)
     }
 }

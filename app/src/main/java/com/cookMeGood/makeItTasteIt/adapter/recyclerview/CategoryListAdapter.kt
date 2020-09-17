@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.adapter
+package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
-import com.cookMeGood.makeItTasteIt.listener.OnFragmentChangeListener
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.item_main_recipe.view.*
 
-class CategoryAdapter(private var categories: List<Category>?, var changeListener: OnFragmentChangeListener): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryListAdapter(private var categories: List<Category>?,
+                          var changeListener: OnFragmentChangeListener):
+        RecyclerView.Adapter<CategoryListAdapter.ViewHolder>() {
+
     private lateinit var listener : OnFragmentChangeListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main_recipe,parent,false)
     return ViewHolder(view)}
 
