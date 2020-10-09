@@ -35,7 +35,7 @@
         android:gravity="center"
         android:text="@string/text_recipe"
         android:textColor="@color/colorBlack"
-        android:textSize="12sp" />
+        android:textSize="@dimen/textSizeDefault" />
 
     <LinearLayout
         android:id="@+id/recipeButtonsLayout"
@@ -58,7 +58,7 @@
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_recipe"
             android:textColor="@color/primaryColor"
-            android:textSize="12sp" />
+            android:textSize="@dimen/textSizeDefault" />
 
         <Button
             android:id="@+id/ingredButton"
@@ -72,7 +72,7 @@
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_ingredient"
             android:textColor="@color/primaryColor"
-            android:textSize="12sp" />
+            android:textSize="@dimen/textSizeDefault" />
 
         <Button
             android:id="@+id/kbjuButton"
@@ -86,7 +86,7 @@
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_kbju"
             android:textColor="@color/primaryColor"
-            android:textSize="12sp" />
+            android:textSize="@dimen/textSizeDefault" />
     </LinearLayout>
 
     <com.shawnlin.numberpicker.NumberPicker

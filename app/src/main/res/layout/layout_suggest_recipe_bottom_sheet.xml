@@ -14,8 +14,8 @@
 
     <TextView
         android:id="@+id/suggestActivityBottomSheetName"
-        android:layout_width="@dimen/suggest_sheet_name_width"
-        android:layout_height="@dimen/suggest_sheet_name_height"
+        android:layout_width="@dimen/suggestSheetNameWidth"
+        android:layout_height="@dimen/suggestSheetNameHeight"
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginEnd="@dimen/marginSide"
         android:layout_alignParentTop="true"

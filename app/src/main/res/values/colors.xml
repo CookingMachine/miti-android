@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#fc3a3b</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
     <color name="backgroundColor">#e8e8e8</color>
-    <color name="bottomColor">#d6e4aa</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="dividerColor">#1F000000</color>
-    <color name="objectsDarkColor">#D02B2C</color>
-    <color name="colorGreyLight">#888877</color>
 
     <!-- TRANSPARENCIES -->
 

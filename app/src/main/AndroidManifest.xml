@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:allowBackup="true">
 
         <activity android:name=".activity.SuggestActivity"/>
 
@@ -37,10 +38,6 @@
             android:name=".activity.RegActivity"
             android:label="@string/title_activity_reg"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".fragment.CabinetFragment"
-            tools:ignore="Instantiatable" />
 
         <activity android:name=".activity.StartActivity" />
 

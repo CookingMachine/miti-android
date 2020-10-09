@@ -51,9 +51,9 @@
 
         <Button
             android:id="@+id/suggestAddButton"
-            android:layout_width="@dimen/suggest_button_add_width"
-            android:layout_height="@dimen/suggest_button_add_height"
-            android:layout_marginTop="@dimen/suggest_text_margin"
+            android:layout_width="@dimen/suggestButtonAddWidth"
+            android:layout_height="@dimen/suggestButtonAddHeight"
+            android:layout_marginTop="@dimen/suggestTextMargin"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/shape_button_circle"
             android:text="@string/btn_add"
