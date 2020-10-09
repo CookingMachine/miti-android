@@ -1,26 +1,20 @@
 <resources>
-
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="pic_width">80dp</dimen>
-    <dimen name="pic_height">105dp</dimen>
-    <dimen name="toolbar_default">44dp</dimen>
-    <dimen name="half_margin">8dp</dimen>
+    <dimen name="textSizeDefault">12sp</dimen>
+    <dimen name="loginLogoWidth">80dp</dimen>
+    <dimen name="loginLogoHeight">105dp</dimen>
     <dimen name="marginSide">16dp</dimen>
     <dimen name="portionTextSelected">18sp</dimen>
     <dimen name="portionText">14sp</dimen>
-    <dimen name="auth_button_height">40dp</dimen>
-    <dimen name="auth_button_width">190dp</dimen>
-    <dimen name="card_corner_radius">12dp</dimen>
-    <dimen name="auth_button_corner_radius">40dp</dimen>
-    <dimen name="card_margin">8dp</dimen>
+    <dimen name="authButtonHeight">40dp</dimen>
+    <dimen name="authButtonWidth">190dp</dimen>
+    <dimen name="authButtonCornerRadius">40dp</dimen>
 
-    <!-- SUGGEST FRAGMENT -->
+    <dimen name="cardCornerRadius">12dp</dimen>
+    <dimen name="cardMargin">8dp</dimen>
 
-    <dimen name="suggest_text_margin">60dp</dimen>
-    <dimen name="suggest_button_add_width">100dp</dimen>
-    <dimen name="suggest_button_add_height">32dp</dimen>
-    <dimen name="suggest_sheet_name_width">250dp</dimen>
-    <dimen name="suggest_sheet_name_height">40dp</dimen>
+    <dimen name="suggestTextMargin">60dp</dimen>
+    <dimen name="suggestButtonAddWidth">100dp</dimen>
+    <dimen name="suggestButtonAddHeight">32dp</dimen>
+    <dimen name="suggestSheetNameWidth">250dp</dimen>
+    <dimen name="suggestSheetNameHeight">40dp</dimen>
 </resources>

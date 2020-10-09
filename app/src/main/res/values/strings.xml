@@ -6,25 +6,20 @@
     <!-- ACTIVITIES -->
 
     <string name="title_activity_authorize">M.I.T.I.</string>
-    <string name="title_activity_register">Регистрация</string>
     <string name="title_activity_cart">Корзина</string>
     <string name="title_activity_category">Категории</string>
     <string name="title_activity_recipe">Рецепт</string>
     <string name="title_activity_recipes">Рецепты</string>
     <string name="title_activity_favourites">Favourites</string>
-    <string name="title_activity_start">Главная Страница</string>
 
     <!-- TITLES -->
 
     <string name="title_home">Рецепты</string>
-    <string name="title_recipes">Рецепты</string>
     <string name="title_recipe">РЕЦЕПТ</string>
-    <string name="title_count_positions">101 позиция</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingredient">Ингредиенты</string>
     <string name="title_dashboard">Добавить</string>
     <string name="title_notifications">Избранное</string>
-    <string name="title_result">Результат поиска:</string>
     <string name="title_profile">Профиль</string>
     <string name="title_category">Категории</string>
     <string name="title_cart">Корзина</string>
@@ -33,14 +28,10 @@
 
     <!-- TEXT -->
 
-    <string name="text_login">Логин:</string>
     <string name="text_password">Пароль:</string>
     <string name="text_step_number">1</string>
     <string name="text_step_name">Шаг</string>
-    <string name="text_step_desc">Описание</string>
     <string name="text_recipe"> Важным условием настоящей пиццы bbq является ее запекание на углях или дровах. Для этого существуют специальные печи. Только тогда лепешка приобретет вкус и аромат дымка. Рецептуру можно менять по своим вкусовым пристрастиям.</string>
-    <string name="text_minus">-</string>
-    <string name="text_plus">+</string>
     <string name="text_profile_account">Аккаунт</string>
     <string name="text_profile_rate">Оценки</string>
     <string name="text_profile_seen">Просмотренные</string>
@@ -55,6 +46,8 @@
     <string name="text_suggest_description">Описание</string>
     <string name="text_suggest_step_description">Описание шага</string>
     <string name="text_suggest_title">Название</string>
+    <string name="text_registration_checkbox">Я согласен с пользовательским соглашением</string>
+    <string name="text_ampersand">&amp;</string>
 
     <!-- MENU -->
 
@@ -67,9 +60,6 @@
     <string name="btn_signIn">Войти</string>
     <string name="btn_register">Зарегистрироваться</string>
     <string name="btn_registration">Регистрация</string>
-    <string name="btn_show">Показать</string>
-    <string name="btn_toPurchases">К ПОКУПКАМ</string>
-    <string name="btn_toRecipe">Смотреть</string>
     <string name="btn_add">Добавить</string>
 
     <!-- HINTS -->
@@ -89,12 +79,8 @@
     <string name="f_fats_inside">Fa</string>
     <string name="f_carbo_inside">Ca</string>
 
-    <string name="list_result"> По вашему запросу найдены следующие рецепты: </string>
-
-    <string name="countPor">Порции: 1</string>
     <string name="sign_guest">Войти как гость</string>
     <string name="i_have_account">У меня есть аккаунт</string>
-    <string name="checkbox_text">Я согласен с пользовательским соглашением</string>
 
     <!-- PROFILE -->
 
@@ -109,7 +95,6 @@
     <!-- EXAMPLE -->
 
     <string name="example_ingredient_amount">1200г.</string>
-    <string name="example_ingredient_name">Луковые кольца</string>
     <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
     <string name="dish_of_the_day_support_text">Насладитесь вкусным ужином всей семьей</string>
 

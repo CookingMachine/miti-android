@@ -103,7 +103,5 @@ class SuggestActivity : SuperActivity() {
         itemTouchHelper.attachToRecyclerView(suggestActivityStepList)
     }
 
-    private fun checkRecipeFilling(){
-
-    }
+//    private fun checkRecipeFilling(){}
 }

@@ -21,8 +21,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/pic_width"
-            android:layout_height="@dimen/pic_height"
+            android:layout_width="@dimen/loginLogoWidth"
+            android:layout_height="@dimen/loginLogoHeight"
             android:layout_marginVertical="90dp"
             android:layout_marginTop="110dp"
             android:transitionName="logoTransition"
@@ -41,9 +41,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signIn"
-            app:cornerRadius="@dimen/auth_button_corner_radius"
-            android:layout_width="@dimen/auth_button_width"
-            android:layout_height="@dimen/auth_button_height"
+            app:cornerRadius="@dimen/authButtonCornerRadius"
+            android:layout_width="@dimen/authButtonWidth"
+            android:layout_height="@dimen/authButtonHeight"
             android:background="@drawable/shape_round_button_pressed"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/btn_signIn"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:text="&amp;"
+                android:text="@string/text_ampersand"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
@@ -88,11 +88,11 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signUp"
-            android:layout_width="@dimen/auth_button_width"
-            android:layout_height="@dimen/auth_button_height"
+            android:layout_width="@dimen/authButtonWidth"
+            android:layout_height="@dimen/authButtonHeight"
             android:background="@drawable/shape_round_button_pressed"
             android:insetBottom="6dp"
-            app:cornerRadius="@dimen/auth_button_corner_radius"
+            app:cornerRadius="@dimen/authButtonCornerRadius"
             android:text="@string/btn_registration"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
@@ -110,7 +110,7 @@
         android:layout_marginBottom="90dp"
         android:text="@string/sign_guest"
         android:textColor="#eaeaea"
-        android:textSize="12sp"
+        android:textSize="@dimen/textSizeDefault"
         android:textStyle="normal"
         app:fontFamily="@font/roboto" />
 </RelativeLayout>

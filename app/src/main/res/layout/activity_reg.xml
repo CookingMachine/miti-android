@@ -19,12 +19,13 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="@dimen/pic_width"
-            android:layout_height="@dimen/pic_height"
+            android:layout_width="@dimen/loginLogoWidth"
+            android:layout_height="@dimen/loginLogoHeight"
             android:gravity="center"
             android:scaleType="centerCrop"
             android:src="@drawable/logo"
-            />
+            android:contentDescription="@string/content_description_empty" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -32,6 +33,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="250dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +42,8 @@
             app:fontFamily="@font/roboto"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            tools:ignore="SmallSp">
         </TextView>
 
         <EditText
@@ -59,7 +62,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/roboto"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            android:autofillHints=""
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,7 +85,8 @@
             android:text="@string/hint_email"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            tools:ignore="SmallSp">
         </TextView>
 
         <EditText
@@ -97,8 +103,11 @@
             android:textColor="#FFFFFF"
             android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="LabelFor">
         </EditText>
+
     </LinearLayout>
 
     <LinearLayout
@@ -110,6 +119,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="390dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,13 +128,14 @@
             android:text="@string/hint_password"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            tools:ignore="SmallSp">
         </TextView>
+
         <EditText
             android:id="@+id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
@@ -135,7 +146,9 @@
             android:textColor="#FFFFFF"
             android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="LabelFor">
         </EditText>
 
         <CheckBox
@@ -148,11 +161,12 @@
             android:paddingStart="7dp"
             android:paddingTop="9dp"
             android:fontFamily="@font/roboto_light"
-            android:text="Я согласен с пользовательским соглашением"
+            android:text="@string/text_registration_checkbox"
             android:textColor="#FFFFFF"
             android:textSize="10sp"
             android:textStyle="bold"
-            android:theme="@style/MyCheckBox" />
+            android:theme="@style/MyCheckBox"
+            tools:ignore="RtlSymmetry,SmallSp" />
     </LinearLayout>
 
     <LinearLayout
@@ -177,7 +191,8 @@
             android:text="@string/btn_register"
             android:textColor="@color/colorWhite"
             android:textSize="11sp"
-            app:fontFamily="@font/roboto_bold" />
+            app:fontFamily="@font/roboto_bold"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/textBottom"
