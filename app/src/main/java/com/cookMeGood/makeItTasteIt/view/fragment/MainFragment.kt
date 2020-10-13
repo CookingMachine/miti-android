@@ -35,7 +35,7 @@ class MainFragment: SuperFragment() {
             fragment.arguments = bundle
 
             val listener = parentFragmentManager.beginTransaction()
-            listener.replace(R.id.fragmentStartFrameLayout, fragment)
+            listener.replace(R.id.nav_host, fragment)
             listener.commit()
         }
     }

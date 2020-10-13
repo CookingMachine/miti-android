@@ -7,12 +7,17 @@
     android:layout_height="match_parent"
     tools:context="com.cookMeGood.makeItTasteIt.view.activity.StartActivity">
 
-    <FrameLayout
-        android:id="@+id/fragmentStartFrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="50dp"/>
+    <fragment
+    android:id="@+id/nav_host"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:defaultNavHost="true"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:navGraph="@navigation/nav_graph"
+    android:layout_marginBottom="50dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view_start"
