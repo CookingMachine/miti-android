@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.activity
+package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.app.ActivityOptions
 import android.content.Intent

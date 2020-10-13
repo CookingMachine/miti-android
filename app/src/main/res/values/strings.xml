@@ -96,7 +96,7 @@
 
     <string name="example_ingredient_amount">1200г.</string>
     <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
-    <string name="dish_of_the_day_support_text">Насладитесь вкусным ужином всей семьей</string>
+    <string name="dish_of_the_day_description">Насладитесь вкусным ужином всей семьей</string>
 
     <!-- CONTENT DESCRIPTION -->
 

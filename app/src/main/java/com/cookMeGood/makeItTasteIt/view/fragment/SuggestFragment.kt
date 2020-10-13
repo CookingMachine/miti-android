@@ -1,10 +1,10 @@
-package com.cookMeGood.makeItTasteIt.fragment
+package com.cookMeGood.makeItTasteIt.view.fragment
 
 import android.content.Intent
 import android.view.View
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.activity.SuggestActivity
-import com.cookMeGood.makeItTasteIt.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
+import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestedRecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Recipe
 import kotlinx.android.synthetic.main.fragment_suggest.*

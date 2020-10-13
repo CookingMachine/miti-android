@@ -1,11 +1,11 @@
-package com.cookMeGood.makeItTasteIt.fragment
+package com.cookMeGood.makeItTasteIt.view.fragment
 
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
-import com.cookMeGood.makeItTasteIt.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity
+import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe

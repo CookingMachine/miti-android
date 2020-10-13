@@ -1,11 +1,11 @@
-package com.cookMeGood.makeItTasteIt.fragment
+package com.cookMeGood.makeItTasteIt.view.fragment
 
 import android.content.Intent
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CartRecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Recipe
 import kotlinx.android.synthetic.main.fragment_cart.*

@@ -17,4 +17,6 @@
     <dimen name="suggestButtonAddHeight">32dp</dimen>
     <dimen name="suggestSheetNameWidth">250dp</dimen>
     <dimen name="suggestSheetNameHeight">40dp</dimen>
+
+    <dimen name="cardViewWithTitleTextSize">32sp</dimen>
 </resources>

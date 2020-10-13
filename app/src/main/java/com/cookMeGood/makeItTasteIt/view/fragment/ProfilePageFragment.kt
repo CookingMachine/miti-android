@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.fragment
+package com.cookMeGood.makeItTasteIt.view.fragment
 
 import android.app.Dialog
 import android.graphics.Color

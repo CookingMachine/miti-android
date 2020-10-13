@@ -25,83 +25,38 @@
         android:layout_width="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card"
+            <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithDescription
+                android:id="@+id/dishOfTheDayCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/marginSide"
-                app:cardCornerRadius="@dimen/cardCornerRadius">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/image_dish_of_the_day"
-                        android:contentDescription="@string/content_description_empty" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="@font/roboto"
-                            android:text="@string/dish_of_the_day"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="@font/roboto"
-                            android:text="Грудинка на гриле"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="@font/roboto"
-                            android:text="@string/dish_of_the_day_support_text"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary"
-                            android:textSize="14sp"
-                            android:layout_marginBottom="8dp"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                app:cardTheme="@string/dish_of_the_day"
+                app:cardTitle="Свинина по-французски"
+                app:cardDescription="@string/dish_of_the_day_description"
+                app:cardImage="@drawable/image_dish_of_the_day"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mainFragmentRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/card"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="-6dp"
                 android:layoutAnimation="@anim/layout_list_swipe_right"
                 android:visibility="visible" />
 
-        </RelativeLayout>
+            <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithTitle
+                android:id="@+id/noCaloriesCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="ПОДБОРКА ДЛЯ ТЕХ, КОМУ НЕ НУЖНЫ КАЛОРИИ"
+                app:image="@drawable/image_card_view_with_title"/>
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
