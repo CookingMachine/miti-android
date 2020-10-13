@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.activity
+package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.view.View
 import androidx.core.content.ContextCompat

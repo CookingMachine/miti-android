@@ -1,11 +1,11 @@
-package com.cookMeGood.makeItTasteIt.activity
+package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.content.Intent
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.fragment.CartFragment
-import com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment
-import com.cookMeGood.makeItTasteIt.fragment.MainFragment
-import com.cookMeGood.makeItTasteIt.fragment.SuggestFragment
+import com.cookMeGood.makeItTasteIt.view.fragment.CartFragment
+import com.cookMeGood.makeItTasteIt.view.fragment.FavouritesFragment
+import com.cookMeGood.makeItTasteIt.view.fragment.MainFragment
+import com.cookMeGood.makeItTasteIt.view.fragment.SuggestFragment
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity: SuperActivity()  {

@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.fragment
+package com.cookMeGood.makeItTasteIt.view.fragment
 
 import android.content.Intent
 import android.os.Bundle

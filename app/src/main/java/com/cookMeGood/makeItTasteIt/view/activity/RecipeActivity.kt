@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.activity
+package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.graphics.Point
 import android.view.*

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment">
+    tools:context="com.cookMeGood.makeItTasteIt.view.fragment.FavouritesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/favouritesFragmentAppbar"

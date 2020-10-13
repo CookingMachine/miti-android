@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.activity;
+package com.cookMeGood.makeItTasteIt.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

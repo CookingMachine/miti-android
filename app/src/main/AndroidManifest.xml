@@ -17,10 +17,10 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:allowBackup="true">
 
-        <activity android:name=".activity.SuggestActivity"/>
+        <activity android:name=".view.activity.SuggestActivity"/>
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".view.activity.SplashActivity"
             android:theme="@style/AuthActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,43 +30,43 @@
         </activity>
 
         <activity
-            android:name=".activity.AuthActivity"
+            android:name=".view.activity.AuthActivity"
             android:label="@string/title_activity_authorize"
             android:theme="@style/AuthActivityTheme"/>
 
         <activity
-            android:name=".activity.RegActivity"
+            android:name=".view.activity.RegActivity"
             android:label="@string/title_activity_reg"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.StartActivity" />
+        <activity android:name=".view.activity.StartActivity" />
 
-        <activity android:name=".activity.BuylistActivity" />
+        <activity android:name=".view.activity.BuylistActivity" />
 
         <activity
-            android:name=".fragment.SuggestFragment"
+            android:name=".view.fragment.SuggestFragment"
             tools:ignore="Instantiatable" />
 
-        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".view.activity.SearchActivity" />
 
         <activity
-            android:name=".fragment.CartFragment"
+            android:name=".view.fragment.CartFragment"
             android:label="@string/title_activity_cart"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".fragment.CategoryFragment"
+            android:name=".view.fragment.CategoryFragment"
             android:label="@string/title_activity_recipes"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".fragment.FavouritesFragment"
+            android:name=".view.fragment.FavouritesFragment"
             android:label="@string/title_activity_favourites"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".activity.RecipeActivity"
+            android:name=".view.activity.RecipeActivity"
             android:label="@string/title_activity_recipe"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".fragment.MainFragment"
+            android:name=".view.fragment.MainFragment"
             android:label="@string/title_activity_category"
             tools:ignore="Instantiatable" />
 
