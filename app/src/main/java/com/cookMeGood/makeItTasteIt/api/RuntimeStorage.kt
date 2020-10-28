@@ -1,16 +1,13 @@
 package com.cookMeGood.makeItTasteIt.api
 
-class RuntimeStorage {
+object RuntimeStorage {
 
-    companion object {
+    var privateMode = 0
+    val prefName = "access_preferences"
 
-        private var instance: RuntimeStorage? = null
+    var accessToken : String? = null
 
-        fun newInstance(): RuntimeStorage? {
-            if (instance == null) {
-                instance = RuntimeStorage()
-            }
-            return instance
-        }
+    fun updateToken(token: String){
+        accessToken = "Bearer $token"
     }
 }

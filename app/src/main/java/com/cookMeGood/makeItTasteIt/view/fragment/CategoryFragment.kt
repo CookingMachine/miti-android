@@ -9,7 +9,7 @@ import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.api.service.RecipeApiService
+import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
@@ -61,7 +61,7 @@ class CategoryFragment: SuperFragment() {
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
 
-        RecipeApiService.getApi()
+        ApiService.getApi()
                 .getRecipesByCategoryId(categoryId)
                 .enqueue(object : Callback<List<Recipe>> {
                     override fun onResponse(call: Call<List<Recipe>>, response: Response<List<Recipe>>) {

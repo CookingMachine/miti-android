@@ -18,6 +18,6 @@ data class User(
         @JsonProperty("email")
         var email: String? = null,
 
-        @JsonProperty("isActive")
-        var isActive: Boolean? = null
+        @JsonProperty("role")
+        var role: Int? = null
 ): Serializable

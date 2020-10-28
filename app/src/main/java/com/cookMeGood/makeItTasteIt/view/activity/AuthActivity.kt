@@ -1,12 +1,20 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.content.Intent
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.LogInDialogAdapter
+import com.cookMeGood.makeItTasteIt.api.ApiService
+import com.cookMeGood.makeItTasteIt.api.RuntimeStorage.prefName
+import com.cookMeGood.makeItTasteIt.api.RuntimeStorage.privateMode
+import com.cookMeGood.makeItTasteIt.api.model.LoginRequest
+import com.cookMeGood.makeItTasteIt.api.model.LoginResponse
 import com.cookMeGood.makeItTasteIt.dto.User
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goToast
 import kotlinx.android.synthetic.main.activity_auth.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
 
@@ -44,37 +52,33 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
 
     override fun loginUser(login: String, password: String) {
         if (login == "" || password == "") {
-            goToast("Пустое поле!")
+            goToast(applicationContext, "Пустое поле!")
         } else {
             doAuth(login, password)
         }
     }
 
-    private fun goToast(output: String) {
-        val errorToast = Toast.makeText(this, output, Toast.LENGTH_SHORT)
-        errorToast.show()
-    }
+    private fun doAuth(login: String, password: String) {
+        ApiService.getApi()
+                .authorize(LoginRequest(login, password))
+                .enqueue(object : Callback<LoginResponse>{
+                    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                        if (response.isSuccessful){
+                            getSharedPreferences(prefName, privateMode).edit().putString("access_token", response.body()!!.jwtToken).apply()
 
-    private fun doAuth(login: String, pass: String) {
-//        NetworkService().userApi.checkUser(login, pass)!!
-//                .enqueue(object : Callback<User?> {
-//                    override fun onResponse(call: Call<User?>, response: Response<User?>) {
-//
-//                        val user = response.body()!!
-//
-//                        if (user == null) {
-//                            goToast("Неправильный логин или пароль")
-//                        } else {
-//                            goToast("Добро пожаловать, $login")
-//                            val intent = Intent(this@AuthActivity,
-//                                    StartActivity::class.java)
-//                            startActivity(intent)
-//                        }
-//                    }
-//                    override fun onFailure(call: Call<User?>, t: Throwable) {
-//                        goToast(t.localizedMessage!!)
-//                    }
-//                })
+                            val intent = Intent(applicationContext, StartActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        else{
+                            goToast(applicationContext, "Неправильный логин или пароль")
+                        }
+                    }
+
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        goToast(applicationContext, "Ошибка соединения с сервером")
+                    }
+                })
     }
 }
 
