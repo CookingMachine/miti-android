@@ -3,16 +3,14 @@ package com.cookMeGood.makeItTasteIt.view.activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
+import android.widget.Toast
 import com.cookMeGood.makeItTasteIt.R
 import kotlinx.android.synthetic.main.activity_splash.*
+import kotlinx.coroutines.*
 
 
 class SplashActivity : SuperActivity() {
 
-    companion object {
-        private const val SPLASH_TIME_OUT = 1500L
-    }
 
     override fun initInterface() {
 
@@ -22,16 +20,39 @@ class SplashActivity : SuperActivity() {
         setLayout(R.layout.activity_splash)
     }
 
+    private val connectivityCheck = CoroutineScope(Dispatchers.Main) // Корутина, переназови если нужно
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Handler().postDelayed({
-            intent = Intent(this, AuthActivity::class.java)
-            window.exitTransition = null;
-            val options = ActivityOptions.makeSceneTransitionAnimation(this,
-                    splashLogo, "logoTransition")
-            startActivity(intent, options.toBundle())
-            supportFinishAfterTransition()
-        }, SPLASH_TIME_OUT)
+        var res : Boolean
+        connectivityCheck.launch {
+
+            val call  = async { getData()} // 2я корутина в которой мы посылаем запрос
+
+            try {
+                res = call.await() as Boolean // ожидаем выполнения второй корутины
+                Toast.makeText(this@SplashActivity, "Task  Done", Toast.LENGTH_SHORT).show()
+            }catch (e:Exception){
+                e.printStackTrace()
+                Toast.makeText(this@SplashActivity, "Task not Done", Toast.LENGTH_SHORT).show()
+                delay(3000)
+            }
+            startNextActivity()
+
+        }
+    }
+    private fun startNextActivity(){
+        intent = Intent(this@SplashActivity, AuthActivity::class.java)
+        window.exitTransition = null;
+        val options = ActivityOptions.makeSceneTransitionAnimation(this@SplashActivity,
+                splashLogo, "logoTransition")
+        startActivity(intent, options.toBundle())
+        supportFinishAfterTransition()
+    }
+
+
+    private fun getData() {
+
     }
 }
 
