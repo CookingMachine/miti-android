@@ -30,8 +30,12 @@ class SplashActivity : SuperActivity() {
             val call  = async { getData()} // 2я корутина в которой мы посылаем запрос
 
             try {
-                res = call.await() as Boolean // ожидаем выполнения второй корутины
+                res = call.await() // ожидаем выполнения второй корутины
+
+                if (res)
                 Toast.makeText(this@SplashActivity, "Task  Done", Toast.LENGTH_SHORT).show()
+                else (finish())
+
             }catch (e:Exception){
                 e.printStackTrace()
                 Toast.makeText(this@SplashActivity, "Task not Done", Toast.LENGTH_SHORT).show()
@@ -51,8 +55,9 @@ class SplashActivity : SuperActivity() {
     }
 
 
-    private fun getData() {
-
+    private suspend fun getData(): Boolean {
+        delay(5000) //выполняем какой то запрос
+        return true
     }
 }
 
