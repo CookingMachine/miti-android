@@ -64,11 +64,15 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
                 .enqueue(object : Callback<LoginResponse>{
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                         if (response.isSuccessful){
-                            getSharedPreferences(prefName, privateMode).edit().putString("access_token", response.body()!!.jwtToken).apply()
+                            when (response.code()) {
+                                200 -> {
+                                    getSharedPreferences(prefName, privateMode).edit().putString("access_token", response.body()!!.jwtToken).apply()
 
-                            val intent = Intent(applicationContext, StartActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                                    val intent = Intent(applicationContext, StartActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            }
                         }
                         else{
                             goToast(applicationContext, "Неправильный логин или пароль")
