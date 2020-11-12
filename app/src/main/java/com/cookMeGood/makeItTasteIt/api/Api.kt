@@ -1,4 +1,4 @@
-    package com.cookMeGood.makeItTasteIt.api
+package com.cookMeGood.makeItTasteIt.api
 
 import com.cookMeGood.makeItTasteIt.api.model.LoginRequest
 import com.cookMeGood.makeItTasteIt.api.model.LoginResponse
@@ -6,10 +6,7 @@ import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
 import com.cookMeGood.makeItTasteIt.dto.User
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface Api {
 
@@ -17,22 +14,22 @@ interface Api {
         const val API_PATH = "https://miti-serv.herokuapp.com"
     }
 
-    // AUTHENTICATION
-
+    @Headers(
+            "Accept: application/json",
+            "Content-Type: application/json",
+            "Content-Length: 100"
+    )
     @POST("$API_PATH/auth")
-    fun authorize(@Body request: LoginRequest): Call<LoginResponse>
-
-    // CATEGORIES
+    fun authorize(
+            @Body
+            request: LoginRequest
+    ): Call<LoginResponse>
 
     @GET("${API_PATH}/getAllCategories")
     fun getAllCategories(): Call<List<Category>>
 
-    //USER
-
     @POST("${API_PATH}/addUser")
-    fun addUser(@Body user: User)
-
-    //RECIPE
+    fun addUser(@Body user: User): Call<User>
 
     @GET("${API_PATH}/getRecipesByCategoryId")
     fun getRecipesByCategoryId(

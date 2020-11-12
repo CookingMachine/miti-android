@@ -29,21 +29,20 @@ class RecipeActivity : SuperActivity(){
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
-    override fun setAttr() {
-        setLayout(R.layout.activity_recipe)
-    }
+    override fun setAttr() = setLayout(R.layout.activity_recipe)
 
     override fun initInterface() {
-        setSupportActionBar(recipeToolbar)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val display = windowManager.defaultDisplay
         val point = Point()
         display.getSize(point)
         val screenHeight = point.y
-
         val currentRecipe = intent.extras!!.getSerializable(IntentContainer.INTENT_RECIPE) as Recipe
+
+        setSupportActionBar(recipeToolbar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = currentRecipe.name
 
         recipeTitleTextView.text = currentRecipe.name
         recipeDescription.text = currentRecipe.description
@@ -161,7 +160,7 @@ class RecipeActivity : SuperActivity(){
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_recipe, menu)
+        menuInflater.inflate(R.menu.recipe_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

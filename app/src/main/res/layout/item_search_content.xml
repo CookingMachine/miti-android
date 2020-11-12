@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/marginSide"
+    android:layout_marginTop="@dimen/marginSide"
+    android:layout_marginEnd="@dimen/marginSide">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+            <RelativeLayout
+                android:id="@+id/searchLinear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/searchContentImage"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/marginSide"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    app:riv_corner_radius="90dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/title_ingredient"
+                    android:src="@drawable/pic2" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/marginSide"
+                    android:layout_toEndOf="@id/searchContentImage"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/searchContentTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/title_recipe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp"
+                        app:fontFamily="@font/roboto" />
+
+                    <TextView
+                        android:id="@+id/searchContentKitchen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/title_recipe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/roboto_light" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/marginSide"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    tools:ignore="RelativeOverlap">
+
+                    <TextView
+                        android:id="@+id/searchContentTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:text="@string/example"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp"
+                        app:drawableTopCompat="@drawable/ic_clock_red" />
+
+                    <TextView
+                        android:id="@+id/searchContentRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:text="@string/example"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/colorBlack80"/>
+
+            </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

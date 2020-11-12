@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CartRecipeListAdapter
+import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
 import kotlinx.android.synthetic.main.fragment_cart.*
 
@@ -16,11 +17,12 @@ class CartFragment: SuperFragment() {
 
     private var cartListAdapter: CartRecipeListAdapter? = null
 
-    override fun initInterface(view: View?) {
-        (activity as SuperActivity).setSupportActionBar(cartFragmentToolbar)
-        cartFragmentToolbar.title = getString(R.string.title_cart)
+    override fun setAttr() = setLayout(R.layout.fragment_cart)
 
-        val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_fall_down)
+    override fun initInterface(view: View?) {
+        (activity as SuperActivity).title = getString(R.string.title_cart)
+
+        val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_layout_list_fall_down)
 
         setCartData()
 
@@ -31,19 +33,15 @@ class CartFragment: SuperFragment() {
 
     }
 
-    override fun setAttr() {
-        setLayout(R.layout.fragment_cart)
-    }
-
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
     }
 
     private fun setCartData(){
-        if(recipes.isEmpty()) {
-            recipes.add(Recipe(null,"Пицца", "Для большой компании", null, null, "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"))
-            recipes.add(Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
-            recipes.add(Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
-            recipes.add(Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
+        if (recipes.isEmpty()) {
+            recipes.add(Recipe(null,"Пицца", "Для большой компании", null, null, Category(),"2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"))
+            recipes.add(Recipe(null,"Борщ", "Хватит на всю семью", null, null, Category(), "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
+            recipes.add(Recipe(null,"Борщ", "Хватит на всю семью", null, null, Category(), "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
+            recipes.add(Recipe(null,"Борщ", "Хватит на всю семью", null, null, Category(), "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня"))
         }
     }
 

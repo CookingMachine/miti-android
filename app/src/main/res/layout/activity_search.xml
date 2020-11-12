@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.activity.SearchActivity"
+    android:background="@color/primaryColor"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/searchActivityToolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="@color/primaryColor"
+        app:menu="@menu/search_toolbar_menu"
+        android:theme="@style/AppThemeToolbar"/>
+
+    <com.cookMeGood.makeItTasteIt.view.custom.Backdrop
+        android:id="@+id/searchActivityBackdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:toolbarId="@id/searchActivityToolbar"
+        app:front_layout="@id/backdropFront"
+        app:back_layout="@id/backdropBack"
+        app:menuDrawable="@drawable/ic_filter_white"
+        app:closeDrawable="@drawable/ic_close_white"
+        app:animationDuration="300"
+        app:front_header_radius="12dp"
+        app:peekHeight="900dp">
+
+        <include
+            android:id="@+id/backdropBack"
+            layout="@layout/layout_backdrop_back"/>
+
+        <include
+            android:id="@+id/backdropFront"
+            layout="@layout/layout_backdrop_front"/>
+
+
+    </com.cookMeGood.makeItTasteIt.view.custom.Backdrop>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,17 +7,24 @@
     android:layout_height="match_parent"
     tools:context="com.cookMeGood.makeItTasteIt.view.activity.StartActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/startActivityToolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="@color/primaryColor"
+        app:menu="@menu/start_activity_menu"
+        android:theme="@style/AppThemeToolbar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <fragment
-    android:id="@+id/nav_host"
-    android:name="androidx.navigation.fragment.NavHostFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:defaultNavHost="true"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:navGraph="@navigation/nav_graph"
-    android:layout_marginBottom="50dp"/>
+        android:id="@+id/nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view_start"
@@ -31,6 +38,5 @@
         app:itemTextAppearanceInactive="@style/BottomNavigationView"
         app:labelVisibilityMode="selected"
         app:menu="@menu/bottom_nav_menu" />
-
 
 </RelativeLayout>

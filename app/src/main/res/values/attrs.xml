@@ -13,4 +13,14 @@
         <attr name="image" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="Backdrop">
+        <attr name="front_layout" format="reference" />
+        <attr name="back_layout" format="reference" />
+        <attr name="toolbarId" format="reference" />
+        <attr name="peekHeight" format="dimension" />
+        <attr name="menuDrawable" format="reference" />
+        <attr name="closeDrawable" format="reference" />
+        <attr name="animationDuration" format="integer" />
+    </declare-styleable>
+
 </resources>

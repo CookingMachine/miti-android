@@ -39,6 +39,8 @@ class SuggestActivity : SuperActivity() {
         onButtonClick(suggestActivityRecipeButton)
         setRecyclerViewItemDragListener()
 
+        suggestActivityTimePicker.setIs24HourView(true)
+
         suggestActivityBottomSheetName.setOnClickListener {
             suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter("Название", 0, suggestStepEditListener)
             suggestEditStepDialogDialog!!.show(supportFragmentManager, "Title")
@@ -55,8 +57,6 @@ class SuggestActivity : SuperActivity() {
 
         suggestActivitySaveButton.setOnClickListener {
             HelpUtils.goToast(applicationContext, "SAVED") //TODO: сохранение предложенного рецепта
-
-
         }
 
         suggestActivityRecipeButton.setOnClickListener { onButtonClick(suggestActivityRecipeButton) }

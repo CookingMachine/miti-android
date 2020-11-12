@@ -6,15 +6,20 @@ import java.io.Serializable
 
 @JsonIgnoreProperties("role", "")
 data class User(
-        @JsonProperty("id")
-        var id: Long? = null,
 
         @JsonProperty("username")
         var username: String? = null,
+
+        @JsonProperty("name")
+        var name: String? = null,
+
+        @JsonProperty("password")
+        var password: String? = null,
 
         @JsonProperty("email")
         var email: String? = null,
 
         @JsonProperty("role")
         var role: Int? = null
+
 ): Serializable

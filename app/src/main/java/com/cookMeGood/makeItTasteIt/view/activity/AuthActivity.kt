@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
+class AuthActivity: SuperActivity(), LogInDialogAdapter.LoginDialogListener {
 
     override fun setAttr() = setLayout(R.layout.activity_auth)
 
@@ -25,6 +25,7 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
 
         window.enterTransition = null
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
+        window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
         btn_signIn.setOnClickListener {
             val loginDialog = LogInDialogAdapter()
@@ -38,7 +39,7 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
 
         textAsGuest.setOnClickListener {
             intent = Intent(this, StartActivity::class.java)
-            intent.putExtra("user", User(null, "guest", null, 0))
+            intent.putExtra("user", User(null, "guest", null, null))
             startActivity(intent)
             finish()
         }
@@ -52,23 +53,23 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
                     .authorize(LoginRequest(login, password))
                     .enqueue(object : Callback<LoginResponse> {
                         override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                            if (response.isSuccessful) {
-                                when (response.code()) {
-                                    200 -> {
-                                        getSharedPreferences(ApiService.prefName, Context.MODE_PRIVATE)
-                                                .edit()
-                                                .putString("access_token", response.body()!!.jwtToken)
-                                                .apply()
+                            when (response.code()) {
+                                200 -> {
+                                    getSharedPreferences(ApiService.prefName, Context.MODE_PRIVATE)
+                                            .edit()
+                                            .putString("access_token", response.body()!!.jwtToken)
+                                            .apply()
 
-                                        goToast(applicationContext, response.body()!!.jwtToken!!)
-
-                                        intent = Intent(applicationContext, SplashActivity::class.java)
-                                        startActivity(intent)
-                                        finish()
-                                    }
+                                    intent = Intent(applicationContext, SplashActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
                                 }
-                            } else {
-                                goToast(applicationContext, "Неправильный логин или пароль")
+                                401 -> {
+                                    goToast(applicationContext, "Неправильный логин или пароль")
+                                }
+                                500 -> {
+                                    goToast(applicationContext, "ОШИБКА СЕРВЕРА")
+                                }
                             }
                         }
 
@@ -79,6 +80,7 @@ class AuthActivity  : SuperActivity(), LogInDialogAdapter.LoginDialogListener {
         }
     }
 }
+
 
 
 

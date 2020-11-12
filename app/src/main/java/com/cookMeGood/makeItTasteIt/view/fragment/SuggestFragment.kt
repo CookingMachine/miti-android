@@ -7,6 +7,7 @@ import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestedRecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Recipe
+import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.fragment_suggest.*
 
 class SuggestFragment: SuperFragment() {
@@ -14,9 +15,10 @@ class SuggestFragment: SuperFragment() {
     private var suggestedRecipesList: List<Recipe> = listOf()
     private var suggestedRecipeListAdapter: SuggestedRecipeListAdapter? = null
 
+    override fun setAttr() = setLayout(R.layout.fragment_suggest)
+
     override fun initInterface(view: View?) {
-        (activity as SuperActivity).setSupportActionBar(suggestFragmentToolbar)
-        suggestFragmentToolbar.title = getString(R.string.title_suggest)
+        (activity as SuperActivity).title = getString(R.string.title_suggest)
 
         getSuggestedRecipesByUserIdFromServer()
         showContent()
@@ -25,10 +27,6 @@ class SuggestFragment: SuperFragment() {
             val intent = Intent(context, SuggestActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    override fun setAttr() {
-        setLayout(R.layout.fragment_suggest)
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
