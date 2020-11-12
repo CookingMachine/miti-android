@@ -52,7 +52,7 @@ class CategoryFragment: SuperFragment() {
         getRecipesByCategoryIdFromServer(category.id!!)
     }
 
-    private fun setRecipeData() {
+    private fun setRecipeListStub() {
         recipesList = arrayListOf(
                 Recipe(null,"Пицца", "Для большой компании", null, null, "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
                 Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
@@ -71,8 +71,8 @@ class CategoryFragment: SuperFragment() {
                     }
 
                     override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        setRecipeData()
                         Toast.makeText(context, "Ошибка соединения с сервером", Toast.LENGTH_LONG).show()
+                        setRecipeListStub()
                         recipesListListAdapter!!.onUpdateList(recipesList)
                         showList()
                     }

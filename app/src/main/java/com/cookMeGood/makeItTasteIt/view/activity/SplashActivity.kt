@@ -2,117 +2,98 @@ package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.api.RuntimeStorage
 import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.dto.MainContent
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class SplashActivity : SuperActivity() {
 
     private val waitForResponseCoroutine = CoroutineScope(Dispatchers.Main)
-    private var isAuthenticated: Boolean? = null
-    private var mainContent = listOf<Category>()
+    private var isAuthenticated: Boolean? = true
+    private var mainContent: MainContent? = null
 
-    override fun setAttr() {
-        setLayout(R.layout.activity_splash)
-    }
+    override fun setAttr() = setLayout(R.layout.activity_splash)
 
     override fun initInterface() {
 
-        RuntimeStorage.accessToken = getSharedPreferences(RuntimeStorage.prefName, RuntimeStorage.privateMode)
-                .getString("access_token", "")
+        window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
         waitForResponseCoroutine.launch {
 
             val call  = async { getData() }
 
             try {
-                val res = call.await()
-
-                if (res) {
-                    Toast.makeText(this@SplashActivity, "Response received", Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    finish()
-                }
-
-            } catch (e:Exception) {
+                call.await()
+            }
+            catch (e:Exception) {
                 e.printStackTrace()
-                Toast.makeText(this@SplashActivity, "Failed to login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SplashActivity, "Server is unavailable\nTry again later", Toast.LENGTH_SHORT).show()
                 delay(3000)
             }
             startNextActivity()
-
         }
     }
 
     private suspend fun getData(): Boolean {
         var timeLimit = 0
-        while(timeLimit < 21 && isAuthenticated == null) {
-            delay(3000)
-            onLogin()
-            timeLimit += 3
+
+        while (mainContent == null && timeLimit < 10){
+            getCategoriesFromServer()
+            delay(2000)
+            timeLimit += 2
         }
-        delay(1000)
-        
+
         return true
     }
 
     private fun startNextActivity(){
-
-        when(isAuthenticated){
+        when (isAuthenticated){
             true -> {
+                val bundle = Bundle()
+                bundle.putSerializable("mainContent", mainContent)
+
                 intent = Intent(this@SplashActivity, StartActivity::class.java)
-                window.exitTransition = null;
+                intent.putExtras(bundle)
+
+                window.exitTransition = null
                 startActivity(intent)
                 supportFinishAfterTransition()
             }
             else -> {
-                intent = Intent(this@SplashActivity, AuthActivity::class.java)
                 val options = ActivityOptions.makeSceneTransitionAnimation(this@SplashActivity,
                         splashLogo, "logoTransition")
-                window.exitTransition = null;
+
+                intent = Intent(this@SplashActivity, AuthActivity::class.java)
+
+                window.exitTransition = null
                 startActivity(intent, options.toBundle())
                 supportFinishAfterTransition()
             }
         }
-
     }
 
-    private fun onLogin() {
+    private fun getCategoriesFromServer() {
         ApiService.getApi()
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
-
-                        when (response.code()){
-                            200 -> {
-                                isAuthenticated = true
-                                mainContent = response.body()!!
-                            }
-                            401 -> {
-                                isAuthenticated = false
-                            }
-                            else -> {
-                                HelpUtils.goToast(applicationContext, "Ошибка соединения с сервером")
-                            }
+                        if (response.isSuccessful) {
+                            mainContent = MainContent(response.body() ?: arrayListOf())
                         }
                     }
 
                     override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                        HelpUtils.goToast(applicationContext, "Ошибка соединения с интернетом")
-                        isAuthenticated = false
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
                     }
                 })
     }
-
 }
-

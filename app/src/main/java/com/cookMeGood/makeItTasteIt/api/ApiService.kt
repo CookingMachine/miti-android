@@ -9,35 +9,37 @@ object ApiService {
 
     private var client = OkHttpClient.Builder()
     private var retrofit: Retrofit? = null
-    private const val API_PATH = "https://miti-serv.herokuapp.com/"
 
+    const val prefName = "access_preferences"
+//    private val sharedPreferences = ApplicationContext.getContext()
+//            .getSharedPreferences(prefName, Context.MODE_PRIVATE)
 
-    init {
+    private lateinit var jwtToken: String
+
+    fun getApi(): Api {
 
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
 
+//        jwtToken = sharedPreferences.getString("access_token", "") ?: ""
+
+        client.addNetworkInterceptor(logging)
+
         client.addInterceptor { chain ->
-                    val original = chain.request()
 
-                    val request = original.newBuilder()
-                            .header("Accept", "application/json")
-                            .header("Authorization", RuntimeStorage.accessToken!!)
-                            .build()
+            val request = chain.request().newBuilder()
+                    .header("Accept", "application/json")
+                    .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNTIwODgwMSwiaWF0IjoxNjA1MTkwODAxfQ.GBNXHNz09o5afUx6XcXtBa-F3eYrN6PXMd2mIwz-ov2QYolqnPxeCL60DIZ57h7p4U8O7KOM8qdLTvN6hD-MBg")
 
-                    chain.proceed(request)
-                    }
-                .addNetworkInterceptor(logging)
-
+            chain.proceed(request.build())
+        }
 
         retrofit = Retrofit.Builder()
                 .client(client.build())
                 .addConverterFactory(JacksonConverterFactory.create())
-                .baseUrl(API_PATH)
+                .baseUrl(Api.API_PATH)
                 .build()
-    }
 
-    fun getApi(): Api {
         return retrofit!!.create(Api::class.java)
     }
 }

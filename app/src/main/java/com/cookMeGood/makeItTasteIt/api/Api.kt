@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.api
+    package com.cookMeGood.makeItTasteIt.api
 
 import com.cookMeGood.makeItTasteIt.api.model.LoginRequest
 import com.cookMeGood.makeItTasteIt.api.model.LoginResponse
@@ -14,7 +14,7 @@ import retrofit2.http.Query
 interface Api {
 
     companion object {
-        private const val API_PATH = "https://miti-serv.herokuapp.com"
+        const val API_PATH = "https://miti-serv.herokuapp.com"
     }
 
     // AUTHENTICATION
