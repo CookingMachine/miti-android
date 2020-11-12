@@ -12,92 +12,127 @@
     app:behavior_hideable="false"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
-    <TextView
-        android:id="@+id/suggestActivityBottomSheetName"
-        android:layout_width="@dimen/suggestSheetNameWidth"
-        android:layout_height="@dimen/suggestSheetNameHeight"
-        android:layout_marginStart="@dimen/marginSide"
-        android:layout_marginEnd="@dimen/marginSide"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="@string/text_suggest_sheet_name"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        app:fontFamily="@font/roboto_light"
-        app:drawableEndCompat="@drawable/ic_suggest_pencil"
-        android:drawablePadding="-24dp" />
-
-    <TextView
-        android:id="@+id/suggestActivityBottomSheetDescription"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="@dimen/marginSide"
-        android:layout_marginEnd="@dimen/marginSide"
-        android:layout_below="@+id/suggestActivityBottomSheetName"
-        android:gravity="center"
-        android:text="@string/text_suggest_sheet_description"
-        android:textColor="@color/colorBlack"
-        android:textSize="14sp"
-        app:drawableEndCompat="@drawable/ic_suggest_pencil"
-        android:drawablePadding="-24dp"/>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/suggestActivityButtonsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginEnd="54dp"
-        android:layout_below="@+id/suggestActivityBottomSheetDescription"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/suggestActivityRecipeButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_corners_button"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/title_recipe"
-            android:textColor="@color/primaryColor"
-            android:textSize="12sp"
-            android:elevation="2dp"/>
+            <TextView
+                android:id="@+id/suggestActivityBottomSheetName"
+                android:layout_width="@dimen/suggestSheetNameWidth"
+                android:layout_height="@dimen/suggestSheetNameHeight"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginEnd="@dimen/marginSide"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/text_suggest_sheet_name"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                app:fontFamily="@font/roboto_light"
+                app:drawableEndCompat="@drawable/ic_suggest_pencil"
+                android:drawablePadding="-24dp" />
 
-        <Button
-            android:id="@+id/suggestActivityIngredientsButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_corners_button"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/title_ingredient"
-            android:textColor="@color/primaryColor"
-            android:textSize="12sp"
-            android:elevation="2dp"/>
+            <LinearLayout
+                android:id="@+id/suggestActivityTimeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_below="@+id/suggestActivityBottomSheetName">
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:src="@drawable/ic_clock_red"
+                    android:contentDescription="@string/content_description_empty"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/suggestActivityStepList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginSide"
-        android:layout_marginBottom="64dp"
-        android:layout_below="@+id/suggestActivityButtonsLayout"
-        android:overScrollMode="never"/>
-    
+                <TimePicker
+                    android:id="@+id/suggestActivityTimePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:timePickerMode="spinner"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/suggestActivityBottomSheetDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/marginSide"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginEnd="@dimen/marginSide"
+                android:layout_below="@+id/suggestActivityTimeLayout"
+                android:gravity="center"
+                android:text="@string/text_suggest_sheet_description"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_suggest_pencil"
+                android:drawablePadding="-24dp"/>
+
+            <LinearLayout
+                android:id="@+id/suggestActivityButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/marginSide"
+                android:layout_marginStart="54dp"
+                android:layout_marginEnd="54dp"
+                android:layout_below="@+id/suggestActivityBottomSheetDescription"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <Button
+                    android:id="@+id/suggestActivityRecipeButton"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corners_button"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/title_recipe"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="12sp"
+                    android:elevation="2dp"/>
+
+                <Button
+                    android:id="@+id/suggestActivityIngredientsButton"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corners_button"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/title_ingredient"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="12sp"
+                    android:elevation="2dp"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/suggestActivityStepList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginSide"
+                android:layout_marginHorizontal="@dimen/marginSide"
+                android:layout_marginBottom="64dp"
+                android:layout_below="@+id/suggestActivityButtonsLayout"
+                android:overScrollMode="never"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
     <Button
         android:id="@+id/suggestActivitySaveButton"
         android:layout_width="100dp"

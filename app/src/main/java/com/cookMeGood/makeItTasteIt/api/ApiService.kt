@@ -1,5 +1,7 @@
 package com.cookMeGood.makeItTasteIt.api
 
+import android.content.Context
+import com.cookMeGood.makeItTasteIt.utils.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,25 +13,24 @@ object ApiService {
     private var retrofit: Retrofit? = null
 
     const val prefName = "access_preferences"
-//    private val sharedPreferences = ApplicationContext.getContext()
-//            .getSharedPreferences(prefName, Context.MODE_PRIVATE)
-
-    private lateinit var jwtToken: String
+    private val sharedPreferences = ApplicationContext.getContext()
+            .getSharedPreferences(prefName, Context.MODE_PRIVATE)
 
     fun getApi(): Api {
 
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
+        val jwtToken = sharedPreferences.getString("access_token", "") ?: ""
 
-//        jwtToken = sharedPreferences.getString("access_token", "") ?: ""
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.HEADERS
 
         client.addNetworkInterceptor(logging)
-
         client.addInterceptor { chain ->
 
             val request = chain.request().newBuilder()
-                    .header("Accept", "application/json")
-                    .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNTIwODgwMSwiaWF0IjoxNjA1MTkwODAxfQ.GBNXHNz09o5afUx6XcXtBa-F3eYrN6PXMd2mIwz-ov2QYolqnPxeCL60DIZ57h7p4U8O7KOM8qdLTvN6hD-MBg")
+
+            if (jwtToken.isNotEmpty()) {
+                request.header("Authorization", "Bearer $jwtToken")
+            }
 
             chain.proceed(request.build())
         }

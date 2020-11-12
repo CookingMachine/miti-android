@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.cookMeGood.makeItTasteIt.view.fragment.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.cookMeGood.makeItTasteIt.view.fragment.CartFragment"
@@ -16,7 +20,11 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.cookMeGood.makeItTasteIt.view.fragment.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.cookMeGood.makeItTasteIt.view.fragment.FavouritesFragment"

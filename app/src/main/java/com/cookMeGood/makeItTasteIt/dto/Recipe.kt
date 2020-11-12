@@ -14,6 +14,9 @@ data class Recipe(
         @JsonProperty("description")
         var description: String? = null,
 
+        @JsonProperty("createDate")
+        var createDate: String? = null,
+
         @JsonProperty("author")
         var author: User? = null,
 

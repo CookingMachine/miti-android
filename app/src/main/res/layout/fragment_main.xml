@@ -7,19 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mainFragmentToolbar"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            app:menu="@menu/menu_main_fragment"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -46,7 +33,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="-6dp"
-                android:layoutAnimation="@anim/layout_list_swipe_right"
+                android:layoutAnimation="@anim/anim_layout_list_swipe_right"
                 android:visibility="visible" />
 
             <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithTitle

@@ -9,6 +9,8 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.MainContent
+import com.cookMeGood.makeItTasteIt.utils.ApplicationContext
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_MAIN_CONTENT
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.*
 import retrofit2.Call
@@ -18,12 +20,14 @@ import retrofit2.Response
 class SplashActivity : SuperActivity() {
 
     private val waitForResponseCoroutine = CoroutineScope(Dispatchers.Main)
-    private var isAuthenticated: Boolean? = true
+    private var isAuthenticated: Boolean = true
     private var mainContent: MainContent? = null
 
     override fun setAttr() = setLayout(R.layout.activity_splash)
 
     override fun initInterface() {
+
+        ApplicationContext.setContext(applicationContext)
 
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
@@ -46,7 +50,7 @@ class SplashActivity : SuperActivity() {
     private suspend fun getData(): Boolean {
         var timeLimit = 0
 
-        while (mainContent == null && timeLimit < 10){
+        while (mainContent == null && timeLimit < 10 && isAuthenticated){
             getCategoriesFromServer()
             delay(2000)
             timeLimit += 2
@@ -59,7 +63,7 @@ class SplashActivity : SuperActivity() {
         when (isAuthenticated){
             true -> {
                 val bundle = Bundle()
-                bundle.putSerializable("mainContent", mainContent)
+                bundle.putSerializable(INTENT_MAIN_CONTENT, mainContent)
 
                 intent = Intent(this@SplashActivity, StartActivity::class.java)
                 intent.putExtras(bundle)
@@ -68,7 +72,7 @@ class SplashActivity : SuperActivity() {
                 startActivity(intent)
                 supportFinishAfterTransition()
             }
-            else -> {
+            false -> {
                 val options = ActivityOptions.makeSceneTransitionAnimation(this@SplashActivity,
                         splashLogo, "logoTransition")
 
@@ -86,9 +90,14 @@ class SplashActivity : SuperActivity() {
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
-                        if (response.isSuccessful) {
-                            mainContent = MainContent(response.body() ?: arrayListOf())
-                        }
+                            when (response.code()) {
+                                200 -> {
+                                    mainContent = MainContent(response.body() ?: arrayListOf())
+                                }
+                                401 -> {
+                                    isAuthenticated = false
+                                }
+                            }
                     }
 
                     override fun onFailure(call: Call<List<Category>>, t: Throwable) {

@@ -12,7 +12,9 @@ import com.cookMeGood.makeItTasteIt.dto.Recipe
 import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
+import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.fragment_category.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,20 +33,16 @@ class CategoryFragment: SuperFragment() {
         }
     }
 
-    override fun setAttr() {
-        setLayout(R.layout.fragment_category)
-    }
+    override fun setAttr() = setLayout(R.layout.fragment_category)
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
     }
 
     override fun initInterface(view: View?) {
-        (activity as SuperActivity).setSupportActionBar(categoryFragmentToolbar)
-        (activity as SuperActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
         (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
 
-        val category = requireArguments().getSerializable(IntentContainer.INTENT_CATEGORY) as Category
+        val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
 
         recipesListListAdapter = RecipeListAdapter(recipesList,context, openRecipeListener)
         categoryFragmentRecipeList.adapter = recipesListListAdapter
@@ -52,20 +50,16 @@ class CategoryFragment: SuperFragment() {
         getRecipesByCategoryIdFromServer(category.id!!)
     }
 
-    private fun setRecipeListStub() {
-        recipesList = arrayListOf(
-                Recipe(null,"Пицца", "Для большой компании", null, null, "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
-                Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
-        )
-    }
-
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
 
-        ApiService.getApi()
+        ApiService
+                .getApi()
                 .getRecipesByCategoryId(categoryId)
                 .enqueue(object : Callback<List<Recipe>> {
                     override fun onResponse(call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
-                        recipesList = response.body() ?: arrayListOf()
+//                        recipesList = response.body() ?: arrayListOf()
+
+                        setRecipeListStub()
                         recipesListListAdapter!!.onUpdateList(recipesList)
                         showList()
                     }
@@ -82,6 +76,13 @@ class CategoryFragment: SuperFragment() {
     private fun showList(){
         categoryFragmentProgressBar.visibility = View.GONE
         categoryFragmentRecipeList.visibility = View.VISIBLE
+    }
+
+    private fun setRecipeListStub() {
+        recipesList = arrayListOf(
+                Recipe(null,"Пицца", "Для большой компании", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
+                Recipe(null,"Борщ", "Хватит на всю семью", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
+        )
     }
 }
 

@@ -4,14 +4,21 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColor</item>
         <item name="colorAccent">@color/primaryColor</item>
-        <item name="android:titleTextStyle">@style/MyTextAppearance</item>
         <item name="colorControlActivated">@color/colorWhite</item>
-        <item name="android:textAlignment">center</item>
         <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:editTextColor">@color/colorWhite</item>
 
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="searchIcon">@drawable/ic_search_white</item>
+        <item name="closeIcon">@drawable/ic_close_white</item>
+        <item name="queryHint">@string/hint_search</item>
+        <item name="android:imeActionId">6</item>
     </style>
 
     <style name="AuthActivityTheme" parent="AppTheme">
@@ -20,8 +27,26 @@
     </style>
 
     <style name="StartActivityTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:statusBarColor">@color/primaryColor</item>
+    </style>
+
+    <style name="RecipeActivityTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:statusBarColor">@color/colorWhite40</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="AppThemeToolbar" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
     </style>
 
     <style name="MaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -29,13 +54,8 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColor</item>
         <item name="colorAccent">@color/primaryColor</item>
-        <item name="android:titleTextStyle">@style/MyTextAppearance</item>
         <item name="colorControlActivated">@color/colorWhite</item>
         <item name="android:textAlignment">center</item>
-    </style>
-
-    <style name="MyTextAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/colorBlack</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -9,9 +9,11 @@
     <string name="title_activity_start">Главная</string>
     <string name="title_activity_cart">Корзина</string>
     <string name="title_activity_category">Категории</string>
-    <string name="title_activity_recipe">Рецепт</string>
+    <string name="title_activity_recipe">Страница пецепта</string>
     <string name="title_activity_recipes">Рецепты</string>
-    <string name="title_activity_favourites">Favourites</string>
+    <string name="title_activity_favourites">Нравится</string>
+    <string name="title_activity_search">Поиск</string>
+    <string name="title_activity_reg">Ругестрация</string>
 
     <!-- TITLES -->
 
@@ -26,6 +28,12 @@
     <string name="title_cart">Корзина</string>
     <string name="title_favourites">Избранное</string>
     <string name="title_suggest">Предложить</string>
+    <string name="title_calories">Калорийность</string>
+    <string name="title_dish_type">Вид блюда</string>
+    <string name="title_kitchen">Кухня</string>
+    <string name="title_calories_any">Любая</string>
+    <string name="title_cooking_time">Время приготовления</string>
+    <string name="title_cooking_time_any">Любое</string>
 
     <!-- TEXT -->
 
@@ -49,12 +57,16 @@
     <string name="text_suggest_title">Название</string>
     <string name="text_registration_checkbox">Я согласен с пользовательским соглашением</string>
     <string name="text_ampersand">&amp;</string>
+    <string name="text_search_apply">Показать</string>
 
     <!-- MENU -->
 
     <string name="menu_basket">Добавить</string>
     <string name="menu_like">Нравится</string>
     <string name="menu_profile">Профиль</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_filter">Фильтры</string>
+    <string name="menu_close">Выйти</string>
 
     <!-- BUTTONS -->
 
@@ -65,9 +77,11 @@
 
     <!-- HINTS -->
 
-    <string name="hint_nameSurname">Имя и фамилия</string>
+    <string name="hint_name">Имя</string>
+    <string name="hint_username">Логин</string>
     <string name="hint_email">E-Mail</string>
     <string name="hint_password">Придумайте пароль</string>
+    <string name="hint_search">Блюда, категории, калории</string>
 
     <!-- KBJU FRAGMENT -->
 
@@ -91,11 +105,12 @@
     <string name="profile_about_us">КОНТАКТЫ</string>
     <string name="profile_share">ПОДЕЛИТЬСЯ</string>
     <string name="profile_rate_app">ОЦЕНИТЬ</string>
-    <string name="title_activity_reg">RegActivity</string>
+
 
     <!-- EXAMPLE -->
 
     <string name="example_ingredient_amount">1200г.</string>
+    <string name="example">example</string>
     <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
     <string name="dish_of_the_day_description">Насладитесь вкусным ужином всей семьей</string>
 

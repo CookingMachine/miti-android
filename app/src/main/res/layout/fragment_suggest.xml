@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     android:theme="@style/MaterialTheme">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/suggestFragmentAppbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/suggestFragmentToolbar"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <ProgressBar
         android:id="@+id/suggestFragmentProgressBar"
         android:layout_width="wrap_content"

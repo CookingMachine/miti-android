@@ -8,6 +8,8 @@
     <dimen name="authButtonHeight">40dp</dimen>
     <dimen name="authButtonWidth">190dp</dimen>
     <dimen name="authButtonCornerRadius">40dp</dimen>
+    <dimen name="toolbarTextSize">20sp</dimen>
+    <dimen name="backdropHeight">600dp</dimen>
 
     <dimen name="cardCornerRadius">12dp</dimen>
     <dimen name="cardMargin">8dp</dimen>

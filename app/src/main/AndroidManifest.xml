@@ -17,8 +17,6 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:allowBackup="true">
 
-        <activity android:name=".view.activity.SuggestActivity"/>
-
         <activity
             android:name=".view.activity.SplashActivity"
             android:theme="@style/AuthActivityTheme">
@@ -44,13 +42,18 @@
             android:label="@string/title_activity_start"
             android:theme="@style/StartActivityTheme"/>
 
+        <activity
+            android:name=".view.activity.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/StartActivityTheme"/>
+
+        <activity android:name=".view.activity.SuggestActivity"/>
+
         <activity android:name=".view.activity.BuylistActivity" />
 
         <activity
             android:name=".view.fragment.SuggestFragment"
             tools:ignore="Instantiatable" />
-
-        <activity android:name=".view.activity.SearchActivity" />
 
         <activity
             android:name=".view.fragment.CartFragment"
@@ -67,7 +70,7 @@
         <activity
             android:name=".view.activity.RecipeActivity"
             android:label="@string/title_activity_recipe"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/RecipeActivityTheme" />
         <activity
             android:name=".view.fragment.MainFragment"
             android:label="@string/title_activity_category"

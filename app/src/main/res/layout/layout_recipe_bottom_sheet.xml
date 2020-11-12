@@ -6,6 +6,7 @@
     android:id="@+id/recipeBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="500dp"
+    android:gravity="center_horizontal"
     android:background="@drawable/shape_recipe_bottom_sheet"
     android:elevation="2dp"
     android:orientation="vertical"
@@ -23,6 +24,17 @@
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:fontFamily="@font/roboto_light" />
+
+    <TextView
+        android:id="@+id/recipeTimeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/example"
+        android:textColor="@color/colorBlack80"
+        android:textSize="13sp"
+        app:drawableTopCompat="@drawable/ic_clock_red" />
 
     <TextView
         android:id="@+id/recipeDescription"
