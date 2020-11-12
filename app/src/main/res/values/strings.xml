@@ -6,6 +6,7 @@
     <!-- ACTIVITIES -->
 
     <string name="title_activity_authorize">M.I.T.I.</string>
+    <string name="title_activity_start">Главная</string>
     <string name="title_activity_cart">Корзина</string>
     <string name="title_activity_category">Категории</string>
     <string name="title_activity_recipe">Рецепт</string>

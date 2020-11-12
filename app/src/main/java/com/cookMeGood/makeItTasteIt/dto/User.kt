@@ -12,12 +12,9 @@ data class User(
         @JsonProperty("username")
         var username: String? = null,
 
-        @JsonProperty("password")
-        var password: String? = null,
-
         @JsonProperty("email")
         var email: String? = null,
 
-        @JsonProperty("isActive")
-        var isActive: Boolean? = null
+        @JsonProperty("role")
+        var role: Int? = null
 ): Serializable

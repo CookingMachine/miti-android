@@ -11,12 +11,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
-import com.cookMeGood.makeItTasteIt.api.service.CategoryApiService
-import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
+import com.cookMeGood.makeItTasteIt.api.ApiService
+import com.cookMeGood.makeItTasteIt.dto.Category
+import com.cookMeGood.makeItTasteIt.dto.MainContent
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
+import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,6 +41,8 @@ class MainFragment: SuperFragment() {
         }
     }
 
+    override fun setAttr() = setLayout(R.layout.fragment_main)
+
     override fun initInterface(view: View?) {
 
         (activity as SuperActivity).setSupportActionBar(mainFragmentToolbar)
@@ -49,6 +52,11 @@ class MainFragment: SuperFragment() {
         setHasOptionsMenu(true)
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_list_swipe_right)
 
+        categoryList = ((activity as SuperActivity)
+                .intent
+                .getSerializableExtra("mainContent") as MainContent)
+                .categoryList
+
         recipesListAdapter = CategoryListAdapter(categoryList, changeListener)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -56,42 +64,16 @@ class MainFragment: SuperFragment() {
         mainFragmentRecycler.adapter = recipesListAdapter
         mainFragmentRecycler.visibility = View.GONE
 
-        getCategoriesFromServer()
-
-    }
-
-    override fun setAttr() {
-        setLayout(R.layout.fragment_main)
+        if (categoryList.isNullOrEmpty()){
+            fillListWithStub()
+        }
+        else {
+            recipesListAdapter!!.onUpdateList(categoryList)
+        }
+        showList()
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    }
-
-    private fun getCategoriesFromServer() {
-        CategoryApiService.getApi()
-                .getAllCategories()
-                .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
-                        categoryList = response.body() ?: arrayListOf()
-                        recipesListAdapter!!.onUpdateList(categoryList)
-                        showList()
-                    }
-
-                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                        Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
-                        categoryList = arrayListOf(
-                                Category("Первое"),
-                                Category("Второе"),
-                                Category("Салаты"),
-                                Category("Выпечка"),
-                                Category("Закуски"),
-                                Category("Напитки"),
-                                Category("Десерты")
-                        )
-                        recipesListAdapter!!.onUpdateList(categoryList)
-                        showList()
-                    }
-                })
     }
 
     private fun showList() {
@@ -118,5 +100,17 @@ class MainFragment: SuperFragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun fillListWithStub(){
+        categoryList = arrayListOf(
+                Category("Первое"),
+                Category("Второе"),
+                Category("Салаты"),
+                Category("Выпечка"),
+                Category("Закуски"),
+                Category("Напитки"),
+                Category("Десерты")
+        )
     }
 }

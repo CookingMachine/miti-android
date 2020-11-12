@@ -1,25 +1,29 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColor</item>
         <item name="colorAccent">@color/primaryColor</item>
         <item name="android:titleTextStyle">@style/MyTextAppearance</item>
         <item name="colorControlActivated">@color/colorWhite</item>
         <item name="android:textAlignment">center</item>
-        <!-- enable window content transitions -->
+        <item name="android:statusBarColor">@color/primaryColor</item>
+
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
-        <item name="android:statusBarColor">@color/colorBlack</item>
     </style>
+
     <style name="AuthActivityTheme" parent="AppTheme">
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowBackground">@drawable/color_gradient_background</item>
-
     </style>
+
+    <style name="StartActivityTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:statusBarColor">@color/primaryColor</item>
+    </style>
+
     <style name="MaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="colorPrimary">@color/primaryColor</item>
@@ -30,7 +34,6 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <!-- стиль для текста -->
     <style name="MyTextAppearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorBlack</item>
     </style>
@@ -50,16 +53,12 @@
         <item name="android:fontFamily">@font/roboto_light</item>
     </style>
 
-    <!-- стиль для bottom_navigation_bar -->
-
     <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
         <item name="android:textSize">10.5sp</item>
         <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/primaryColor</item>
         <item name="android:itemBackground">@color/colorBlack</item>
     </style>
-
-    <!-- ProgressBarCircular -->
 
     <style name="RecipeRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:minHeight">16dp</item>

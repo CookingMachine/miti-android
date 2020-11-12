@@ -9,7 +9,7 @@ import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.api.service.RecipeApiService
+import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
@@ -52,7 +52,7 @@ class CategoryFragment: SuperFragment() {
         getRecipesByCategoryIdFromServer(category.id!!)
     }
 
-    private fun setRecipeData() {
+    private fun setRecipeListStub() {
         recipesList = arrayListOf(
                 Recipe(null,"Пицца", "Для большой компании", null, null, "2:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
                 Recipe(null,"Борщ", "Хватит на всю семью", null, null, "4:00", java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
@@ -61,7 +61,7 @@ class CategoryFragment: SuperFragment() {
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
 
-        RecipeApiService.getApi()
+        ApiService.getApi()
                 .getRecipesByCategoryId(categoryId)
                 .enqueue(object : Callback<List<Recipe>> {
                     override fun onResponse(call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
@@ -71,8 +71,8 @@ class CategoryFragment: SuperFragment() {
                     }
 
                     override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        setRecipeData()
                         Toast.makeText(context, "Ошибка соединения с сервером", Toast.LENGTH_LONG).show()
+                        setRecipeListStub()
                         recipesListListAdapter!!.onUpdateList(recipesList)
                         showList()
                     }

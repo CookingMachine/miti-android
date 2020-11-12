@@ -16,6 +16,7 @@ class LogInDialogAdapter : AppCompatDialogFragment() {
         val builder = AlertDialog.Builder(activity)
         val inflater = requireActivity().layoutInflater
         val view = inflater.inflate(R.layout.item_login_alert,null)
+
         builder.setView(view)
                 .setPositiveButton("Войти") { _, _ ->
                     val login: String = view.loginEdit.text.toString()
