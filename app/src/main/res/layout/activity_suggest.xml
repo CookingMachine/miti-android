@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="72dp"
         android:src="@drawable/ic_add_picture"
         android:contentDescription="@string/content_description_empty" />
 

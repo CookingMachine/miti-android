@@ -25,7 +25,7 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
     private val ingredients = arrayListOf<Ingredient>()
     private lateinit var recyclerView: RecyclerView
 
-    private var expandedList = ArrayList<Int>()
+    private var expandedList = arrayListOf<Int>()
     private var originalHeight : Int = -1
     private var expandedHeight : Int = -1
 

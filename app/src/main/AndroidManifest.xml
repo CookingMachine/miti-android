@@ -47,7 +47,10 @@
             android:label="@string/title_activity_search"
             android:theme="@style/StartActivityTheme"/>
 
-        <activity android:name=".view.activity.SuggestActivity"/>
+        <activity
+            android:name=".view.activity.SuggestActivity"
+            android:label="@string/title_suggest"
+            android:theme="@style/SuggestActivityTheme"/>
 
         <activity android:name=".view.activity.BuylistActivity" />
 
