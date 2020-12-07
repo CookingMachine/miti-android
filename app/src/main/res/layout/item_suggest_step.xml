@@ -48,6 +48,17 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/suggestStepDescription"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="@dimen/marginSide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/suggestStepInfoLayout"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/colorBlack"
+            android:textAlignment="textStart" />
+
         <ImageView
             android:id="@+id/suggestStepChangeImage"
             android:layout_width="wrap_content"

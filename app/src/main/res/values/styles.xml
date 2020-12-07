@@ -24,6 +24,7 @@
     <style name="AuthActivityTheme" parent="AppTheme">
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowBackground">@drawable/color_gradient_background</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="StartActivityTheme" parent="AppTheme">
@@ -42,6 +43,17 @@
         <item name="android:textAlignment">center</item>
         <item name="android:statusBarColor">@color/colorWhite40</item>
         <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="SuggestActivityTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:statusBarColor">@color/colorWhite40</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <style name="AppThemeToolbar" parent="AppTheme">

@@ -1,5 +1,7 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
+import android.graphics.Color
+import android.os.Build
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
@@ -35,15 +37,19 @@ class SuggestActivity : SuperActivity() {
 
         val stepListClickAnimation = AnimationUtils.loadLayoutAnimation(applicationContext, R.anim.anim_layout_list_fall_down)
 
-        suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager, suggestStepEditListener )
-        suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        suggestActivityStepList.layoutAnimation = stepListClickAnimation
-        suggestActivityStepList.adapter = suggestStepListAdapter
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            window.statusBarColor = Color.BLACK
+        }
 
         onButtonClick(suggestActivityRecipeButton)
         setRecyclerViewItemDragListener()
-
         suggestActivityTimePicker.setIs24HourView(true)
+
+        suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager, suggestStepEditListener)
+        suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        suggestActivityStepList.layoutAnimation = stepListClickAnimation
+        suggestActivityStepList.adapter = suggestStepListAdapter
 
         suggestActivityBottomSheetName.setOnClickListener {
             suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter("Название", 0, suggestStepEditListener)
