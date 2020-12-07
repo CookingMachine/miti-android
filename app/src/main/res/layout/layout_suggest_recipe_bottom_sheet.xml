@@ -14,7 +14,10 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingTop="-8dp"
+        android:overScrollMode="never">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -124,7 +127,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marginSide"
-                android:layout_marginHorizontal="@dimen/marginSide"
                 android:layout_marginBottom="64dp"
                 android:layout_below="@+id/suggestActivityButtonsLayout"
                 android:overScrollMode="never"/>

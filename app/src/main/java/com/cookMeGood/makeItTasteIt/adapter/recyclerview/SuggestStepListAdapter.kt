@@ -42,6 +42,7 @@ class SuggestStepListAdapter(val context: Context,
             holder.stepTitle.text = "Шаг"
             holder.stepAddButton.visibility = View.GONE
             holder.stepChangeButton.visibility = View.VISIBLE
+            holder.stepDivider.visibility = View.VISIBLE
 
             holder.stepLayout.setOnClickListener {
                 HelpUtils.goToast(context, "SHOW DESCRIPTION: ${stepList[position].description}")
@@ -74,6 +75,7 @@ class SuggestStepListAdapter(val context: Context,
         val stepAddButton = view.suggestStepAddButton!!
         val stepChangeButton = view.suggestStepChangeImage!!
         val stepLayout = view.suggestStepLayout!!
+        val stepDivider = view.suggestRecipeDivider!!
     }
 
     fun onRemoveStep(position: Int){

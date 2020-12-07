@@ -1,6 +1,7 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,10 +20,10 @@ class SuggestActivity : SuperActivity() {
 
     private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
 
-    private var suggestStepEditListener = object: SuggestStepEditListener{
+    private var suggestStepEditListener = object: SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {
-            when (title){
+            when (title) {
                 "Название" -> suggestActivityBottomSheetName.text = text
                 "Описание" -> suggestActivityBottomSheetDescription.text = text
                 "Описание шага" -> suggestStepListAdapter!!.onChangeStepDescription(position, text)
@@ -32,8 +33,11 @@ class SuggestActivity : SuperActivity() {
 
     override fun initInterface() {
 
+        val stepListClickAnimation = AnimationUtils.loadLayoutAnimation(applicationContext, R.anim.anim_layout_list_fall_down)
+
         suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager, suggestStepEditListener )
         suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        suggestActivityStepList.layoutAnimation = stepListClickAnimation
         suggestActivityStepList.adapter = suggestStepListAdapter
 
         onButtonClick(suggestActivityRecipeButton)
@@ -83,9 +87,7 @@ class SuggestActivity : SuperActivity() {
         }
     }
 
-    override fun setAttr() {
-        setLayout(R.layout.activity_suggest)
-    }
+    override fun setAttr() =  setLayout(R.layout.activity_suggest)
 
     private fun setRecyclerViewItemDragListener(){
         val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
