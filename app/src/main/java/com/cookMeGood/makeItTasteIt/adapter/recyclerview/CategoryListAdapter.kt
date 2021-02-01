@@ -11,15 +11,17 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.item_main_recipe.view.*
 
 class CategoryListAdapter(private var categories: List<Category>?,
-                          var changeListener: OnFragmentChangeListener):
+                          var changeListener: OnFragmentChangeListener) :
         RecyclerView.Adapter<CategoryListAdapter.ViewHolder>() {
 
-    private lateinit var listener : OnFragmentChangeListener
+    private lateinit var listener: OnFragmentChangeListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main_recipe,parent,false)
-    return ViewHolder(view)}
+        val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_main_recipe, parent, false)
+        return ViewHolder(view)
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         listener = changeListener

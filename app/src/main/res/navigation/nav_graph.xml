@@ -22,6 +22,12 @@
         android:name="com.cookMeGood.makeItTasteIt.view.fragment.CategoryFragment"
         android:label="CategoryFragment" >
         <action
+            android:id="@+id/action_categoryFragment_to_suggestActivity"
+            app:destination="@id/suggestActivity" />
+        <action
+            android:id="@+id/action_categoryFragment_to_recipeActivity"
+            app:destination="@id/recipeActivity" />
+        <action
             android:id="@+id/action_categoryFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
@@ -31,7 +37,17 @@
         android:label="fragment_favourites"
         tools:layout="@layout/fragment_favourites" />
     <fragment
-        android:id="@+id/suggestFragment"
-        android:name="com.cookMeGood.makeItTasteIt.view.fragment.SuggestFragment"
+        android:id="@+id/restaurantFragment"
+        android:name="com.cookMeGood.makeItTasteIt.view.fragment.RestaurantFragment"
         android:label="SuggestFragment" />
+    <activity
+        android:id="@+id/recipeActivity"
+        android:name="com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity"
+        android:label="activity_recipe"
+        tools:layout="@layout/activity_recipe" />
+    <activity
+        android:id="@+id/suggestActivity"
+        android:name="com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity"
+        android:label="activity_suggest"
+        tools:layout="@layout/activity_suggest" />
 </navigation>

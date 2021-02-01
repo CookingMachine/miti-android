@@ -13,7 +13,7 @@
     <string name="title_activity_recipes">Рецепты</string>
     <string name="title_activity_favourites">Нравится</string>
     <string name="title_activity_search">Поиск</string>
-    <string name="title_activity_reg">Ругестрация</string>
+    <string name="title_activity_reg">Регистрация</string>
 
     <!-- TITLES -->
 
@@ -21,7 +21,7 @@
     <string name="title_recipe">РЕЦЕПТ</string>
     <string name="title_kbju">КБЖУ</string>
     <string name="title_ingredient">Ингредиенты</string>
-    <string name="title_dashboard">Добавить</string>
+    <string name="title_restaurants">Рестораны</string>
     <string name="title_notifications">Избранное</string>
     <string name="title_profile">Профиль</string>
     <string name="title_category">Категории</string>
@@ -34,6 +34,8 @@
     <string name="title_calories_any">Любая</string>
     <string name="title_cooking_time">Время приготовления</string>
     <string name="title_cooking_time_any">Любое</string>
+    <string name="title_low_calories">ПОДБОРКА ДЛЯ ТЕХ, КОМУ НЕ НУЖНЫ КАЛОРИИ</string>
+    <string name="title_fast_and_delicious">Вкусно, а главное - быстро</string>
 
     <!-- TEXT -->
 
@@ -58,6 +60,7 @@
     <string name="text_registration_checkbox">Я согласен с пользовательским соглашением</string>
     <string name="text_ampersand">&amp;</string>
     <string name="text_search_apply">Показать</string>
+    <string name="text_fast_and_delicious">Нет времени на готовку? Подборка для вас!</string>
 
     <!-- MENU -->
 
@@ -82,13 +85,14 @@
     <string name="hint_email">E-Mail</string>
     <string name="hint_password">Придумайте пароль</string>
     <string name="hint_search">Блюда, категории, калории</string>
+    <string name="hint_search_enter_ingredient">Введите ингредиент</string>
 
     <!-- KBJU FRAGMENT -->
 
     <string name="f_calories">кКал</string>
     <string name="f_proteins">Белки</string>
     <string name="f_fats">Жиры</string>
-    <string name="f_carbo">Углеводы</string>
+    <string name="f_carbo">Угл.</string>
     <string name="f_calories_inside">Cal</string>
     <string name="f_proteins_inside">Pr</string>
     <string name="f_fats_inside">Fa</string>

@@ -1,14 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mainFragment"
-        android:icon="@drawable/bean_icon"
-        android:title="@string/title_home"
-        />
+        android:icon="@drawable/ic_bean"
+        android:title="@string/title_home" />
 
     <item
-        android:id="@+id/suggestFragment"
-        android:icon="@drawable/ic_offer_recipe"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/restaurantFragment"
+        android:icon="@drawable/ic_restaurant"
+        android:title="@string/title_restaurants" />
 
     <item
         android:id="@+id/favouritesFragment"
@@ -17,7 +16,7 @@
     
     <item
         android:id="@+id/cartFragment"
-        android:icon="@drawable/recipe_basket"
+        android:icon="@drawable/ic_basket"
         android:title="@string/title_cart" />
 
 </menu>

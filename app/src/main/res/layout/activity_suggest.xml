@@ -23,6 +23,6 @@
         android:elevation="2dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <include layout="@layout/layout_suggest_recipe_bottom_sheet"/>
+    <include layout="@layout/content_suggest_recipe_bottom_sheet"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

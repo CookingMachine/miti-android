@@ -4,17 +4,16 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity
-import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
+import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
-import kotlinx.android.synthetic.main.activity_start.*
+import com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity
+import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
+import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_category.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +24,7 @@ class CategoryFragment: SuperFragment() {
     private var recipesList = listOf<Recipe>()
     private var recipesListListAdapter: RecipeListAdapter? = null
 
-    private val openRecipeListener = object: OnOpenRecipeListener{
+    private val openRecipeListener = object : OnOpenRecipeListener {
         override fun openRecipe(recipe: Recipe) {
             val intent = Intent(context, RecipeActivity::class.java)
             intent.putExtra(INTENT_RECIPE, recipe)
@@ -44,10 +43,14 @@ class CategoryFragment: SuperFragment() {
 
         val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
 
-        recipesListListAdapter = RecipeListAdapter(recipesList,context, openRecipeListener)
+        recipesListListAdapter = RecipeListAdapter(recipesList, context, openRecipeListener)
         categoryFragmentRecipeList.adapter = recipesListListAdapter
 
         getRecipesByCategoryIdFromServer(category.id!!)
+
+        floatingButton.setOnClickListener {
+            startActivity(Intent(context, SuggestActivity::class.java))
+        }
     }
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
@@ -73,15 +76,15 @@ class CategoryFragment: SuperFragment() {
                 })
     }
 
-    private fun showList(){
+    private fun showList() {
         categoryFragmentProgressBar.visibility = View.GONE
         categoryFragmentRecipeList.visibility = View.VISIBLE
     }
 
     private fun setRecipeListStub() {
         recipesList = arrayListOf(
-                Recipe(null,"Пицца", "Для большой компании", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
-                Recipe(null,"Борщ", "Хватит на всю семью", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
+                Recipe(null, "Пицца", "Важным условием настоящей пиццы bbq является ее запекание на углях или дровах. Для этого существуют специальные печи. Только тогда лепешка приобретет вкус и аромат дымка... ", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
+                Recipe(null, "Борщ", "Хватит на всю семью", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
         )
     }
 }

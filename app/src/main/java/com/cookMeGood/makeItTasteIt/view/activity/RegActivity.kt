@@ -56,7 +56,7 @@ class RegActivity : SuperActivity() {
                 .enqueue(object : Callback<User> {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if (response.isSuccessful) {
-                            val intent = Intent(this@RegActivity, StartActivity::class.java)
+                            val intent = Intent(this@RegActivity, MainActivity::class.java)
                             startActivity(intent)
                         }
                     }

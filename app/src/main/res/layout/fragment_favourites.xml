@@ -7,7 +7,7 @@
     tools:context="com.cookMeGood.makeItTasteIt.view.fragment.FavouritesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favRecycler"
+        android:id="@+id/favouritesList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

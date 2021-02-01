@@ -19,7 +19,7 @@
             android:layout_marginEnd="@dimen/marginSide"
             android:scaleType="centerCrop"
             app:riv_corner_radius="45dp"
-            android:src="@drawable/pic1"/>
+            android:src="@drawable/image_pic1"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -97,7 +97,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginBottom="@dimen/marginSide"
         android:clickable="true"
-        android:drawableStart="@drawable/ic_star_red_svg"
+        android:drawableStart="@drawable/ic_star_red"
         android:drawablePadding="18dp"
         android:focusable="true"
         android:text="@string/text_profile_rate"

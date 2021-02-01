@@ -1,24 +1,27 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.content.Intent
+import android.os.Build
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
+import android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.view.fragment.ProfilePageFragment
-import kotlinx.android.synthetic.main.activity_start.*
+import kotlinx.android.synthetic.main.activity_main.*
 
-class StartActivity: SuperActivity()  {
+class MainActivity: SuperActivity()  {
 
-    override fun setAttr() = setLayout(R.layout.activity_start)
+    override fun setAttr() = setLayout(R.layout.activity_main)
 
     override fun initInterface() {
         setSupportActionBar(startActivityToolbar)
-        startActivityToolbar.setTitleTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
-        window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.primaryColor)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility =  SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
         val navController = findNavController(R.id.nav_host)
         nav_view_start.setupWithNavController(navController)
@@ -32,13 +35,13 @@ class StartActivity: SuperActivity()  {
 
     private fun showProfileScreen(){
         val dialog = ProfilePageFragment()
-        supportFragmentManager.let { dialog.show(it,"profileDialog") }
+        supportFragmentManager.let { dialog.show(it, "profileDialog") }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId){
             R.id.action_search -> {
-                intent = Intent(this@StartActivity, SearchActivity::class.java)
+                intent = Intent(this@MainActivity, SearchActivity::class.java)
                 startActivity(intent)
             }
             R.id.action_profile -> {

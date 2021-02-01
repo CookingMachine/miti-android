@@ -4,9 +4,10 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColor</item>
         <item name="colorAccent">@color/primaryColor</item>
-        <item name="colorControlActivated">@color/colorWhite</item>
-        <item name="android:statusBarColor">@color/primaryColor</item>
-        <item name="android:editTextColor">@color/colorWhite</item>
+        <item name="colorControlActivated">@color/colorBlack</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:textColorSecondary">@color/colorBlack80</item>
 
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowActivityTransitions">true</item>
@@ -27,12 +28,8 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="StartActivityTheme" parent="AppTheme">
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryColor</item>
-        <item name="colorAccent">@color/primaryColor</item>
+    <style name="MainActivityTheme" parent="AppTheme">
         <item name="android:windowFullscreen">false</item>
-        <item name="android:statusBarColor">@color/primaryColor</item>
     </style>
 
     <style name="RecipeActivityTheme" parent="AppTheme">
@@ -56,9 +53,21 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
-    <style name="AppThemeToolbar" parent="AppTheme">
+    <style name="SearchActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
         <item name="android:textColorSecondary">@color/colorWhite</item>
-        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:textCursorDrawable">@drawable/shape_cursor_white</item>
+    </style>
+
+    <style name="AppThemeToolbar" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorBlack</item>
+        <item name="colorPrimaryDark">@color/colorBlack80</item>
+        <item name="colorAccent">@color/colorBlack</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:textColorSecondary">@color/colorBlack</item>
+        <item name="colorControlNormal">@color/colorBlack</item>
+        <item name="actionMenuTextColor">@color/colorBlack</item>
     </style>
 
     <style name="MaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -93,9 +102,11 @@
     </style>
 
     <style name="RecipeRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:minHeight">16dp</item>
-        <item name="android:minWidth">16dp</item>
+        <item name="android:maxHeight">24dp</item>
+        <item name="android:minHeight">24dp</item>
         <item name="android:progressDrawable">@drawable/shape_rating_bar</item>
+        <item name="colorControlNormal">@color/primaryColor</item>
+        <item name="colorControlActivated">@color/primaryColor</item>
     </style>
 
 </resources>

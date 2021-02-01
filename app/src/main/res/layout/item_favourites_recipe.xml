@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/marginSide"
+    android:layout_marginTop="@dimen/marginSide"
+    android:layout_marginEnd="@dimen/marginSide">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/favouritesRecipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/favouritesImage"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginEnd="@dimen/marginSide"
+                app:riv_corner_radius="90dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/title_ingredient"
+                android:src="@drawable/image_pic2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/favouritesRemoveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/content_description_empty"
+                    android:src="@drawable/ic_close"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/favouritesTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/title_recipe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/roboto" />
+
+                    <TextView
+                        android:id="@+id/favouritesNationality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/title_recipe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/roboto_light" />
+
+                </LinearLayout>
+
+                <RatingBar
+                    android:id="@+id/favouritesRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="24dp"
+                    android:numStars="5"
+                    android:rating="3.0"
+                    android:stepSize="1"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:theme="@style/RecipeRatingBar"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

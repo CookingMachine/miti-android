@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,15 +10,31 @@
     android:background="@color/primaryColor"
     android:theme="@style/Theme.MaterialComponents">
 
-    <TextView
-        android:id="@+id/searchIngredients"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginSide"
-        android:layout_marginTop="@dimen/marginSide"
-        android:text="@string/title_ingredient"
-        android:textSize="16sp"
-        android:textColor="@color/colorWhite"/>
+        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginSide">
+
+        <TextView
+            android:id="@+id/searchIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_ingredient"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/searchIngredientsCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite70"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
@@ -51,7 +68,7 @@
             android:text="@string/title_calories_any"
             android:textAlignment="textEnd"
             android:textSize="16sp"
-            android:textColor="@color/colorWhite40"/>
+            android:textColor="@color/colorWhite70"/>
 
     </LinearLayout>
 
@@ -98,7 +115,7 @@
             android:text="@string/title_cooking_time_any"
             android:textAlignment="textEnd"
             android:textSize="16sp"
-            android:textColor="@color/colorWhite40"/>
+            android:textColor="@color/colorWhite70"/>
 
     </LinearLayout>
 

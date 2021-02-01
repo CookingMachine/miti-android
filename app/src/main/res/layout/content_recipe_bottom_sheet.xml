@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/shape_recipe_bottom_sheet"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    tools:showIn="@layout/activity_recipe">
+
+    <TextView
+        android:id="@+id/recipeTitleTextView"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/title_recipe"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:fontFamily="@font/roboto_light" />
+
+    <LinearLayout
+        android:id="@+id/recipeKBJULayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_recipe_stats"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f_calories"/>
+            
+            <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:background="@color/primaryColor"/>
+
+            <TextView
+                android:id="@+id/recipeCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f_carbo"/>
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:background="@color/primaryColor"/>
+
+            <TextView
+                android:id="@+id/recipeCarbo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/recipeTimeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/example"
+            android:textColor="@color/colorBlack80"
+            android:textSize="13sp"
+            android:textAlignment="center"
+            app:drawableTopCompat="@drawable/ic_clock_red_24"/>
+
+        <LinearLayout
+            android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f_proteins"/>
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:background="@color/primaryColor"/>
+
+            <TextView
+                android:id="@+id/recipeProteins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f_fats"/>
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:background="@color/primaryColor"/>
+
+            <TextView
+                android:id="@+id/recipeFats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/recipeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="@dimen/marginSide"
+        android:gravity="center"
+        android:text="@string/text_recipe"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textSizeDefault"
+        android:textAlignment="center"
+        android:lines="5"
+        android:maxLines="5"
+        android:singleLine="false"/>
+
+    <LinearLayout
+        android:id="@+id/recipeButtonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/recipeButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_button"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/title_recipe"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/textSizeDefault" />
+
+        <Button
+            android:id="@+id/ingredButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_button"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/title_ingredient"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/textSizeDefault" />
+
+        <Button
+            android:id="@+id/kbjuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_button"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/title_restaurants"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/textSizeDefault"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/recipePortionPicker"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipeStepList"
+        style="@android:style/Animation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginEnd="@dimen/marginSide"
+        android:overScrollMode="never"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipeIngredientsList"
+        style="@android:style/Animation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:overScrollMode="never"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/recipeRestaurants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+</LinearLayout>
