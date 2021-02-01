@@ -21,6 +21,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/cartRemoveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/content_description_empty"
+                android:src="@drawable/ic_close"/>
+
             <LinearLayout
                 android:id="@+id/cartLinear"
                 android:layout_width="match_parent"
@@ -37,7 +48,7 @@
                     app:riv_corner_radius="90dp"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/title_ingredient"
-                    android:src="@drawable/pic2" />
+                    android:src="@drawable/image_pic2" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

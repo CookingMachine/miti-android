@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:theme="@style/MaterialTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/mainFragmentNestedScroll"
+        android:overScrollMode="never"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_width="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithDescription
                 android:id="@+id/dishOfTheDayCard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="480dp"
                 app:cardTheme="@string/dish_of_the_day"
                 app:cardTitle="Свинина по-французски"
                 app:cardDescription="@string/dish_of_the_day_description"
@@ -40,8 +40,16 @@
                 android:id="@+id/noCaloriesCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="ПОДБОРКА ДЛЯ ТЕХ, КОМУ НЕ НУЖНЫ КАЛОРИИ"
+                app:title="@string/title_low_calories"
                 app:image="@drawable/image_card_view_with_title"/>
+
+            <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithDescription
+                android:id="@+id/fastAndDelicious"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                app:cardImage="@drawable/image_fast_and_delicious"
+                app:cardTitle="@string/title_fast_and_delicious"
+                app:cardDescription="@string/text_fast_and_delicious"/>
 
         </LinearLayout>
 
@@ -54,6 +62,7 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateTintMode="src_atop"
-        android:indeterminateTint="@color/primaryColor"/>
+        android:indeterminateTint="@color/primaryColor"
+        android:layout_below="@+id/mainFragmentNestedScroll"/>
 
-</LinearLayout>
+</RelativeLayout>

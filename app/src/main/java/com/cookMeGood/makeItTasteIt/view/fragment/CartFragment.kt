@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_cart.*
 class CartFragment: SuperFragment() {
 
     private val recipes = arrayListOf<Recipe>()
-
     private var cartListAdapter: CartRecipeListAdapter? = null
 
     override fun setAttr() = setLayout(R.layout.fragment_cart)

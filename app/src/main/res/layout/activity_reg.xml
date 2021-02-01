@@ -23,7 +23,7 @@
             android:layout_height="@dimen/loginLogoHeight"
             android:gravity="center"
             android:scaleType="centerCrop"
-            android:src="@drawable/logo"
+            android:src="@drawable/image_logo"
             android:contentDescription="@string/content_description_empty" />
 
     </LinearLayout>

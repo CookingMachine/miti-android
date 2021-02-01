@@ -7,10 +7,9 @@ import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestedRecipeListAdapter
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.fragment_suggest.*
 
-class SuggestFragment: SuperFragment() {
+class RestaurantFragment: SuperFragment() {
 
     private var suggestedRecipesList: List<Recipe> = listOf()
     private var suggestedRecipeListAdapter: SuggestedRecipeListAdapter? = null

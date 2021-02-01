@@ -14,7 +14,7 @@ import com.cookMeGood.makeItTasteIt.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import kotlinx.android.synthetic.main.activity_recipe.*
-import kotlinx.android.synthetic.main.layout_recipe_bottom_sheet.*
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 
 class RecipeActivity : SuperActivity(){
 
@@ -56,12 +56,17 @@ class RecipeActivity : SuperActivity(){
         recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeIngredientsList.adapter = ingredientsListAdapter
 
+        recipeTitleTextView.measure(0, 0)
+        recipeKBJULayout.measure(0, 0)
+        recipeDescription.measure(0, 0)
+
         setPortionPicker()
         clickRecipe()
+        setKBJUValues()
 
         val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        onChangeSheetHeight(screenHeight / 10 * 7)
+        onChangeSheetHeight(screenHeight / 10 * 8)
 
         bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -75,14 +80,15 @@ class RecipeActivity : SuperActivity(){
         recipePortionPicker.setOnValueChangedListener { _, _, newVal -> portions = newVal }
 
         recipeButton.setOnClickListener { clickRecipe()  }
-        kbjuButton.setOnClickListener { clickKbju()  }
+        kbjuButton.setOnClickListener { clickRestaurant()  }
         ingredButton.setOnClickListener { clickIngred()  }
 
         recipeDescription.post {
 
-            val peekHeight = recipeTitleTextView.layoutParams.height +
-                    recipeDescription.height +
-                    recipeButtonsLayout.layoutParams.height
+            val peekHeight = recipeTitleTextView.measuredHeight +
+                    recipeKBJULayout.measuredHeight +
+                    recipeDescription.measuredHeight +
+                    HelpUtils.convertDpToPixel(32, applicationContext)
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
         }
@@ -98,7 +104,7 @@ class RecipeActivity : SuperActivity(){
 
         recipeStepList.visibility = View.VISIBLE
         recipeIngredientsList.visibility = View.GONE
-        recipeKBJU.visibility = View.GONE
+        recipeRestaurants.visibility = View.GONE
         recipePortionPicker.visibility = View.GONE
 
         setStepList()
@@ -115,13 +121,13 @@ class RecipeActivity : SuperActivity(){
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.VISIBLE
-        recipeKBJU.visibility = View.GONE
+        recipeRestaurants.visibility = View.GONE
         recipePortionPicker.visibility = View.VISIBLE
 
         setIngredientsList()
     }
 
-    private fun clickKbju() {
+    private fun clickRestaurant() {
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
         recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
@@ -132,8 +138,8 @@ class RecipeActivity : SuperActivity(){
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.GONE
-        recipeKBJU.visibility = View.VISIBLE
-        recipePortionPicker.visibility = View.VISIBLE
+        recipeRestaurants.visibility = View.VISIBLE
+        recipePortionPicker.visibility = View.GONE
     }
 
     private fun setStepList() {
@@ -185,5 +191,12 @@ class RecipeActivity : SuperActivity(){
         recipePortionPicker.selectedTextSize = resources.getDimension(R.dimen.portionTextSelected)
         recipePortionPicker.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         recipePortionPicker.dividerColor = ContextCompat.getColor(applicationContext, R.color.colorBlack80)
+    }
+
+    private fun setKBJUValues(){
+        recipeCalories.text = "100"
+        recipeProteins.text = "69"
+        recipeCarbo.text = "10"
+        recipeFats.text = "40"
     }
 }

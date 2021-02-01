@@ -3,9 +3,7 @@ package com.cookMeGood.makeItTasteIt.view.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
@@ -15,14 +13,12 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchFilterAdapter
 import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.dto.Category
 import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goToast
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
-import com.cookMeGood.makeItTasteIt.view.custom.Backdrop
 import com.google.android.material.slider.RangeSlider
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.activity_start.*
-import kotlinx.android.synthetic.main.layout_backdrop_back.*
-import kotlinx.android.synthetic.main.layout_backdrop_front.*
+import kotlinx.android.synthetic.main.content_backdrop_back.*
+import kotlinx.android.synthetic.main.content_backdrop_front.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +30,7 @@ class SearchActivity: SuperActivity() {
     private var caloriesValueTo = 2000
     private var timeValueFrom = 5
     private var timeValueTo = 120
+    private var ingredientsCounter = 0
 
     private var searchQueryText: String = ""
     private var searchContentList: List<Recipe> = listOf(
@@ -72,17 +69,15 @@ class SearchActivity: SuperActivity() {
         searchActivityContentList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         searchActivityContentList.adapter = searchContentAdapter
 
-        filterCategoryAdapter = SearchFilterAdapter(filterCategoriesList, applicationContext)
+        filterCategoryAdapter = SearchFilterAdapter(filterCategoriesList)
         searchDishTypeList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
         searchDishTypeList.adapter = filterCategoryAdapter
 
-        filterKitchenAdapter = SearchFilterAdapter(filterKitchenList, applicationContext)
+        filterKitchenAdapter = SearchFilterAdapter(filterKitchenList)
         searchKitchenList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
         searchKitchenList.adapter = filterKitchenAdapter
 
-        searchIngredients.setOnClickListener {
-
-        }
+        searchIngredientsCounter.text = ingredientsCounter.toString()
 
         searchCaloriesRangeSlider.setLabelFormatter { value: Float ->
             return@setLabelFormatter "${value.roundToInt()}Cal"

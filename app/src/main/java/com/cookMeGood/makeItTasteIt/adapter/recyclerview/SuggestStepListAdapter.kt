@@ -19,7 +19,6 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_suggest_step.view.*
-import kotlinx.android.synthetic.main.layout_suggest_recipe_bottom_sheet.view.*
 
 class SuggestStepListAdapter(val context: Context,
                              private val supportFragmentManager: FragmentManager,

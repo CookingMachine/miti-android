@@ -20,5 +20,7 @@
     <dimen name="suggestSheetNameWidth">250dp</dimen>
     <dimen name="suggestSheetNameHeight">40dp</dimen>
 
+    <dimen name="recipeStatsLayoutElementWidth">50dp</dimen>
+
     <dimen name="cardViewWithTitleTextSize">32sp</dimen>
 </resources>

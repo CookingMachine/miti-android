@@ -65,7 +65,7 @@ class SplashActivity : SuperActivity() {
                 val bundle = Bundle()
                 bundle.putSerializable(INTENT_MAIN_CONTENT, mainContent)
 
-                intent = Intent(this@SplashActivity, StartActivity::class.java)
+                intent = Intent(this@SplashActivity, MainActivity::class.java)
                 intent.putExtras(bundle)
 
                 window.exitTransition = null

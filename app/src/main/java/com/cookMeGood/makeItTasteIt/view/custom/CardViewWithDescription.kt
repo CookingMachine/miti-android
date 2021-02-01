@@ -5,8 +5,10 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import com.cookMeGood.makeItTasteIt.R
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_card_view_with_description.view.*
 
 class CardViewWithDescription: LinearLayout {
@@ -14,7 +16,12 @@ class CardViewWithDescription: LinearLayout {
     var theme: String = ""
         set(value) {
             field = value
-            cardViewTheme.text = field
+            if (field.isEmpty()) {
+                cardViewTheme.visibility = View.GONE
+            }
+            else {
+                cardViewTheme.text = field
+            }
         }
 
     var title: String = ""
@@ -42,7 +49,6 @@ class CardViewWithDescription: LinearLayout {
     constructor(context: Context, attrs: AttributeSet?): super(context){
         init(context, attrs)
     }
-
 
     @SuppressLint("Recycle")
     private fun init(context: Context, attrs: AttributeSet?){

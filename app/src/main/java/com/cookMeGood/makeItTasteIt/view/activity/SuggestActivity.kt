@@ -14,7 +14,7 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.activity_suggest.*
-import kotlinx.android.synthetic.main.layout_suggest_recipe_bottom_sheet.*
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.*
 
 class SuggestActivity : SuperActivity() {
 

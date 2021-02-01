@@ -38,14 +38,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".view.activity.StartActivity"
+            android:name=".view.activity.MainActivity"
             android:label="@string/title_activity_start"
-            android:theme="@style/StartActivityTheme"/>
+            android:theme="@style/MainActivityTheme"/>
 
         <activity
             android:name=".view.activity.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/StartActivityTheme"/>
+            android:theme="@style/SearchActivityTheme"/>
 
         <activity
             android:name=".view.activity.SuggestActivity"
@@ -55,7 +55,7 @@
         <activity android:name=".view.activity.BuylistActivity" />
 
         <activity
-            android:name=".view.fragment.SuggestFragment"
+            android:name=".view.fragment.RestaurantFragment"
             tools:ignore="Instantiatable" />
 
         <activity

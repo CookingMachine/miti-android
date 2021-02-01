@@ -14,8 +14,7 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:background="@color/primaryColor"
-        app:menu="@menu/search_toolbar_menu"
-        android:theme="@style/AppThemeToolbar"/>
+        app:menu="@menu/search_toolbar_menu" />
 
     <com.cookMeGood.makeItTasteIt.view.custom.Backdrop
         android:id="@+id/searchActivityBackdrop"
@@ -32,11 +31,11 @@
 
         <include
             android:id="@+id/backdropBack"
-            layout="@layout/layout_backdrop_back"/>
+            layout="@layout/content_backdrop_back"/>
 
         <include
             android:id="@+id/backdropFront"
-            layout="@layout/layout_backdrop_front"/>
+            layout="@layout/content_backdrop_front"/>
 
 
     </com.cookMeGood.makeItTasteIt.view.custom.Backdrop>

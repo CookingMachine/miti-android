@@ -38,7 +38,7 @@ class AuthActivity: SuperActivity(), LogInDialogAdapter.LoginDialogListener {
         }
 
         textAsGuest.setOnClickListener {
-            intent = Intent(this, StartActivity::class.java)
+            intent = Intent(this, MainActivity::class.java)
             intent.putExtra("user", User(null, "guest", null, null))
             startActivity(intent)
             finish()

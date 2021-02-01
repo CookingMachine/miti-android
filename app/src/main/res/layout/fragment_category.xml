@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/colorWhite"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryFragmentRecipeList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorWhite"
         app:layoutManager="LinearLayoutManager"
         android:visibility="gone"/>
 
@@ -17,9 +19,22 @@
         android:id="@+id/categoryFragmentProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:indeterminate="true"
         android:indeterminateTintMode="src_atop"
         android:indeterminateTint="@color/primaryColor"/>
 
-</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:fabCustomSize="40dp"
+        app:srcCompat="@drawable/ic_plus_red"
+        android:backgroundTint="@color/primaryColor"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginBottom="@dimen/marginSide"
+        android:contentDescription="@string/content_description_empty" />
+
+</RelativeLayout>
