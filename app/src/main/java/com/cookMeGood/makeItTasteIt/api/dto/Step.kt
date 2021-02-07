@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.dto
+package com.cookMeGood.makeItTasteIt.api.dto
 
 data class Step(
 

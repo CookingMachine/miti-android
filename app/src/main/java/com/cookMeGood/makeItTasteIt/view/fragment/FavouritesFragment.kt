@@ -6,8 +6,8 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.FavouritesListAdapter
-import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_favourites.*
 

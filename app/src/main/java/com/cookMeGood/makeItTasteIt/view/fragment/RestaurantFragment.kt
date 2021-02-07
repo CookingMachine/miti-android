@@ -6,7 +6,7 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestedRecipeListAdapter
-import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import kotlinx.android.synthetic.main.fragment_suggest.*
 
 class RestaurantFragment: SuperFragment() {

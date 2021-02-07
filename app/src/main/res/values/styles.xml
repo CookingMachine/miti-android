@@ -14,12 +14,14 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
-    <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
+    <style name="SearchViewIngredients" parent="Widget.AppCompat.SearchView">
         <item name="queryBackground">@android:color/transparent</item>
         <item name="searchIcon">@drawable/ic_search_white</item>
         <item name="closeIcon">@drawable/ic_close_white</item>
         <item name="queryHint">@string/hint_search</item>
         <item name="android:imeActionId">6</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:textColorSecondary">@color/colorBlack40</item>
     </style>
 
     <style name="AuthActivityTheme" parent="AppTheme">
@@ -53,8 +55,10 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
-    <style name="SearchActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="SearchActivityTheme" parent="AppTheme">
         <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:textColorPrimary">@color/colorWhite</item>
         <item name="android:textColorSecondary">@color/colorWhite</item>
         <item name="android:textCursorDrawable">@drawable/shape_cursor_white</item>

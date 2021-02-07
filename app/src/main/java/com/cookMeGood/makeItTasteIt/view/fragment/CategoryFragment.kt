@@ -7,8 +7,8 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
 import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity
@@ -38,8 +38,8 @@ class CategoryFragment: SuperFragment() {
     }
 
     override fun initInterface(view: View?) {
-        (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
+        (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
 
@@ -54,7 +54,6 @@ class CategoryFragment: SuperFragment() {
     }
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
-
         ApiService
                 .getApi()
                 .getRecipesByCategoryId(categoryId)

@@ -8,9 +8,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.IngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
-import com.cookMeGood.makeItTasteIt.dto.Ingredient
-import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.dto.Step
+import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import kotlinx.android.synthetic.main.activity_recipe.*
@@ -19,12 +19,9 @@ import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 class RecipeActivity : SuperActivity(){
 
     private var portions = 1
-
     private var stepList = mutableListOf<Step>()
-
     private var stepListListAdapter: RecipeStepListAdapter? = null
     private var ingredientsListAdapter: IngredientsListAdapter? = null
-
     private var ingredientsList = arrayListOf<Ingredient>()
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")

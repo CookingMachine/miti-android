@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/ingredientLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="36dp"
@@ -15,12 +16,12 @@
         android:textColor="@color/colorBlack"
         android:textSize="14sp"
         android:fontFamily="@font/roboto"
-        android:text="Морковь"/>
+        android:text="@string/example"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorWhite40"
+        android:background="@color/colorBlack20"
         android:layout_alignParentBottom="true"/>
 
     <ImageView
@@ -30,6 +31,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:src="@drawable/ic_checkbox_red_16"
-        android:contentDescription="@string/content_description_empty" />
+        android:contentDescription="@string/content_description_empty"
+        android:visibility="gone"/>
 
 </RelativeLayout>

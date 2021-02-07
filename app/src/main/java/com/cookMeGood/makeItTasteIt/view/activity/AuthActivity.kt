@@ -8,7 +8,7 @@ import com.cookMeGood.makeItTasteIt.adapter.dialog.LogInDialogAdapter
 import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.api.model.LoginRequest
 import com.cookMeGood.makeItTasteIt.api.model.LoginResponse
-import com.cookMeGood.makeItTasteIt.dto.User
+import com.cookMeGood.makeItTasteIt.api.dto.User
 import com.cookMeGood.makeItTasteIt.utils.ApplicationContext
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goToast
 import kotlinx.android.synthetic.main.activity_auth.*

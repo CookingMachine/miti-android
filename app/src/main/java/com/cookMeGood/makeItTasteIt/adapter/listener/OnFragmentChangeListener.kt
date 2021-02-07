@@ -1,7 +1,7 @@
 package com.cookMeGood.makeItTasteIt.adapter.listener
 
 import androidx.fragment.app.Fragment
-import com.cookMeGood.makeItTasteIt.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.Category
 
 interface OnFragmentChangeListener {
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_search_bottom_sheet"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    tools:showIn="@layout/activity_search">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchActivityContentList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"/>
+
+    <ImageView
+        android:id="@+id/searchNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginHorizontal="@dimen/marginSide"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_search_not_found"
+        android:visibility="gone"
+        android:contentDescription="@string/content_description_empty"/>
+
+    <include
+        android:id="@+id/searchIngredientsContent"
+        layout="@layout/content_search_ingredients"
+        android:visibility="gone"/>
+
+</LinearLayout>
+

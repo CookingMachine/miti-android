@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.dto.User
+import com.cookMeGood.makeItTasteIt.api.dto.User
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goToast
 import kotlinx.android.synthetic.main.activity_reg.*
 import retrofit2.Call
