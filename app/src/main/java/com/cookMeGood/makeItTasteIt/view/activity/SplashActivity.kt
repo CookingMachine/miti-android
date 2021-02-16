@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.dto.MainContent
+import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.MainContent
 import com.cookMeGood.makeItTasteIt.utils.ApplicationContext
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_MAIN_CONTENT
 import kotlinx.android.synthetic.main.activity_splash.*

@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CartRecipeListAdapter
-import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import kotlinx.android.synthetic.main.fragment_cart.*
 
 class CartFragment: SuperFragment() {

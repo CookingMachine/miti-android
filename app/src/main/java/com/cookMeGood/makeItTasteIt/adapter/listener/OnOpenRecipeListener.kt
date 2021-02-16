@@ -1,6 +1,6 @@
 package com.cookMeGood.makeItTasteIt.adapter.listener
 
-import com.cookMeGood.makeItTasteIt.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 
 interface OnOpenRecipeListener {
 

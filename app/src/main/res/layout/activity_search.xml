@@ -1,43 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.activity.SearchActivity"
-    android:background="@color/primaryColor"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    android:fitsSystemWindows="true"
+    tools:context=".view.activity.SearchActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/searchActivityToolbar"
-        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/primaryColor"
         app:menu="@menu/search_toolbar_menu" />
 
-    <com.cookMeGood.makeItTasteIt.view.custom.Backdrop
-        android:id="@+id/searchActivityBackdrop"
+    <LinearLayout
+        android:id="@+id/searchBackContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:toolbarId="@id/searchActivityToolbar"
-        app:front_layout="@id/backdropFront"
-        app:back_layout="@id/backdropBack"
-        app:menuDrawable="@drawable/ic_filter_white"
-        app:closeDrawable="@drawable/ic_close_white"
-        app:animationDuration="300"
-        app:front_header_radius="12dp"
-        app:peekHeight="900dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@color/primaryColor"
+        android:orientation="vertical"
+        android:theme="@style/Theme.MaterialComponents">
 
-        <include
-            android:id="@+id/backdropBack"
-            layout="@layout/content_backdrop_back"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="@dimen/marginSide"
+            android:layout_marginEnd="@dimen/marginSide">
 
-        <include
-            android:id="@+id/backdropFront"
-            layout="@layout/content_backdrop_front"/>
+            <TextView
+                android:id="@+id/searchIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_ingredient"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/searchIngredientsCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/colorWhite70"
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
 
-    </com.cookMeGood.makeItTasteIt.view.custom.Backdrop>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:background="@color/colorWhite40" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginTop="12dp"
+                android:text="@string/title_calories"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/searchCaloriesValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/marginSide"
+                android:text="@string/title_calories_any"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorWhite70"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/searchCaloriesRangeSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:stepSize="50.0"
+            android:valueFrom="0.0"
+            android:valueTo="2000.0"
+            app:labelBehavior="gone"
+            app:thumbColor="@color/colorWhite"
+            app:thumbElevation="2dp"
+            app:thumbRadius="6dp"
+            app:tickColorActive="@color/colorWhite"
+            app:tickColorInactive="@color/colorWhite40"
+            app:trackColorActive="@color/colorWhite"
+            app:trackColorInactive="@color/colorWhite40"
+            app:trackHeight="2dp"
+            app:values="@array/search_calories_values" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginTop="12dp"
+                android:text="@string/title_cooking_time"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/searchTimeValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSide"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/marginSide"
+                android:text="@string/title_cooking_time_any"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorWhite70"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/searchTimeRangeSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:stepSize="5.0"
+            android:valueFrom="5.0"
+            android:valueTo="120.0"
+            app:labelBehavior="gone"
+            app:thumbColor="@color/colorWhite"
+            app:thumbElevation="2dp"
+            app:thumbRadius="6dp"
+            app:tickColorActive="@color/colorWhite"
+            app:tickColorInactive="@color/colorWhite40"
+            app:trackColorActive="@color/colorWhite"
+            app:trackColorInactive="@color/colorWhite40"
+            app:trackHeight="2dp"
+            app:values="@array/search_time_values" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="8dp"
+            android:text="@string/title_dish_type"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchDishTypeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:background="@color/colorWhite40" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="8dp"
+            android:text="@string/title_kitchen"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchKitchenList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:layout_marginBottom="@dimen/marginSide"
+            android:background="@color/colorWhite40" />
+
+    </LinearLayout>
+
+    <include layout="@layout/content_search_bottom_sheet" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

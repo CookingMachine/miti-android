@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.dto
+package com.cookMeGood.makeItTasteIt.api.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable

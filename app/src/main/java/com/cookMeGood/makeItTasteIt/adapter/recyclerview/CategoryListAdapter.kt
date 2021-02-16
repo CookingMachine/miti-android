@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.Category
 import com.cookMeGood.makeItTasteIt.view.fragment.CategoryFragment
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import kotlinx.android.synthetic.main.item_main_recipe.view.*

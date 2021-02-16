@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <SearchView
+            android:id="@+id/searchIngredientSearchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="-8dp"
+            android:layout_marginTop="8dp"
+            android:queryHint="@string/hint_search_enter_ingredient"
+            android:iconifiedByDefault="false"
+            android:autofillHints="@string/hint_search_enter_ingredient"
+            android:theme="@style/SearchViewIngredients"/>
+
+        <Button
+            android:id="@+id/searchIngredientCloseButton"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:background="@drawable/ic_close"
+            android:contentDescription="@string/content_description_empty" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchIngredientsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginSide"
+        android:overScrollMode="never"/>
+
+</LinearLayout>

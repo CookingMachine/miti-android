@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recipeBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="500dp"
-    android:gravity="center_horizontal"
     android:background="@drawable/shape_recipe_bottom_sheet"
     android:elevation="2dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     app:behavior_hideable="false"
     app:layout_behavior="@string/bottom_sheet_behavior"
@@ -29,36 +28,36 @@
         android:id="@+id/recipeKBJULayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginStart="@dimen/marginSide"
-        android:layout_marginEnd="@dimen/marginSide"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/marginSide"
         android:background="@drawable/shape_recipe_stats"
-        android:elevation="2dp">
+        android:elevation="2dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_calories"/>
-            
+                android:text="@string/f_calories" />
+
             <View
                 android:layout_width="32dp"
                 android:layout_height="1dp"
-                android:background="@color/primaryColor"/>
+                android:background="@color/primaryColor" />
 
             <TextView
                 android:id="@+id/recipeCalories"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -66,23 +65,23 @@
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_carbo"/>
+                android:text="@string/f_carbo" />
 
             <View
                 android:layout_width="32dp"
                 android:layout_height="1dp"
-                android:background="@color/primaryColor"/>
+                android:background="@color/primaryColor" />
 
             <TextView
                 android:id="@+id/recipeCarbo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -94,32 +93,32 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/example"
+            android:textAlignment="center"
             android:textColor="@color/colorBlack80"
             android:textSize="13sp"
-            android:textAlignment="center"
-            app:drawableTopCompat="@drawable/ic_clock_red_24"/>
+            app:drawableTopCompat="@drawable/ic_clock_24" />
 
         <LinearLayout
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_proteins"/>
+                android:text="@string/f_proteins" />
 
             <View
                 android:layout_width="32dp"
                 android:layout_height="1dp"
-                android:background="@color/primaryColor"/>
+                android:background="@color/primaryColor" />
 
             <TextView
                 android:id="@+id/recipeProteins"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -128,23 +127,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/f_fats"/>
+                android:text="@string/f_fats" />
 
             <View
                 android:layout_width="32dp"
                 android:layout_height="1dp"
-                android:background="@color/primaryColor"/>
+                android:background="@color/primaryColor" />
 
             <TextView
                 android:id="@+id/recipeFats"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -155,18 +154,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="4dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginTop="@dimen/marginSide"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
-        android:text="@string/text_recipe"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textSizeDefault"
-        android:textAlignment="center"
         android:lines="5"
         android:maxLines="5"
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:text="@string/text_recipe"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textSizeDefault" />
 
     <LinearLayout
         android:id="@+id/recipeButtonsLayout"
@@ -207,6 +206,7 @@
 
         <Button
             android:id="@+id/kbjuButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
@@ -216,8 +216,7 @@
             android:fontFamily="@font/roboto_light"
             android:text="@string/title_restaurants"
             android:textColor="@color/primaryColor"
-            android:textSize="@dimen/textSizeDefault"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textSize="@dimen/textSizeDefault" />
     </LinearLayout>
 
     <com.shawnlin.numberpicker.NumberPicker
@@ -234,7 +233,7 @@
         android:layout_marginStart="@dimen/marginSide"
         android:layout_marginEnd="@dimen/marginSide"
         android:overScrollMode="never"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeIngredientsList"
@@ -246,12 +245,12 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:overScrollMode="never"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/recipeRestaurants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 
 </LinearLayout>

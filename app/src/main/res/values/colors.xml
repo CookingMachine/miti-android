@@ -11,6 +11,8 @@
     <!-- TRANSPARENCIES -->
 
     <color name="colorBlack80">#80000000</color>
+    <color name="colorBlack40">#40000000</color>
+    <color name="colorBlack20">#20000000</color>
     <color name="colorWhite40">#40FFFFFF</color>
     <color name="colorWhite70">#70FFFFFF</color>
 </resources>

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
-import com.cookMeGood.makeItTasteIt.dto.Step
+import com.cookMeGood.makeItTasteIt.api.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_suggest_step.view.*
 

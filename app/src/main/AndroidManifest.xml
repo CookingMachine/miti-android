@@ -43,6 +43,11 @@
             android:theme="@style/MainActivityTheme"/>
 
         <activity
+            android:name=".view.activity.RecipeActivity"
+            android:label="@string/title_activity_recipe"
+            android:theme="@style/RecipeActivityTheme" />
+
+        <activity
             android:name=".view.activity.SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@style/SearchActivityTheme"/>
@@ -52,8 +57,6 @@
             android:label="@string/title_suggest"
             android:theme="@style/SuggestActivityTheme"/>
 
-        <activity android:name=".view.activity.BuylistActivity" />
-
         <activity
             android:name=".view.fragment.RestaurantFragment"
             tools:ignore="Instantiatable" />
@@ -62,18 +65,17 @@
             android:name=".view.fragment.CartFragment"
             android:label="@string/title_activity_cart"
             tools:ignore="Instantiatable" />
+
         <activity
             android:name=".view.fragment.CategoryFragment"
             android:label="@string/title_activity_recipes"
             tools:ignore="Instantiatable" />
+
         <activity
             android:name=".view.fragment.FavouritesFragment"
             android:label="@string/title_activity_favourites"
             tools:ignore="Instantiatable" />
-        <activity
-            android:name=".view.activity.RecipeActivity"
-            android:label="@string/title_activity_recipe"
-            android:theme="@style/RecipeActivityTheme" />
+
         <activity
             android:name=".view.fragment.MainFragment"
             android:label="@string/title_activity_category"

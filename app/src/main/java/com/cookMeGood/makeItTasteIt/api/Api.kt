@@ -2,9 +2,9 @@ package com.cookMeGood.makeItTasteIt.api
 
 import com.cookMeGood.makeItTasteIt.api.model.LoginRequest
 import com.cookMeGood.makeItTasteIt.api.model.LoginResponse
-import com.cookMeGood.makeItTasteIt.dto.Category
-import com.cookMeGood.makeItTasteIt.dto.Recipe
-import com.cookMeGood.makeItTasteIt.dto.User
+import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.api.dto.User
 import retrofit2.Call
 import retrofit2.http.*
 
