@@ -1,10 +1,16 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.provider.MediaStore
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,10 +19,17 @@ import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
 import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.*
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class SuggestActivity : SuperActivity() {
+
 
     private var suggestStepListAdapter: SuggestStepListAdapter? = null
 
@@ -32,6 +45,10 @@ class SuggestActivity : SuperActivity() {
             }
         }
     }
+    private lateinit var currentPhotoPath: String
+
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private val REQUEST_PICK_IMAGE = 2
 
     override fun initInterface() {
 
@@ -62,7 +79,7 @@ class SuggestActivity : SuperActivity() {
         }
 
         suggestActivityImage.setOnClickListener {
-            HelpUtils.goToast(applicationContext, "SELECT PICTURE WINDOW") //TODO: выбор картинки для рецепта
+            openDialog()
         }
 
         suggestActivitySaveButton.setOnClickListener {
@@ -111,5 +128,80 @@ class SuggestActivity : SuperActivity() {
         itemTouchHelper.attachToRecyclerView(suggestActivityStepList)
     }
 
-//    private fun checkRecipeFilling(){}
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+                "JPEG_${timeStamp}_", /* prefix */
+                ".jpg", /* suffix */
+                storageDir /* directory */
+        ).apply {
+            currentPhotoPath = absolutePath
+        }
+    }
+
+    private fun openCamera() {
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                takePictureIntent.resolveActivity(packageManager)?.also {
+                    val photoFile: File? = try {
+                        createImageFile()
+                    } catch (ex: IOException) {
+                        null
+                    }
+                    photoFile?.also {
+                        val photoURI: Uri = FileProvider.getUriForFile(
+                                this,
+                                "com.example.android.fileprovider",
+                                it
+                        )
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                    }
+                }
+            }
+        }
+    private fun openGallery() {
+        Intent(Intent.ACTION_GET_CONTENT).also { intent ->
+            intent.type = "image/*"
+            intent.resolveActivity(packageManager)?.also {
+                startActivityForResult(intent, REQUEST_PICK_IMAGE)
+            }
+        }
+    }
+    private fun openDialog(){
+        val items = arrayOf<CharSequence>("Сделать фото", "Выбрать из галлереи")
+        val dialog = AlertDialog.Builder(this).setTitle("Выбор изображения").setItems(items
+        ) { _, which ->
+            if (which==0){ openCamera()}
+            else {openGallery()}
+        }
+        dialog.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                val filePath = File(currentPhotoPath)
+                val uriCamera = Uri.fromFile(filePath) //TODO:  Отправить сделанное фото
+
+                CropImage.activity(uriCamera)
+                        .setAspectRatio(4, 3)
+                        .start(this)
+            }
+            else if (requestCode == REQUEST_PICK_IMAGE) {
+                val uriGallery = data?.data //TODO: Отправить юри на серв
+
+                CropImage.activity(uriGallery)
+                        .setAspectRatio(4, 3)
+                        .start(this)
+            }
+            else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+                 val res = CropImage.getActivityResult(data)
+                suggestActivityImage.setImageURI(res.uri)
+                suggestActivityAddImage.visibility = View.GONE
+            }
+        }
+    }
 }
