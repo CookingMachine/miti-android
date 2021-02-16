@@ -129,7 +129,6 @@ class SuggestActivity : SuperActivity() {
     }
 
     private fun createImageFile(): File {
-        // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
@@ -181,26 +180,30 @@ class SuggestActivity : SuperActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_IMAGE_CAPTURE) {
-                val filePath = File(currentPhotoPath)
-                val uriCamera = Uri.fromFile(filePath) //TODO:  Отправить сделанное фото
+        when (resultCode) {
+            RESULT_OK -> {
+                when (requestCode) {
+                    REQUEST_IMAGE_CAPTURE -> {
+                        val filePath = File(currentPhotoPath)
+                        val uriCamera = Uri.fromFile(filePath) //TODO:  Отправить сделанное фото
 
-                CropImage.activity(uriCamera)
-                        .setAspectRatio(4, 3)
-                        .start(this)
-            }
-            else if (requestCode == REQUEST_PICK_IMAGE) {
-                val uriGallery = data?.data //TODO: Отправить юри на серв
+                        CropImage.activity(uriCamera)
+                                .setAspectRatio(4, 3)
+                                .start(this)
+                    }
+                    REQUEST_PICK_IMAGE -> {
+                        val uriGallery = data?.data //TODO: Отправить юри на серв
 
-                CropImage.activity(uriGallery)
-                        .setAspectRatio(4, 3)
-                        .start(this)
-            }
-            else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-                 val res = CropImage.getActivityResult(data)
-                suggestActivityImage.setImageURI(res.uri)
-                suggestActivityAddImage.visibility = View.GONE
+                        CropImage.activity(uriGallery)
+                                .setAspectRatio(4, 3)
+                                .start(this)
+                    }
+                    CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE-> {
+                        val res = CropImage.getActivityResult(data)
+                        suggestActivityImage.setImageURI(res.uri)
+                        suggestActivityAddImage.visibility = View.GONE
+                    }
+                }
             }
         }
     }
