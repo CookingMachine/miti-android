@@ -8,14 +8,14 @@
     tools:context="com.cookMeGood.makeItTasteIt.view.activity.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/startActivityToolbar"
+        android:id="@+id/mainActivityToolbar"
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:background="@color/colorWhite"
+        app:titleTextAppearance="@style/ToolbarTitle"
         app:popupTheme="@style/Theme.AppCompat.Light"
-        app:menu="@menu/start_activity_menu"
-        style="@style/AppThemeToolbar"
-        android:elevation="2dp"/>
+        app:menu="@menu/main_activity_menu"
+        style="@style/AppThemeToolbar"/>
 
     <fragment
         android:id="@+id/nav_host"
@@ -28,7 +28,7 @@
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view_start"
+        android:id="@+id/mainNavView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

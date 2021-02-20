@@ -16,7 +16,7 @@ class MainActivity: SuperActivity()  {
     override fun setAttr() = setLayout(R.layout.activity_main)
 
     override fun initInterface() {
-        setSupportActionBar(startActivityToolbar)
+        setSupportActionBar(mainActivityToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(false)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -24,11 +24,11 @@ class MainActivity: SuperActivity()  {
         }
 
         val navController = findNavController(R.id.nav_host)
-        nav_view_start.setupWithNavController(navController)
+        mainNavView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.start_activity_menu, menu)
+        menuInflater.inflate(R.menu.main_activity_menu, menu)
 
         return super.onCreateOptionsMenu(menu)
     }

@@ -9,6 +9,7 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.FavouritesListAdapter
 import com.cookMeGood.makeItTasteIt.api.dto.Category
 import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_favourites.*
 
 class FavouritesFragment: SuperFragment() {
@@ -24,9 +25,32 @@ class FavouritesFragment: SuperFragment() {
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_layout_list_fall_down)
 
         recipeListAdapter = FavouritesListAdapter(recipeList)
-        favouritesList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        favouritesList.layoutAnimation = animation
-        favouritesList.adapter = recipeListAdapter
+        favouritesRecipeList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        favouritesRecipeList.layoutAnimation = animation
+        favouritesRecipeList.adapter = recipeListAdapter
+
+        favouritesTabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position){
+                    0 -> {
+                        if (favouritesRecipeList.visibility == View.GONE) {
+                            favouritesRecipeList.visibility = View.VISIBLE
+                            favouritesRestaurantList.visibility = View.GONE
+                        }
+                    }
+                    1 -> {
+                        if (favouritesRestaurantList.visibility == View.GONE) {
+                            favouritesRestaurantList.visibility = View.VISIBLE
+                            favouritesRecipeList.visibility = View.GONE
+                        }
+                    }
+                }
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+        })
     }
 
     override fun setAttr() = setLayout(R.layout.fragment_favourites)

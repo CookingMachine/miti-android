@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     tools:context="com.cookMeGood.makeItTasteIt.view.fragment.FavouritesFragment">
+    
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/favouritesTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginHorizontal="@dimen/marginSide"
+        android:layout_marginTop="4dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/shape_tab_layout_favourites_background"
+        android:elevation="2dp"
+        app:tabBackground="@drawable/selector_tab_layout_favourites"
+        app:tabTextColor="@color/colorWhite"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        app:tabIndicator="@drawable/shape_tab_layout_favourites_item"
+        app:tabIndicatorGravity="stretch"
+        app:tabRippleColor="@null">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tab_recipes"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tab_restaurants"/>
+
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favouritesList"
+        android:id="@+id/favouritesRecipeList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
 
-</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favouritesRestaurantList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:overScrollMode="never"/>
+
+</RelativeLayout>
