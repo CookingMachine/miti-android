@@ -1,6 +1,5 @@
 package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,11 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
 import kotlinx.android.synthetic.main.item_ingredient.view.*
 
-class IngredientsListAdapter(val context: Context, private var ingredients: List<Ingredient>): RecyclerView.Adapter<IngredientsListAdapter.ViewHolder>() {
+class IngredientsListAdapter(private var ingredients: List<Ingredient>): RecyclerView.Adapter<IngredientsListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-                LayoutInflater.from(context).inflate(
+                LayoutInflater.from(parent.context).inflate(
                         R.layout.item_ingredient,
                         parent, false
                 )

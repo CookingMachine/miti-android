@@ -4,22 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="@dimen/marginSide"
-    android:layout_marginTop="@dimen/marginSide"
-    android:layout_marginEnd="@dimen/marginSide">
+    android:layout_marginStart="@dimen/marginDef"
+    android:layout_marginTop="@dimen/marginDef"
+    android:layout_marginEnd="@dimen/marginDef">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cartRecipeLayout"
         android:layout_width="match_parent"
         android:layout_height="145dp"
         android:layout_margin="4dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="12dp">
+        app:cardCornerRadius="@dimen/cornerRadiusDef">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:elevation="16dp">
 
             <ImageView
                 android:id="@+id/cartRemoveButton"
@@ -43,8 +43,8 @@
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/marginSide"
-                    android:layout_marginEnd="@dimen/marginSide"
+                    android:layout_marginStart="@dimen/marginDef"
+                    android:layout_marginEnd="@dimen/marginDef"
                     app:riv_corner_radius="90dp"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/title_ingredient"

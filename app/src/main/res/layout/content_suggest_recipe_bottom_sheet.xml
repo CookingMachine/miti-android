@@ -27,8 +27,8 @@
                 android:id="@+id/suggestActivityBottomSheetName"
                 android:layout_width="@dimen/suggestSheetNameWidth"
                 android:layout_height="@dimen/suggestSheetNameHeight"
-                android:layout_marginStart="@dimen/marginSide"
-                android:layout_marginEnd="@dimen/marginSide"
+                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginEnd="@dimen/marginDef"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
@@ -78,7 +78,7 @@
                         android:background="@null"
                         android:inputType="number"
                         android:maxLength="5"
-                        android:textSize="@dimen/textSizeDefault"
+                        android:textSize="@dimen/textSizeDef"
                         android:textColor="@color/colorBlack80"
                         android:hint="@string/hint_KBJU" />
 
@@ -110,7 +110,7 @@
                         android:background="@null"
                         android:inputType="number"
                         android:maxLength="5"
-                        android:textSize="@dimen/textSizeDefault"
+                        android:textSize="@dimen/textSizeDef"
                         android:textColor="@color/colorBlack80"
                         android:hint="@string/hint_KBJU" />
 
@@ -161,7 +161,7 @@
                         android:background="@null"
                         android:inputType="number"
                         android:maxLength="5"
-                        android:textSize="@dimen/textSizeDefault"
+                        android:textSize="@dimen/textSizeDef"
                         android:textColor="@color/colorBlack80"
                         android:hint="@string/hint_KBJU" />
 
@@ -194,7 +194,7 @@
                         android:background="@null"
                         android:maxLength="5"
                         android:inputType="number"
-                        android:textSize="@dimen/textSizeDefault"
+                        android:textSize="@dimen/textSizeDef"
                         android:textColor="@color/colorBlack80"
                         android:hint="@string/hint_KBJU" />
 
@@ -207,8 +207,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/marginSide"
-                android:layout_marginHorizontal="@dimen/marginSide"
+                android:layout_marginTop="@dimen/marginDef"
+                android:layout_marginHorizontal="@dimen/marginDef"
                 android:layout_below="@+id/suggestActivityTimeLayout"
                 android:gravity="center"
                 android:text="@string/text_suggest_sheet_description"
@@ -222,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/marginSide"
+                android:layout_marginTop="@dimen/marginDef"
                 android:layout_marginStart="54dp"
                 android:layout_marginEnd="54dp"
                 android:layout_below="@+id/suggestActivityBottomSheetDescription"
@@ -268,7 +268,7 @@
                 android:id="@+id/suggestActivityStepList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginSide"
+                android:layout_marginTop="@dimen/marginDef"
                 android:layout_marginBottom="64dp"
                 android:layout_below="@+id/suggestActivityButtonsLayout"
                 android:overScrollMode="never" />
@@ -277,7 +277,7 @@
                 android:id="@+id/suggestActivityIngredientList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginSide"
+                android:layout_marginTop="@dimen/marginDef"
                 android:layout_marginBottom="64dp"
                 android:layout_below="@+id/suggestActivityButtonsLayout"
                 android:overScrollMode="never"
@@ -293,7 +293,7 @@
         android:layout_height="32dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginSide"
+        android:layout_marginBottom="@dimen/marginDef"
         android:background="@drawable/shape_round_button_pressed"
         android:text="@string/text_suggest_save"
         android:textColor="@color/colorWhite"

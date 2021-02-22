@@ -79,7 +79,6 @@ class SuggestActivity : SuperActivity() {
         onButtonClick(suggestActivityRecipeButton)
         setRecyclerViewItemDragListener()
         setIngredientRecyclerViewItemDragListener()
-        suggestActivityTimePicker.setIs24HourView(true)
 
         suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager,stepList, suggestStepEditListener)
         suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)

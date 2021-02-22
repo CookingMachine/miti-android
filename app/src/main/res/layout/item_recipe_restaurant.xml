@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginTop="2dp"
+    android:elevation="16dp"
+    app:cardCornerRadius="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/recipeActivityRestaurantImage"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/content_description_empty"
+            android:scaleType="centerCrop"
+            android:src="@color/colorBlack"
+            app:riv_corner_radius="12dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/recipeActivityRestaurantImage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recipeActivityRestaurantTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/example"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"/>
+
+            <TextView
+                android:id="@+id/recipeActivityRestaurantKitchen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/example"
+                android:textColor="@color/colorBlack40"
+                android:textSize="9sp"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/recipeActivityRestaurantAverageBill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/example"
+                android:textColor="@color/colorBlack80"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+
+        <com.cookMeGood.makeItTasteIt.view.custom.MetroStationView
+            android:id="@+id/recipeActivityRestaurantMetro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/recipeActivityRestaurantImage"
+            android:text="@string/example"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            android:gravity="center_vertical"
+            app:lineNumber="4"
+            tools:ignore="RelativeOverlap,SmallSp" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="8dp"
+            android:theme="@style/RecipeRatingBar"
+            android:numStars="5"
+            style="@style/Widget.AppCompat.RatingBar.Small"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

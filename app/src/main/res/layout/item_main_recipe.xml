@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/cardMargin"
-        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardCornerRadius="@dimen/cornerRadiusDef"
         app:cardElevation="5dp"
         >
 

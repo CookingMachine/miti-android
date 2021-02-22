@@ -46,7 +46,7 @@ class CardViewWithDescription: LinearLayout {
         init(context, null)
     }
 
-    constructor(context: Context, attrs: AttributeSet?): super(context){
+    constructor(context: Context, attrs: AttributeSet?): super(context, attrs){
         init(context, attrs)
     }
 

@@ -8,8 +8,8 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginSide"
-        app:cardCornerRadius="@dimen/cardCornerRadius">
+        android:layout_margin="@dimen/marginDef"
+        app:cardCornerRadius="@dimen/cornerRadiusDef">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,8 +28,8 @@
                 android:id="@+id/cardViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginSide"
-                android:layout_marginEnd="@dimen/marginSide"
+                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginEnd="@dimen/marginDef"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto"
                 android:text="@string/text_no_calories"

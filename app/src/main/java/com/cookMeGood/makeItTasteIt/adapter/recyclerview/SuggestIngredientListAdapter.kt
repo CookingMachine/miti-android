@@ -25,8 +25,8 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.ingredientTitle?.text = ingredientList[position].name
-        holder.ingredientAmount?.text = ingredientList[position].amount
+        holder.ingredientTitle.text = ingredientList[position].name
+        holder.ingredientAmount.text = ingredientList[position].amount
 
         if (itemCount  == position+1) {
             setLastElement(holder, position)

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginDef"
         android:layout_centerVertical="true"
         android:textColor="@color/colorBlack"
         android:textSize="14sp"

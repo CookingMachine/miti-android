@@ -27,10 +27,9 @@ class CardViewWithTitle: LinearLayout {
         init(context, null)
     }
 
-    constructor(context: Context, attrs: AttributeSet?): super(context){
+    constructor(context: Context, attrs: AttributeSet?): super(context, attrs){
         init(context, attrs)
     }
-
 
     @SuppressLint("CustomViewStyleable", "Recycle")
     private fun init(context: Context, attrs: AttributeSet?){

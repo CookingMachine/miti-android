@@ -137,7 +137,7 @@ class SearchActivity : SuperActivity() {
             return@setLabelFormatter "${value.roundToInt()}Cal"
         }
 
-        searchCaloriesRangeSlider.addOnChangeListener(RangeSlider.OnChangeListener { slider, _, _ ->
+        searchCaloriesRangeSlider.addOnChangeListener { slider, _, _ ->
             caloriesValueFrom = slider.values.first().toInt()
             caloriesValueTo = slider.values.last().toInt()
 
@@ -146,9 +146,9 @@ class SearchActivity : SuperActivity() {
             } else {
                 searchCaloriesValue.text = "от $caloriesValueFrom до $caloriesValueTo"
             }
-        })
+        }
 
-        searchTimeRangeSlider.addOnChangeListener(RangeSlider.OnChangeListener { slider, _, _ ->
+        searchTimeRangeSlider.addOnChangeListener { slider, _, _ ->
             timeValueFrom = slider.values.first().toInt()
             timeValueTo = slider.values.last().toInt()
 
@@ -157,7 +157,7 @@ class SearchActivity : SuperActivity() {
             } else {
                 searchTimeValue.text = "от $timeValueFrom до $timeValueTo минут"
             }
-        })
+        }
 
         searchIngredients.setOnClickListener {
 
