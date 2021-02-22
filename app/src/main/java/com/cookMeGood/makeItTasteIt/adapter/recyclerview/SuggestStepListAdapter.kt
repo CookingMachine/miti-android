@@ -22,11 +22,11 @@ import kotlinx.android.synthetic.main.item_suggest_step.view.*
 
 class SuggestStepListAdapter(val context: Context,
                              private val supportFragmentManager: FragmentManager,
+                             private var stepList: ArrayList<Step>,
                              val listener: SuggestStepEditListener):
         RecyclerView.Adapter<SuggestStepListAdapter.ViewHolder>(){
 
     private var suggestEditStepDialogAdapter: SuggestEditFieldDialogAdapter? = null
-    private var stepList = arrayListOf<Step>()
 
     private var originalHeight : Int = -1
     private var expandedHeight : Int = -1
@@ -40,18 +40,20 @@ class SuggestStepListAdapter(val context: Context,
         )
     }
 
-    override fun getItemCount(): Int = stepList.size + 1
+    override fun getItemCount(): Int = stepList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        if (itemCount - 1 == position) {
+        holder.stepDescription.text = stepList[position].description
+        holder.stepTitle.text = stepList[position].name
+        holder.stepNumber.text = stepList[position].number.toString()
+
+        if (itemCount  == position+1) {
             setLastElement(holder)
         }
         else {
             val currentStep = stepList[position]
 
-            holder.stepNumber.text = (position + 1).toString()
-            holder.stepTitle.text = "Шаг"
             holder.stepAddButton.visibility = View.GONE
             holder.stepChangeButton.visibility = View.VISIBLE
 
@@ -80,12 +82,9 @@ class SuggestStepListAdapter(val context: Context,
     }
 
     private fun setLastElement(holder: ViewHolder){
-        holder.stepNumber.text = (itemCount).toString()
-        holder.stepTitle.text = "Шаг"
         holder.stepAddButton.visibility = View.VISIBLE
-        holder.stepChangeButton.visibility = View.GONE
         holder.stepAddButton.setOnClickListener {
-            stepList.add(Step())
+            stepList.add(Step("Шаг",itemCount+1))
             notifyDataSetChanged()
         }
     }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginHorizontal="@dimen/marginSide"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/suggestIngredientLayout"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/shape_suggest_step"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:id="@+id/suggestIngredientInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/marginSide"
+            android:layout_marginEnd="52dp"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/suggestIngredientTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:layout_marginEnd="100dp"
+                android:layout_marginStart="@dimen/marginSide"
+                app:fontFamily="@font/roboto_light"
+                android:textColor="@color/colorBlack"
+                android:text="@string/text_ingredient_name" />
+
+            <TextView
+                android:id="@+id/suggestIngredientAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                app:fontFamily="@font/roboto_light"
+                android:textColor="@color/colorBlack"
+            android:text="@string/text_ingredient_amount"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/suggestIngredientChangeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="@dimen/marginSide"
+            android:src="@drawable/ic_suggest_pencil"
+            android:contentDescription="@string/content_description_empty"/>
+
+        <ImageView
+            android:id="@+id/suggestIngredienteDivider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_down_arrow"
+            android:contentDescription="@string/title_ingredient"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/suggestIngredientAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_suggest_add_step"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        android:contentDescription="@string/content_description_empty"
+        android:visibility="gone"/>
+
+</RelativeLayout>
