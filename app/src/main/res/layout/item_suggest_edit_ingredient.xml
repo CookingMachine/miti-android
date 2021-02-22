@@ -11,8 +11,8 @@
         android:id="@+id/nameTextField"
         android:layout_width="160dp"
         android:layout_height="47dp"
-        android:layout_marginTop="@dimen/marginSide"
-        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginDef"
+        android:layout_marginStart="@dimen/marginDef"
         android:textSize="12sp"
         android:textAlignment="textStart"
         android:background="@drawable/shape_suggest_edit_window"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="7dp"
-        android:text="@string/text_ingredient_name"
+        android:text="@string/example"
         android:textSize="12sp"
         android:background="@color/colorWhite"/>
 
@@ -34,7 +34,7 @@
         android:layout_width="78dp"
         android:layout_height="47dp"
         android:layout_toEndOf="@id/nameTextField"
-        android:layout_marginTop="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginDef"
         android:layout_marginStart="12dp"
         android:textSize="12sp"
         android:background="@drawable/shape_suggest_edit_window"
@@ -49,7 +49,7 @@
         android:layout_marginTop="7dp"
         android:layout_toEndOf="@id/nameTextField"
         android:background="@color/colorWhite"
-        android:text="@string/text_ingredient_amount"
+        android:text="@string/example"
         android:textSize="12sp" />
     </RelativeLayout>
 

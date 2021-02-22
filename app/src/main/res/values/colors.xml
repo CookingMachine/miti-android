@@ -16,4 +16,18 @@
     <color name="colorBlack20">#20000000</color>
     <color name="colorWhite40">#40FFFFFF</color>
     <color name="colorWhite70">#70FFFFFF</color>
+
+    <color name="colorMetroStation1">#ee1a36</color>
+    <color name="colorMetroStation2">#3dbd5f</color>
+    <color name="colorMetroStation3">#0377bc</color>
+    <color name="colorMetroStation4">#1bbff4</color>
+    <color name="colorMetroStation5">#8b4d36</color>
+    <color name="colorMetroStation6">#f5852f</color>
+    <color name="colorMetroStation7">#8e449c</color>
+    <color name="colorMetroStation8">#ffca2e</color>
+    <color name="colorMetroStation9">#a0a1a3</color>
+    <color name="colorMetroStation10">#b2d345</color>
+    <color name="colorMetroStation11">#79cbce</color>
+    <color name="colorMetroStation12">#aabfdd</color>
+    
 </resources>

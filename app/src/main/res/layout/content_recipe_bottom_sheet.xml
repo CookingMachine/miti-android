@@ -155,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="@dimen/marginSide"
+        android:layout_marginTop="@dimen/marginDef"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="4dp"
         android:layout_gravity="center"
@@ -197,7 +197,7 @@
             android:text="@string/title_recipe"
             android:textColor="@color/primaryColor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSizeDefault"
+            android:textSize="@dimen/textSizeDef"
             style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
@@ -212,11 +212,11 @@
             android:text="@string/title_ingredient"
             android:textColor="@color/primaryColor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSizeDefault"
+            android:textSize="@dimen/textSizeDef"
             style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
-            android:id="@+id/kbjuButton"
+            android:id="@+id/restaurantsButton"
             android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
@@ -227,7 +227,7 @@
             android:text="@string/title_restaurants"
             android:textColor="@color/primaryColor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSizeDefault"
+            android:textSize="@dimen/textSizeDef"
             style="?android:attr/buttonBarButtonStyle"/>
 
     </LinearLayout>
@@ -242,8 +242,8 @@
         android:id="@+id/recipeStepList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/marginSide"
-        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginStart="@dimen/marginDef"
+        android:layout_marginEnd="@dimen/marginDef"
         android:overScrollMode="never"
         android:visibility="gone"
         style="@android:style/Animation"/>
@@ -260,10 +260,11 @@
         android:visibility="gone"
         style="@android:style/Animation"/>
 
-    <LinearLayout
-        android:id="@+id/recipeRestaurants"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipeRestaurantsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"/>
 
 </LinearLayout>

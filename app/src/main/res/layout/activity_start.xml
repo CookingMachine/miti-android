@@ -107,7 +107,7 @@
         android:layout_marginBottom="90dp"
         android:text="@string/sign_guest"
         android:textColor="#eaeaea"
-        android:textSize="@dimen/textSizeDefault"
+        android:textSize="@dimen/textSizeDef"
         android:textStyle="normal"
         app:fontFamily="@font/roboto" />
 

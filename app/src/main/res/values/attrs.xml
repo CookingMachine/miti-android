@@ -23,4 +23,8 @@
         <attr name="animationDuration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="MetroStationView">
+        <attr name="lineNumber" format="integer" />
+    </declare-styleable>
+
 </resources>

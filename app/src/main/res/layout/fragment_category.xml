@@ -28,13 +28,13 @@
         android:id="@+id/floatingButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        app:fabCustomSize="40dp"
+        app:fabCustomSize="@dimen/floatingButtonDef"
         app:srcCompat="@drawable/ic_plus_red"
         android:backgroundTint="@color/primaryColor"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/marginSide"
-        android:layout_marginBottom="@dimen/marginSide"
+        android:layout_marginEnd="@dimen/marginDef"
+        android:layout_marginBottom="@dimen/marginDef"
         android:contentDescription="@string/content_description_empty"
         app:elevation="12dp"/>
 
