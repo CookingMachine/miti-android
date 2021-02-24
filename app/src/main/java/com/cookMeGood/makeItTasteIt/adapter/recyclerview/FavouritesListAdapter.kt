@@ -1,29 +1,36 @@
 package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_favourites_recipe.view.*
 
 class FavouritesListAdapter(
         private var recipeList: List<Recipe>
-): RecyclerView.Adapter<FavouritesListAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<FavouritesListAdapter.ViewHolder>() {
+
+    private lateinit var context: Context
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val recipePicture = view.favouritesImage!!
         val recipeName = view.favouritesTitle!!
         val recipeKitchen = view.favouritesNationality!!
         val recipeRating = view.favouritesRatingBar!!
+        val recipeLayout = view.favouritesLayout!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
         return ViewHolder(
                 LayoutInflater
-                        .from(parent.context)
+                        .from(context)
                         .inflate(R.layout.item_favourites_recipe, parent, false)
         )
     }
@@ -31,6 +38,18 @@ class FavouritesListAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipeList[position]
+
+        if (position == 0) {
+            val margin16 = HelpUtils.convertDpToPixel(16, context)
+            val margin64 = HelpUtils.convertDpToPixel(64, context)
+            val params = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT
+            )
+            params.setMargins(margin16, margin64, margin16, 0)
+
+            holder.recipeLayout.layoutParams = params
+        }
 
         //holder.recipePicture
         holder.recipeName.text = recipe.name
