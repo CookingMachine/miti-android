@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/image_auth_background"
     android:scaleType="center"
     android:theme="@style/MaterialTheme">
@@ -10,21 +10,21 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="@dimen/loginLogoWidth"
             android:layout_height="@dimen/loginLogoHeight"
+            android:contentDescription="@string/content_description_empty"
             android:gravity="center"
             android:scaleType="centerCrop"
-            android:src="@drawable/image_logo"
-            android:contentDescription="@string/content_description_empty" />
+            android:src="@drawable/image_logo" />
 
     </LinearLayout>
 
@@ -40,12 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:text="@string/hint_name"
-            app:fontFamily="@font/roboto"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold"
-            tools:ignore="SmallSp">
-        </TextView>
+            app:fontFamily="@font/roboto"
+            tools:ignore="SmallSp" />
 
         <EditText
             android:id="@+id/edit_name"
@@ -54,6 +53,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
+            android:autofillHints=""
             android:backgroundTint="@color/colorWhite"
             android:inputType="text"
             android:paddingBottom="17dp"
@@ -63,9 +63,8 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/roboto"
-            tools:visibility="visible"
-            android:autofillHints=""
-            tools:ignore="LabelFor" />
+            tools:ignore="LabelFor"
+            tools:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,12 +79,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:text="@string/hint_username"
-            app:fontFamily="@font/roboto"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold"
-            tools:ignore="SmallSp">
-        </TextView>
+            app:fontFamily="@font/roboto"
+            tools:ignore="SmallSp"/>
 
         <EditText
             android:id="@+id/edit_username"
@@ -94,6 +92,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
+            android:autofillHints=""
             android:backgroundTint="@color/colorWhite"
             android:inputType="text"
             android:paddingBottom="17dp"
@@ -103,9 +102,8 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/roboto"
-            tools:visibility="visible"
-            android:autofillHints=""
-            tools:ignore="LabelFor" />
+            tools:ignore="LabelFor"
+            tools:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
@@ -119,13 +117,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
-            app:fontFamily="@font/roboto"
             android:text="@string/hint_email"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold"
-            tools:ignore="SmallSp">
-        </TextView>
+            app:fontFamily="@font/roboto"
+            tools:ignore="SmallSp"/>
 
         <EditText
             android:id="@+id/edit_Email"
@@ -134,17 +131,16 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
+            android:autofillHints=""
             android:backgroundTint="@color/colorWhite"
-            app:fontFamily="@font/roboto"
             android:inputType="textEmailAddress"
             android:paddingBottom="17dp"
             android:textColor="#FFFFFF"
             android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:autofillHints=""
-            tools:ignore="LabelFor">
-        </EditText>
+            app:fontFamily="@font/roboto"
+            tools:ignore="LabelFor"/>
 
     </LinearLayout>
 
@@ -159,13 +155,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
-            app:fontFamily="@font/roboto"
             android:text="@string/hint_password"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold"
-            tools:ignore="SmallSp">
-        </TextView>
+            app:fontFamily="@font/roboto"
+            tools:ignore="SmallSp"/>
 
         <EditText
             android:id="@+id/edit_password"
@@ -174,28 +169,27 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="40dp"
+            android:autofillHints=""
             android:backgroundTint="@color/colorWhite"
-            app:fontFamily="@font/roboto"
             android:inputType="textPassword"
             android:paddingBottom="17dp"
             android:textColor="#FFFFFF"
             android:textColorHint="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:autofillHints=""
-            tools:ignore="LabelFor">
-        </EditText>
+            app:fontFamily="@font/roboto"
+            tools:ignore="LabelFor"/>
 
         <CheckBox
             android:id="@+id/registerCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginStart="44dp"
             android:layout_marginTop="7dp"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center_horizontal"
             android:paddingStart="7dp"
             android:paddingTop="9dp"
-            android:fontFamily="@font/roboto_light"
             android:text="@string/text_registration_checkbox"
             android:textColor="#FFFFFF"
             android:textSize="10sp"
@@ -207,17 +201,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginHorizontal="40dp"
-        android:gravity="center"
         android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
         android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeColor="@color/primaryColor"
             android:id="@+id/btn_register"
-            app:cornerRadius="40dp"
             android:layout_width="190dp"
             android:layout_height="55dp"
             android:layout_marginBottom="20dp"
@@ -226,16 +217,18 @@
             android:text="@string/btn_register"
             android:textColor="@color/colorWhite"
             android:textSize="11sp"
+            app:cornerRadius="40dp"
             app:fontFamily="@font/roboto_bold"
-            tools:ignore="SmallSp" />
+            app:strokeColor="@color/primaryColor"
+            tools:ignore="SmallSp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         <TextView
-            android:id="@+id/textBottom"
+            android:id="@+id/asGuestTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:gravity="fill"
-            android:onClick="toAuth"
             android:text="@string/i_have_account"
             android:textColor="#eaeaea"
             android:textSize="12sp"

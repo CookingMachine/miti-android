@@ -23,6 +23,10 @@ class RegActivity : SuperActivity() {
         btn_register.setOnClickListener {
             onRegisterClicked()
         }
+
+        asGuestTextView.setOnClickListener {
+            toAuth()
+        }
     }
 
     override fun setAttr() = setLayout(R.layout.activity_reg)
