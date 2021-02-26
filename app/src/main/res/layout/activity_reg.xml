@@ -235,7 +235,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:gravity="fill"
-            android:onClick="toAuth"
             android:text="@string/i_have_account"
             android:textColor="#eaeaea"
             android:textSize="12sp"

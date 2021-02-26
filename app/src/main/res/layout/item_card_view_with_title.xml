@@ -22,7 +22,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/image_card_view_with_title"
                 android:contentDescription="@string/content_description_empty"
-                android:tint="@color/colorBlack80" />
+                app:tint="@color/colorBlack80" />
 
             <TextView
                 android:id="@+id/cardViewTitle"
