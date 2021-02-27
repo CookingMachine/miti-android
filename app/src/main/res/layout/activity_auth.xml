@@ -60,7 +60,7 @@
                 android:layout_width="75dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="26dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="26dp"
                 android:background="@color/colorWhite" />
 
@@ -79,7 +79,7 @@
             <View
                 android:layout_width="75dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="26dp"
                 android:layout_marginBottom="26dp"
                 android:background="@color/colorWhite" />

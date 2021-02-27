@@ -22,15 +22,15 @@
         android:text="@string/title_recipe"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        app:fontFamily="@font/roboto_light" />
+        app:fontFamily="@font/roboto" />
 
     <LinearLayout
         android:id="@+id/recipeKBJULayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginSide"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/marginSide"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/shape_recipe_stats"
         android:elevation="2dp"
         android:gravity="center"
@@ -40,7 +40,7 @@
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -64,7 +64,7 @@
         <LinearLayout
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -101,7 +101,8 @@
         <LinearLayout
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -165,7 +166,7 @@
         android:text="@string/text_recipe"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textSizeDefault" />
+        android:textSize="@dimen/textSizeRecipeDescription" />
 
     <LinearLayout
         android:id="@+id/recipeButtonsLayout"
@@ -174,48 +175,52 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
 
         <Button
             android:id="@+id/recipeButton"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_corners_button"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/roboto"
             android:text="@string/title_recipe"
             android:textColor="@color/primaryColor"
+            android:textAllCaps="false"
             android:textSize="@dimen/textSizeDefault" />
 
         <Button
             android:id="@+id/ingredButton"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_corners_button"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/roboto"
             android:text="@string/title_ingredient"
             android:textColor="@color/primaryColor"
+            android:textAllCaps="false"
             android:textSize="@dimen/textSizeDefault" />
 
         <Button
             android:id="@+id/kbjuButton"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_corners_button"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/roboto"
             android:text="@string/title_restaurants"
             android:textColor="@color/primaryColor"
+            android:textAllCaps="false"
             android:textSize="@dimen/textSizeDefault" />
     </LinearLayout>
 

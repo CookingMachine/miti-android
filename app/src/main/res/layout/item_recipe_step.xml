@@ -33,6 +33,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="@dimen/marginSide"
                 app:fontFamily="@font/roboto_light"
+                android:textSize="14sp"
                 android:textColor="@color/colorBlack"
                 android:text="@string/text_step_name" />
 
@@ -52,7 +53,7 @@
         <TextView
             android:id="@+id/recipeStepDescription"
             android:layout_marginBottom="10dp"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="33dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearStepTop"
