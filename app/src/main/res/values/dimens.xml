@@ -1,11 +1,12 @@
 <resources>
     <dimen name="textSizeDefault">12sp</dimen>
+    <dimen name="textSizeRecipeDescription">14sp</dimen>
     <dimen name="loginLogoWidth">80dp</dimen>
     <dimen name="loginLogoHeight">105dp</dimen>
     <dimen name="marginSide">16dp</dimen>
     <dimen name="portionTextSelected">18sp</dimen>
     <dimen name="portionText">14sp</dimen>
-    <dimen name="authButtonHeight">40dp</dimen>
+    <dimen name="authButtonHeight">48dp</dimen>
     <dimen name="authButtonWidth">190dp</dimen>
     <dimen name="authButtonCornerRadius">40dp</dimen>
     <dimen name="toolbarTextSize">20sp</dimen>
