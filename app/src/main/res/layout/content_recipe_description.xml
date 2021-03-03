@@ -11,10 +11,10 @@
         android:id="@+id/btnClose"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="end"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="@dimen/marginSide"
+        android:layout_gravity="end"
+        android:layout_alignParentEnd="true"
         android:background="@drawable/ic_close"
         android:contentDescription="@string/content_description_empty" />
 
