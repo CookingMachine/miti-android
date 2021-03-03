@@ -1,11 +1,13 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.graphics.Point
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.cookMeGood.makeItTasteIt.R
+import com.cookMeGood.makeItTasteIt.adapter.dialog.RecipeDescriptionDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.IngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
 import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
@@ -13,10 +15,11 @@ import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.api.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 
-class RecipeActivity : SuperActivity(){
+class RecipeActivity : SuperActivity() {
 
     private var portions = 1
     private var stepList = mutableListOf<Step>()
@@ -35,11 +38,16 @@ class RecipeActivity : SuperActivity(){
         display.getSize(point)
         val screenHeight = point.y
         val currentRecipe = intent.extras!!.getSerializable(IntentContainer.INTENT_RECIPE) as Recipe
+        val recipeDialog = RecipeDescriptionDialogAdapter()
 
         setSupportActionBar(recipeToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = currentRecipe.name
+
+        btnDescription.setOnClickListener {
+            recipeDialog.show(supportFragmentManager, "Recipe dialog")
+        }
 
         recipeTitleTextView.text = currentRecipe.name
         recipeDescription.text = currentRecipe.description
@@ -89,6 +97,7 @@ class RecipeActivity : SuperActivity(){
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
         }
+
     }
     private fun clickRecipe() {
 

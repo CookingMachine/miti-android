@@ -168,6 +168,14 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textSizeRecipeDescription" />
 
+    <Button
+        android:id="@+id/btnDescription"
+        android:layout_gravity="center"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="@drawable/ic_recipe_description"
+        android:contentDescription="@string/content_description_empty" />
+
     <LinearLayout
         android:id="@+id/recipeButtonsLayout"
         android:layout_width="match_parent"
@@ -181,6 +189,7 @@
         <Button
             android:id="@+id/recipeButton"
             style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -195,6 +204,7 @@
         <Button
             android:id="@+id/ingredButton"
             style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -209,6 +219,7 @@
         <Button
             android:id="@+id/kbjuButton"
             style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
