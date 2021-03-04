@@ -22,7 +22,6 @@ class FavouritesListAdapter(
         val recipePicture = view.favouritesImage!!
         val recipeName = view.favouritesTitle!!
         val recipeKitchen = view.favouritesNationality!!
-        val recipeRating = view.favouritesRatingBar!!
         val recipeLayout = view.favouritesLayout!!
     }
 
@@ -44,7 +43,7 @@ class FavouritesListAdapter(
             val margin64 = HelpUtils.convertDpToPixel(64, context)
             val params = RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,
-                    RelativeLayout.LayoutParams.MATCH_PARENT
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
             )
             params.setMargins(margin16, margin64, margin16, 0)
 

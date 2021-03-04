@@ -35,6 +35,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/marginSide"
         android:layout_marginBottom="@dimen/marginSide"
-        android:contentDescription="@string/content_description_empty" />
+        android:contentDescription="@string/content_description_empty"
+        app:elevation="12dp"/>
 
 </RelativeLayout>

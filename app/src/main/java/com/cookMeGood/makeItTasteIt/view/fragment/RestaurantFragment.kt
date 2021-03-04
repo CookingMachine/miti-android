@@ -2,47 +2,34 @@ package com.cookMeGood.makeItTasteIt.view.fragment
 
 import android.content.Intent
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
-import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
-import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestedRecipeListAdapter
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RestaurantListAdapter
 import com.cookMeGood.makeItTasteIt.api.dto.Recipe
-import kotlinx.android.synthetic.main.fragment_suggest.*
+import com.cookMeGood.makeItTasteIt.api.dto.Restaurant
+import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
+import kotlinx.android.synthetic.main.fragment_restaurant.*
 
 class RestaurantFragment: SuperFragment() {
 
-    private var suggestedRecipesList: List<Recipe> = listOf()
-    private var suggestedRecipeListAdapter: SuggestedRecipeListAdapter? = null
+    private var restaurantsList: List<Restaurant> = listOf(
+            Restaurant(0, "Золотая бухта", "Арбатская 7, Москва", 4.2, listOf("Wi-fi", "еда на вынос")),
+            Restaurant(0, "Белая ночь", "Кленовый б-р 11, Москва", 5.0, listOf("Wi-fi", "еда на вынос", "бесплатный вход")),
+            Restaurant(0, "Белая ночь", "Кленовый б-р 11, Москва", 5.0, listOf("Wi-fi", "еда на вынос", "бесплатный вход", "скидки по пятницам"))
+    )
+    private var restaurantListAdapter: RestaurantListAdapter? = null
 
-    override fun setAttr() = setLayout(R.layout.fragment_suggest)
+    override fun setAttr() = setLayout(R.layout.fragment_restaurant)
 
     override fun initInterface(view: View?) {
         (activity as SuperActivity).title = getString(R.string.title_suggest)
 
-        getSuggestedRecipesByUserIdFromServer()
-        showContent()
-
-        suggestAddButton.setOnClickListener {
-            val intent = Intent(context, SuggestActivity::class.java)
-            startActivity(intent)
-        }
+        restaurantListAdapter = RestaurantListAdapter(restaurantsList)
+        restaurantFragmentList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        restaurantFragmentList.adapter = restaurantListAdapter
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
     }
 
-    private fun getSuggestedRecipesByUserIdFromServer(){
-        suggestFragmentProgressBar.visibility = View.GONE
-    }
-
-    private fun showContent(){
-        if(suggestedRecipesList.isEmpty()){
-            suggestEmptyListLayout.visibility = View.VISIBLE
-            suggestFragmentList.visibility = View.GONE
-        }
-        else{
-            suggestEmptyListLayout.visibility = View.GONE
-            suggestFragmentList.visibility = View.VISIBLE
-        }
-    }
 }
