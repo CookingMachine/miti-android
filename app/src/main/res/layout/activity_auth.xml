@@ -1,114 +1,319 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/MaterialTheme"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlack">
+    android:background="@drawable/image_auth_background"
+    android:scaleType="center"
+    android:theme="@style/MaterialTheme">
 
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:src="@drawable/image_auth_background"
-    android:scaleType="fitStart"
-    android:contentDescription="@string/content_description_empty"/>
+    <ImageView
+        android:id="@+id/authLogo"
+        android:layout_width="@dimen/loginLogoWidth"
+        android:layout_height="@dimen/loginLogoHeight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/content_description_empty"
+        android:gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_logo" />
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/authRegisterLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="@dimen/loginLogoWidth"
-            android:layout_height="@dimen/loginLogoHeight"
-            android:layout_marginVertical="90dp"
-            android:layout_marginTop="110dp"
-            android:transitionName="logoTransition"
-            android:src="@drawable/image_logo"
-            android:contentDescription="@string/content_description_empty"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_marginVertical="200dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_signIn"
-            app:cornerRadius="@dimen/authButtonCornerRadius"
-            android:layout_width="@dimen/authButtonWidth"
-            android:layout_height="@dimen/authButtonHeight"
-            android:background="@drawable/shape_round_button_pressed"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/btn_signIn"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp"
-            app:fontFamily="@font/roboto_bold" />
+        android:layout_below="@+id/authLogo">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="75dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="26dp"
-                android:background="@color/colorWhite" />
+            android:id="@+id/authNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="@string/text_ampersand"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:layout_marginStart="44dp"
+                android:text="@string/hint_name"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp"
                 android:textStyle="bold"
-                app:fontFamily="sans-serif" />
+                app:fontFamily="@font/roboto"
+                tools:ignore="SmallSp" />
 
-            <View
-                android:layout_width="75dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="26dp"
-                android:background="@color/colorWhite" />
+            <EditText
+                android:id="@+id/authActivityRegisterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/colorWhite"
+                android:inputType="text"
+                android:paddingBottom="17dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="LabelFor"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/authUsernameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/authNameLayout"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:text="@string/hint_username"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="SmallSp" />
+
+            <EditText
+                android:id="@+id/authActivityRegisterLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/colorWhite"
+                android:inputType="text"
+                android:paddingBottom="17dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="LabelFor"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/authEmailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/authUsernameLayout"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:text="@string/hint_email"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="SmallSp" />
+
+            <EditText
+                android:id="@+id/authActivityRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/colorWhite"
+                android:inputType="textEmailAddress"
+                android:paddingBottom="17dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="LabelFor" />
 
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_signUp"
-            android:layout_width="@dimen/authButtonWidth"
-            android:layout_height="@dimen/authButtonHeight"
-            android:background="@drawable/shape_round_button_pressed"
-            android:insetBottom="6dp"
-            app:cornerRadius="@dimen/authButtonCornerRadius"
-            android:text="@string/btn_registration"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp"
+        <LinearLayout
+            android:id="@+id/authPasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/authEmailLayout"
+            android:orientation="vertical">
 
-            app:fontFamily="@font/roboto_bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:text="@string/hint_password"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="SmallSp" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/authActivityRegisterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/colorWhite"
+                android:inputType="textPassword"
+                android:paddingBottom="17dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto"
+                tools:ignore="LabelFor" />
 
-    <TextView
-        android:id="@+id/textAsGuest"
+            <CheckBox
+                android:id="@+id/authActivityRegisterCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center_horizontal"
+                android:paddingStart="7dp"
+                android:paddingTop="9dp"
+                android:text="@string/text_registration_checkbox"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:theme="@style/MyCheckBox"
+                tools:ignore="RtlSymmetry,SmallSp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="@dimen/marginSide"
+            android:layout_below="@id/authPasswordLayout"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/authActivityRegisterButton"
+                android:layout_width="190dp"
+                android:layout_height="55dp"
+                android:background="@drawable/shape_button_auth"
+                android:text="@string/btn_register"
+                android:textColor="@color/colorWhite"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto_bold"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/authActivityRegisterHasAccountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="fill"
+                android:text="@string/i_have_account"
+                android:textColor="#eaeaea"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:fontFamily="@font/roboto_light" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/authLoginLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="90dp"
-        android:text="@string/sign_guest"
-        android:textColor="#eaeaea"
-        android:textSize="@dimen/textSizeDefault"
-        android:textStyle="normal"
-        app:fontFamily="@font/roboto" />
+        android:layout_marginTop="100dp"
+        android:layout_below="@id/authLogo">
+
+        <TextView
+            android:id="@+id/authActivityLoginEmailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:text="@string/hint_email"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto"
+            tools:ignore="SmallSp" />
+
+        <EditText
+            android:id="@+id/authActivityLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_below="@+id/authActivityLoginEmailText"
+            android:autofillHints=""
+            android:backgroundTint="@color/colorWhite"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="17dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/authActivityLoginPasswordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_below="@id/authActivityLoginEmail"
+            android:text="@string/hint_password"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto"
+            tools:ignore="SmallSp" />
+
+        <EditText
+            android:id="@+id/authActivityLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_below="@id/authActivityLoginPasswordText"
+            android:autofillHints=""
+            android:backgroundTint="@color/colorWhite"
+            android:inputType="textPassword"
+            android:paddingBottom="17dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto"
+            tools:ignore="LabelFor" />
+
+        <Button
+            android:id="@+id/authActivityLoginButton"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/authActivityLoginPassword"
+            android:background="@drawable/shape_button_auth"
+            android:text="@string/btn_signIn"
+            android:textColor="@color/colorWhite"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto_bold"
+            tools:ignore="SmallSp" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

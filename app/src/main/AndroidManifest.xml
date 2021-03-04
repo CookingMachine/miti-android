@@ -41,15 +41,15 @@
         </activity>
 
         <activity
-            android:name=".view.activity.AuthActivity"
+            android:name=".view.activity.StartActivity"
             android:label="@string/title_activity_authorize"
             android:theme="@style/AuthActivityTheme">
         </activity>
 
         <activity
-            android:name=".view.activity.RegActivity"
+            android:name=".view.activity.AuthActivity"
             android:label="@string/title_activity_reg"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AuthActivityTheme" />
 
         <activity
             android:name=".view.activity.MainActivity"
@@ -94,8 +94,6 @@
             android:name=".view.fragment.MainFragment"
             android:label="@string/title_activity_category"
             tools:ignore="Instantiatable" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
