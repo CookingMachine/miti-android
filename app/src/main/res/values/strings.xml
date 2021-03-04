@@ -86,7 +86,7 @@
     <string name="hint_name">Имя</string>
     <string name="hint_username">Логин</string>
     <string name="hint_email">E-Mail</string>
-    <string name="hint_password">Придумайте пароль</string>
+    <string name="hint_password">Пароль</string>
     <string name="hint_search">Блюда, категории, калории</string>
     <string name="hint_search_enter_ingredient">Введите ингредиент</string>
 

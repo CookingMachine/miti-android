@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/MaterialTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/image_auth_background"
+    android:scaleType="fitStart"
+    android:contentDescription="@string/content_description_empty"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/loginLogoWidth"
+            android:layout_height="@dimen/loginLogoHeight"
+            android:layout_marginVertical="90dp"
+            android:layout_marginTop="110dp"
+            android:transitionName="logoTransition"
+            android:src="@drawable/image_logo"
+            android:contentDescription="@string/content_description_empty"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="200dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startActivitySignInButton"
+            app:cornerRadius="@dimen/authButtonCornerRadius"
+            android:layout_width="@dimen/authButtonWidth"
+            android:layout_height="@dimen/authButtonHeight"
+            android:background="@drawable/shape_round_button_pressed"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/btn_signIn"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:fontFamily="@font/roboto_bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="75dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="26dp"
+                android:background="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/text_ampersand"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif" />
+
+            <View
+                android:layout_width="75dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="26dp"
+                android:background="@color/colorWhite" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startActivitySignUpButton"
+            android:layout_width="@dimen/authButtonWidth"
+            android:layout_height="@dimen/authButtonHeight"
+            android:background="@drawable/shape_round_button_pressed"
+            android:insetBottom="6dp"
+            app:cornerRadius="@dimen/authButtonCornerRadius"
+            android:text="@string/btn_registration"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:fontFamily="@font/roboto_bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/startActivityAsGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        android:text="@string/sign_guest"
+        android:textColor="#eaeaea"
+        android:textSize="@dimen/textSizeDefault"
+        android:textStyle="normal"
+        app:fontFamily="@font/roboto" />
+
+</RelativeLayout>

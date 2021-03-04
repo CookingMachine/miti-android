@@ -76,7 +76,7 @@ class SplashActivity : SuperActivity() {
                 val options = ActivityOptions.makeSceneTransitionAnimation(this@SplashActivity,
                         splashLogo, "logoTransition")
 
-                intent = Intent(this@SplashActivity, AuthActivity::class.java)
+                intent = Intent(this@SplashActivity, StartActivity::class.java)
 
                 window.exitTransition = null
                 startActivity(intent, options.toBundle())
