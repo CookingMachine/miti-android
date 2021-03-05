@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
+import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.theartofdev.edmodo.cropper.CropImage
@@ -27,13 +29,17 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class SuggestActivity : SuperActivity() {
+
 
     private var suggestStepListAdapter: SuggestStepListAdapter? = null
 
+    private var suggestIngredientListAdapter: SuggestIngredientListAdapter? = null
+
     private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
 
-    private var suggestStepEditListener = object : SuggestStepEditListener {
+    private var suggestStepEditListener = object: SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {
             when (title) {
@@ -43,6 +49,13 @@ class SuggestActivity : SuperActivity() {
             }
         }
     }
+    private var suggestIngredientEditListener = object: SuggestIngredientEditListener {
+        override fun editIngredient(name: String, amount: String) {
+            when (title) {
+                "Игредиент" -> suggestActivityBottomSheetName.text = name
+            }
+            }
+        }
     private lateinit var currentPhotoPath: String
 
     private val REQUEST_IMAGE_CAPTURE = 1
@@ -59,11 +72,17 @@ class SuggestActivity : SuperActivity() {
 
         onButtonClick(suggestActivityRecipeButton)
         setRecyclerViewItemDragListener()
+        suggestActivityTimePicker.setIs24HourView(true)
 
         suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager, suggestStepEditListener)
         suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         suggestActivityStepList.layoutAnimation = stepListClickAnimation
         suggestActivityStepList.adapter = suggestStepListAdapter
+
+        suggestIngredientListAdapter = SuggestIngredientListAdapter(applicationContext, supportFragmentManager, suggestIngredientEditListener)
+        suggestActivityIngredientList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
+        suggestActivityIngredientList.adapter = suggestIngredientListAdapter
 
         suggestActivityBottomSheetName.setOnClickListener {
             suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter("Название", 0, suggestStepEditListener)
@@ -88,28 +107,31 @@ class SuggestActivity : SuperActivity() {
 
     }
 
-    private fun onButtonClick(view: View) {
-        if (view == suggestActivityRecipeButton!!) {
+    private fun onButtonClick(view: View){
+        if (view == suggestActivityRecipeButton!!){
             suggestActivityIngredientsButton.setBackgroundResource(R.drawable.rounded_corners_button)
             suggestActivityIngredientsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
             suggestActivityRecipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
             suggestActivityRecipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
 
             suggestActivityStepList.visibility = View.VISIBLE
-        } else {
+            suggestActivityIngredientList.visibility = View.GONE
+        }
+        else {
             suggestActivityRecipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
             suggestActivityRecipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
             suggestActivityIngredientsButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
             suggestActivityIngredientsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
 
             suggestActivityStepList.visibility = View.GONE
+            suggestActivityIngredientList.visibility = View.VISIBLE
         }
     }
 
-    override fun setAttr() = setLayout(R.layout.activity_suggest)
+    override fun setAttr() =  setLayout(R.layout.activity_suggest)
 
-    private fun setRecyclerViewItemDragListener() {
-        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+    private fun setRecyclerViewItemDragListener(){
+        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 return false
             }
@@ -137,26 +159,25 @@ class SuggestActivity : SuperActivity() {
     }
 
     private fun openCamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    null
-                }
-                photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                            this,
-                            "com.example.android.fileprovider",
-                            it
-                    )
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                takePictureIntent.resolveActivity(packageManager)?.also {
+                    val photoFile: File? = try {
+                        createImageFile()
+                    } catch (ex: IOException) {
+                        null
+                    }
+                    photoFile?.also {
+                        val photoURI: Uri = FileProvider.getUriForFile(
+                                this,
+                                "com.example.android.fileprovider",
+                                it
+                        )
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                    }
                 }
             }
         }
-    }
-
     private fun openGallery() {
         Intent(Intent.ACTION_GET_CONTENT).also { intent ->
             intent.type = "image/*"
@@ -165,16 +186,12 @@ class SuggestActivity : SuperActivity() {
             }
         }
     }
-
-    private fun openDialog() {
+    private fun openDialog(){
         val items = arrayOf<CharSequence>("Сделать фото", "Выбрать из галлереи")
         val dialog = AlertDialog.Builder(this).setTitle("Выбор изображения").setItems(items
         ) { _, which ->
-            if (which == 0) {
-                openCamera()
-            } else {
-                openGallery()
-            }
+            if (which==0){ openCamera()}
+            else {openGallery()}
         }
         dialog.show()
     }
@@ -199,7 +216,7 @@ class SuggestActivity : SuperActivity() {
                                 .setAspectRatio(4, 3)
                                 .start(this)
                     }
-                    CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                    CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE-> {
                         val res = CropImage.getActivityResult(data)
                         suggestActivityImage.setImageURI(res.uri)
                         suggestActivityAddImage.visibility = View.GONE
