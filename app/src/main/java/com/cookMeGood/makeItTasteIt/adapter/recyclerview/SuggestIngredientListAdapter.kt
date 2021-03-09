@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestIngredientDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
 import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
@@ -28,7 +27,7 @@ class SuggestIngredientListAdapter (val context : Context,
                 )
         )
     }
-    private var suggestEditStepDialogAdapter: SuggestEditFieldDialogAdapter? = null
+
     private val ingredientList = arrayListOf<Ingredient>()
 
     override fun onBindViewHolder(holder: SuggestIngredientListAdapter.ViewHolder, position: Int) {

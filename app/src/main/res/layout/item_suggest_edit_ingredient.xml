@@ -9,15 +9,16 @@
 
 
     <EditText
-        android:id="@+id/textField"
+        android:id="@+id/nameTextField"
         android:layout_width="160dp"
         android:layout_height="47dp"
         android:layout_marginTop="@dimen/marginSide"
         android:layout_marginStart="@dimen/marginSide"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:boxStrokeColor="@color/primaryColor"
         android:textSize="12sp"
-        android:background="@drawable/shape_suggest_edit_window"/>
+        android:textAlignment="textStart"
+        android:background="@drawable/shape_suggest_edit_window"
+        android:inputType="textMultiLine"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,13 +34,13 @@
         android:id="@+id/amountTextField"
         android:layout_width="78dp"
         android:layout_height="47dp"
-        android:layout_toEndOf="@id/textField"
+        android:layout_toEndOf="@id/nameTextField"
         android:layout_marginTop="@dimen/marginSide"
         android:layout_marginStart="12dp"
         android:textSize="12sp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:background="@drawable/shape_suggest_edit_window"
         app:boxStrokeColor="@color/primaryColor"
+        android:inputType="text"
         android:padding="8dp"/>
 
     <TextView
@@ -47,11 +48,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="7dp"
-        android:layout_toEndOf="@id/textField"
+        android:layout_toEndOf="@id/nameTextField"
         android:background="@color/colorWhite"
         android:text="@string/text_ingredient_amount"
         android:textSize="12sp" />
     <ImageView
+        android:id="@+id/suggestIngredientDeleteButton"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
@@ -60,7 +62,7 @@
         android:layout_toEndOf="@id/amountTextField"/>
     </RelativeLayout>
     <ImageView
-        android:id="@+id/suggestStepAddButton"
+        android:id="@+id/suggestIngredientAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_icon_suggest"
