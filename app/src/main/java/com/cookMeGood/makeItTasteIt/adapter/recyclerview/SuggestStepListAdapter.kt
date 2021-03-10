@@ -3,6 +3,7 @@ package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,6 +83,7 @@ class SuggestStepListAdapter(val context: Context,
     private fun setLastElement(holder: ViewHolder){
         holder.stepNumber.text = (itemCount).toString()
         holder.stepTitle.text = "Шаг"
+        Log.d("sList",stepList.toString()+itemCount.toString())
         holder.stepAddButton.visibility = View.VISIBLE
         holder.stepChangeButton.visibility = View.GONE
         holder.stepAddButton.setOnClickListener {

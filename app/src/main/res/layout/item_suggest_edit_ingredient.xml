@@ -52,25 +52,7 @@
         android:background="@color/colorWhite"
         android:text="@string/text_ingredient_amount"
         android:textSize="12sp" />
-    <ImageView
-        android:id="@+id/suggestIngredientDeleteButton"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/ic_close"
-        android:layout_toEndOf="@id/amountTextField"/>
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/suggestIngredientAddButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_icon_suggest"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:elevation="8dp"
-        android:contentDescription="@string/content_description_empty"/>
-
 
 
 </RelativeLayout>

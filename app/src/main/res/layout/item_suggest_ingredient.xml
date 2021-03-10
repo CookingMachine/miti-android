@@ -69,6 +69,15 @@
             android:visibility="gone"/>
 
     </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/suggestIngredientAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_suggest_add_step"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        android:contentDescription="@string/content_description_empty"
+        android:visibility="gone"/>
 
 </RelativeLayout>

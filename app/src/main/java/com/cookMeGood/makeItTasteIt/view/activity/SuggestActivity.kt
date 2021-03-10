@@ -20,6 +20,7 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListen
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
+import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
@@ -38,7 +39,7 @@ class SuggestActivity : SuperActivity() {
     private var suggestIngredientListAdapter: SuggestIngredientListAdapter? = null
 
     private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
-
+    var ingredientList = arrayListOf<Ingredient>(Ingredient("ad","aasdddd"))
     private var suggestStepEditListener = object: SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {
@@ -50,10 +51,8 @@ class SuggestActivity : SuperActivity() {
         }
     }
     private var suggestIngredientEditListener = object: SuggestIngredientEditListener {
-        override fun editIngredient(name: String, amount: String) {
-            when (title) {
-                "Игредиент" -> suggestActivityBottomSheetName.text = name
-            }
+        override fun editIngredient(name: String, amount: String, position: Int) {
+            suggestIngredientListAdapter!!.onChangeIngredient(position, name, amount)
             }
         }
     private lateinit var currentPhotoPath: String
@@ -77,11 +76,11 @@ class SuggestActivity : SuperActivity() {
         suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager, suggestStepEditListener)
         suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         suggestActivityStepList.layoutAnimation = stepListClickAnimation
-        suggestActivityStepList.adapter = suggestStepListAdapter
+        suggestActivityStepList.adapter =   suggestStepListAdapter
 
-        suggestIngredientListAdapter = SuggestIngredientListAdapter(applicationContext, supportFragmentManager, suggestIngredientEditListener)
-        suggestActivityIngredientList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
+        suggestIngredientListAdapter = SuggestIngredientListAdapter(supportFragmentManager,ingredientList, suggestIngredientEditListener)
+        suggestActivityIngredientList.layoutManager = LinearLayoutManager(this)
+        //suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
         suggestActivityIngredientList.adapter = suggestIngredientListAdapter
 
         suggestActivityBottomSheetName.setOnClickListener {

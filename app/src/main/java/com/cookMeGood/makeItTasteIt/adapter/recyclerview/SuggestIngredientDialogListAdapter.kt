@@ -39,10 +39,10 @@ class SuggestIngredientDialogListAdapter (val context : Context,
     override fun getItemCount(): Int = ingredientList.size + 1
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val ingredientAddButton = view.suggestIngredientAddButton
+       // val ingredientAddButton = view.suggestIngredientAddButton
         val ingredientName = view.nameTextField
         val ingredientAmount = view.amountTextField
-        val ingredientDeleteButton = view.suggestIngredientDeleteButton
+        //val ingredientDeleteButton = view.suggestIngredientDeleteButton
     }
 
     fun onRemoveIngredient(position: Int){
