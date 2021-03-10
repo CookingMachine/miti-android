@@ -1,6 +1,5 @@
 package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +17,14 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         RecyclerView.Adapter<SuggestIngredientListAdapter.ViewHolder>() {
 
     private var suggestIngredientDialogAdapter: SuggestIngredientDialogAdapter? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_suggest_ingredient, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("List", position.toString())
-        Log.d("List", ingredientList.toString())
+
         holder.ingredientTitle?.text = ingredientList[position].name
         holder.ingredientAmount?.text = ingredientList[position].amount
 
@@ -36,8 +35,9 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         holder.ingredientChangeButton.setOnClickListener{
         suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(position,listener)
         suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Edit Ingredient")
+        }
     }
-    }
+
     override fun getItemCount(): Int = ingredientList.size
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -46,7 +46,6 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         val ingredientChangeButton = view.suggestIngredientChangeImage!!
         val ingredientLayout = view.suggestIngredientLayout!!
         val ingredientAddButton = view.suggestIngredientAddButton!!
-        //val ingredientDivider = view.suggestRecipeDivider!!
     }
     private fun setLastElement(holder: SuggestIngredientListAdapter.ViewHolder,position: Int){
         holder.ingredientAddButton.visibility = View.VISIBLE
@@ -54,13 +53,12 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
             ingredientList.add(Ingredient())
             suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(position+1,listener)
             suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Add Ingredient")
-            Log.d("List",ingredientList.toString())
         }
     }
+
     fun onChangeIngredient(position: Int, name: String, amount: String){
         ingredientList[position].name = name
         ingredientList[position].amount = amount
-        Log.d("List",ingredientList[position].toString())
         notifyDataSetChanged()
     }
 
@@ -68,5 +66,6 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         ingredientList.removeAt(position)
         notifyDataSetChanged()
     }
+
 
 }

@@ -21,6 +21,7 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
+import com.cookMeGood.makeItTasteIt.api.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
@@ -39,7 +40,8 @@ class SuggestActivity : SuperActivity() {
     private var suggestIngredientListAdapter: SuggestIngredientListAdapter? = null
 
     private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
-    var ingredientList = arrayListOf<Ingredient>(Ingredient("ad","aasdddd"))
+    var ingredientList = arrayListOf<Ingredient>(Ingredient("Ингедиент","кол-во"))
+    var stepList = arrayListOf<Step>(Step("Шаг",1))
     private var suggestStepEditListener = object: SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {
@@ -71,9 +73,10 @@ class SuggestActivity : SuperActivity() {
 
         onButtonClick(suggestActivityRecipeButton)
         setRecyclerViewItemDragListener()
+        setIngredientRecyclerViewItemDragListener()
         suggestActivityTimePicker.setIs24HourView(true)
 
-        suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager, suggestStepEditListener)
+        suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager,stepList, suggestStepEditListener)
         suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         suggestActivityStepList.layoutAnimation = stepListClickAnimation
         suggestActivityStepList.adapter =   suggestStepListAdapter
@@ -138,6 +141,22 @@ class SuggestActivity : SuperActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 suggestStepListAdapter!!.onRemoveStep(position)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(suggestActivityStepList)
+    }
+
+    private fun setIngredientRecyclerViewItemDragListener(){
+        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                suggestIngredientListAdapter!!.onRemoveIngredient(position)
             }
         }
 
