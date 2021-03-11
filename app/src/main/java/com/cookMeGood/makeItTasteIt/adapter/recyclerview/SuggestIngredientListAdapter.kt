@@ -33,7 +33,7 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         }
         else {holder.ingredientAddButton.visibility = View.GONE}
         holder.ingredientChangeButton.setOnClickListener{
-        suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(position,listener)
+        suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(position,listener,ingredientList[position].name,ingredientList[position].amount)
         suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Edit Ingredient")
         }
     }
