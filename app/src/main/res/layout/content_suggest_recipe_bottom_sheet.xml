@@ -43,21 +43,162 @@
                 android:id="@+id/suggestActivityTimeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
-                android:layout_below="@+id/suggestActivityBottomSheetName">
+                android:background="@drawable/shape_recipe_stats"
+                android:elevation="2dp"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="90dp"
-                    android:src="@drawable/ic_clock_24"
-                    android:contentDescription="@string/content_description_empty"/>
+                <LinearLayout
+                    android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                <TimePicker
-                    android:id="@+id/suggestActivityTimePicker"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/f_calories" />
+
+                    <View
+                        android:layout_width="32dp"
+                        android:layout_height="1dp"
+                        android:background="@color/primaryColor" />
+
+                    <EditText
+                        android:id="@+id/recipeCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/colorBlack80"
+                        android:hint="@string/hint_KBJU" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/f_carbo" />
+
+                    <View
+                        android:layout_width="32dp"
+                        android:layout_height="1dp"
+                        android:background="@color/primaryColor" />
+
+                    <EditText
+                        android:id="@+id/recipeCarbo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/colorBlack80"
+                        android:hint="@string/hint_KBJU" />
+
+                </LinearLayout>
+
+                <com.santalu.maskara.widget.MaskEditText
+                    android:id="@+id/suggestRecipeHoursValue"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:timePickerMode="spinner"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints=""
+                    android:background="@null"
+                    android:inputType="time"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="13sp"
+                    android:hint="@string/time_example"
+                    app:mask="_:__"
+                    app:maskCharacter="_"
+                    app:maskStyle="persistent"
+                    app:drawableTopCompat="@drawable/ic_clock_24" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/f_proteins" />
+
+                    <View
+                        android:layout_width="32dp"
+                        android:layout_height="1dp"
+                        android:background="@color/primaryColor" />
+
+                    <EditText
+                        android:id="@+id/recipeProteins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/colorBlack80"
+                        android:hint="@string/hint_KBJU" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/recipeStatsLayoutElementWidth"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/f_fats" />
+
+                    <View
+                        android:layout_width="32dp"
+                        android:layout_height="1dp"
+                        android:background="@color/primaryColor" />
+
+                    <EditText
+                        android:id="@+id/recipeFats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:maxLength="5"
+                        android:inputType="number"
+                        android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/colorBlack80"
+                        android:hint="@string/hint_KBJU" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -92,30 +233,32 @@
                 <Button
                     android:id="@+id/suggestActivityRecipeButton"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_corners_button"
-                    android:fontFamily="@font/roboto_light"
+                    android:fontFamily="@font/roboto"
                     android:text="@string/title_recipe"
                     android:textColor="@color/primaryColor"
+                    android:textAllCaps="false"
                     android:textSize="12sp"
                     android:elevation="2dp"/>
 
                 <Button
                     android:id="@+id/suggestActivityIngredientsButton"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_corners_button"
-                    android:fontFamily="@font/roboto_light"
+                    android:fontFamily="@font/roboto"
                     android:text="@string/title_ingredient"
                     android:textColor="@color/primaryColor"
+                    android:textAllCaps="false"
                     android:textSize="12sp"
                     android:elevation="2dp"/>
 

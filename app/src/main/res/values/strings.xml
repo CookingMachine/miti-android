@@ -89,6 +89,7 @@
     <string name="hint_password">Пароль</string>
     <string name="hint_search">Блюда, категории, калории</string>
     <string name="hint_search_enter_ingredient">Введите ингредиент</string>
+    <string name="hint_KBJU">"???"</string>
 
     <!-- KBJU FRAGMENT -->
 
@@ -118,6 +119,7 @@
 
     <string name="example_ingredient_amount">1200г.</string>
     <string name="example">example</string>
+    <string name="time_example">0 ч. 0 мин.</string>
     <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
     <string name="dish_of_the_day_description">Насладитесь вкусным ужином всей семьей</string>
 
