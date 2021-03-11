@@ -57,6 +57,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.github.roiacult:Backdroplayout:2.3'
+    implementation 'com.github.santalu:maskara:1.0.0'
 
     //noinspection GradleDependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

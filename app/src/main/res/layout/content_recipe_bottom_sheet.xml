@@ -86,13 +86,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/recipeTimeValue"
+            android:id="@+id/suggestRecipeHoursValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/example"
+            android:text="@string/time_example"
             android:textAlignment="center"
             android:textColor="@color/colorBlack80"
             android:textSize="13sp"
