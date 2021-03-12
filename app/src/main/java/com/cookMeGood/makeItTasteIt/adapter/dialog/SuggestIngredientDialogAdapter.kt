@@ -8,7 +8,8 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
 import kotlinx.android.synthetic.main.item_suggest_edit_ingredient.view.*
 
-class SuggestIngredientDialogAdapter(private var position: Int,
+class SuggestIngredientDialogAdapter(val action:String,
+                                     private var position: Int,
                                      var listener: SuggestIngredientEditListener,
                                      var name:String? = null,
                                      var amount: String? = null) : AppCompatDialogFragment() {
@@ -24,7 +25,11 @@ class SuggestIngredientDialogAdapter(private var position: Int,
                                     view.amountTextField.text.toString(),
                                     position)
         }
-        builder.setView(view).setNegativeButton("Отмена") { dialog, _ -> dialog.cancel() }
+        builder.setView(view).setNegativeButton("Отмена") { dialog, _ ->
+            if(action=="AddIngredient") {
+            listener.removeIngredient(position)
+            }
+            dialog.cancel() }
 
         return builder.create()
     }

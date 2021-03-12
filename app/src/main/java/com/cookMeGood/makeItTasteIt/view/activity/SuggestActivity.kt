@@ -56,7 +56,12 @@ class SuggestActivity : SuperActivity() {
         override fun editIngredient(name: String, amount: String, position: Int) {
             suggestIngredientListAdapter!!.onChangeIngredient(position, name, amount)
             }
+
+        override fun removeIngredient(position: Int) {
+            suggestIngredientListAdapter!!.onRemoveIngredient(position)
         }
+    }
+
     private lateinit var currentPhotoPath: String
 
     private val REQUEST_IMAGE_CAPTURE = 1
@@ -161,7 +166,7 @@ class SuggestActivity : SuperActivity() {
         }
 
         val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
-        itemTouchHelper.attachToRecyclerView(suggestActivityStepList)
+        itemTouchHelper.attachToRecyclerView(suggestActivityIngredientList)
     }
 
     private fun createImageFile(): File {
