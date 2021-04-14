@@ -28,7 +28,7 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         holder.ingredientTitle.text = ingredientList[position].name
         holder.ingredientAmount.text = ingredientList[position].amount
 
-        if (itemCount  == position+1) {
+        if (itemCount  == position + 1) {
             setLastElement(holder, position)
         }
         else {holder.ingredientAddButton.visibility = View.GONE}
@@ -47,7 +47,7 @@ class SuggestIngredientListAdapter (private val supportFragmentManager : Fragmen
         val ingredientLayout = view.suggestIngredientLayout!!
         val ingredientAddButton = view.suggestIngredientAddButton!!
     }
-    private fun setLastElement(holder: SuggestIngredientListAdapter.ViewHolder,position: Int){
+    private fun setLastElement(holder: ViewHolder,position: Int){
         holder.ingredientAddButton.visibility = View.VISIBLE
         holder.ingredientAddButton.setOnClickListener {
             ingredientList.add(Ingredient())

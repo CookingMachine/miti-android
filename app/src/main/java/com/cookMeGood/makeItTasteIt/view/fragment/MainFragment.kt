@@ -4,22 +4,29 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
+import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.cookMeGood.makeItTasteIt.api.dto.MainContent
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_MAIN_CONTENT
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainFragment: SuperFragment() {
 
     private var recipesListAdapter: CategoryListAdapter? = null
     private var categoryList: List<Category> = listOf()
 
-    var changeListener = object: OnFragmentChangeListener{
+    private var changeListener = object: OnFragmentChangeListener{
         override fun replaceFragment(fragment: Fragment, category: Category) {
 
             val bundle = Bundle()
@@ -40,12 +47,6 @@ class MainFragment: SuperFragment() {
         setHasOptionsMenu(true)
         val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_layout_list_swipe_right)
 
-//        categoryList = ((activity as SuperActivity)
-//                .intent
-//                .getSerializableExtra(INTENT_MAIN_CONTENT) as MainContent)
-//                .categoryList
-        fillListWithStub()
-
         recipesListAdapter = CategoryListAdapter(categoryList, changeListener)
         mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -53,12 +54,7 @@ class MainFragment: SuperFragment() {
         mainFragmentRecycler.adapter = recipesListAdapter
         mainFragmentRecycler.visibility = View.GONE
 
-        if (categoryList.isNullOrEmpty()){
-            fillListWithStub()
-        }
-        else {
-            recipesListAdapter!!.onUpdateList(categoryList)
-        }
+        getAllCategoriesFromServer()
         showList()
     }
 
@@ -70,15 +66,20 @@ class MainFragment: SuperFragment() {
         mainFragmentRecycler.visibility = View.VISIBLE
     }
 
-    private fun fillListWithStub(){
-        categoryList = arrayListOf(
-                Category("Первое"),
-                Category("Второе"),
-                Category("Салаты"),
-                Category("Выпечка"),
-                Category("Закуски"),
-                Category("Напитки"),
-                Category("Десерты")
-        )
+    private fun getAllCategoriesFromServer() {
+        ApiService.getApi()
+                .getAllCategories()
+                .enqueue(object : Callback<List<Category>> {
+                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                        if (response.isSuccessful) {
+                            categoryList = response.body() ?: emptyList()
+                            recipesListAdapter!!.onUpdateList(categoryList)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
+                        Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
+                    }
+                })
     }
 }

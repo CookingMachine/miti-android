@@ -25,14 +25,14 @@
                 app:cardTheme="@string/dish_of_the_day"
                 app:cardTitle="Свинина по-французски"
                 app:cardDescription="@string/dish_of_the_day_description"
-                app:cardImage="@drawable/image_dish_of_the_day"/>
+                app:cardImage="@drawable/image_dish_of_the_day" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mainFragmentRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="-6dp"
+                android:overScrollMode="never"
                 android:layoutAnimation="@anim/anim_layout_list_swipe_right"
                 android:visibility="visible" />
 
