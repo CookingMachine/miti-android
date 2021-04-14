@@ -1,6 +1,7 @@
 package com.api
 
 import com.api.model.*
+import com.api.model.request.SearchRecipeRequest
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -24,7 +25,15 @@ interface Api {
     @GET("$PATH/recipe/getByCategoryId/{id}")
     fun getRecipesByCategoryId(@Path("id") categoryId: String): Call<List<Recipe>>
 
-    @GET("$PATH/recipe/{}")
+    @GET("$PATH/recipe/{id}")
     fun getRecipeById(@Path("id") recipeId: Long): Call<Recipe>
 
+    @POST("$PATH/recipe/")
+    fun addRecipe(@Body recipe: RecipeAdditionRequest): Call<Recipe>
+
+    @GET("$PATH/searchRecipe")
+    fun getRecipesByCriteria(
+            @Body recipeRequest: SearchRecipeRequest,
+            @Path("sort") sort: String
+    ): Call<List<Recipe>>
 }

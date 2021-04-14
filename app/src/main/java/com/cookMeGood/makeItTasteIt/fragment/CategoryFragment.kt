@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.fragment
+package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
 import android.view.View
@@ -11,14 +11,14 @@ import com.api.ApiService
 import com.api.model.Category
 import com.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.R
+import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
+import com.cookMeGood.makeItTasteIt.activity.SuggestActivity
+import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity
-import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
-import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_category.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,7 +44,6 @@ class CategoryFragment : SuperFragment() {
 
     override fun initInterface(view: View?) {
         (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
-        (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         categoryFragmentProgressBar.visibility = View.VISIBLE
 

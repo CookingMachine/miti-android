@@ -10,7 +10,7 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.api.model.Category
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.view.fragment.CategoryFragment
+import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.item_main_category.view.*
 
 class CategoryListAdapter(private var categories: List<Category>?,

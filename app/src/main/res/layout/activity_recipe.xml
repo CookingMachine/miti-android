@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:fitsSystemWindows="true"
-    tools:context=".view.activity.RecipeActivity">
+    tools:context=".activity.RecipeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/recipeToolbar"

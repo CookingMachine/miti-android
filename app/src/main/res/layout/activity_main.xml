@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context="com.cookMeGood.makeItTasteIt.view.activity.MainActivity">
+    tools:context=".activity.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/mainActivityToolbar"
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:background="@color/colorWhite"
+        android:layout_gravity="top"
+        android:elevation="4dp"
         app:titleTextAppearance="@style/ToolbarTitle"
         app:popupTheme="@style/Theme.AppCompat.Light"
         app:menu="@menu/main_activity_menu"
@@ -33,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:background="@drawable/shape_bottom_nav_border"
         app:itemHorizontalTranslationEnabled="false"
         app:itemIconSize="22dp"

@@ -32,8 +32,10 @@
                 android:resource="@xml/file_paths">
             </meta-data>
         </provider>
+
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AuthActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,62 +44,73 @@
         </activity>
 
         <activity
-            android:name=".view.activity.StartActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.StartActivity"
             android:label="@string/title_activity_authorize"
-            android:theme="@style/AuthActivityTheme">
+            android:theme="@style/AuthActivityTheme"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".view.activity.AuthActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.AuthActivity"
             android:label="@string/title_activity_reg"
-            android:theme="@style/AuthActivityTheme" />
+            android:theme="@style/AuthActivityTheme"
+            android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.MainActivity"
             android:label="@string/title_activity_start"
-            android:theme="@style/MainActivityTheme"/>
+            android:theme="@style/MainActivityTheme"
+            android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".view.activity.RecipeActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.RecipeActivity"
             android:label="@string/title_activity_recipe"
-            android:theme="@style/RecipeActivityTheme" />
+            android:theme="@style/RecipeActivityTheme"
+            android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".view.activity.SearchActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/SearchActivityTheme"/>
+            android:theme="@style/SearchActivityTheme"
+            android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".view.activity.SuggestActivity"
+            android:name="com.cookMeGood.makeItTasteIt.activity.SuggestActivity"
             android:label="@string/title_suggest"
-            android:theme="@style/SuggestActivityTheme"/>
+            android:theme="@style/SuggestActivityTheme"
+            android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".view.fragment.RestaurantFragment"
+            android:name="com.cookMeGood.makeItTasteIt.fragment.RestaurantFragment"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".view.fragment.CartFragment"
+            android:name="com.cookMeGood.makeItTasteIt.fragment.CartFragment"
             android:label="@string/title_activity_cart"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".view.fragment.CategoryFragment"
+            android:name="com.cookMeGood.makeItTasteIt.fragment.CategoryFragment"
             android:label="@string/title_activity_recipes"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".view.fragment.FavouritesFragment"
+            android:name="com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment"
             android:label="@string/title_activity_favourites"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".view.fragment.MainFragment"
+            android:name="com.cookMeGood.makeItTasteIt.fragment.MainFragment"
             android:label="@string/title_activity_category"
             tools:ignore="Instantiatable" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
 </manifest>

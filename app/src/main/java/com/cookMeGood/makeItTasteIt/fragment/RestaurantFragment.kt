@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.fragment
+package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
 import android.view.View
@@ -7,7 +7,7 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RestaurantListAdapter
 import com.api.model.MetroStation
 import com.api.model.Restaurant
-import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 
 class RestaurantFragment : SuperFragment() {

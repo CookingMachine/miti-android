@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.activity
+package com.cookMeGood.makeItTasteIt.activity
 
 import android.view.Menu
 import android.view.MenuItem
@@ -15,6 +15,7 @@ import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.api.model.*
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getStubRestaurants
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 
@@ -27,11 +28,7 @@ class RecipeActivity : SuperActivity() {
     private var recipeRestaurantListAdapter: RecipeRestaurantListAdapter? = null
     private var recipeDialog: RecipeDescriptionDialogAdapter? = null
     private var ingredientsList = arrayListOf<Ingredient>()
-    private var restaurantList: List<Restaurant> = listOf(
-            Restaurant(0, "Золотая бухта", "Украинская", "Арбатская 7, Москва", 4.2, MetroStation(4, "Арбатская"), "1500", listOf("Wi-fi", "еда на вынос")),
-            Restaurant(0, "Золотая бухта", "Украинская", "Арбатская 7, Москва", 4.2, MetroStation(1, "Юго-западная"), "1500", listOf("Wi-fi", "еда на вынос")),
-            Restaurant(0, "Золотая бухта", "Украинская", "Арбатская 7, Москва", 4.2, MetroStation(4, "Арбатская"), "1500", listOf("Wi-fi", "еда на вынос"))
-    )
+    private var restaurantList: List<Restaurant> = getStubRestaurants()
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
@@ -42,6 +39,8 @@ class RecipeActivity : SuperActivity() {
         val screenHeight = getWindowHeight(windowManager)
         val currentRecipe = intent.extras!!
                 .getSerializable(ConstantContainer.INTENT_RECIPE) as Recipe
+        val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
         setSupportActionBar(recipeToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -80,26 +79,25 @@ class RecipeActivity : SuperActivity() {
 
         setPortionPicker()
         clickRecipe()
-
-        val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        setStepList()
         onChangeSheetHeight(screenHeight / 10 * 8)
 
-        bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                recipeImageView.translationY =
-                        recipeImageView.height.toFloat() / 2 * slideOffset * -1
-            }
+        bottomSheetBehavior.addBottomSheetCallback(
+                object : BottomSheetBehavior.BottomSheetCallback() {
+                    override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                        recipeImageView.translationY =
+                                recipeImageView.height.toFloat() / -2 * slideOffset
+                    }
 
-            override fun onStateChanged(bottomSheet: View, newState: Int) {}
+                    override fun onStateChanged(bottomSheet: View, newState: Int) {}
 
-        })
+                })
 
         recipePortionPicker.setOnValueChangedListener { _, _, newVal -> portions = newVal }
 
-        recipeButton.setOnClickListener { clickRecipe()  }
-        restaurantsButton.setOnClickListener { clickRestaurant()  }
-        ingredButton.setOnClickListener { clickIngred()  }
+        recipeButton.setOnClickListener { clickRecipe() }
+        restaurantsButton.setOnClickListener { clickRestaurant() }
+        ingredButton.setOnClickListener { clickIngredient() }
 
         btnDescription.setOnClickListener {
             recipeDialog!!.show(supportFragmentManager, "Recipe dialog")
@@ -114,17 +112,17 @@ class RecipeActivity : SuperActivity() {
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
         }
-
     }
+
     private fun clickRecipe() {
 
         recipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
         recipeButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.colorWhite))
-        ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
+        ingredButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
         ingredButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.primaryColor))
-        restaurantsButton.setBackgroundResource(R.drawable.rounded_corners_button)
+        restaurantsButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
         restaurantsButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.primaryColor))
 
@@ -132,19 +130,17 @@ class RecipeActivity : SuperActivity() {
         recipeIngredientsList.visibility = View.GONE
         recipeRestaurantsList.visibility = View.GONE
         recipePortionPicker.visibility = View.GONE
-
-        setStepList()
     }
 
-    private fun clickIngred() {
+    private fun clickIngredient() {
 
-        recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
+        recipeButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
         recipeButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.primaryColor))
         ingredButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
         ingredButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.colorWhite))
-        restaurantsButton.setBackgroundResource(R.drawable.rounded_corners_button)
+        restaurantsButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
         restaurantsButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.primaryColor))
 
@@ -158,10 +154,10 @@ class RecipeActivity : SuperActivity() {
 
     private fun clickRestaurant() {
 
-        recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
+        recipeButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
         recipeButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.primaryColor))
-        ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
+        ingredButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
         ingredButton.setTextColor(
                 ContextCompat.getColor(applicationContext, R.color.primaryColor))
         restaurantsButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
@@ -176,18 +172,18 @@ class RecipeActivity : SuperActivity() {
 
     private fun setStepList() {
 
-        if(stepList.isNullOrEmpty()) {
+        if (stepList.isNullOrEmpty()) {
             for (i in 1..4) {
-                stepList.add(Step("Нарезаем курицу",
+                stepList.add(Step(
                         i,
                         "Неторопясь нарезаем вкусненькую отваренную курочку"))
             }
         }
     }
 
-    private fun setIngredientsList(){
+    private fun setIngredientsList() {
 
-        if(ingredientsList.isNullOrEmpty()) {
+        if (ingredientsList.isNullOrEmpty()) {
             for (i in 0..7) {
                 val ingredient = Ingredient(data[i], amount[i])
                 ingredientsList.add(ingredient)
@@ -195,7 +191,7 @@ class RecipeActivity : SuperActivity() {
         }
     }
 
-    private fun onChangeSheetHeight(pixels: Int){
+    private fun onChangeSheetHeight(pixels: Int) {
 
         recipeBottomSheet.layoutParams.height = pixels
     }
@@ -207,7 +203,7 @@ class RecipeActivity : SuperActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_basket -> {
                 HelpUtils.goShortToast(applicationContext, "Добавлено в корзину")
             }

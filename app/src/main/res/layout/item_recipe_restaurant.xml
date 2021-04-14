@@ -65,7 +65,7 @@
 
         </LinearLayout>
 
-        <com.cookMeGood.makeItTasteIt.view.custom.MetroStationView
+        <com.cookMeGood.makeItTasteIt.customview.MetroStationView
             android:id="@+id/recipeActivityRestaurantMetro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

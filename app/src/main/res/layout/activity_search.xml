@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
     android:fitsSystemWindows="true"
-    tools:context=".view.activity.SearchActivity">
+    tools:context=".activity.SearchActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/searchActivityToolbar"
@@ -163,10 +163,9 @@
             android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/searchDishTypeList"
+            android:id="@+id/searchCategoryList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="8dp" />
 
         <View
@@ -190,7 +189,6 @@
             android:id="@+id/searchKitchenList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="8dp" />
 
         <View

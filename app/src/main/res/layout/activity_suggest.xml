@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".view.activity.SuggestActivity">
+    tools:context=".activity.SuggestActivity">
+
     <ImageView
         android:id="@+id/suggestActivityAddImage"
         android:layout_width="wrap_content"
@@ -28,7 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="310dp"
         android:layout_marginTop="-30dp"
+        android:contentDescription="@string/content_description_empty"
         android:scaleType="fitCenter" />
+
     <include layout="@layout/content_suggest_recipe_bottom_sheet"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

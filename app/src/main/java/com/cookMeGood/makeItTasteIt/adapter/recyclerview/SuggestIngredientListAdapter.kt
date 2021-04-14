@@ -19,8 +19,12 @@ class SuggestIngredientListAdapter(private val supportFragmentManager: FragmentM
     private var suggestIngredientDialogAdapter: SuggestIngredientDialogAdapter? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_suggest_ingredient, parent, false))
+        return ViewHolder(
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.item_suggest_ingredient,
+                        parent, false
+                )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,21 +32,22 @@ class SuggestIngredientListAdapter(private val supportFragmentManager: FragmentM
         holder.ingredientTitle.text = ingredientList[position].name
         holder.ingredientAmount.text = ingredientList[position].amount
 
-        if (itemCount == position + 1) {
+        if (position == itemCount - 1) {
             setLastElement(holder, position)
+            holder.ingredientChangeButton.setOnClickListener {
+                suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(
+                        "ChangeIngredient",
+                        position,
+                        listener,
+                        ingredientList[position].name,
+                        ingredientList[position].amount
+                )
+                suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Edit Ingredient")
+            }
         } else {
             holder.ingredientAddButton.visibility = View.GONE
         }
-        holder.ingredientChangeButton.setOnClickListener {
-            suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(
-                    "ChangeIngredient",
-                    position,
-                    listener,
-                    ingredientList[position].name,
-                    ingredientList[position].amount
-            )
-            suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Edit Ingredient")
-        }
+
     }
 
     override fun getItemCount(): Int = ingredientList.size
@@ -59,20 +64,22 @@ class SuggestIngredientListAdapter(private val supportFragmentManager: FragmentM
         holder.ingredientAddButton.visibility = View.VISIBLE
         holder.ingredientAddButton.setOnClickListener {
             ingredientList.add(Ingredient())
-            suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter("AddIngredient", position + 1, listener)
+            suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(
+                    "AddIngredient", position + 1, listener)
             suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Add Ingredient")
+            notifyDataSetChanged()
         }
     }
 
     fun onChangeIngredient(position: Int, name: String, amount: String) {
         ingredientList[position].name = name
         ingredientList[position].amount = amount
-        notifyDataSetChanged()
+        notifyItemChanged(position)
     }
 
     fun onRemoveIngredient(position: Int) {
         ingredientList.removeAt(position)
-        notifyDataSetChanged()
+        notifyItemRemoved(position)
     }
 
 

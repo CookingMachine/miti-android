@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.fragment
+package com.cookMeGood.makeItTasteIt.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,8 +13,12 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
 import com.api.ApiService
 import com.api.model.Category
+import com.api.model.Recipe
+import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
-import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_RECIPE
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getStubRecipe
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +28,7 @@ class MainFragment: SuperFragment() {
 
     private var recipesListAdapter: CategoryListAdapter? = null
     private var categoryList: List<Category> = listOf()
+    private var dishOfTheDayRecipe: Recipe? = null
 
     private lateinit var animation: LayoutAnimationController
 
@@ -50,6 +55,29 @@ class MainFragment: SuperFragment() {
 
         setHasOptionsMenu(true)
         getAllCategoriesFromServer()
+        dishOfTheDayRecipe = getStubRecipe()
+        // выполняем запрос на mainContent
+        // и в нем получаем dishOfTheDay
+
+        dishOfTheDayCard.setOnClickListener {
+            val intent = Intent(context, RecipeActivity::class.java)
+            intent.putExtra(INTENT_RECIPE, dishOfTheDayRecipe)
+            startActivity(intent)
+        }
+
+        noCaloriesCard.setOnClickListener{
+            changeListener.replaceFragment(
+                    CategoryFragment(),
+                    Category("low_calories", "Мало калорий")
+            )
+        }
+
+        fastAndDelicious.setOnClickListener {
+            changeListener.replaceFragment(
+                    CategoryFragment(),
+                    Category("fast_and_delicious", "Быстро и вкусно")
+            )
+        }
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {

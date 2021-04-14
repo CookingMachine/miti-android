@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.activity
+package com.cookMeGood.makeItTasteIt.activity
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -14,6 +14,7 @@ import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.api.ApiService
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
@@ -21,37 +22,58 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.api.model.Ingredient
+import com.api.model.Recipe
+import com.api.model.RecipeAdditionRequest
 import com.api.model.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
 import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
 
 class SuggestActivity : SuperActivity() {
 
     companion object {
         private const val REQUEST_PICK_IMAGE = 2
         private const val REQUEST_IMAGE_CAPTURE = 1
+        private const val TIME_PICKER_REGEX = "^[0-9]:[0-5][0-9]\$"
     }
 
+    private lateinit var currentPhotoPath: String
+
     private var suggestStepListAdapter: SuggestStepListAdapter? = null
-
     private var suggestIngredientListAdapter: SuggestIngredientListAdapter? = null
+    private var suggestEditStepDialogAdapter: SuggestEditFieldDialogAdapter? = null
 
-    private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
-    var ingredientList = arrayListOf(Ingredient("Ингедиент", "кол-во"))
-    var stepList = arrayListOf(Step("Шаг", 1))
+    private var currentRecipe: RecipeAdditionRequest = RecipeAdditionRequest()
+    private var ingredientList = arrayListOf(Ingredient("Ингредиент", "Кол-во"))
+    private var stepList = arrayListOf(Step( 1, "Описание"))
+
     private var suggestStepEditListener = object : SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {
             when (title) {
-                "Название" -> suggestActivityBottomSheetName.text = text
-                "Описание" -> suggestActivityBottomSheetDescription.text = text
-                "Описание шага" -> suggestStepListAdapter!!.onChangeStepDescription(position, text)
+                "Название" -> {
+                    suggestActivityBottomSheetName.text = text
+                    currentRecipe.name = text
+                }
+                "Описание" -> {
+                    suggestActivityBottomSheetDescription.text = text
+                    currentRecipe.description = text
+                }
+                "Описание шага" -> {
+                    currentRecipe.steps!!.add(
+                        suggestStepListAdapter!!.onChangeStepDescription(position, text)
+                    )
+                }
             }
         }
     }
@@ -65,22 +87,55 @@ class SuggestActivity : SuperActivity() {
         }
     }
 
-    private lateinit var currentPhotoPath: String
-
+    override fun setAttr() = setLayout(R.layout.activity_suggest)
 
     override fun initInterface() {
 
-        val stepListClickAnimation = AnimationUtils.loadLayoutAnimation(
-                applicationContext, R.anim.anim_layout_list_fall_down)
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = Color.BLACK
         }
 
         onButtonClick(suggestActivityRecipeButton)
-        setRecyclerViewItemDragListener()
+        setStepRecyclerViewItemDragListener()
         setIngredientRecyclerViewItemDragListener()
+        initAdapters()
+
+        suggestActivityBottomSheetName.setOnClickListener {
+            suggestEditStepDialogAdapter = SuggestEditFieldDialogAdapter(
+                    "Название", 0, suggestStepEditListener)
+            suggestEditStepDialogAdapter!!.show(supportFragmentManager, "Title")
+        }
+
+        suggestActivityBottomSheetDescription.setOnClickListener {
+            suggestEditStepDialogAdapter = SuggestEditFieldDialogAdapter(
+                    "Описание", 0, suggestStepEditListener)
+            suggestEditStepDialogAdapter!!.show(supportFragmentManager, "Description")
+        }
+
+        suggestActivityImage.setOnClickListener {
+            openImageSelectionDialog()
+        }
+
+        suggestActivitySaveButton.setOnClickListener {
+            currentRecipe.time = suggestActivityTimePicker.text.toString()
+            if (isRecipeFilledUpOrShowToast(currentRecipe)) {
+                sendRecipeAndImageToServer(currentRecipe)
+            }
+        }
+
+        suggestActivityRecipeButton.setOnClickListener {
+            onButtonClick(suggestActivityRecipeButton)
+        }
+        suggestActivityIngredientsButton.setOnClickListener {
+            onButtonClick(suggestActivityIngredientsButton)
+        }
+    }
+
+    private fun initAdapters() {
+        val stepListClickAnimation = AnimationUtils.loadLayoutAnimation(
+                applicationContext, R.anim.anim_layout_list_fall_down)
 
         suggestStepListAdapter = SuggestStepListAdapter(
                 applicationContext, supportFragmentManager, stepList, suggestStepEditListener)
@@ -94,36 +149,12 @@ class SuggestActivity : SuperActivity() {
         suggestActivityIngredientList.layoutManager = LinearLayoutManager(this)
         //suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
         suggestActivityIngredientList.adapter = suggestIngredientListAdapter
-
-        suggestActivityBottomSheetName.setOnClickListener {
-            suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter(
-                    "Название", 0, suggestStepEditListener)
-            suggestEditStepDialogDialog!!.show(supportFragmentManager, "Title")
-        }
-
-        suggestActivityBottomSheetDescription.setOnClickListener {
-            suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter(
-                    "Описание", 0, suggestStepEditListener)
-            suggestEditStepDialogDialog!!.show(supportFragmentManager, "Description")
-        }
-
-        suggestActivityImage.setOnClickListener {
-            openDialog()
-        }
-
-        suggestActivitySaveButton.setOnClickListener {
-            HelpUtils.goShortToast(applicationContext, "SAVED") //TODO: сохранение предложенного рецепта
-        }
-
-        suggestActivityRecipeButton.setOnClickListener { onButtonClick(suggestActivityRecipeButton) }
-        suggestActivityIngredientsButton.setOnClickListener { onButtonClick(suggestActivityIngredientsButton) }
-
     }
 
     private fun onButtonClick(view: View) {
         if (view == suggestActivityRecipeButton!!) {
             suggestActivityIngredientsButton
-                    .setBackgroundResource(R.drawable.rounded_corners_button)
+                    .setBackgroundResource(R.drawable.shape_button_rounded_white)
             suggestActivityIngredientsButton
                     .setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
             suggestActivityRecipeButton
@@ -135,7 +166,7 @@ class SuggestActivity : SuperActivity() {
             suggestActivityIngredientList.visibility = View.GONE
         } else {
             suggestActivityRecipeButton
-                    .setBackgroundResource(R.drawable.rounded_corners_button)
+                    .setBackgroundResource(R.drawable.shape_button_rounded_white)
             suggestActivityRecipeButton
                     .setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
             suggestActivityIngredientsButton
@@ -148,9 +179,7 @@ class SuggestActivity : SuperActivity() {
         }
     }
 
-    override fun setAttr() = setLayout(R.layout.activity_suggest)
-
-    private fun setRecyclerViewItemDragListener() {
+    private fun setStepRecyclerViewItemDragListener() {
         val itemTouchCallback =
                 object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
                     override fun onMove(recyclerView: RecyclerView,
@@ -232,7 +261,7 @@ class SuggestActivity : SuperActivity() {
         }
     }
 
-    private fun openDialog() {
+    private fun openImageSelectionDialog() {
         val items = arrayOf<CharSequence>("Сделать фото", "Выбрать из галлереи")
         val dialog = AlertDialog.Builder(this).setTitle("Выбор изображения").setItems(items
         ) { _, which ->
@@ -252,14 +281,14 @@ class SuggestActivity : SuperActivity() {
                 when (requestCode) {
                     REQUEST_IMAGE_CAPTURE -> {
                         val filePath = File(currentPhotoPath)
-                        val uriCamera = Uri.fromFile(filePath) //TODO:  Отправить сделанное фото
+                        val uriCamera = Uri.fromFile(filePath)
 
                         CropImage.activity(uriCamera)
                                 .setAspectRatio(4, 3)
                                 .start(this)
                     }
                     REQUEST_PICK_IMAGE -> {
-                        val uriGallery = data?.data //TODO: Отправить юри на серв
+                        val uriGallery = data?.data
 
                         CropImage.activity(uriGallery)
                                 .setAspectRatio(4, 3)
@@ -273,5 +302,54 @@ class SuggestActivity : SuperActivity() {
                 }
             }
         }
+    }
+
+    private fun sendRecipeAndImageToServer(recipe: RecipeAdditionRequest) {
+        ApiService.getApi(applicationContext)
+                .addRecipe(recipe)
+                .enqueue(object : Callback<Recipe> {
+                    override fun onResponse(call: Call<Recipe>, response: Response<Recipe>) {
+                        goShortToast(applicationContext, "Ваш рецепт отправлен на проверку!")
+                        finish()
+                    }
+
+                    override fun onFailure(call: Call<Recipe>, t: Throwable) {
+                        HelpUtils.goLongToast(applicationContext, t.message.toString())
+                    }
+                })
+    }
+
+    private fun isRecipeFilledUpOrShowToast(recipe: RecipeAdditionRequest): Boolean {
+        if (recipe.name.isNullOrEmpty()) {
+            goShortToast(applicationContext, "Поле 'Наименование' не заполнено!")
+            return false
+        }
+        if (recipe.time.isNullOrEmpty()) {
+            goShortToast(applicationContext, "Поле 'Время приготовления' не заполнено!")
+            return false
+        }
+        if (!isTimePickerInputCorrect(currentRecipe.time ?: "")) {
+            goShortToast(applicationContext, "Неправильно заполнено время!")
+            return false
+        }
+        if (recipe.description.isNullOrEmpty()) {
+            goShortToast(applicationContext, "Поле 'Описание' не заполнено!")
+            return false
+        }
+        if (recipe.image.isNullOrEmpty()) {
+            goShortToast(applicationContext, "Картинка рецепта не выбрана!")
+            return false
+        }
+        if (recipe.contextIngredientList.isNullOrEmpty() or (recipe.contextIngredientList!!.size < 4)) {
+            goShortToast(applicationContext,
+                    "Список ингредиентов не заполнен или имеет менее 4-х шагов!")
+            return false
+        }
+
+        return true
+    }
+
+    private fun isTimePickerInputCorrect(value: String): Boolean {
+        return Pattern.matches(TIME_PICKER_REGEX, value)
     }
 }
