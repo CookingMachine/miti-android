@@ -23,11 +23,11 @@ class CardViewWithTitle: LinearLayout {
             cardViewImage.setImageDrawable(field)
         }
 
-    constructor(context: Context): super(context){
+    constructor(context: Context): super(context) {
         init(context, null)
     }
 
-    constructor(context: Context, attrs: AttributeSet?): super(context, attrs){
+    constructor(context: Context, attrs: AttributeSet?): super(context, attrs) {
         init(context, attrs)
     }
 

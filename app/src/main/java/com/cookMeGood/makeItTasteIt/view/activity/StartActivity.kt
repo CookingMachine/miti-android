@@ -6,6 +6,7 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.api.dto.User
 import com.cookMeGood.makeItTasteIt.utils.ApplicationContext
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_AUTH
+import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_USER
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity: SuperActivity() {
@@ -35,7 +36,7 @@ class StartActivity: SuperActivity() {
 
         startActivityAsGuest.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("user", User(null, "guest", null, null))
+            intent.putExtra(INTENT_USER, User(null, "guest", null, null))
             startActivity(intent)
             finish()
         }
