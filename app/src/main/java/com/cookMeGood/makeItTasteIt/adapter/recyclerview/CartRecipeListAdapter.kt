@@ -19,15 +19,15 @@ import com.api.model.Ingredient
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
-class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Context):
+class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Context) :
         RecyclerView.Adapter<CartRecipeListAdapter.ViewHolder>() {
 
     private val ingredients = arrayListOf<Ingredient>()
     private lateinit var recyclerView: RecyclerView
 
     private var expandedList = arrayListOf<Int>()
-    private var originalHeight : Int = -1
-    private var expandedHeight : Int = -1
+    private var originalHeight: Int = -1
+    private var expandedHeight: Int = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -48,7 +48,6 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val recipe = recipes[position]
-
         val list = holder.ingredientsList
 
         holder.layout.doOnLayout { view ->
@@ -71,7 +70,7 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
     }
 
     private inline fun getValueAnimator(forward: Boolean = true, duration: Long, interpolator: TimeInterpolator,
-                                crossinline updateListener: (progress: Float) -> Unit
+                                        crossinline updateListener: (progress: Float) -> Unit
     ): ValueAnimator {
         val a =
                 if (forward) ValueAnimator.ofFloat(0f, 1f)
@@ -106,14 +105,14 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
         animator.start()
     }
 
-    private fun setIngredientsData(holder: ViewHolder){
-        if(ingredients.isEmpty()) {
+    private fun setIngredientsData(holder: ViewHolder) {
+        if (ingredients.isEmpty()) {
             ingredients.add(Ingredient("Томаты", "1 шт"))
             ingredients.add(Ingredient("Салями", "100гр"))
             ingredients.add(Ingredient("Сыр", "200гр"))
             ingredients.add(Ingredient("Лук", "1 головка"))
         }
-        if(holder.ingredientListAdapter == null){
+        if (holder.ingredientListAdapter == null) {
             holder.ingredientListAdapter = CartIngredientListAdapter(context, ingredients)
             holder.ingredientsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             holder.ingredientsList.adapter = holder.ingredientListAdapter
@@ -121,12 +120,12 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
     }
 
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image = view.cartRecipeImage!!
         val name = view.cartRecipeTitle!!
         val layout = view.cartRecipeLayout!!
         val divider = view.cartRecipeDivider!!
         val ingredientsList = view.cartIngredientList!!
-        var ingredientListAdapter : CartIngredientListAdapter? = null
+        var ingredientListAdapter: CartIngredientListAdapter? = null
     }
 }

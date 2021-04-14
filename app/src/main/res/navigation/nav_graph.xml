@@ -6,48 +6,94 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.cookMeGood.makeItTasteIt.view.fragment.MainFragment"
+        android:name="com.cookMeGood.makeItTasteIt.fragment.MainFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.cookMeGood.makeItTasteIt.view.fragment.CartFragment"
+        android:name="com.cookMeGood.makeItTasteIt.fragment.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_cartFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.cookMeGood.makeItTasteIt.view.fragment.CategoryFragment"
+        android:name="com.cookMeGood.makeItTasteIt.fragment.CategoryFragment"
         android:label="CategoryFragment" >
-        <action
-            android:id="@+id/action_categoryFragment_to_suggestActivity"
-            app:destination="@id/suggestActivity" />
         <action
             android:id="@+id/action_categoryFragment_to_recipeActivity"
             app:destination="@id/recipeActivity" />
         <action
-            android:id="@+id/action_categoryFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_categoryFragment_to_suggestActivity"
+            app:destination="@id/suggestActivity" />
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.cookMeGood.makeItTasteIt.view.fragment.FavouritesFragment"
+        android:name="com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/restaurantFragment"
-        android:name="com.cookMeGood.makeItTasteIt.view.fragment.RestaurantFragment"
-        android:label="SuggestFragment" />
+        android:name="com.cookMeGood.makeItTasteIt.fragment.RestaurantFragment"
+        android:label="SuggestFragment" >
+        <action
+            android:id="@+id/action_restaurantFragment_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_restaurantFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
+    </fragment>
     <activity
         android:id="@+id/recipeActivity"
-        android:name="com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity"
+        android:name="com.cookMeGood.makeItTasteIt.activity.RecipeActivity"
         android:label="activity_recipe"
         tools:layout="@layout/activity_recipe" />
     <activity
         android:id="@+id/suggestActivity"
-        android:name="com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity"
+        android:name="com.cookMeGood.makeItTasteIt.activity.SuggestActivity"
         android:label="activity_suggest"
         tools:layout="@layout/activity_suggest" />
+    <activity
+        android:id="@+id/searchActivity"
+        android:name="com.cookMeGood.makeItTasteIt.activity.SearchActivity"
+        android:label="activity_search"
+        tools:layout="@layout/activity_search" />
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.cookMeGood.makeItTasteIt.activity.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
+    <activity
+        android:id="@+id/authActivity"
+        android:name="com.cookMeGood.makeItTasteIt.activity.AuthActivity"
+        android:label="AuthActivity" />
+    <activity
+        android:id="@+id/startActivity"
+        android:name="com.cookMeGood.makeItTasteIt.activity.StartActivity"
+        android:label="StartActivity" />
+    <fragment
+        android:id="@+id/profilePageFragment"
+        android:name="com.cookMeGood.makeItTasteIt.fragment.ProfilePageFragment"
+        android:label="ProfilePageFragment" />
 </navigation>

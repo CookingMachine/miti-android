@@ -48,4 +48,6 @@ class SearchIngredientsAdapter(private val ingredients: List<Ingredient>,
     }
 
     override fun getItemCount(): Int = ingredients.size
+
+    fun getClickedIngredients() : List<Ingredient> = clickedIngredientsList
 }

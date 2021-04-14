@@ -10,7 +10,8 @@
         android:id="@+id/mainFragmentNestedScroll"
         android:overScrollMode="never"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
-            <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithDescription
+            <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
                 android:id="@+id/dishOfTheDayCard"
                 android:layout_width="match_parent"
                 android:layout_height="480dp"
@@ -45,14 +46,14 @@
                 android:indeterminateTintMode="src_atop"
                 android:indeterminateTint="@color/primaryColor" />
 
-            <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithTitle
+            <com.cookMeGood.makeItTasteIt.customview.CardViewWithTitle
                 android:id="@+id/noCaloriesCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:title="@string/title_low_calories"
                 app:image="@drawable/image_card_view_with_title"/>
 
-            <com.cookMeGood.makeItTasteIt.view.custom.CardViewWithDescription
+            <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
                 android:id="@+id/fastAndDelicious"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"

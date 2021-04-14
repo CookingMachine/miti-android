@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.custom
+package com.cookMeGood.makeItTasteIt.customview
 
 import android.annotation.SuppressLint
 import android.content.Context

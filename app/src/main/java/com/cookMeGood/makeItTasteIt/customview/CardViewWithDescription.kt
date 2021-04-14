@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.custom
+package com.cookMeGood.makeItTasteIt.customview
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_card_view_with_description.view.*
 
 class CardViewWithDescription: LinearLayout {

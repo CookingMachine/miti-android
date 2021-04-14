@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.fragment
+package com.cookMeGood.makeItTasteIt.fragment
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goLongToast
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import kotlinx.android.synthetic.main.item_profile_dialog_screen.*
 

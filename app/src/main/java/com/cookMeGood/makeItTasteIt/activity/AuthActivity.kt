@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.view.activity
+package com.cookMeGood.makeItTasteIt.activity
 
 import android.content.Context
 import android.content.Intent
@@ -74,13 +74,14 @@ class AuthActivity : SuperActivity() {
                                         MainActivity::class.java))
                             }
                             else -> {
-                                goShortToast(applicationContext, "Ошибка!")
+                                goShortToast(applicationContext,
+                                        "Такой пользователь уже существует!")
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<User>, t: Throwable) {
-                        goShortToast(applicationContext, "Такой пользователь уже существует")
+                        goShortToast(applicationContext, "Ошибка соединения с сервером")
                     }
                 })
     }

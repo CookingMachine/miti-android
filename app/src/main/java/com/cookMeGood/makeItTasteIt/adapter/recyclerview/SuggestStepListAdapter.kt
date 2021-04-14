@@ -23,13 +23,13 @@ import kotlinx.android.synthetic.main.item_suggest_step.view.*
 class SuggestStepListAdapter(val context: Context,
                              private val supportFragmentManager: FragmentManager,
                              private var stepList: ArrayList<Step>,
-                             val listener: SuggestStepEditListener):
-        RecyclerView.Adapter<SuggestStepListAdapter.ViewHolder>(){
+                             val listener: SuggestStepEditListener) :
+        RecyclerView.Adapter<SuggestStepListAdapter.ViewHolder>() {
 
     private var suggestEditStepDialogAdapter: SuggestEditFieldDialogAdapter? = null
 
-    private var originalHeight : Int = -1
-    private var expandedHeight : Int = -1
+    private var originalHeight: Int = -1
+    private var expandedHeight: Int = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -45,21 +45,19 @@ class SuggestStepListAdapter(val context: Context,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.stepDescription.text = stepList[position].description
-        holder.stepTitle.text = stepList[position].name
         holder.stepNumber.text = stepList[position].number.toString()
 
-        if (itemCount  == position+1) {
+        if (position == itemCount - 1) {
             setLastElement(holder)
-        }
-        else {
+        } else {
             val currentStep = stepList[position]
 
             holder.stepAddButton.visibility = View.GONE
             holder.stepChangeButton.visibility = View.VISIBLE
 
-            if (!currentStep.description.equals("Описание отсутствует")){
+            if (!currentStep.description.equals("Описание отсутствует")) {
                 holder.stepDivider.visibility = View.VISIBLE
-                holder.stepLayout.doOnLayout {view ->
+                holder.stepLayout.doOnLayout { view ->
                     originalHeight = view.height
                     holder.stepDescription.visibility = View.VISIBLE
 
@@ -81,16 +79,15 @@ class SuggestStepListAdapter(val context: Context,
         }
     }
 
-    private fun setLastElement(holder: ViewHolder){
+    private fun setLastElement(holder: ViewHolder) {
         holder.stepAddButton.visibility = View.VISIBLE
         holder.stepAddButton.setOnClickListener {
-            stepList.add(Step("Шаг", itemCount + 1))
-            notifyDataSetChanged()
+            stepList.add(Step(itemCount + 1, "Описание"))
+            notifyItemInserted(itemCount + 1)
         }
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val stepTitle = view.suggestStepTitle!!
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val stepDescription = view.suggestStepDescription!!
         val stepNumber = view.suggestStepNumber!!
         val stepAddButton = view.suggestStepAddButton!!
@@ -99,15 +96,16 @@ class SuggestStepListAdapter(val context: Context,
         val stepDivider = view.suggestRecipeDivider!!
     }
 
-    fun onRemoveStep(position: Int){
+    fun onRemoveStep(position: Int) {
         stepList.removeAt(position)
         notifyDataSetChanged()
     }
 
-    fun onChangeStepDescription(position: Int, text: String){
+    fun onChangeStepDescription(position: Int, text: String): Step {
         stepList[position].description = text
         HelpUtils.goShortToast(context, "DATA: $text")
         notifyDataSetChanged()
+        return Step(position + 1, text)
     }
 
     private inline fun getValueAnimator(forward: Boolean = true,
