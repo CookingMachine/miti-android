@@ -36,11 +36,10 @@ class SearchIngredientsAdapter(private val ingredients: List<Ingredient>,
 
         holder.ingredientName.text = ingredient.name
         holder.layout.setOnClickListener {
-            if (holder.checkBox.visibility == View.VISIBLE){
+            if (holder.checkBox.visibility == View.VISIBLE) {
                 holder.checkBox.visibility = View.GONE
                 clickedIngredientsList.remove(ingredient)
-            }
-            else {
+            } else {
                 holder.checkBox.visibility = View.VISIBLE
                 clickedIngredientsList.add(ingredient)
             }

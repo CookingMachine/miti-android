@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,8 @@ class MainFragment: SuperFragment() {
     private var recipesListAdapter: CategoryListAdapter? = null
     private var categoryList: List<Category> = listOf()
 
+    private lateinit var animation: LayoutAnimationController
+
     private var changeListener = object: OnFragmentChangeListener{
         override fun replaceFragment(fragment: Fragment, category: Category) {
 
@@ -44,18 +47,11 @@ class MainFragment: SuperFragment() {
     override fun initInterface(view: View?) {
         (activity as SuperActivity).title = getString(R.string.title_category)
 
-        setHasOptionsMenu(true)
-        val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_layout_list_swipe_right)
-
-        recipesListAdapter = CategoryListAdapter(categoryList, changeListener)
-        mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-        mainFragmentRecycler.layoutAnimation = animation
-        mainFragmentRecycler.adapter = recipesListAdapter
+        animation = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_layout_list_swipe_right)
         mainFragmentRecycler.visibility = View.GONE
 
+        setHasOptionsMenu(true)
         getAllCategoriesFromServer()
-        showList()
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,7 +69,17 @@ class MainFragment: SuperFragment() {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
                         if (response.isSuccessful) {
                             categoryList = response.body() ?: emptyList()
-                            recipesListAdapter!!.onUpdateList(categoryList)
+
+                            if (recipesListAdapter == null) {
+                                recipesListAdapter = CategoryListAdapter(categoryList, changeListener)
+                                mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                                mainFragmentRecycler.layoutAnimation = animation
+                                mainFragmentRecycler.adapter = recipesListAdapter
+                            }
+                            else {
+                                recipesListAdapter!!.onUpdateList(categoryList)
+                            }
+                            showList()
                         }
                     }
 
