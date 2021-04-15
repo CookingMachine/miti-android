@@ -2,12 +2,10 @@ package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Point
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.content.res.Resources
+import android.os.Build
+import android.util.DisplayMetrics
+import android.view.*
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
@@ -20,9 +18,9 @@ import com.cookMeGood.makeItTasteIt.api.ApiService
 import com.cookMeGood.makeItTasteIt.api.dto.Category
 import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.IntentContainer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.slider.RangeSlider
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.activity_search.*
@@ -43,6 +41,8 @@ class SearchActivity : SuperActivity() {
     private var ingredientsCounter = 0
     private var searchQueryText: String = ""
 
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
+
     private var filterCategoriesList = listOf("Супы", "Горячее", "Сладкое", "Напитки", "Закуски")
     private var filterKitchenList = listOf("Грузинская", "Китайская", "Русская", "Немецкая", "Абхазская")
     private var filterCategoryAdapter: SearchFilterAdapter? = null
@@ -50,7 +50,7 @@ class SearchActivity : SuperActivity() {
     private var searchContentAdapter: SearchContentAdapter? = null
     private var searchIngredientsAdapter: SearchIngredientsAdapter? = null
     private var clickedIngredientsList: List<Ingredient>? = null
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
+
     private var searchContentList = listOf(
             Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
             Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
@@ -92,11 +92,6 @@ class SearchActivity : SuperActivity() {
     @SuppressLint("SetTextI18n")
     override fun initInterface() {
 
-        val display = windowManager.defaultDisplay
-        val point = Point()
-        display.getSize(point)
-        val screenHeight = point.y
-
         setSupportActionBar(searchActivityToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         searchBackContent.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -112,24 +107,9 @@ class SearchActivity : SuperActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(searchBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetBehavior.isDraggable = false
-        bottomSheetBehavior.peekHeight = screenHeight - searchBackContent.measuredHeight - 360
-        onChangeSheetHeight(screenHeight - 156)
+        bottomSheetBehavior.peekHeight = getWindowHeight() - searchBackContent.measuredHeight - 360
 
-        searchContentAdapter = SearchContentAdapter(searchContentList, applicationContext, openRecipeListener)
-        searchActivityContentList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        searchActivityContentList.adapter = searchContentAdapter
-
-        filterCategoryAdapter = SearchFilterAdapter(filterCategoriesList)
-        searchDishTypeList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-        searchDishTypeList.adapter = filterCategoryAdapter
-
-        filterKitchenAdapter = SearchFilterAdapter(filterKitchenList)
-        searchKitchenList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-        searchKitchenList.adapter = filterKitchenAdapter
-
-        searchIngredientsAdapter = SearchIngredientsAdapter(searchIngredientsList, onIngredientClickListener)
-        searchIngredientsRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        searchIngredientsRecyclerView.adapter = searchIngredientsAdapter
+        initAdapters()
 
         searchIngredientsCounter.text = ingredientsCounter.toString()
 
@@ -160,7 +140,6 @@ class SearchActivity : SuperActivity() {
         }
 
         searchIngredients.setOnClickListener {
-
             if (searchIngredientsContent.visibility == View.GONE) {
                 searchActivityContentList.visibility = View.GONE
                 searchNotFound.visibility = View.GONE
@@ -176,6 +155,12 @@ class SearchActivity : SuperActivity() {
 
     }
 
+    private fun getWindowHeight(): Int {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_toolbar_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -189,6 +174,28 @@ class SearchActivity : SuperActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            if (window.decorView.rootWindowInsets.displayCutout != null) {
+                setSheetHeight(
+                        getWindowHeight() -
+                                HelpUtils.getActionBarSize(applicationContext))
+            } else {
+                setSheetHeight(
+                        getWindowHeight() -
+                                HelpUtils.getStatusBarHeightInPixels(resources) -
+                                HelpUtils.getActionBarSize(applicationContext))
+            }
+        } else {
+            setSheetHeight(
+                    getWindowHeight() -
+                            HelpUtils.getStatusBarHeightInPixels(resources) -
+                            HelpUtils.getActionBarSize(applicationContext))
+        }
     }
 
     private fun getSearchListFromServer(searchText: String): List<Recipe> {
@@ -215,7 +222,25 @@ class SearchActivity : SuperActivity() {
                 })
     }
 
-    private fun onChangeSheetHeight(pixels: Int) {
+    private fun initAdapters() {
+        searchContentAdapter = SearchContentAdapter(searchContentList, applicationContext, openRecipeListener)
+        searchActivityContentList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        searchActivityContentList.adapter = searchContentAdapter
+
+        filterCategoryAdapter = SearchFilterAdapter(filterCategoriesList)
+        searchDishTypeList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        searchDishTypeList.adapter = filterCategoryAdapter
+
+        filterKitchenAdapter = SearchFilterAdapter(filterKitchenList)
+        searchKitchenList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        searchKitchenList.adapter = filterKitchenAdapter
+
+        searchIngredientsAdapter = SearchIngredientsAdapter(searchIngredientsList, onIngredientClickListener)
+        searchIngredientsRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        searchIngredientsRecyclerView.adapter = searchIngredientsAdapter
+    }
+
+    private fun setSheetHeight(pixels: Int) {
         searchBottomSheet.layoutParams.height = pixels
     }
 }

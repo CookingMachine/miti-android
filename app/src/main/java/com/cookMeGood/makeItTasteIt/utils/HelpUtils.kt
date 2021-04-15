@@ -1,6 +1,7 @@
 package com.cookMeGood.makeItTasteIt.utils
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.DisplayMetrics
 import android.widget.Toast
 
@@ -25,4 +26,17 @@ object HelpUtils {
         return convertPixelsToDp(px.toFloat(), context).toInt()
     }
 
+    fun getActionBarSize(context: Context): Int {
+        val styledAttr = context.theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
+        return styledAttr.getDimension(0, 0f).toInt()
+    }
+
+    fun getStatusBarHeightInPixels(resources: Resources): Int {
+        var result = 0
+        val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = resources.getDimensionPixelSize(resourceId)
+        }
+        return result
+    }
 }
