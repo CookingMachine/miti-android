@@ -20,8 +20,8 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListen
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
-import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
-import com.cookMeGood.makeItTasteIt.api.dto.Step
+import com.miti.api.model.Ingredient
+import com.miti.api.model.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
@@ -40,8 +40,8 @@ class SuggestActivity : SuperActivity() {
     private var suggestIngredientListAdapter: SuggestIngredientListAdapter? = null
 
     private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
-    var ingredientList = arrayListOf<Ingredient>(Ingredient("Ингедиент","кол-во"))
-    var stepList = arrayListOf<Step>(Step("Шаг",1))
+    var ingredientList = arrayListOf(Ingredient("Ингедиент", "кол-во"))
+    var stepList = arrayListOf(Step("Шаг", 1))
     private var suggestStepEditListener = object: SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {

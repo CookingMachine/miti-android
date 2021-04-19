@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.api.dto.Recipe
+import com.miti.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_favourites_recipe.view.*
 

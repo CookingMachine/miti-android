@@ -1,6 +1,5 @@
 package com.cookMeGood.makeItTasteIt.view.activity
 
-import android.graphics.Point
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -11,12 +10,14 @@ import com.cookMeGood.makeItTasteIt.adapter.dialog.RecipeDescriptionDialogAdapte
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.IngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeRestaurantListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
-import com.cookMeGood.makeItTasteIt.api.dto.*
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.miti.api.model.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
+import kotlinx.android.synthetic.main.content_recipe_description.*
 
 class RecipeActivity : SuperActivity() {
 
@@ -25,6 +26,7 @@ class RecipeActivity : SuperActivity() {
     private var stepListListAdapter: RecipeStepListAdapter? = null
     private var ingredientsListAdapter: IngredientsListAdapter? = null
     private var recipeRestaurantListAdapter: RecipeRestaurantListAdapter? = null
+    private var recipeDialog: RecipeDescriptionDialogAdapter? = null
     private var ingredientsList = arrayListOf<Ingredient>()
     private var restaurantList: List<Restaurant> = listOf(
             Restaurant(0, "Золотая бухта", "Украинская", "Арбатская 7, Москва", 4.2, MetroStation(4, "Арбатская"), "1500", listOf("Wi-fi", "еда на вынос")),
@@ -38,21 +40,24 @@ class RecipeActivity : SuperActivity() {
 
     override fun initInterface() {
 
-        val display = windowManager.defaultDisplay
-        val point = Point()
-        display.getSize(point)
-        val screenHeight = point.y
-        val currentRecipe = intent.extras!!.getSerializable(IntentContainer.INTENT_RECIPE) as Recipe
-        val recipeDialog = RecipeDescriptionDialogAdapter()
+        val screenHeight = getWindowHeight(windowManager)
+        val currentRecipe = intent.extras!!.getSerializable(ConstantContainer.INTENT_RECIPE) as Recipe
 
         setSupportActionBar(recipeToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = currentRecipe.name
 
+        recipeCalories.text = currentRecipe.calorieContent!!.calories.toString()
+        recipeCarbo.text = currentRecipe.calorieContent!!.carbohydrates.toString()
+        recipeFats.text = currentRecipe.calorieContent!!.fat.toString()
+        recipeProteins.text = currentRecipe.calorieContent!!.protein.toString()
+
         recipeTitleTextView.text = currentRecipe.name
         recipeDescription.text = currentRecipe.description
-        recipeImageView.setImageResource(R.drawable.image_recipe_background)
+        recipeImageView.setImageResource(R.drawable.image_auth_background)
+
+        recipeDialog = RecipeDescriptionDialogAdapter(currentRecipe.description!!)
 
         stepListListAdapter = RecipeStepListAdapter(stepList)
         recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
@@ -72,7 +77,6 @@ class RecipeActivity : SuperActivity() {
 
         setPortionPicker()
         clickRecipe()
-        setKBJUValues()
 
         val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -94,7 +98,7 @@ class RecipeActivity : SuperActivity() {
         ingredButton.setOnClickListener { clickIngred()  }
 
         btnDescription.setOnClickListener {
-            recipeDialog.show(supportFragmentManager, "Recipe dialog")
+            recipeDialog!!.show(supportFragmentManager, "Recipe dialog")
         }
 
         recipeDescription.post {
@@ -189,9 +193,8 @@ class RecipeActivity : SuperActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
-        when(item!!.itemId){
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
             R.id.action_basket -> {
                 HelpUtils.goToast(applicationContext, "Добавлено в корзину")
             }
@@ -212,13 +215,5 @@ class RecipeActivity : SuperActivity() {
         recipePortionPicker.selectedTextSize = resources.getDimension(R.dimen.portionTextSelected)
         recipePortionPicker.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         recipePortionPicker.dividerColor = ContextCompat.getColor(applicationContext, R.color.colorBlack80)
-    }
-
-    private fun setKBJUValues() {
-
-        recipeCalories.text = "100"
-        recipeProteins.text = "69"
-        recipeCarbo.text = "10"
-        recipeFats.text = "40"
     }
 }

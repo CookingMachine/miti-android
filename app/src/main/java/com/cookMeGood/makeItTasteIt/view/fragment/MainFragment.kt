@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
-import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.api.dto.Category
-import com.cookMeGood.makeItTasteIt.api.dto.MainContent
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_MAIN_CONTENT
+import com.miti.api.ApiService
+import com.miti.api.model.Category
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
@@ -63,7 +61,7 @@ class MainFragment: SuperFragment() {
     }
 
     private fun getAllCategoriesFromServer() {
-        ApiService.getApi()
+        ApiService.getApi(requireContext())
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {

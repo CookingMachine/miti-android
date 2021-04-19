@@ -1,10 +1,6 @@
-package com.cookMeGood.makeItTasteIt.api
+package com.miti.api
 
-import com.cookMeGood.makeItTasteIt.api.model.LoginRequest
-import com.cookMeGood.makeItTasteIt.api.model.LoginResponse
-import com.cookMeGood.makeItTasteIt.api.dto.Category
-import com.cookMeGood.makeItTasteIt.api.dto.Recipe
-import com.cookMeGood.makeItTasteIt.api.dto.User
+import com.miti.api.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,18 +19,18 @@ interface Api {
     fun authorize(@Body request: LoginRequest
     ): Call<LoginResponse>
 
-    @GET("${PATH}/api/v1/category/getAllCategories")
+    @GET("$PATH/api/v1/category/getAllCategories")
     fun getAllCategories(): Call<List<Category>>
 
-    @POST("${PATH}/addUser")
+    @POST("$PATH/addUser")
     fun addUser(@Body user: User): Call<User>
 
-    @GET("${PATH}/getRecipesByCategoryId")
+    @GET("$PATH/api/v1/recipe/getRecipesByCategoryId")
     fun getRecipesByCategoryId(
             @Query("categoryId") categoryId: String
     ): Call<List<Recipe>>
 
-    @GET("${PATH}/getRecipeById")
+    @GET("$PATH/api/v1/recipe/getRecipeById")
     fun getRecipeById(
             @Query("id") recipeId: Long
     ): Call<Recipe>

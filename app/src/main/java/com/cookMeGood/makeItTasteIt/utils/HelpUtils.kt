@@ -2,8 +2,11 @@ package com.cookMeGood.makeItTasteIt.utils
 
 import android.content.Context
 import android.content.res.Resources
+import android.os.Build
 import android.util.DisplayMetrics
+import android.view.WindowManager
 import android.widget.Toast
+import com.miti.api.model.*
 
 object HelpUtils {
 
@@ -38,5 +41,27 @@ object HelpUtils {
             result = resources.getDimensionPixelSize(resourceId)
         }
         return result
+    }
+
+    fun getWindowHeight(windowManager: WindowManager): Int {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            windowManager.currentWindowMetrics.bounds.height()
+        }
+        else {
+            val displayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+            displayMetrics.heightPixels
+        }
+    }
+
+    fun getStubRecipeList(): List<Recipe> {
+        return listOf(
+                Recipe(1, "Пицца", "Для большой компании", null, null, "Национальная", User(), Category(), listOf(Comment()), ContextIngredient(), CalorieContent(), listOf(User()), listOf(Rating()), ""),
+                Recipe(1, "Пицца", "Для большой компании", null, null, "Национальная", User(), Category(), listOf(Comment()), ContextIngredient(), CalorieContent(), listOf(User()), listOf(Rating()), "")
+        )
+    }
+
+    fun getStubUser(): User {
+        return User(1, "username", "name", "pass", "email", true, null, null, null, null, null, null, null)
     }
 }

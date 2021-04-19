@@ -13,9 +13,9 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cookMeGood.makeItTasteIt.api.dto.Recipe
+import com.miti.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
+import com.miti.api.model.Ingredient
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
@@ -62,7 +62,7 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
             }
         }
 
-        holder.image.setImageResource(recipe.image!!.toInt())
+        //TODO добавить картинку
         holder.name.text = recipe.name
 
         holder.layout.setOnClickListener {
@@ -96,11 +96,11 @@ class CartRecipeListAdapter(private val recipes: List<Recipe>, val context: Cont
 
         if (expand) animator.doOnStart {
             holder.ingredientsList.visibility = View.VISIBLE
-            expandedList.add(holder.adapterPosition)
+            expandedList.add(holder.bindingAdapterPosition)
         }
         else animator.doOnEnd {
             holder.ingredientsList.visibility = View.GONE
-            expandedList.remove(holder.adapterPosition)
+            expandedList.remove(holder.bindingAdapterPosition)
         }
 
         animator.start()

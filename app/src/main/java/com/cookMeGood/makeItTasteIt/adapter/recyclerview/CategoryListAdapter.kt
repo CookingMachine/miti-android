@@ -8,7 +8,7 @@ import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
-import com.cookMeGood.makeItTasteIt.api.dto.Category
+import com.miti.api.model.Category
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.view.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.item_main_category.view.*
