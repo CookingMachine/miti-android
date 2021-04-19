@@ -1,6 +1,6 @@
 package com.cookMeGood.makeItTasteIt.adapter.listener
 
-import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
+import com.miti.api.model.Ingredient
 
 interface OnSearchIngredientClickListener {
 

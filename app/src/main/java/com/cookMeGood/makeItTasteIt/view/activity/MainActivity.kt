@@ -38,8 +38,8 @@ class MainActivity: SuperActivity()  {
         supportFragmentManager.let { dialog.show(it, "profileDialog") }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item!!.itemId){
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
             R.id.action_search -> {
                 intent = Intent(this@MainActivity, SearchActivity::class.java)
                 startActivity(intent)

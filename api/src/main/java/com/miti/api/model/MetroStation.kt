@@ -1,4 +1,4 @@
-package com.cookMeGood.makeItTasteIt.api.dto
+package com.miti.api.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

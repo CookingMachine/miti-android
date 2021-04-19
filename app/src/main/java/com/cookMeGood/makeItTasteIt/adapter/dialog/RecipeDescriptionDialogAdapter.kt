@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.cookMeGood.makeItTasteIt.R
 import kotlinx.android.synthetic.main.content_recipe_description.*
 
-class RecipeDescriptionDialogAdapter : DialogFragment() {
+class RecipeDescriptionDialogAdapter(val description: String) : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.setCancelable(true)
@@ -20,7 +20,8 @@ class RecipeDescriptionDialogAdapter : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnClose.setOnClickListener {
+        recipeDescriptionDialogText.text = description
+        recipeDescriptionDialogCloseButton.setOnClickListener {
             dialog!!.dismiss()
         }
     }

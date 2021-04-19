@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
-import com.cookMeGood.makeItTasteIt.api.dto.Step
+import com.miti.api.model.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_suggest_step.view.*
 
@@ -84,7 +84,7 @@ class SuggestStepListAdapter(val context: Context,
     private fun setLastElement(holder: ViewHolder){
         holder.stepAddButton.visibility = View.VISIBLE
         holder.stepAddButton.setOnClickListener {
-            stepList.add(Step("Шаг",itemCount+1))
+            stepList.add(Step("Шаг", itemCount + 1))
             notifyDataSetChanged()
         }
     }

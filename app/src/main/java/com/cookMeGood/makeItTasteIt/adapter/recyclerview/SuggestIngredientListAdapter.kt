@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestIngredientDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
-import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
+import com.miti.api.model.Ingredient
 import kotlinx.android.synthetic.main.item_suggest_ingredient.view.*
 
 class SuggestIngredientListAdapter(private val supportFragmentManager: FragmentManager,
@@ -34,7 +34,13 @@ class SuggestIngredientListAdapter(private val supportFragmentManager: FragmentM
             holder.ingredientAddButton.visibility = View.GONE
         }
         holder.ingredientChangeButton.setOnClickListener {
-            suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter("ChangeIngredient", position, listener, ingredientList[position].name, ingredientList[position].amount)
+            suggestIngredientDialogAdapter = SuggestIngredientDialogAdapter(
+                    "ChangeIngredient",
+                    position,
+                    listener,
+                    ingredientList[position].name,
+                    ingredientList[position].amount
+            )
             suggestIngredientDialogAdapter!!.show(supportFragmentManager, "Edit Ingredient")
         }
     }

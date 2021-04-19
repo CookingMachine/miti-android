@@ -6,11 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.api.dto.Category
-import com.cookMeGood.makeItTasteIt.api.dto.MainContent
-import com.cookMeGood.makeItTasteIt.utils.ApplicationContext
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_MAIN_CONTENT
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_MAIN_CONTENT
+import com.miti.api.ApiService
+import com.miti.api.model.Category
+import com.miti.api.model.MainContent
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.*
 import retrofit2.Call
@@ -26,8 +25,6 @@ class SplashActivity : SuperActivity() {
     override fun setAttr() = setLayout(R.layout.activity_splash)
 
     override fun initInterface() {
-
-        ApplicationContext.setContext(applicationContext)
 
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
@@ -86,13 +83,14 @@ class SplashActivity : SuperActivity() {
     }
 
     private fun getCategoriesFromServer() {
-        ApiService.getApi()
+        ApiService.getApi(applicationContext)
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
                             when (response.code()) {
                                 200 -> {
-                                    mainContent = MainContent(response.body() ?: arrayListOf())
+                                    mainContent = MainContent(response.body()
+                                            ?: arrayListOf())
                                 }
                                 401 -> {
                                     isAuthenticated = false

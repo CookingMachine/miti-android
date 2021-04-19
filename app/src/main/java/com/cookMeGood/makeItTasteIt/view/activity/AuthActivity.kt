@@ -5,10 +5,10 @@ import android.os.Build
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.api.dto.User
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goToast
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_AUTH
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.miti.api.model.User
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,7 +45,7 @@ class AuthActivity : SuperActivity() {
                 goToast(applicationContext, "Заполните все поля")
 
             } else {
-                addUserToServer(User(name, username, password, email, 0))
+                HelpUtils.getStubUser()
             }
         }
     }
@@ -58,7 +58,7 @@ class AuthActivity : SuperActivity() {
     }
 
     private fun addUserToServer(user: User){
-        ApiService.getApi()
+        com.miti.api.ApiService.getApi(applicationContext)
                 .addUser(user)
                 .enqueue(object : Callback<User> {
                     override fun onResponse(call: Call<User>, response: Response<User>) {

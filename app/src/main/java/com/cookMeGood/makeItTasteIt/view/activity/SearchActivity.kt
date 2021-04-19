@@ -2,9 +2,7 @@ package com.cookMeGood.makeItTasteIt.view.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Build
-import android.util.DisplayMetrics
 import android.view.*
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,13 +12,14 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.OnSearchIngredientClickList
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchContentAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchFilterAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchIngredientsAdapter
-import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.api.dto.Category
-import com.cookMeGood.makeItTasteIt.api.dto.Ingredient
-import com.cookMeGood.makeItTasteIt.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.miti.api.ApiService
+import com.miti.api.model.Category
+import com.miti.api.model.Ingredient
+import com.miti.api.model.Recipe
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.activity_search.*
@@ -51,16 +50,7 @@ class SearchActivity : SuperActivity() {
     private var searchIngredientsAdapter: SearchIngredientsAdapter? = null
     private var clickedIngredientsList: List<Ingredient>? = null
 
-    private var searchContentList = listOf(
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня"),
-            Recipe(null, "Рецепт", "Описание рецепта Описание рецепта Описание рецепта Описание рецепта", null, null, null, "time", null, "Кухня")
-    )
+    private var searchContentList = HelpUtils.getStubRecipeList()
     private var searchIngredientsList = listOf(
             Ingredient("Абрикос", "10"),
             Ingredient("Арбуз", "10"),
@@ -75,7 +65,7 @@ class SearchActivity : SuperActivity() {
     private val openRecipeListener = object : OnOpenRecipeListener {
         override fun openRecipe(recipe: Recipe) {
             val intent = Intent(applicationContext, RecipeActivity::class.java)
-            intent.putExtra(IntentContainer.INTENT_RECIPE, recipe)
+            intent.putExtra(ConstantContainer.INTENT_RECIPE, recipe)
             startActivity(intent)
         }
     }
@@ -107,7 +97,7 @@ class SearchActivity : SuperActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(searchBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetBehavior.isDraggable = false
-        bottomSheetBehavior.peekHeight = getWindowHeight() - searchBackContent.measuredHeight - 360
+        bottomSheetBehavior.peekHeight = getWindowHeight(windowManager) - searchBackContent.measuredHeight - 360
 
         initAdapters()
 
@@ -155,19 +145,13 @@ class SearchActivity : SuperActivity() {
 
     }
 
-    private fun getWindowHeight(): Int {
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.heightPixels
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_toolbar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item!!.itemId == R.id.action_filter) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_filter) {
             bottomSheetBehavior.state = when (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
                 true -> BottomSheetBehavior.STATE_COLLAPSED
                 false -> BottomSheetBehavior.STATE_EXPANDED
@@ -182,17 +166,17 @@ class SearchActivity : SuperActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             if (window.decorView.rootWindowInsets.displayCutout != null) {
                 setSheetHeight(
-                        getWindowHeight() -
+                        getWindowHeight(windowManager) -
                                 HelpUtils.getActionBarSize(applicationContext))
             } else {
                 setSheetHeight(
-                        getWindowHeight() -
+                        getWindowHeight(windowManager) -
                                 HelpUtils.getStatusBarHeightInPixels(resources) -
                                 HelpUtils.getActionBarSize(applicationContext))
             }
         } else {
             setSheetHeight(
-                    getWindowHeight() -
+                    getWindowHeight(windowManager) -
                             HelpUtils.getStatusBarHeightInPixels(resources) -
                             HelpUtils.getActionBarSize(applicationContext))
         }
@@ -201,15 +185,15 @@ class SearchActivity : SuperActivity() {
     private fun getSearchListFromServer(searchText: String): List<Recipe> {
         //TODO: добавить параметр "Категории"
         //TODO: прикрутить API
-        if (searchText.isEmpty()) {
-            return emptyList()
+        return if (searchText.isEmpty()) {
+            emptyList()
         } else {
-            return searchContentList
+            searchContentList
         }
     }
 
     private fun getAllCategoriesFromServer() {
-        ApiService.getApi()
+        ApiService.getApi(applicationContext)
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
                     override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.api.dto.Restaurant
+import com.miti.api.model.Restaurant
 import kotlinx.android.synthetic.main.item_restaurant.view.*
 
 class RestaurantListAdapter(private val restaurants: List<Restaurant>):

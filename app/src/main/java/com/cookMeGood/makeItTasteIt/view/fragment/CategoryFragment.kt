@@ -3,14 +3,16 @@ package com.cookMeGood.makeItTasteIt.view.fragment
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
-import com.cookMeGood.makeItTasteIt.api.ApiService
-import com.cookMeGood.makeItTasteIt.api.dto.Category
-import com.cookMeGood.makeItTasteIt.api.dto.Recipe
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_CATEGORY
-import com.cookMeGood.makeItTasteIt.utils.IntentContainer.INTENT_RECIPE
+import com.miti.api.ApiService
+import com.miti.api.model.Category
+import com.miti.api.model.Recipe
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_RECIPE
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.view.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.view.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
@@ -19,10 +21,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CategoryFragment: SuperFragment() {
+class CategoryFragment : SuperFragment() {
 
-    private var recipesList = listOf<Recipe>()
-    private var recipesListListAdapter: RecipeListAdapter? = null
+    private var recipeList = listOf<Recipe>()
+    private var recipeListAdapter: RecipeListAdapter? = null
 
     private val openRecipeListener = object : OnOpenRecipeListener {
         override fun openRecipe(recipe: Recipe) {
@@ -41,10 +43,9 @@ class CategoryFragment: SuperFragment() {
         (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
         (activity as SuperActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
+        categoryFragmentProgressBar.visibility = View.VISIBLE
 
-        recipesListListAdapter = RecipeListAdapter(recipesList, context, openRecipeListener)
-        categoryFragmentRecipeList.adapter = recipesListListAdapter
+        val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
 
         getRecipesByCategoryIdFromServer(category.id!!)
 
@@ -54,22 +55,28 @@ class CategoryFragment: SuperFragment() {
     }
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
-        ApiService
-                .getApi()
+        ApiService.getApi(requireContext())
                 .getRecipesByCategoryId(categoryId)
                 .enqueue(object : Callback<List<Recipe>> {
                     override fun onResponse(call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
-//                        recipesList = response.body() ?: arrayListOf()
+                        if (response.isSuccessful) {
+                            recipeList = response.body() ?: HelpUtils.getStubRecipeList()
 
-                        setRecipeListStub()
-                        recipesListListAdapter!!.onUpdateList(recipesList)
-                        showList()
+                            if (recipeListAdapter == null) {
+                                recipeListAdapter = RecipeListAdapter(recipeList, context, openRecipeListener)
+                                categoryFragmentRecipeList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                                categoryFragmentRecipeList.adapter = recipeListAdapter
+                            } else {
+                                recipeListAdapter!!.onUpdateList(recipeList)
+                            }
+                            showList()
+                        }
                     }
 
                     override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        Toast.makeText(context, "Ошибка соединения с сервером", Toast.LENGTH_LONG).show()
-                        setRecipeListStub()
-                        recipesListListAdapter!!.onUpdateList(recipesList)
+                        Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+                        recipeList = HelpUtils.getStubRecipeList()
+                        recipeListAdapter!!.onUpdateList(recipeList)
                         showList()
                     }
                 })
@@ -78,13 +85,6 @@ class CategoryFragment: SuperFragment() {
     private fun showList() {
         categoryFragmentProgressBar.visibility = View.GONE
         categoryFragmentRecipeList.visibility = View.VISIBLE
-    }
-
-    private fun setRecipeListStub() {
-        recipesList = arrayListOf(
-                Recipe(null, "Пицца", "Важным условием настоящей пиццы bbq является ее запекание на углях или дровах. Для этого существуют специальные печи. Только тогда лепешка приобретет вкус и аромат дымка... ", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Итальянская кухня"),
-                Recipe(null, "Борщ", "Хватит на всю семью", "", null, Category(), java.lang.String.valueOf(R.drawable.image_recipe_background), "Украинская кухня")
-        )
     }
 }
 

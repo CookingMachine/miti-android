@@ -21,12 +21,7 @@ abstract class SuperActivity : AppCompatActivity() {
         initInterface()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
-        if (item == null) {
-            return false
-        }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
