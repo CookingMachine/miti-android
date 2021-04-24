@@ -106,7 +106,7 @@ class SuggestStepListAdapter(val context: Context,
 
     fun onChangeStepDescription(position: Int, text: String){
         stepList[position].description = text
-        HelpUtils.goToast(context, "DATA: $text")
+        HelpUtils.goShortToast(context, "DATA: $text")
         notifyDataSetChanged()
     }
 

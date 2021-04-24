@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="@dimen/marginDef"
-    android:layout_marginTop="@dimen/marginDef"
-    android:layout_marginEnd="@dimen/marginDef">
+    android:layout_marginStart="@dimen/marginDefault"
+    android:layout_marginTop="@dimen/marginDefault"
+    android:layout_marginEnd="@dimen/marginDefault">
 
     <RelativeLayout
         android:id="@+id/searchContentLayout"
@@ -19,7 +19,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             app:riv_corner_radius="90dp"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:layout_toEndOf="@id/searchContentImage"
             android:layout_centerVertical="true">
 
@@ -65,7 +65,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:orientation="vertical"
             tools:ignore="RelativeOverlap">
 

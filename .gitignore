@@ -6,3 +6,11 @@ build/
 .navigation
 captures/
 output.json
+/api/.gitignore
+/api/src/main/AndroidManifest.xml
+/api/build.gradle
+/api/src/androidTest/java/com/miti/api/ExampleInstrumentedTest.kt
+/api/src/test/java/com/miti/api/ExampleUnitTest.kt
+/local.properties
+/app/release1.000.00/output-metadata.json
+/api/proguard-rules.pro

@@ -10,8 +10,12 @@ import com.miti.api.model.*
 
 object HelpUtils {
 
-    fun goToast(context: Context, output: String) {
+    fun goShortToast(context: Context, output: String) {
         Toast.makeText(context, output, Toast.LENGTH_SHORT).show()
+    }
+
+    fun goLongToast(context: Context, output: String) {
+        Toast.makeText(context, output, Toast.LENGTH_LONG).show()
     }
 
     fun convertDpToPixel(dp: Float, context: Context): Float {

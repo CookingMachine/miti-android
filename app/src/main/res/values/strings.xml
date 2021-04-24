@@ -47,10 +47,12 @@
     <string name="text_profile_account">Аккаунт</string>
     <string name="text_profile_rate">Оценки</string>
     <string name="text_profile_seen">Просмотренные</string>
+    <string name="text_profile_my_recipes">Мои рецепты</string>
     <string name="text_profile_settings">Настройки</string>
     <string name="text_profile_developers">Написать разработчикам</string>
     <string name="text_profile_rate_app">Оценить приложение</string>
     <string name="text_profile_about">О приложении</string>
+    <string name="text_profile_edit">ред.</string>
     <string name="text_suggest_empty">У вас пока нет рецептов</string>
     <string name="text_suggest_save">Сохранить</string>
     <string name="text_suggest_sheet_name">Наименование</string>
@@ -118,15 +120,17 @@
 
     <!-- EXAMPLE -->
 
-    <string name="example_ingredient_amount">1200г.</string>
     <string name="example">example</string>
-    <string name="time_example">0 ч. 0 мин.</string>
-    <string name="dish_of_the_day">БЛЮДО ДНЯ</string>
-    <string name="dish_of_the_day_description">Насладитесь вкусным ужином всей семьей</string>
+    <string name="example_fullname">Константинопольский Константин</string>
+    <string name="example_email">example@email.com</string>
+    <string name="example_cooking_time">0 ч. 0 мин.</string>
+    <string name="example_ingredient_amount">1200г.</string>
 
     <!-- CONTENT DESCRIPTION -->
 
     <string name="content_description_empty">Content</string>
-    <string name="text_no_calories">ПОДБОРКА ДЛЯ ТЕХ, КОМУ НЕ НУЖНЫ КАЛОРИИ</string>
+    <string name="content_no_calories">ПОДБОРКА ДЛЯ ТЕХ, КОМУ НЕ НУЖНЫ КАЛОРИИ</string>
+    <string name="content_dish_of_the_day">БЛЮДО ДНЯ</string>
+    <string name="content_dish_of_the_day_description">Насладитесь вкусным ужином всей семьей</string>
 
 </resources>

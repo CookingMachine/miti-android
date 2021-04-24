@@ -28,9 +28,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDef"
-            android:layout_marginTop="@dimen/marginDef"
-            android:layout_marginEnd="@dimen/marginDef">
+            android:layout_marginStart="@dimen/marginDefault"
+            android:layout_marginTop="@dimen/marginDefault"
+            android:layout_marginEnd="@dimen/marginDefault">
 
             <TextView
                 android:id="@+id/searchIngredients"
@@ -54,9 +54,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:background="@color/colorWhite40" />
 
         <LinearLayout
@@ -67,7 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginStart="@dimen/marginDefault"
                 android:layout_marginTop="12dp"
                 android:text="@string/title_calories"
                 android:textColor="@color/colorWhite"
@@ -77,9 +77,9 @@
                 android:id="@+id/searchCaloriesValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginStart="@dimen/marginDefault"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="@dimen/marginDef"
+                android:layout_marginEnd="@dimen/marginDefault"
                 android:text="@string/title_calories_any"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorWhite70"
@@ -114,7 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginStart="@dimen/marginDefault"
                 android:layout_marginTop="12dp"
                 android:text="@string/title_cooking_time"
                 android:textColor="@color/colorWhite"
@@ -124,9 +124,9 @@
                 android:id="@+id/searchTimeValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginStart="@dimen/marginDefault"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="@dimen/marginDef"
+                android:layout_marginEnd="@dimen/marginDefault"
                 android:text="@string/title_cooking_time_any"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorWhite70"
@@ -156,7 +156,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="8dp"
             android:text="@string/title_dish_type"
             android:textColor="@color/colorWhite"
@@ -166,21 +166,21 @@
             android:id="@+id/searchDishTypeList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="8dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:background="@color/colorWhite40" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="8dp"
             android:text="@string/title_kitchen"
             android:textColor="@color/colorWhite"
@@ -190,16 +190,16 @@
             android:id="@+id/searchKitchenList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="8dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="@dimen/marginDef"
-            android:layout_marginBottom="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
+            android:layout_marginBottom="@dimen/marginDefault"
             android:background="@color/colorWhite40" />
 
     </LinearLayout>

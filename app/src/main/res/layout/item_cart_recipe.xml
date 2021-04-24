@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="@dimen/marginDef"
-    android:layout_marginTop="@dimen/marginDef"
-    android:layout_marginEnd="@dimen/marginDef">
+    android:layout_marginStart="@dimen/marginDefault"
+    android:layout_marginTop="@dimen/marginDefault"
+    android:layout_marginEnd="@dimen/marginDefault">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cartRecipeLayout"
@@ -43,8 +43,8 @@
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/marginDef"
-                    android:layout_marginEnd="@dimen/marginDef"
+                    android:layout_marginStart="@dimen/marginDefault"
+                    android:layout_marginEnd="@dimen/marginDefault"
                     app:riv_corner_radius="90dp"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/title_ingredient"

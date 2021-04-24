@@ -22,9 +22,9 @@
                 android:id="@+id/dishOfTheDayCard"
                 android:layout_width="match_parent"
                 android:layout_height="480dp"
-                app:cardTheme="@string/dish_of_the_day"
+                app:cardTheme="@string/content_dish_of_the_day"
                 app:cardTitle="Свинина по-французски"
-                app:cardDescription="@string/dish_of_the_day_description"
+                app:cardDescription="@string/content_dish_of_the_day_description"
                 app:cardImage="@drawable/image_dish_of_the_day" />
 
             <androidx.recyclerview.widget.RecyclerView

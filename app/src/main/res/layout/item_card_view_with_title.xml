@@ -8,7 +8,7 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginDef"
+        android:layout_margin="@dimen/marginDefault"
         app:cardCornerRadius="@dimen/cornerRadiusDef"
         app:cardElevation="4dp">
 
@@ -30,11 +30,11 @@
                 android:id="@+id/cardViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginDef"
-                android:layout_marginEnd="@dimen/marginDef"
+                android:layout_marginStart="@dimen/marginDefault"
+                android:layout_marginEnd="@dimen/marginDefault"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto"
-                android:text="@string/text_no_calories"
+                android:text="@string/content_no_calories"
                 android:textSize="@dimen/cardViewWithTitleTextSize"
                 android:textColor="@color/colorWhite"
                 android:textAlignment="center"/>
