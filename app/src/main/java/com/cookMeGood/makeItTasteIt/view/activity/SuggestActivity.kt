@@ -105,7 +105,7 @@ class SuggestActivity : SuperActivity() {
         }
 
         suggestActivitySaveButton.setOnClickListener {
-            HelpUtils.goToast(applicationContext, "SAVED") //TODO: сохранение предложенного рецепта
+            HelpUtils.goShortToast(applicationContext, "SAVED") //TODO: сохранение предложенного рецепта
         }
 
         suggestActivityRecipeButton.setOnClickListener { onButtonClick(suggestActivityRecipeButton) }

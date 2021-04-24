@@ -12,7 +12,7 @@
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="@dimen/marginDef"
+        android:layout_marginEnd="@dimen/marginDefault"
         android:layout_gravity="end"
         android:layout_alignParentEnd="true"
         android:background="@drawable/ic_close"

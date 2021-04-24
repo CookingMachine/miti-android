@@ -17,7 +17,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.miti.api.model.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
-import kotlinx.android.synthetic.main.content_recipe_description.*
 
 class RecipeActivity : SuperActivity() {
 
@@ -196,10 +195,10 @@ class RecipeActivity : SuperActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_basket -> {
-                HelpUtils.goToast(applicationContext, "Добавлено в корзину")
+                HelpUtils.goShortToast(applicationContext, "Добавлено в корзину")
             }
             R.id.action_like -> {
-                HelpUtils.goToast(applicationContext, "Нравится!")
+                HelpUtils.goShortToast(applicationContext, "Нравится!")
             }
         }
         return super.onOptionsItemSelected(item)

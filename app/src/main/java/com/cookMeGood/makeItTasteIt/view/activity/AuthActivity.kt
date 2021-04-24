@@ -5,7 +5,7 @@ import android.os.Build
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goToast
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.miti.api.model.User
@@ -42,7 +42,7 @@ class AuthActivity : SuperActivity() {
                     || email.isEmpty()
                     || password.isEmpty()) {
 
-                goToast(applicationContext, "Заполните все поля")
+                goShortToast(applicationContext, "Заполните все поля")
 
             } else {
                 HelpUtils.getStubUser()
@@ -69,7 +69,7 @@ class AuthActivity : SuperActivity() {
                     }
 
                     override fun onFailure(call: Call<User>, t: Throwable) {
-                        goToast(applicationContext, "Такой пользователь уже существует")
+                        goShortToast(applicationContext, "Такой пользователь уже существует")
                     }
                 })
     }

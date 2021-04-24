@@ -28,7 +28,7 @@
             android:layout_height="16dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:background="@drawable/ic_close"
             android:contentDescription="@string/content_description_empty" />
 
@@ -38,8 +38,8 @@
         android:id="@+id/searchIngredientsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/marginDef"
-        android:layout_marginTop="@dimen/marginDef"
+        android:layout_marginHorizontal="@dimen/marginDefault"
+        android:layout_marginTop="@dimen/marginDefault"
         android:overScrollMode="never"/>
 
 </LinearLayout>

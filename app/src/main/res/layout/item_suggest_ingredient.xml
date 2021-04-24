@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:layout_marginHorizontal="@dimen/marginDef"
+    android:layout_marginHorizontal="@dimen/marginDefault"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="@dimen/marginDef"
+            android:layout_marginStart="@dimen/marginDefault"
             android:layout_marginEnd="52dp"
             android:layout_alignParentStart="true"
             android:orientation="horizontal"
@@ -30,7 +30,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:layout_marginEnd="100dp"
-                android:layout_marginStart="@dimen/marginDef"
+                android:layout_marginStart="@dimen/marginDefault"
                 app:fontFamily="@font/roboto_light"
                 android:textColor="@color/colorBlack"
                 android:text="@string/example" />
@@ -53,7 +53,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="@dimen/marginDef"
+            android:layout_marginEnd="@dimen/marginDefault"
             android:src="@drawable/ic_suggest_pencil"
             android:contentDescription="@string/content_description_empty"/>
 
