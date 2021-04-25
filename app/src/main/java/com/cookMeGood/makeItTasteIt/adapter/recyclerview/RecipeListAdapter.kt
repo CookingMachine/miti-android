@@ -30,16 +30,16 @@ class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?
         holder.name.text = recipe.name
         holder.kitchen.text = recipe.kitchen
 
-        holder.cardLayout.setOnClickListener {
+        holder.categoryRecipeLayout.setOnClickListener {
             changeListener.openRecipe(recipe)
         }
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val image = view.recipeImage!!
-        val name = view.recipeTitle!!
-        val kitchen = view.recipeNationality!!
-        val cardLayout = view.categoryRecipeLayout!!
+        val image = view.categoryPageRecipeImage!!
+        val name = view.categoryPageRecipeTitle!!
+        val kitchen = view.categoryPageRecipeNationality!!
+        val categoryRecipeLayout = view.categoryPageRecipeLayout!!
     }
 
     fun onUpdateList(newList: List<Recipe>) {

@@ -33,6 +33,10 @@ import java.util.*
 
 class SuggestActivity : SuperActivity() {
 
+    companion object {
+        private const val REQUEST_PICK_IMAGE = 2
+        private const val REQUEST_IMAGE_CAPTURE = 1
+    }
 
     private var suggestStepListAdapter: SuggestStepListAdapter? = null
 
@@ -63,8 +67,7 @@ class SuggestActivity : SuperActivity() {
 
     private lateinit var currentPhotoPath: String
 
-    private val REQUEST_IMAGE_CAPTURE = 1
-    private val REQUEST_PICK_IMAGE = 2
+
 
     override fun initInterface() {
 

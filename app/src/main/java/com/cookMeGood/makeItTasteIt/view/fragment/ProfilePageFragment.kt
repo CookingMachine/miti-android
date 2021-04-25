@@ -15,7 +15,11 @@ import kotlinx.android.synthetic.main.item_profile_dialog_screen.*
 
 open class ProfilePageFragment: DialogFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         dialog?.setCancelable(true)
         dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return inflater.inflate(R.layout.item_profile_dialog_screen, container, true)
@@ -24,7 +28,8 @@ open class ProfilePageFragment: DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        profileCardLayout.layoutParams.width = HelpUtils.getWindowWidth(requireActivity().windowManager) -
+        profileCardLayout.layoutParams.width =
+                HelpUtils.getWindowWidth(requireActivity().windowManager) -
                 HelpUtils.convertDpToPixel(64, requireContext())
 
         profileCloseButton.setOnClickListener{ dialog!!.dismiss()}
