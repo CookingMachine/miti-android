@@ -44,7 +44,8 @@ class SearchActivity : SuperActivity() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
 
     private var filterCategoriesList = listOf("Супы", "Горячее", "Сладкое", "Напитки", "Закуски")
-    private var filterKitchenList = listOf("Грузинская", "Китайская", "Русская", "Немецкая", "Абхазская")
+    private var filterKitchenList =
+            listOf("Грузинская", "Китайская", "Русская", "Немецкая", "Абхазская")
     private var filterCategoryAdapter: SearchFilterAdapter? = null
     private var filterKitchenAdapter: SearchFilterAdapter? = null
     private var searchContentAdapter: SearchContentAdapter? = null
@@ -85,7 +86,11 @@ class SearchActivity : SuperActivity() {
 
         setSupportActionBar(searchActivityToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        searchBackContent.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        searchBackContent.measure(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
         if (getSearchListFromServer("f").isEmpty()) {
             searchActivityContentList.visibility = View.GONE
@@ -98,7 +103,8 @@ class SearchActivity : SuperActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(searchBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetBehavior.isDraggable = false
-        bottomSheetBehavior.peekHeight = getWindowHeight(windowManager) - searchBackContent.measuredHeight - 360
+        bottomSheetBehavior.peekHeight = getWindowHeight(windowManager) -
+                searchBackContent.measuredHeight - 400
 
         searchIngredientsCounter.text = ingredientsCounter.toString()
 
@@ -158,7 +164,8 @@ class SearchActivity : SuperActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_filter) {
-            bottomSheetBehavior.state = when (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.state =
+                    when (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
                 true -> BottomSheetBehavior.STATE_COLLAPSED
                 false -> BottomSheetBehavior.STATE_EXPANDED
             }
@@ -200,7 +207,8 @@ class SearchActivity : SuperActivity() {
         ApiService.getApi(applicationContext)
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                    override fun onResponse(call: Call<List<Category>>,
+                                            response: Response<List<Category>>) {
 
                     }
 
@@ -211,20 +219,38 @@ class SearchActivity : SuperActivity() {
     }
 
     private fun initAdapters() {
-        searchContentAdapter = SearchContentAdapter(searchContentList, applicationContext, openRecipeListener)
-        searchActivityContentList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        searchContentAdapter =
+                SearchContentAdapter(searchContentList, applicationContext, openRecipeListener)
+        searchActivityContentList.layoutManager = LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.VERTICAL,
+                false
+        )
         searchActivityContentList.adapter = searchContentAdapter
 
         filterCategoryAdapter = SearchFilterAdapter(filterCategoriesList)
-        searchDishTypeList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        searchDishTypeList.layoutManager = LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.HORIZONTAL,
+                false
+        )
         searchDishTypeList.adapter = filterCategoryAdapter
 
         filterKitchenAdapter = SearchFilterAdapter(filterKitchenList)
-        searchKitchenList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        searchKitchenList.layoutManager = LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.HORIZONTAL,
+                false
+        )
         searchKitchenList.adapter = filterKitchenAdapter
 
-        searchIngredientsAdapter = SearchIngredientsAdapter(searchIngredientsList, onIngredientClickListener)
-        searchIngredientsRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        searchIngredientsAdapter =
+                SearchIngredientsAdapter(searchIngredientsList, onIngredientClickListener)
+        searchIngredientsRecyclerView.layoutManager = LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.VERTICAL,
+                false
+        )
         searchIngredientsRecyclerView.adapter = searchIngredientsAdapter
     }
 

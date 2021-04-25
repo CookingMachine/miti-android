@@ -125,6 +125,9 @@
     <string name="example_email">example@email.com</string>
     <string name="example_cooking_time">0 ч. 0 мин.</string>
     <string name="example_ingredient_amount">1200г.</string>
+    <string name="example_recipe_name">Тигровые креветки под соусом Песто</string>
+    <string name="example_recipe_kitchen">Международная</string>
+    <string name="example_recipe_rating">Рейтинг: 4.7</string>
 
     <!-- CONTENT DESCRIPTION -->
 

@@ -64,6 +64,7 @@ object HelpUtils {
     fun getStubRecipeList(): List<Recipe> {
         return listOf(
                 Recipe(1, "Пицца", "Для большой компании", null, null, "Национальная", User(), Category(), listOf(Comment()), ContextIngredient(), CalorieContent(), listOf(User()), listOf(Rating()), ""),
+                Recipe(1, "Пицца", "Для большой компании", null, null, "Национальная", User(), Category(), listOf(Comment()), ContextIngredient(), CalorieContent(), listOf(User()), listOf(Rating()), ""),
                 Recipe(1, "Пицца", "Для большой компании", null, null, "Национальная", User(), Category(), listOf(Comment()), ContextIngredient(), CalorieContent(), listOf(User()), listOf(Rating()), "")
         )
     }
