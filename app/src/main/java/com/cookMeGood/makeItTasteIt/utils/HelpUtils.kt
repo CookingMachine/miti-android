@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import android.view.WindowMetrics
 import android.widget.Toast
 import com.miti.api.model.*
 
@@ -25,6 +26,7 @@ object HelpUtils {
     fun convertDpToPixel(dp: Int, context: Context): Int {
         return convertDpToPixel(dp.toFloat(), context).toInt()
     }
+
     fun convertPixelsToDp(px: Float, context: Context): Float {
         return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
     }
@@ -48,14 +50,15 @@ object HelpUtils {
     }
 
     fun getWindowHeight(windowManager: WindowManager): Int {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            windowManager.currentWindowMetrics.bounds.height()
-        }
-        else {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
+    }
+
+    fun getWindowWidth(windowManager: WindowManager): Int {
             val displayMetrics = DisplayMetrics()
             windowManager.defaultDisplay.getMetrics(displayMetrics)
-            displayMetrics.heightPixels
-        }
+            return displayMetrics.widthPixels
     }
 
     fun getStubRecipeList(): List<Recipe> {

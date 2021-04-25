@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@drawable/shape_profile_background"
     android:orientation="vertical">
 
     <ImageButton
@@ -19,10 +19,12 @@
         android:contentDescription="@string/content_description_empty" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/profileCardLayout"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="@dimen/marginDefault"
         android:layout_marginTop="@dimen/marginDefault"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="12dp">
 
         <TextView
@@ -58,7 +60,7 @@
 
                 <TextView
                     android:id="@+id/profileName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="@dimen/marginDefault"
