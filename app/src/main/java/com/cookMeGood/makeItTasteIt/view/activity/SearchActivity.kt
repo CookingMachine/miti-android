@@ -15,6 +15,7 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchIngredientsAdapte
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.miti.api.ApiService
 import com.miti.api.model.Category
@@ -99,9 +100,9 @@ class SearchActivity : SuperActivity() {
         bottomSheetBehavior.isDraggable = false
         bottomSheetBehavior.peekHeight = getWindowHeight(windowManager) - searchBackContent.measuredHeight - 360
 
-        initAdapters()
-
         searchIngredientsCounter.text = ingredientsCounter.toString()
+
+        initAdapters()
 
         searchCaloriesRangeSlider.setLabelFormatter { value: Float ->
             return@setLabelFormatter "${value.roundToInt()}Cal"
@@ -150,6 +151,11 @@ class SearchActivity : SuperActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        onChooseBottomSheetHeight()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_filter) {
             bottomSheetBehavior.state = when (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
@@ -160,9 +166,7 @@ class SearchActivity : SuperActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-
+    private fun onChooseBottomSheetHeight() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             if (window.decorView.rootWindowInsets.displayCutout != null) {
                 setSheetHeight(
