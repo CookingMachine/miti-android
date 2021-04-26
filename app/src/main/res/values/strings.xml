@@ -67,6 +67,9 @@
     <string name="text_tab_recipes">Рецепты</string>
     <string name="text_tab_restaurants">Рестораны</string>
     <string name="text_metro_station1">Юго-Западная</string>
+    <string name="text_login_guest">Войти как гость</string>
+    <string name="text_have_account">У меня есть аккаунт</string>
+    <string name="text_forgot_password">Забыли пароль?</string>
 
     <!-- MENU -->
 
@@ -104,9 +107,6 @@
     <string name="f_proteins_inside">Pr</string>
     <string name="f_fats_inside">Fa</string>
     <string name="f_carbo_inside">Ca</string>
-
-    <string name="sign_guest">Войти как гость</string>
-    <string name="i_have_account">У меня есть аккаунт</string>
 
     <!-- PROFILE -->
 

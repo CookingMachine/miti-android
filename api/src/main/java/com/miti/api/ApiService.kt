@@ -8,8 +8,8 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 
 object ApiService {
 
-    private const val PREF_NAME = "access_preferences"
-    private const val ACCESS_TOKEN = "access_token"
+    const val PREF_NAME = "access_preferences"
+    const val ACCESS_TOKEN_KEY = "access_token"
     private const val HEADER_AUTHORIZATION = "Authorization"
 
     private var client = OkHttpClient.Builder()
@@ -18,7 +18,7 @@ object ApiService {
     fun getApi(context: Context): Api {
 
         val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        val jwtToken = sharedPreferences.getString(ACCESS_TOKEN, "") ?: ""
+        val jwtToken = sharedPreferences.getString(ACCESS_TOKEN_KEY, "") ?: ""
         val logging = HttpLoggingInterceptor()
 
         logging.level = HttpLoggingInterceptor.Level.HEADERS

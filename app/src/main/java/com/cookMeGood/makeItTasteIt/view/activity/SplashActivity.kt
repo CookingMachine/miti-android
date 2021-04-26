@@ -19,7 +19,7 @@ import retrofit2.Response
 class SplashActivity : SuperActivity() {
 
     private val waitForResponseCoroutine = CoroutineScope(Dispatchers.Main)
-    private var isAuthenticated: Boolean = true
+    private var isAuthenticated: Boolean = false
     private var mainContent: MainContent? = null
 
     override fun setAttr() = setLayout(R.layout.activity_splash)
@@ -29,11 +29,11 @@ class SplashActivity : SuperActivity() {
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
         waitForResponseCoroutine.launch {
-
             val call  = async { getData() }
 
             try {
                 call.await()
+                delay(2000)
             }
             catch (e:Exception) {
                 e.printStackTrace()
@@ -57,7 +57,7 @@ class SplashActivity : SuperActivity() {
     }
 
     private fun startNextActivity(){
-        when (isAuthenticated){
+        when (isAuthenticated) {
             true -> {
                 val bundle = Bundle()
                 bundle.putSerializable(INTENT_MAIN_CONTENT, mainContent)
@@ -67,7 +67,6 @@ class SplashActivity : SuperActivity() {
 
                 window.exitTransition = null
                 startActivity(intent)
-                supportFinishAfterTransition()
             }
             false -> {
                 val options = ActivityOptions.makeSceneTransitionAnimation(this@SplashActivity,
@@ -77,9 +76,10 @@ class SplashActivity : SuperActivity() {
 
                 window.exitTransition = null
                 startActivity(intent, options.toBundle())
-                supportFinishAfterTransition()
+
             }
         }
+        supportFinishAfterTransition()
     }
 
     private fun getCategoriesFromServer() {
@@ -91,9 +91,6 @@ class SplashActivity : SuperActivity() {
                                 200 -> {
                                     mainContent = MainContent(response.body()
                                             ?: arrayListOf())
-                                }
-                                401 -> {
-                                    isAuthenticated = false
                                 }
                             }
                     }

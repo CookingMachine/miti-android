@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface Api {
 
     companion object {
-        const val PATH = "https://miti-serv.herokuapp.com"
+        const val PATH = "http://194.58.111.240:8080"
     }
 
     @Headers(
@@ -15,14 +15,14 @@ interface Api {
             "Content-Type: application/json",
             "Content-Length: 100"
     )
-    @POST("$PATH/auth")
+    @POST("$PATH/api/v1/authorization")
     fun authorize(@Body request: LoginRequest
     ): Call<LoginResponse>
 
     @GET("$PATH/api/v1/category/getAllCategories")
     fun getAllCategories(): Call<List<Category>>
 
-    @POST("$PATH/addUser")
+    @POST("$PATH/server/api/v1/user")
     fun addUser(@Body user: User): Call<User>
 
     @GET("$PATH/api/v1/recipe/getRecipesByCategoryId")
