@@ -1,23 +1,23 @@
-package com.miti.api.model
+package com.api.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ContextIngredient(
 
-        @JsonProperty("id")
+        @SerializedName("id")
         var id: Long? = null,
 
-        @JsonProperty("amount")
+        @SerializedName("amount")
         var amount: Long? = null,
 
-        @JsonProperty("measure")
+        @SerializedName("measure")
         var measure: Measure? = null,
 
-        @JsonProperty("ingredient")
+        @SerializedName("ingredient")
         var ingredient: Ingredient? = null,
 
-        @JsonProperty("recipe")
+        @SerializedName("recipe")
         var recipe: Recipe? = null
 
 ): Serializable

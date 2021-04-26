@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
-import com.miti.api.ApiService
-import com.miti.api.model.Category
+import com.api.ApiService
+import com.api.model.Category
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_main.*

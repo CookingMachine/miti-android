@@ -9,7 +9,7 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.FavouritesListAdapter
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import com.google.android.material.tabs.TabLayout
-import com.miti.api.model.Recipe
+import com.api.model.Recipe
 import kotlinx.android.synthetic.main.fragment_favourites.*
 
 class FavouritesFragment: SuperFragment() {

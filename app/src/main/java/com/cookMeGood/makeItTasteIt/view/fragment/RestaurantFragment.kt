@@ -5,8 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RestaurantListAdapter
-import com.miti.api.model.MetroStation
-import com.miti.api.model.Restaurant
+import com.api.model.MetroStation
+import com.api.model.Restaurant
 import com.cookMeGood.makeItTasteIt.view.activity.SuperActivity
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 

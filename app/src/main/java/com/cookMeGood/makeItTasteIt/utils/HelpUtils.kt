@@ -7,7 +7,7 @@ import android.util.DisplayMetrics
 import android.view.WindowManager
 import android.view.WindowMetrics
 import android.widget.Toast
-import com.miti.api.model.*
+import com.api.model.*
 
 object HelpUtils {
 

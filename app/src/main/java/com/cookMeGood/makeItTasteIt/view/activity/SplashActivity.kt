@@ -7,9 +7,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_MAIN_CONTENT
-import com.miti.api.ApiService
-import com.miti.api.model.Category
-import com.miti.api.model.MainContent
+import com.api.ApiService
+import com.api.model.Category
+import com.api.model.MainContent
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.*
 import retrofit2.Call
@@ -19,7 +19,7 @@ import retrofit2.Response
 class SplashActivity : SuperActivity() {
 
     private val waitForResponseCoroutine = CoroutineScope(Dispatchers.Main)
-    private var isAuthenticated: Boolean = true
+    private var isAuthenticated: Boolean = false
     private var mainContent: MainContent? = null
 
     override fun setAttr() = setLayout(R.layout.activity_splash)
@@ -29,15 +29,18 @@ class SplashActivity : SuperActivity() {
         window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
         waitForResponseCoroutine.launch {
-
             val call  = async { getData() }
 
             try {
                 call.await()
+                delay(2000)
             }
             catch (e:Exception) {
                 e.printStackTrace()
-                Toast.makeText(this@SplashActivity, "Server is unavailable\nTry again later", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SplashActivity,
+                        "Server is unavailable\nTry again later",
+                        Toast.LENGTH_SHORT
+                ).show()
                 delay(3000)
             }
             startNextActivity()
@@ -57,7 +60,7 @@ class SplashActivity : SuperActivity() {
     }
 
     private fun startNextActivity(){
-        when (isAuthenticated){
+        when (isAuthenticated) {
             true -> {
                 val bundle = Bundle()
                 bundle.putSerializable(INTENT_MAIN_CONTENT, mainContent)
@@ -67,33 +70,34 @@ class SplashActivity : SuperActivity() {
 
                 window.exitTransition = null
                 startActivity(intent)
-                supportFinishAfterTransition()
             }
             false -> {
-                val options = ActivityOptions.makeSceneTransitionAnimation(this@SplashActivity,
-                        splashLogo, "logoTransition")
+                val options = ActivityOptions.makeSceneTransitionAnimation(
+                        this@SplashActivity,
+                        splashLogo,
+                        "logoTransition"
+                )
 
                 intent = Intent(this@SplashActivity, StartActivity::class.java)
 
                 window.exitTransition = null
                 startActivity(intent, options.toBundle())
-                supportFinishAfterTransition()
+
             }
         }
+        supportFinishAfterTransition()
     }
 
     private fun getCategoriesFromServer() {
         ApiService.getApi(applicationContext)
                 .getAllCategories()
                 .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                    override fun onResponse(
+                            call: Call<List<Category>>, response: Response<List<Category>>) {
                             when (response.code()) {
                                 200 -> {
                                     mainContent = MainContent(response.body()
                                             ?: arrayListOf())
-                                }
-                                401 -> {
-                                    isAuthenticated = false
                                 }
                             }
                     }

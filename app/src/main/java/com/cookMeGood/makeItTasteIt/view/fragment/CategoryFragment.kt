@@ -3,13 +3,16 @@ package com.cookMeGood.makeItTasteIt.view.fragment
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.api.ApiService
+import com.api.model.Category
+import com.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
-import com.miti.api.ApiService
-import com.miti.api.model.Category
-import com.miti.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
@@ -55,20 +58,19 @@ class CategoryFragment : SuperFragment() {
     }
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
+
+        if (recipeListAdapter == null) {
+            initListAdapter()
+        }
+
         ApiService.getApi(requireContext())
                 .getRecipesByCategoryId(categoryId)
                 .enqueue(object : Callback<List<Recipe>> {
-                    override fun onResponse(call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
+                    override fun onResponse(
+                            call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
                         if (response.isSuccessful) {
                             recipeList = response.body() ?: HelpUtils.getStubRecipeList()
-
-                            if (recipeListAdapter == null) {
-                                recipeListAdapter = RecipeListAdapter(recipeList, context, openRecipeListener)
-                                categoryFragmentRecipeList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                                categoryFragmentRecipeList.adapter = recipeListAdapter
-                            } else {
-                                recipeListAdapter!!.onUpdateList(recipeList)
-                            }
+                            recipeListAdapter!!.onUpdateList(recipeList)
                             showList()
                         }
                     }
@@ -82,9 +84,24 @@ class CategoryFragment : SuperFragment() {
                 })
     }
 
+    private fun initListAdapter() {
+        val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
+        dividerItemDecoration.setDrawable(AppCompatResources.getDrawable(
+                requireContext(),
+                R.drawable.shape_default_devider)!!
+        )
+
+        recipeListAdapter = RecipeListAdapter(recipeList, context, openRecipeListener)
+        categoryFragmentRecipeList.layoutManager = LinearLayoutManager(
+                context, LinearLayoutManager.VERTICAL, false)
+        categoryFragmentRecipeList.addItemDecoration(dividerItemDecoration)
+        categoryFragmentRecipeList.adapter = recipeListAdapter
+    }
+
     private fun showList() {
         categoryFragmentProgressBar.visibility = View.GONE
         categoryFragmentRecipeList.visibility = View.VISIBLE
     }
+
 }
 

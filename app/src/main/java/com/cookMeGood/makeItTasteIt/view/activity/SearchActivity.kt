@@ -17,10 +17,10 @@ import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.miti.api.ApiService
-import com.miti.api.model.Category
-import com.miti.api.model.Ingredient
-import com.miti.api.model.Recipe
+import com.api.ApiService
+import com.api.model.Category
+import com.api.model.Ingredient
+import com.api.model.Recipe
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.activity_search.*

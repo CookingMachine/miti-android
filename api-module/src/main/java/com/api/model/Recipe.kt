@@ -1,51 +1,51 @@
-package com.miti.api.model
+package com.api.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
 data class Recipe(
 
-        @JsonProperty("id")
+        @SerializedName("id")
         var id: Long? = null,
 
-        @JsonProperty("name")
+        @SerializedName("name")
         var name: String? = null,
 
-        @JsonProperty("description")
+        @SerializedName("description")
         var description: String? = null,
 
-        @JsonProperty("time")
+        @SerializedName("time")
         var time: String? = null,
 
-        @JsonProperty("createDate")
+        @SerializedName("createDate")
         var createDate: Date? = null,
 
-        @JsonProperty("kitchen")
+        @SerializedName("kitchen")
         var kitchen: String? = null,
 
-        @JsonProperty("author")
+        @SerializedName("author")
         var author: User? = null,
 
-        @JsonProperty("category")
+        @SerializedName("category")
         var category: Category? = null,
 
-        @JsonProperty("commentList")
+        @SerializedName("commentList")
         var commentList: List<Comment>? = null,
 
-        @JsonProperty("contextIngredientList")
+        @SerializedName("contextIngredientList")
         var contextIngredientList: ContextIngredient? = null,
 
-        @JsonProperty("calorie")
+        @SerializedName("calorie")
         var calorieContent: CalorieContent? = null,
 
-        @JsonProperty("favouriteUsers")
+        @SerializedName("favouriteUsers")
         var favouriteUsers: List<User>? = null,
 
-        @JsonProperty("rating")
+        @SerializedName("rating")
         var rating: List<Rating>? = null,
 
-        @JsonProperty("image")
+        @SerializedName("image")
         var image: String? = null
 
 ): Serializable

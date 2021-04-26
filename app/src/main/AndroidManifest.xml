@@ -7,8 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
 
     <application
@@ -19,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        android:allowBackup="true">
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        tools:targetApi="m">
 
         <provider
             android:name="androidx.core.content.FileProvider"

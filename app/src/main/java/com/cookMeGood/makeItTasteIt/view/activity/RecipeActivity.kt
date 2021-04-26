@@ -14,7 +14,7 @@ import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.miti.api.model.*
+import com.api.model.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 
@@ -40,7 +40,8 @@ class RecipeActivity : SuperActivity() {
     override fun initInterface() {
 
         val screenHeight = getWindowHeight(windowManager)
-        val currentRecipe = intent.extras!!.getSerializable(ConstantContainer.INTENT_RECIPE) as Recipe
+        val currentRecipe = intent.extras!!
+                .getSerializable(ConstantContainer.INTENT_RECIPE) as Recipe
 
         setSupportActionBar(recipeToolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -59,15 +60,18 @@ class RecipeActivity : SuperActivity() {
         recipeDialog = RecipeDescriptionDialogAdapter(currentRecipe.description!!)
 
         stepListListAdapter = RecipeStepListAdapter(stepList)
-        recipeStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recipeStepList.layoutManager = LinearLayoutManager(
+                applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeStepList.adapter = stepListListAdapter
 
         ingredientsListAdapter = IngredientsListAdapter(ingredientsList)
-        recipeIngredientsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recipeIngredientsList.layoutManager = LinearLayoutManager(
+                applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeIngredientsList.adapter = ingredientsListAdapter
 
         recipeRestaurantListAdapter = RecipeRestaurantListAdapter(restaurantList)
-        recipeRestaurantsList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recipeRestaurantsList.layoutManager = LinearLayoutManager(
+                applicationContext, LinearLayoutManager.VERTICAL, false)
         recipeRestaurantsList.adapter = recipeRestaurantListAdapter
 
         recipeTitleTextView.measure(0, 0)
@@ -83,7 +87,8 @@ class RecipeActivity : SuperActivity() {
 
         bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                recipeImageView.translationY = recipeImageView.height.toFloat() / 2 * slideOffset * -1
+                recipeImageView.translationY =
+                        recipeImageView.height.toFloat() / 2 * slideOffset * -1
             }
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {}
@@ -114,11 +119,14 @@ class RecipeActivity : SuperActivity() {
     private fun clickRecipe() {
 
         recipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        recipeButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.colorWhite))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+        ingredButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.primaryColor))
         restaurantsButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        restaurantsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+        restaurantsButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.primaryColor))
 
         recipeStepList.visibility = View.VISIBLE
         recipeIngredientsList.visibility = View.GONE
@@ -131,11 +139,14 @@ class RecipeActivity : SuperActivity() {
     private fun clickIngred() {
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+        recipeButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.primaryColor))
         ingredButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        ingredButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.colorWhite))
         restaurantsButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        restaurantsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+        restaurantsButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.primaryColor))
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.VISIBLE
@@ -148,11 +159,14 @@ class RecipeActivity : SuperActivity() {
     private fun clickRestaurant() {
 
         recipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        recipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+        recipeButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.primaryColor))
         ingredButton.setBackgroundResource(R.drawable.rounded_corners_button)
-        ingredButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+        ingredButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.primaryColor))
         restaurantsButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        restaurantsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        restaurantsButton.setTextColor(
+                ContextCompat.getColor(applicationContext, R.color.colorWhite))
 
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.GONE
@@ -212,7 +226,9 @@ class RecipeActivity : SuperActivity() {
         recipePortionPicker.setSelectedTextColorResource(R.color.primaryColor)
         recipePortionPicker.textSize = resources.getDimension(R.dimen.portionText)
         recipePortionPicker.selectedTextSize = resources.getDimension(R.dimen.portionTextSelected)
-        recipePortionPicker.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
-        recipePortionPicker.dividerColor = ContextCompat.getColor(applicationContext, R.color.colorBlack80)
+        recipePortionPicker.setBackgroundColor(
+                ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        recipePortionPicker.dividerColor =
+                ContextCompat.getColor(applicationContext, R.color.colorBlack80)
     }
 }

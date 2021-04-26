@@ -1,21 +1,21 @@
-package com.miti.api.model
+package com.api.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class CalorieContent(
-        @JsonProperty("id")
+        @SerializedName("id")
         var id: Long? = null,
 
-        @JsonProperty("calories")
+        @SerializedName("calories")
         var calories: Long? = null,
 
-        @JsonProperty("protein")
+        @SerializedName("protein")
         var protein: Long? = null,
 
-        @JsonProperty("fat")
+        @SerializedName("fat")
         var fat: Long? = null,
 
-        @JsonProperty("carbohydrates")
+        @SerializedName("carbohydrates")
         var carbohydrates: Long? = null
 ): Serializable

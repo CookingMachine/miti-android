@@ -20,8 +20,8 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListen
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
-import com.miti.api.model.Ingredient
-import com.miti.api.model.Step
+import com.api.model.Ingredient
+import com.api.model.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
@@ -45,7 +45,7 @@ class SuggestActivity : SuperActivity() {
     private var suggestEditStepDialogDialog: SuggestEditFieldDialogAdapter? = null
     var ingredientList = arrayListOf(Ingredient("Ингедиент", "кол-во"))
     var stepList = arrayListOf(Step("Шаг", 1))
-    private var suggestStepEditListener = object: SuggestStepEditListener {
+    private var suggestStepEditListener = object : SuggestStepEditListener {
 
         override fun editStep(title: String, position: Int, text: String) {
             when (title) {
@@ -55,10 +55,10 @@ class SuggestActivity : SuperActivity() {
             }
         }
     }
-    private var suggestIngredientEditListener = object: SuggestIngredientEditListener {
+    private var suggestIngredientEditListener = object : SuggestIngredientEditListener {
         override fun editIngredient(name: String, amount: String, position: Int) {
             suggestIngredientListAdapter!!.onChangeIngredient(position, name, amount)
-            }
+        }
 
         override fun removeIngredient(position: Int) {
             suggestIngredientListAdapter!!.onRemoveIngredient(position)
@@ -68,10 +68,10 @@ class SuggestActivity : SuperActivity() {
     private lateinit var currentPhotoPath: String
 
 
-
     override fun initInterface() {
 
-        val stepListClickAnimation = AnimationUtils.loadLayoutAnimation(applicationContext, R.anim.anim_layout_list_fall_down)
+        val stepListClickAnimation = AnimationUtils.loadLayoutAnimation(
+                applicationContext, R.anim.anim_layout_list_fall_down)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -82,23 +82,28 @@ class SuggestActivity : SuperActivity() {
         setRecyclerViewItemDragListener()
         setIngredientRecyclerViewItemDragListener()
 
-        suggestStepListAdapter = SuggestStepListAdapter(applicationContext, supportFragmentManager,stepList, suggestStepEditListener)
-        suggestActivityStepList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        suggestStepListAdapter = SuggestStepListAdapter(
+                applicationContext, supportFragmentManager, stepList, suggestStepEditListener)
+        suggestActivityStepList.layoutManager = LinearLayoutManager(
+                applicationContext, LinearLayoutManager.VERTICAL, false)
         suggestActivityStepList.layoutAnimation = stepListClickAnimation
-        suggestActivityStepList.adapter =   suggestStepListAdapter
+        suggestActivityStepList.adapter = suggestStepListAdapter
 
-        suggestIngredientListAdapter = SuggestIngredientListAdapter(supportFragmentManager,ingredientList, suggestIngredientEditListener)
+        suggestIngredientListAdapter = SuggestIngredientListAdapter(
+                supportFragmentManager, ingredientList, suggestIngredientEditListener)
         suggestActivityIngredientList.layoutManager = LinearLayoutManager(this)
         //suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
         suggestActivityIngredientList.adapter = suggestIngredientListAdapter
 
         suggestActivityBottomSheetName.setOnClickListener {
-            suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter("Название", 0, suggestStepEditListener)
+            suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter(
+                    "Название", 0, suggestStepEditListener)
             suggestEditStepDialogDialog!!.show(supportFragmentManager, "Title")
         }
 
         suggestActivityBottomSheetDescription.setOnClickListener {
-            suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter("Описание", 0, suggestStepEditListener)
+            suggestEditStepDialogDialog = SuggestEditFieldDialogAdapter(
+                    "Описание", 0, suggestStepEditListener)
             suggestEditStepDialogDialog!!.show(supportFragmentManager, "Description")
         }
 
@@ -115,56 +120,71 @@ class SuggestActivity : SuperActivity() {
 
     }
 
-    private fun onButtonClick(view: View){
-        if (view == suggestActivityRecipeButton!!){
-            suggestActivityIngredientsButton.setBackgroundResource(R.drawable.rounded_corners_button)
-            suggestActivityIngredientsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
-            suggestActivityRecipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-            suggestActivityRecipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+    private fun onButtonClick(view: View) {
+        if (view == suggestActivityRecipeButton!!) {
+            suggestActivityIngredientsButton
+                    .setBackgroundResource(R.drawable.rounded_corners_button)
+            suggestActivityIngredientsButton
+                    .setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+            suggestActivityRecipeButton
+                    .setBackgroundResource(R.drawable.shape_round_button_pressed)
+            suggestActivityRecipeButton
+                    .setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
 
             suggestActivityStepList.visibility = View.VISIBLE
             suggestActivityIngredientList.visibility = View.GONE
-        }
-        else {
-            suggestActivityRecipeButton.setBackgroundResource(R.drawable.rounded_corners_button)
-            suggestActivityRecipeButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
-            suggestActivityIngredientsButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-            suggestActivityIngredientsButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        } else {
+            suggestActivityRecipeButton
+                    .setBackgroundResource(R.drawable.rounded_corners_button)
+            suggestActivityRecipeButton
+                    .setTextColor(ContextCompat.getColor(applicationContext, R.color.primaryColor))
+            suggestActivityIngredientsButton
+                    .setBackgroundResource(R.drawable.shape_round_button_pressed)
+            suggestActivityIngredientsButton
+                    .setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
 
             suggestActivityStepList.visibility = View.GONE
             suggestActivityIngredientList.visibility = View.VISIBLE
         }
     }
 
-    override fun setAttr() =  setLayout(R.layout.activity_suggest)
+    override fun setAttr() = setLayout(R.layout.activity_suggest)
 
-    private fun setRecyclerViewItemDragListener(){
-        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-                return false
-            }
+    private fun setRecyclerViewItemDragListener() {
+        val itemTouchCallback =
+                object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+                    override fun onMove(recyclerView: RecyclerView,
+                                        viewHolder: RecyclerView.ViewHolder,
+                                        target: RecyclerView.ViewHolder
+                    ): Boolean {
+                        return false
+                    }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                suggestStepListAdapter!!.onRemoveStep(position)
-            }
-        }
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        val position = viewHolder.adapterPosition
+                        suggestStepListAdapter!!.onRemoveStep(position)
+                    }
+                }
 
         val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
         itemTouchHelper.attachToRecyclerView(suggestActivityStepList)
     }
 
-    private fun setIngredientRecyclerViewItemDragListener(){
-        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-                return false
-            }
+    private fun setIngredientRecyclerViewItemDragListener() {
+        val itemTouchCallback =
+                object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+                    override fun onMove(recyclerView: RecyclerView,
+                                        viewHolder: RecyclerView.ViewHolder,
+                                        target: RecyclerView.ViewHolder
+                    ): Boolean {
+                        return false
+                    }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                suggestIngredientListAdapter!!.onRemoveIngredient(position)
-            }
-        }
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        val position = viewHolder.adapterPosition
+                        suggestIngredientListAdapter!!.onRemoveIngredient(position)
+                    }
+                }
 
         val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
         itemTouchHelper.attachToRecyclerView(suggestActivityIngredientList)
@@ -183,25 +203,26 @@ class SuggestActivity : SuperActivity() {
     }
 
     private fun openCamera() {
-            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-                takePictureIntent.resolveActivity(packageManager)?.also {
-                    val photoFile: File? = try {
-                        createImageFile()
-                    } catch (ex: IOException) {
-                        null
-                    }
-                    photoFile?.also {
-                        val photoURI: Uri = FileProvider.getUriForFile(
-                                this,
-                                "com.example.android.fileprovider",
-                                it
-                        )
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                    }
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                val photoFile: File? = try {
+                    createImageFile()
+                } catch (ex: IOException) {
+                    null
+                }
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                            this,
+                            "com.example.android.fileprovider",
+                            it
+                    )
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }
             }
         }
+    }
+
     private fun openGallery() {
         Intent(Intent.ACTION_GET_CONTENT).also { intent ->
             intent.type = "image/*"
@@ -210,12 +231,16 @@ class SuggestActivity : SuperActivity() {
             }
         }
     }
-    private fun openDialog(){
+
+    private fun openDialog() {
         val items = arrayOf<CharSequence>("Сделать фото", "Выбрать из галлереи")
         val dialog = AlertDialog.Builder(this).setTitle("Выбор изображения").setItems(items
         ) { _, which ->
-            if (which==0){ openCamera()}
-            else {openGallery()}
+            if (which == 0) {
+                openCamera()
+            } else {
+                openGallery()
+            }
         }
         dialog.show()
     }
@@ -240,7 +265,7 @@ class SuggestActivity : SuperActivity() {
                                 .setAspectRatio(4, 3)
                                 .start(this)
                     }
-                    CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE-> {
+                    CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                         val res = CropImage.getActivityResult(data)
                         suggestActivityImage.setImageURI(res.uri)
                         suggestActivityAddImage.visibility = View.GONE

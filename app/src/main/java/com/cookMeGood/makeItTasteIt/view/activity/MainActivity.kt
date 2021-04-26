@@ -8,6 +8,7 @@ import android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cookMeGood.makeItTasteIt.R
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_USER
 import com.cookMeGood.makeItTasteIt.view.fragment.ProfilePageFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,6 +23,8 @@ class MainActivity: SuperActivity()  {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility =  SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
+
+        val currentUser = intent.extras?.getSerializable(INTENT_USER)
 
         val navController = findNavController(R.id.nav_host)
         mainNavView.setupWithNavController(navController)

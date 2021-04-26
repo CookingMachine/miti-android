@@ -67,6 +67,9 @@
     <string name="text_tab_recipes">Рецепты</string>
     <string name="text_tab_restaurants">Рестораны</string>
     <string name="text_metro_station1">Юго-Западная</string>
+    <string name="text_login_guest">Войти как гость</string>
+    <string name="text_have_account">У меня есть аккаунт</string>
+    <string name="text_forgot_password">Забыли пароль?</string>
 
     <!-- MENU -->
 
@@ -89,6 +92,7 @@
     <string name="hint_name">Имя</string>
     <string name="hint_username">Логин</string>
     <string name="hint_email">E-Mail</string>
+    <string name="hint_login_or_email">Логин или E-Mail</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_search">Блюда, категории, калории</string>
     <string name="hint_search_enter_ingredient">Введите ингредиент</string>
@@ -104,9 +108,6 @@
     <string name="f_proteins_inside">Pr</string>
     <string name="f_fats_inside">Fa</string>
     <string name="f_carbo_inside">Ca</string>
-
-    <string name="sign_guest">Войти как гость</string>
-    <string name="i_have_account">У меня есть аккаунт</string>
 
     <!-- PROFILE -->
 
