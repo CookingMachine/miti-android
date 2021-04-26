@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.miti.api.model.Ingredient
+import com.api.model.Ingredient
 import kotlinx.android.synthetic.main.item_cart_ingredient.view.*
 
 class CartIngredientListAdapter(private val context: Context,

@@ -105,8 +105,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="90dp"
-        android:text="@string/sign_guest"
-        android:textColor="#eaeaea"
+        android:text="@string/text_login_guest"
+        android:textColor="@color/colorGreyWhite"
         android:textSize="@dimen/textSizeDef"
         android:textStyle="normal"
         app:fontFamily="@font/roboto" />

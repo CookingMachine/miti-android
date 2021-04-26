@@ -1,27 +1,27 @@
-package com.miti.api.model
+package com.api.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
 data class Comment(
 
-        @JsonProperty("id")
+        @SerializedName("id")
         var id: Long? = null,
 
-        @JsonProperty("comment")
+        @SerializedName("comment")
         var comment: String? = null,
 
-        @JsonProperty("createDate")
+        @SerializedName("createDate")
         var createDate: Date? = null,
 
-        @JsonProperty("editDate")
+        @SerializedName("editDate")
         var editDate: Date? = null,
 
-        @JsonProperty("commentator")
+        @SerializedName("commentator")
         var commentator: User? = null,
 
-        @JsonProperty("recipe")
+        @SerializedName("recipe")
         var recipe: Recipe? = null
 
 ): Serializable

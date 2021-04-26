@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="76dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="@dimen/marginDefault">
+    android:layout_marginVertical="8dp">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/categoryPageRecipeImage"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/marginDefault"
         android:layout_centerVertical="true"
         app:riv_corner_radius="92dp"
         android:scaleType="centerCrop"
@@ -65,7 +64,6 @@
             android:id="@+id/categoryPageRecipeLinear"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/marginDefault"
             android:layout_marginStart="@dimen/marginDefault"
             android:layout_alignParentEnd="true"
             android:orientation="vertical"
@@ -79,6 +77,7 @@
                 android:text="@string/example_cooking_time"
                 android:textSize="9sp"
                 android:textColor="@color/colorBlack"
+                android:textAlignment="center"
                 tools:ignore="SmallSp"
                 app:drawableTopCompat="@drawable/ic_clock_24" />
 
@@ -89,18 +88,11 @@
                 android:text="@string/example_recipe_rating"
                 android:textSize="6sp"
                 android:textColor="@color/colorBlack"
+                android:textAlignment="center"
                 tools:ignore="SmallSp" />
 
         </LinearLayout>
 
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/marginDefault"
-        android:layout_marginEnd="@dimen/marginDefault"
-        android:layout_alignParentBottom="true"
-        android:background="@color/dividerColor" />
 
 </RelativeLayout>

@@ -13,9 +13,9 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.miti.api.model.Recipe
+import com.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.R
-import com.miti.api.model.Ingredient
+import com.api.model.Ingredient
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
 
