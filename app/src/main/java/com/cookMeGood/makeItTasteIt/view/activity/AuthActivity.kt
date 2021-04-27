@@ -3,6 +3,7 @@ package com.cookMeGood.makeItTasteIt.view.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.api.ApiService
@@ -112,6 +113,7 @@ class AuthActivity : SuperActivity() {
                             }
                             500 -> {
                                 goShortToast(applicationContext, "Ошибка!")
+                                Log.d("Retro", response.toString())
                             }
                         }
                     }
