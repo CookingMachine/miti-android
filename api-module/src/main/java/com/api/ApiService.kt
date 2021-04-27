@@ -4,7 +4,7 @@ import android.content.Context
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiService {
 
@@ -35,7 +35,7 @@ object ApiService {
 
         retrofit = Retrofit.Builder()
                 .client(client.build())
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(Api.BASE_URL)
                 .build()
 
