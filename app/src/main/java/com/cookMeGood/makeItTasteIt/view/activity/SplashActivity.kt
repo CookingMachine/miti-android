@@ -7,9 +7,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_MAIN_CONTENT
-import com.miti.api.ApiService
-import com.miti.api.model.Category
-import com.miti.api.model.MainContent
+import com.api.ApiService
+import com.api.model.Category
+import com.api.model.MainContent
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.*
 import retrofit2.Call

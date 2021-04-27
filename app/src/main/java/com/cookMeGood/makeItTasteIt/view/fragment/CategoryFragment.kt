@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
-import com.miti.api.ApiService
-import com.miti.api.model.Category
-import com.miti.api.model.Recipe
+import com.api.ApiService
+import com.api.model.Category
+import com.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils

@@ -20,8 +20,8 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListen
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
-import com.miti.api.model.Ingredient
-import com.miti.api.model.Step
+import com.api.model.Ingredient
+import com.api.model.Step
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*

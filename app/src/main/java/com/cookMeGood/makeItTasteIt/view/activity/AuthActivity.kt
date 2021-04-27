@@ -9,11 +9,11 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.miti.api.ApiService
-import com.miti.api.ApiService.ACCESS_TOKEN_KEY
-import com.miti.api.model.LoginRequest
-import com.miti.api.model.LoginResponse
-import com.miti.api.model.User
+import com.api.ApiService
+import com.api.ApiService.ACCESS_TOKEN_KEY
+import com.api.model.LoginRequest
+import com.api.model.LoginResponse
+import com.api.model.User
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
 import retrofit2.Callback

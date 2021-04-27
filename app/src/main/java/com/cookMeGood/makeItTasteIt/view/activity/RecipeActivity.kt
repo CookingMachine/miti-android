@@ -14,7 +14,7 @@ import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
 import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.miti.api.model.*
+import com.api.model.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 

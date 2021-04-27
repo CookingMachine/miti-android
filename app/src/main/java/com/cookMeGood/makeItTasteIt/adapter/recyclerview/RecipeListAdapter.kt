@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.miti.api.model.Recipe
+import com.api.model.Recipe
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import kotlinx.android.synthetic.main.item_category_recipe.view.*
 

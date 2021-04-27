@@ -1,4 +1,4 @@
-package com.miti.api
+package com.api
 
 import android.content.Context
 import okhttp3.OkHttpClient

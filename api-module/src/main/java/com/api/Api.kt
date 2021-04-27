@@ -1,6 +1,6 @@
-package com.miti.api
+package com.api
 
-import com.miti.api.model.*
+import com.api.model.*
 import retrofit2.Call
 import retrofit2.http.*
 

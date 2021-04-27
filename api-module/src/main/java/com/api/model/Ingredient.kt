@@ -1,4 +1,4 @@
-package com.miti.api.model
+package com.api.model
 
 data class Ingredient(
 
