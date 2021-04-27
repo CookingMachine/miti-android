@@ -5,15 +5,15 @@ import android.content.Intent
 import android.os.Build
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
 import com.api.ApiService
 import com.api.ApiService.ACCESS_TOKEN_KEY
 import com.api.model.LoginRequest
 import com.api.model.LoginResponse
 import com.api.model.User
+import com.cookMeGood.makeItTasteIt.R
+import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,7 +64,12 @@ class AuthActivity : SuperActivity() {
             val login = authActivityLoginEmail.text.toString()
             val password = authActivityLoginPassword.text.toString()
 
-            loginUserOnServer(login, password)
+            if (login.isEmpty() || password.isEmpty()) {
+                goShortToast(applicationContext, "Заполните все поля")
+            }
+            else {
+                loginUserOnServer(login, password)
+            }
         }
     }
 
@@ -96,18 +101,23 @@ class AuthActivity : SuperActivity() {
                 .authorize(LoginRequest(login, password))
                 .enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                        if (response.isSuccessful) {
-                            val sharedPreferences = applicationContext.getSharedPreferences(ApiService.PREF_NAME, Context.MODE_PRIVATE)
-                            sharedPreferences
-                                    .edit()
-                                    .putString(ACCESS_TOKEN_KEY, response.body()!!.jwtToken)
-                                    .apply()
-                            startActivity(Intent(this@AuthActivity, MainActivity::class.java))
+                        when (response.code()) {
+                            200 -> {
+                                val sharedPreferences = applicationContext.getSharedPreferences(ApiService.PREF_NAME, Context.MODE_PRIVATE)
+                                sharedPreferences
+                                        .edit()
+                                        .putString(ACCESS_TOKEN_KEY, response.body()!!.jwtToken)
+                                        .apply()
+                                startActivity(Intent(this@AuthActivity, MainActivity::class.java))
+                            }
+                            500 -> {
+                                goShortToast(applicationContext, "Ошибка!")
+                            }
                         }
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        goShortToast(applicationContext, "Неправильный логин или пароль")
+                        goShortToast(applicationContext, t.message.toString())
                     }
                 })
 

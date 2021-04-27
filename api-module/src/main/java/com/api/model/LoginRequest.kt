@@ -1,6 +1,7 @@
 package com.api.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 
 data class LoginRequest (
 
@@ -10,4 +11,4 @@ data class LoginRequest (
         @JsonProperty("password")
         private var password: String? = null
 
-)
+): Serializable

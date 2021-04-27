@@ -27,16 +27,16 @@ object ApiService {
         client.addInterceptor { chain ->
             val request = chain.request().newBuilder()
 
-            if (jwtToken.isNotEmpty()) {
-                request.header(HEADER_AUTHORIZATION, "Bearer $jwtToken")
-            }
+//            if (jwtToken.isNotEmpty()) {
+//                request.header(HEADER_AUTHORIZATION, "Bearer $jwtToken")
+//            }
             chain.proceed(request.build())
         }
 
         retrofit = Retrofit.Builder()
                 .client(client.build())
                 .addConverterFactory(JacksonConverterFactory.create())
-                .baseUrl(Api.PATH)
+                .baseUrl(Api.BASE_URL)
                 .build()
 
         return retrofit!!.create(Api::class.java)

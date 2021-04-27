@@ -7,30 +7,27 @@ import retrofit2.http.*
 interface Api {
 
     companion object {
-        const val PATH = "http://194.58.111.240:8080"
+        const val BASE_URL = "http://194.58.111.240:8080"
+        const val PATH = "/server/api/v1"
     }
 
-    @Headers(
-            "Accept: application/json",
-            "Content-Type: application/json",
-            "Content-Length: 100"
-    )
-    @POST("$PATH/api/v1/authorization")
+    @Headers("Content-Type: application/json")
+    @POST("$PATH/authorization")
     fun authorize(@Body request: LoginRequest
     ): Call<LoginResponse>
 
-    @GET("$PATH/api/v1/category/getAllCategories")
+    @GET("$PATH/category")
     fun getAllCategories(): Call<List<Category>>
 
-    @POST("$PATH/server/api/v1/user")
+    @POST("$PATH/user")
     fun addUser(@Body user: User): Call<User>
 
-    @GET("$PATH/api/v1/recipe/getRecipesByCategoryId")
+    @GET("$PATH/recipe/getByCategoryId")
     fun getRecipesByCategoryId(
             @Query("categoryId") categoryId: String
     ): Call<List<Recipe>>
 
-    @GET("$PATH/api/v1/recipe/getRecipeById")
+    @GET("$PATH/recipe")
     fun getRecipeById(
             @Query("id") recipeId: Long
     ): Call<Recipe>
