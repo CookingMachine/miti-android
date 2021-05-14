@@ -7,10 +7,10 @@ import android.view.*
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.api.ApiService
-import com.api.model.Category
-import com.api.model.Ingredient
-import com.api.model.Recipe
-import com.api.model.request.SearchRecipeRequest
+import com.api.dto.Category
+import com.api.dto.Ingredient
+import com.api.dto.Recipe
+import com.api.dto.request.SearchRecipeRequest
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFilterClickListener
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
@@ -18,11 +18,12 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.OnSearchIngredientClickList
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchContentAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchFilterAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SearchIngredientsAdapter
+import com.cookMeGood.makeItTasteIt.container.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.*
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getStubCategoryList
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getStubIngredientsList
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getStubKitchenList
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubCategoryList
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubIngredientsList
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubKitchenList
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getWindowHeight
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recipe.*
@@ -53,13 +54,13 @@ class SearchActivity : SuperActivity() {
     private var searchContentAdapter: SearchContentAdapter? = null
     private var searchIngredientsAdapter: SearchIngredientsAdapter? = null
     private var clickedIngredientsList: List<Ingredient>? = null
-    private var searchContentList = HelpUtils.getStubRecipeList()
+    private var searchContentList = ContextUtils.getStubRecipeList()
     private var searchIngredientsList = getStubIngredientsList()
 
     private val openRecipeListener = object : OnOpenRecipeListener {
         override fun openRecipe(recipe: Recipe) {
             val intent = Intent(applicationContext, RecipeActivity::class.java)
-            intent.putExtra(ConstantContainer.INTENT_RECIPE, recipe)
+            intent.putExtra(IntentContainer.INTENT_RECIPE, recipe)
             startActivity(intent)
         }
     }
@@ -210,18 +211,18 @@ class SearchActivity : SuperActivity() {
             if (window.decorView.rootWindowInsets.displayCutout != null) {
                 setSheetHeight(
                         getWindowHeight(windowManager) -
-                                HelpUtils.getActionBarSize(applicationContext))
+                                ContextUtils.getActionBarSize(applicationContext))
             } else {
                 setSheetHeight(
                         getWindowHeight(windowManager) -
-                                HelpUtils.getStatusBarHeightInPixels(resources) -
-                                HelpUtils.getActionBarSize(applicationContext))
+                                ContextUtils.getStatusBarHeightInPixels(resources) -
+                                ContextUtils.getActionBarSize(applicationContext))
             }
         } else {
             setSheetHeight(
                     getWindowHeight(windowManager) -
-                            HelpUtils.getStatusBarHeightInPixels(resources) -
-                            HelpUtils.getActionBarSize(applicationContext))
+                            ContextUtils.getStatusBarHeightInPixels(resources) -
+                            ContextUtils.getActionBarSize(applicationContext))
         }
     }
 

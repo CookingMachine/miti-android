@@ -8,8 +8,8 @@ import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
-import com.api.model.Category
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.api.dto.Category
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.item_main_category.view.*
 
@@ -30,7 +30,7 @@ class CategoryListAdapter(private var categories: List<Category>?,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         if (position < 1) {
-            val margin8 = HelpUtils.convertDpToPixel(8, context)
+            val margin8 = ContextUtils.convertDpToPixel(8, context)
             val params = RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT

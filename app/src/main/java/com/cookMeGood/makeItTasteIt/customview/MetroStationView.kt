@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 
 class MetroStationView : AppCompatTextView {
 
@@ -58,6 +58,6 @@ class MetroStationView : AppCompatTextView {
         val viewDrawable = ContextCompat.getDrawable(context, R.drawable.ic_metro_station_circle)!!.mutate()
         DrawableCompat.setTint(viewDrawable, linkStationColor(lineNumber.toString()))
         setCompoundDrawablesWithIntrinsicBounds(viewDrawable, null, null, null)
-        compoundDrawablePadding = HelpUtils.convertDpToPixel(6f, context).toInt()
+        compoundDrawablePadding = ContextUtils.convertDpToPixel(6f, context).toInt()
     }
 }

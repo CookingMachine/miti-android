@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFilterClickListener
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.item_search_background_filter.view.*
 
 class SearchFilterAdapter(private val items: List<String>,
@@ -34,12 +34,12 @@ class SearchFilterAdapter(private val items: List<String>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         if (position < 1) {
-            val margin2 = HelpUtils.convertDpToPixel(2, context)
-            val margin8 = HelpUtils.convertDpToPixel(8, context)
-            val margin16 = HelpUtils.convertDpToPixel(16, context)
+            val margin2 = ContextUtils.convertDpToPixel(2, context)
+            val margin8 = ContextUtils.convertDpToPixel(8, context)
+            val margin16 = ContextUtils.convertDpToPixel(16, context)
             val params = RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    HelpUtils.convertDpToPixel(32, context)
+                    ContextUtils.convertDpToPixel(32, context)
             )
             params.setMargins(margin16, margin2, margin8, margin2)
             holder.filterLayout.layoutParams = params

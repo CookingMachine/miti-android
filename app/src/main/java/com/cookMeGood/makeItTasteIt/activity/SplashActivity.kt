@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_MAIN_CONTENT
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_MAIN_CONTENT
 import com.api.ApiService
-import com.api.model.Category
-import com.api.model.MainContent
+import com.api.dto.Category
+import com.api.dto.MainContent
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.*
 import retrofit2.Call

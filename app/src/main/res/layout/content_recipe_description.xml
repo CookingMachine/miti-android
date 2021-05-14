@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/shape_profile_background"
-    android:orientation="horizontal">
+    android:background="@drawable/shape_profile_background">
 
     <Button
         android:id="@+id/recipeDescriptionDialogCloseButton"
@@ -22,9 +21,9 @@
         android:id="@+id/recipeDescriptionDialogText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/marginDefault"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="@dimen/marginDefault"
         android:layout_marginBottom="30dp"
         android:text="@string/text_recipe_description"
         tools:ignore="RelativeOverlap" />

@@ -15,7 +15,10 @@ import kotlinx.android.synthetic.main.item_suggest_edit_title.*
 import kotlinx.android.synthetic.main.item_suggest_edit_title.view.*
 import java.lang.ClassCastException
 
-class SuggestEditFieldDialogAdapter(val title: String, private val position: Int, var listener: SuggestStepEditListener): AppCompatDialogFragment() {
+class SuggestEditFieldDialogAdapter(val title: String,
+                                    private val position: Int,
+                                    var listener: SuggestStepEditListener
+) : AppCompatDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
@@ -33,13 +36,16 @@ class SuggestEditFieldDialogAdapter(val title: String, private val position: Int
 
                     when (title) {
                         "Название" -> {
-                            listener.editStep(title, position, view.suggestTitleEditText.text.toString())
+                            listener.editStep(
+                                    title, position, view.suggestTitleEditText.text.toString())
                         }
                         "Описание" -> {
-                            listener.editStep(title, position, view.suggestDescriptionEditText.text.toString())
+                            listener.editStep(
+                                    title, position, view.suggestDescriptionEditText.text.toString())
                         }
                         "Описание шага" -> {
-                            listener.editStep(title, position, view.suggestStepEditText.text.toString())
+                            listener.editStep(
+                                    title, position, view.suggestStepEditText.text.toString())
                         }
                     }
 

@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import kotlinx.android.synthetic.main.item_profile_dialog_screen.*
 
 open class ProfilePageFragment: DialogFragment() {
@@ -28,8 +28,8 @@ open class ProfilePageFragment: DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         profileCardLayout.layoutParams.width =
-                HelpUtils.getWindowWidth(requireActivity().windowManager) -
-                HelpUtils.convertDpToPixel(64, requireContext())
+                ContextUtils.getWindowWidth(requireActivity().windowManager) -
+                ContextUtils.convertDpToPixel(64, requireContext())
 
         profileCloseButton.setOnClickListener{ dialog!!.dismiss()}
         ratingsButton.setOnClickListener { goShortToast(requireContext(),"Оценки") }

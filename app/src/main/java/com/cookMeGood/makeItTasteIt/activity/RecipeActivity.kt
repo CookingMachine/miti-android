@@ -1,44 +1,62 @@
 package com.cookMeGood.makeItTasteIt.activity
 
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.api.dto.Recipe
+import com.api.dto.Restaurant
+import com.api.dto.Step
+import com.cookMeGood.makeItTasteIt.App
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.RecipeDescriptionDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.IngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeRestaurantListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getWindowHeight
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer
+import com.cookMeGood.makeItTasteIt.container.IntentContainer
+import com.cookMeGood.makeItTasteIt.container.LogContainer.RECIPE_ACTIVITY_INSERT_RECIPE
+import com.cookMeGood.makeItTasteIt.container.TextContainer
+import com.cookMeGood.makeItTasteIt.utils.*
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubIngredientsList
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubRestaurants
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getWindowHeight
+import com.database.AppDatabase
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.api.model.*
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.getStubRestaurants
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
 
 class RecipeActivity : SuperActivity() {
 
-    private var portions = 1
-    private var stepList = mutableListOf<Step>()
+    private lateinit var currentRecipe: Recipe
+
     private var stepListListAdapter: RecipeStepListAdapter? = null
     private var ingredientsListAdapter: IngredientsListAdapter? = null
     private var recipeRestaurantListAdapter: RecipeRestaurantListAdapter? = null
+
+    private var portions = 1
+    private var stepList = mutableListOf<Step>()
     private var recipeDialog: RecipeDescriptionDialogAdapter? = null
-    private var ingredientsList = arrayListOf<Ingredient>()
+    private var ingredientsList = getStubIngredientsList()
     private var restaurantList: List<Restaurant> = getStubRestaurants()
     private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
     private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
+
+    private var database: AppDatabase? = null
 
     override fun setAttr() = setLayout(R.layout.activity_recipe)
 
     override fun initInterface() {
 
+        database = App.instance.getDataBase()
+
         val screenHeight = getWindowHeight(windowManager)
-        val currentRecipe = intent.extras!!
-                .getSerializable(ConstantContainer.INTENT_RECIPE) as Recipe
+        currentRecipe = intent.extras!!
+                .getSerializable(IntentContainer.INTENT_RECIPE) as Recipe
         val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
@@ -108,7 +126,7 @@ class RecipeActivity : SuperActivity() {
             val peekHeight = recipeTitleTextView.measuredHeight +
                     recipeKBJULayout.measuredHeight +
                     recipeDescription.measuredHeight +
-                    HelpUtils.convertDpToPixel(32, applicationContext)
+                    ContextUtils.convertDpToPixel(32, applicationContext)
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
         }
@@ -148,8 +166,6 @@ class RecipeActivity : SuperActivity() {
         recipeIngredientsList.visibility = View.VISIBLE
         recipeRestaurantsList.visibility = View.GONE
         recipePortionPicker.visibility = View.VISIBLE
-
-        setIngredientsList()
     }
 
     private fun clickRestaurant() {
@@ -181,18 +197,7 @@ class RecipeActivity : SuperActivity() {
         }
     }
 
-    private fun setIngredientsList() {
-
-        if (ingredientsList.isNullOrEmpty()) {
-            for (i in 0..7) {
-                val ingredient = Ingredient(data[i], amount[i])
-                ingredientsList.add(ingredient)
-            }
-        }
-    }
-
     private fun onChangeSheetHeight(pixels: Int) {
-
         recipeBottomSheet.layoutParams.height = pixels
     }
 
@@ -204,11 +209,30 @@ class RecipeActivity : SuperActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_basket -> {
-                HelpUtils.goShortToast(applicationContext, "Добавлено в корзину")
+            R.id.action_cart -> {
+                val imageUri = SaveContentHelper.saveRecipeImageToInternalStorage(
+                        applicationContext, R.drawable.image_recipe_background, currentRecipe.id!!)
+                val currentRecipeModel = Mapper.recipeDtoToRecipeModel(currentRecipe)
+                currentRecipeModel.image = imageUri.toString()
+                database!!.recipeDao().insert(currentRecipeModel)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(object : DisposableSingleObserver<Long>() {
+
+                            override fun onSuccess(t: Long) {
+                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE, "Successfully inserted recipe into DB.")
+                                ContextUtils.goShortToast(applicationContext, TextContainer.RECIPE_ACTIVITY_ADD_TO_CART)
+                            }
+
+                            override fun onError(e: Throwable) {
+                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE, "Failed to insert recipe into DB!")
+                            }
+
+                        })
+
             }
             R.id.action_like -> {
-                HelpUtils.goShortToast(applicationContext, "Нравится!")
+                ContextUtils.goShortToast(applicationContext, "Нравится!")
             }
         }
         return super.onOptionsItemSelected(item)

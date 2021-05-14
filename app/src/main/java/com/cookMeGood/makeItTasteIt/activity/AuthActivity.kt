@@ -7,14 +7,14 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.api.ApiService
 import com.api.ApiService.ACCESS_TOKEN_KEY
-import com.api.model.LoginRequest
-import com.api.model.LoginResponse
-import com.api.model.User
+import com.api.dto.LoginRequest
+import com.api.dto.LoginResponse
+import com.api.dto.User
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_USER
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_AUTH
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_USER
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -56,7 +56,7 @@ class AuthActivity : SuperActivity() {
                     || password.isEmpty()) {
                 goShortToast(applicationContext, "Заполните все поля")
             } else {
-                registerUserOnServer(HelpUtils.getStubUser())
+                registerUserOnServer(ContextUtils.getStubUser())
             }
         }
     }

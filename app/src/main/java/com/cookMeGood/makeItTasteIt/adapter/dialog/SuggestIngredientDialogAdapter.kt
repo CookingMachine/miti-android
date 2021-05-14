@@ -8,11 +8,12 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
 import kotlinx.android.synthetic.main.item_suggest_edit_ingredient.view.*
 
-class SuggestIngredientDialogAdapter(val action:String,
+class SuggestIngredientDialogAdapter(private val action:String,
                                      private var position: Int,
                                      var listener: SuggestIngredientEditListener,
                                      var name:String? = null,
-                                     var amount: String? = null) : AppCompatDialogFragment() {
+                                     private var amount: String? = null
+) : AppCompatDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
         val inflater = requireActivity().layoutInflater

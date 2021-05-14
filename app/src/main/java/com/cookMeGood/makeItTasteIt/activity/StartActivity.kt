@@ -3,9 +3,9 @@ package com.cookMeGood.makeItTasteIt.activity
 import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_AUTH
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_USER
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_AUTH
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_USER
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity: SuperActivity() {
@@ -33,7 +33,7 @@ class StartActivity: SuperActivity() {
 
         startActivityAsGuest.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
-            intent.putExtra(INTENT_USER, HelpUtils.getStubUser())
+            intent.putExtra(INTENT_USER, ContextUtils.getStubUser())
             startActivity(intent)
             finish()
         }

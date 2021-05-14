@@ -8,17 +8,17 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.api.ApiService
-import com.api.model.Category
-import com.api.model.Recipe
+import com.api.dto.Category
+import com.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_CATEGORY
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_RECIPE
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_RECIPE
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.fragment_category.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,7 +68,7 @@ class CategoryFragment : SuperFragment() {
                     override fun onResponse(
                             call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
                         if (response.isSuccessful) {
-                            recipeList = response.body() ?: HelpUtils.getStubRecipeList()
+                            recipeList = response.body() ?: ContextUtils.getStubRecipeList()
                             recipeListAdapter!!.onUpdateList(recipeList)
                             showList()
                         }
@@ -76,7 +76,7 @@ class CategoryFragment : SuperFragment() {
 
                     override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
                         Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
-                        recipeList = HelpUtils.getStubRecipeList()
+                        recipeList = ContextUtils.getStubRecipeList()
                         recipeListAdapter!!.onUpdateList(recipeList)
                         showList()
                     }

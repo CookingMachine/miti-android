@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
-import com.api.model.Recipe
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.item_favourites_recipe.view.*
 
 class FavouritesListAdapter(
@@ -39,8 +39,8 @@ class FavouritesListAdapter(
         val recipe = recipeList[position]
 
         if (position == 0) {
-            val margin16 = HelpUtils.convertDpToPixel(16, context)
-            val margin64 = HelpUtils.convertDpToPixel(64, context)
+            val margin16 = ContextUtils.convertDpToPixel(16, context)
+            val margin64 = ContextUtils.convertDpToPixel(64, context)
             val params = RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT

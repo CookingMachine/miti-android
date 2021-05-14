@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
-import com.api.model.Step
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
+import com.api.dto.Step
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.item_suggest_step.view.*
 
 class SuggestStepListAdapter(val context: Context,
@@ -62,7 +62,7 @@ class SuggestStepListAdapter(val context: Context,
                     holder.stepDescription.visibility = View.VISIBLE
 
                     view.doOnPreDraw {
-                        expandedHeight = originalHeight + HelpUtils.convertDpToPixel(holder.stepDescription.height, context)
+                        expandedHeight = originalHeight + ContextUtils.convertDpToPixel(holder.stepDescription.height, context)
                         holder.stepDescription.visibility = View.GONE
                     }
                 }
@@ -103,7 +103,7 @@ class SuggestStepListAdapter(val context: Context,
 
     fun onChangeStepDescription(position: Int, text: String): Step {
         stepList[position].description = text
-        HelpUtils.goShortToast(context, "DATA: $text")
+        ContextUtils.goShortToast(context, "DATA: $text")
         notifyDataSetChanged()
         return Step(position + 1, text)
     }
