@@ -9,7 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.utils.ConstantContainer.INTENT_USER
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_USER
 import com.cookMeGood.makeItTasteIt.fragment.ProfilePageFragment
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnSearchIngredientClickListener
-import com.api.model.Ingredient
+import com.api.dto.Ingredient
 import kotlinx.android.synthetic.main.item_search_ingredient.view.*
 
 class SearchIngredientsAdapter(private val ingredients: List<Ingredient>,

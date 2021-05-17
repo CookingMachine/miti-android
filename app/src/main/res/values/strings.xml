@@ -70,6 +70,9 @@
     <string name="text_login_guest">Войти как гость</string>
     <string name="text_have_account">У меня есть аккаунт</string>
     <string name="text_forgot_password">Забыли пароль?</string>
+    <string name="text_cart_dialog">Удалить рецепт?</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
 
     <!-- MENU -->
 

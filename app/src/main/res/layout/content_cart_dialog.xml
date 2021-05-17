@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="150dp"
+    android:layout_marginHorizontal="32dp"
+    android:background="@drawable/shape_profile_background">
+
+    <TextView
+        android:id="@+id/cartDialogRecipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginDefault"
+        android:layout_marginStart="24dp"
+        android:textSize="18sp"
+        android:textColor="@color/primaryColor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/cartDialogRecipeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/text_cart_dialog"
+        android:textSize="14sp"
+        android:textColor="@color/primaryColor"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/cartDialogRecipeName"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentEnd="true"
+        tools:ignore="RelativeOverlap">
+
+        <TextView
+            android:id="@+id/cartDialogButtonNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_no"
+            android:textSize="14sp"
+            android:textColor="@color/colorGrey"/>
+
+        <TextView
+            android:id="@+id/cartDialogButtonYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/text_yes"
+            android:textSize="14sp"
+            android:textColor="@color/colorGrey"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

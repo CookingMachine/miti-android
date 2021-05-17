@@ -21,12 +21,12 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListen
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
-import com.api.model.Ingredient
-import com.api.model.Recipe
-import com.api.model.RecipeAdditionRequest
-import com.api.model.Step
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils
-import com.cookMeGood.makeItTasteIt.utils.HelpUtils.goShortToast
+import com.api.dto.Ingredient
+import com.api.dto.Recipe
+import com.api.dto.RecipeAdditionRequest
+import com.api.dto.Step
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
 import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.*
@@ -314,7 +314,7 @@ class SuggestActivity : SuperActivity() {
                     }
 
                     override fun onFailure(call: Call<Recipe>, t: Throwable) {
-                        HelpUtils.goLongToast(applicationContext, t.message.toString())
+                        ContextUtils.goLongToast(applicationContext, t.message.toString())
                     }
                 })
     }

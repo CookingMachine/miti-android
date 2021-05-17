@@ -1,2 +1,3 @@
-include ':api-module'
+include ':database'
+include ':api'
 include ':app'

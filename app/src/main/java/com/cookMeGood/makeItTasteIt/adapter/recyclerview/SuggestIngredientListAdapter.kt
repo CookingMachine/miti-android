@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestIngredientDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
-import com.api.model.Ingredient
+import com.api.dto.Ingredient
 import kotlinx.android.synthetic.main.item_suggest_ingredient.view.*
 
 class SuggestIngredientListAdapter(private val supportFragmentManager: FragmentManager,
