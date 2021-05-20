@@ -45,8 +45,6 @@ class RecipeActivity : SuperActivity() {
     private var recipeDialog: RecipeDescriptionDialogAdapter? = null
     private var ingredientsList = getStubIngredientsList()
     private var restaurantList: List<Restaurant> = getStubRestaurants()
-    private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
-    private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
     private var database: AppDatabase? = null
 
@@ -222,12 +220,15 @@ class RecipeActivity : SuperActivity() {
                         .subscribe(object : DisposableSingleObserver<Long>() {
 
                             override fun onSuccess(t: Long) {
-                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE, "Successfully inserted recipe into DB.")
-                                ContextUtils.goShortToast(applicationContext, TextContainer.RECIPE_ACTIVITY_ADD_TO_CART)
+                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE,
+                                        "Successfully inserted recipe into DB.")
+                                ContextUtils.goShortToast(applicationContext,
+                                        TextContainer.RECIPE_ACTIVITY_ADD_TO_CART)
                             }
 
                             override fun onError(e: Throwable) {
-                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE, "Failed to insert recipe into DB!")
+                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE,
+                                        "Failed to insert recipe into DB!")
                             }
 
                         })

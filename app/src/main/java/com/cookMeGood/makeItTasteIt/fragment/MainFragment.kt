@@ -45,7 +45,7 @@ class MainFragment : SuperFragment() {
 
     private lateinit var animation: LayoutAnimationController
 
-    val activityScope = CoroutineScope(Dispatchers.Main) // корутина для теста шиммера
+    val activityScope = CoroutineScope(Dispatchers.Main)
 
     private var changeListener = object : OnFragmentChangeListener {
         override fun replaceFragment(fragment: Fragment, category: Category) {
