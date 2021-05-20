@@ -19,6 +19,15 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
+            <include layout="@layout/shimmer_fragment_main"/>
+
+        <LinearLayout
+            android:id="@+id/mainFragmentContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
             <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
                 android:id="@+id/dishOfTheDayCard"
                 android:layout_width="match_parent"
@@ -26,7 +35,8 @@
                 app:cardTheme="@string/content_dish_of_the_day"
                 app:cardTitle="Свинина по-французски"
                 app:cardDescription="@string/content_dish_of_the_day_description"
-                app:cardImage="@drawable/image_dish_of_the_day" />
+                app:cardImage="@drawable/image_dish_of_the_day"
+                android:visibility="visible"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mainFragmentRecycler"
@@ -36,15 +46,6 @@
                 android:overScrollMode="never"
                 android:layoutAnimation="@anim/anim_layout_list_swipe_right"
                 android:visibility="visible" />
-
-            <ProgressBar
-                android:id="@+id/mainFragmentProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:indeterminateTintMode="src_atop"
-                android:indeterminateTint="@color/primaryColor" />
 
             <com.cookMeGood.makeItTasteIt.customview.CardViewWithTitle
                 android:id="@+id/noCaloriesCard"
@@ -62,7 +63,7 @@
                 app:cardDescription="@string/text_fast_and_delicious"/>
 
         </LinearLayout>
-
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
 

@@ -8,24 +8,32 @@ import android.view.animation.LayoutAnimationController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
-import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
 import com.api.ApiService
 import com.api.dto.Category
 import com.api.dto.MainContent
 import com.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
-import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_FAST_AND_DELICIOUS
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_LOW_CALORIES
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
+import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubCategoryList
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubRecipe
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main.dishOfTheDayCard
+import kotlinx.android.synthetic.main.fragment_main.fastAndDelicious
+import kotlinx.android.synthetic.main.fragment_main.noCaloriesCard
+import kotlinx.android.synthetic.main.shimmer_fragment_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +44,8 @@ class MainFragment : SuperFragment() {
     private var dishOfTheDayRecipe: Recipe? = null
 
     private lateinit var animation: LayoutAnimationController
+
+    val activityScope = CoroutineScope(Dispatchers.Main) // корутина для теста шиммера
 
     private var changeListener = object : OnFragmentChangeListener {
         override fun replaceFragment(fragment: Fragment, category: Category) {
@@ -57,26 +67,12 @@ class MainFragment : SuperFragment() {
 
         animation = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_layout_list_swipe_right)
         mainFragmentRecycler.visibility = View.GONE
+        mainFragmentContent.visibility = View.GONE
+        mainFragmentShimmer.visibility = View.VISIBLE
 
         setHasOptionsMenu(true)
 
-//        getMainPageContentFromServer()
-        DataContainer.mainContent = MainContent(getStubRecipe(),
-                listOf(Category("ddd", "fff")),
-                listOf(getStubRecipe()),
-                listOf(getStubRecipe()))
-        recipesListAdapter = CategoryListAdapter(
-                DataContainer.mainContent!!.categoryList!!,
-                changeListener
-        )
-        mainFragmentRecycler.layoutManager = LinearLayoutManager(
-                context,
-                LinearLayoutManager.HORIZONTAL,
-                false
-        )
-        mainFragmentRecycler.layoutAnimation = animation
-        mainFragmentRecycler.adapter = recipesListAdapter
-        showList()
+        getMainPageContentFromServer()
 
         dishOfTheDayCard.setOnClickListener {
             val intent = Intent(context, RecipeActivity::class.java)
@@ -102,7 +98,8 @@ class MainFragment : SuperFragment() {
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) = Unit
 
     private fun showList() {
-        mainFragmentProgressBar.visibility = View.GONE
+        mainFragmentShimmer.visibility = View.GONE
+        mainFragmentContent.visibility = View.VISIBLE
         mainFragmentRecycler.visibility = View.VISIBLE
     }
 
@@ -132,7 +129,10 @@ class MainFragment : SuperFragment() {
                                 recipesListAdapter!!
                                         .onUpdateList(DataContainer.mainContent!!.categoryList!!)
                             }
-                            showList()
+                            activityScope.launch {
+                                delay(3000)
+                                showList()
+                            }
                         }
                     }
 

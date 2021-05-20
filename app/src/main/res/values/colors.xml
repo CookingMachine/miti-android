@@ -31,5 +31,6 @@
     <color name="colorMetroStation10">#b2d345</color>
     <color name="colorMetroStation11">#79cbce</color>
     <color name="colorMetroStation12">#aabfdd</color>
-    
+    <color name="shimmer_placeholder">#dddddd</color>
+
 </resources>

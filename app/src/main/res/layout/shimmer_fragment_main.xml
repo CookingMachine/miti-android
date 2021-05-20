@@ -1,0 +1,198 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MaterialTheme">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/mainFragmentShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginDefault"
+                app:cardCornerRadius="@dimen/cornerRadiusDef"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image_placeholder"
+                        android:contentDescription="@string/content_description_empty" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/content_dish_of_the_day"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Грудинка на гриле"
+                            android:textColor="@color/shimmer_placeholder"
+                            android:background="@color/shimmer_placeholder"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/content_dish_of_the_day_description"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textColor="@color/shimmer_placeholder"
+                            android:background="@color/shimmer_placeholder"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="8dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal">
+
+                <include layout="@layout/shimmer_main_category" />
+                <include layout="@layout/shimmer_main_category" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginDefault"
+                app:cardCornerRadius="@dimen/cornerRadiusDef"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/cardViewImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/image_placeholder"
+                        android:contentDescription="@string/content_description_empty"
+                        android:tintMode="multiply"
+                        app:tint="@color/colorGrey"/>
+
+                    <TextView
+                        android:id="@+id/cardViewTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/marginDefault"
+                        android:layout_marginEnd="@dimen/marginDefault"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/content_no_calories"
+                        android:textSize="@dimen/cardViewWithTitleTextSize"
+                        android:textColor="@color/colorWhite"
+                        android:textAlignment="center"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_margin="@dimen/marginDefault"
+                app:cardCornerRadius="@dimen/cornerRadiusDef"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="165dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image_placeholder"
+                        android:contentDescription="@string/content_description_empty" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Вкусно а главное пиво"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:textColor="@color/shimmer_placeholder"
+                            android:background="@color/shimmer_placeholder"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/title_fast_and_delicious"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textColor="@color/shimmer_placeholder"
+                            android:background="@color/shimmer_placeholder"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="8dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</LinearLayout>

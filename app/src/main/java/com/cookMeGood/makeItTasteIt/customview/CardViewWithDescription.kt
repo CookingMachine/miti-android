@@ -10,15 +10,14 @@ import android.widget.LinearLayout
 import com.cookMeGood.makeItTasteIt.R
 import kotlinx.android.synthetic.main.item_card_view_with_description.view.*
 
-class CardViewWithDescription: LinearLayout {
+class CardViewWithDescription : LinearLayout {
 
     var theme: String = ""
         set(value) {
             field = value
             if (field.isEmpty()) {
                 cardViewTheme.visibility = View.GONE
-            }
-            else {
+            } else {
                 cardViewTheme.text = field
             }
         }
@@ -41,16 +40,16 @@ class CardViewWithDescription: LinearLayout {
             cardViewImage.setImageDrawable(field)
         }
 
-    constructor(context: Context): super(context){
+    constructor(context: Context) : super(context) {
         init(context, null)
     }
 
-    constructor(context: Context, attrs: AttributeSet?): super(context, attrs){
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         init(context, attrs)
     }
 
     @SuppressLint("Recycle")
-    private fun init(context: Context, attrs: AttributeSet?){
+    private fun init(context: Context, attrs: AttributeSet?) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.item_card_view_with_description, this)
 
@@ -61,5 +60,4 @@ class CardViewWithDescription: LinearLayout {
         description = arr.getString(R.styleable.CardViewWithDescription_cardDescription) ?: ""
         backgroundImage = arr.getDrawable(R.styleable.CardViewWithDescription_cardImage)
     }
-
 }

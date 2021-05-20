@@ -18,10 +18,12 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
 import com.cookMeGood.makeItTasteIt.container.IntentContainer
 import com.cookMeGood.makeItTasteIt.container.LogContainer.RECIPE_ACTIVITY_INSERT_RECIPE
 import com.cookMeGood.makeItTasteIt.container.TextContainer
-import com.cookMeGood.makeItTasteIt.utils.*
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubIngredientsList
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubRestaurants
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getWindowHeight
+import com.cookMeGood.makeItTasteIt.utils.Mapper
+import com.cookMeGood.makeItTasteIt.utils.SaveContentHelper
 import com.database.AppDatabase
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import io.reactivex.android.schedulers.AndroidSchedulers
