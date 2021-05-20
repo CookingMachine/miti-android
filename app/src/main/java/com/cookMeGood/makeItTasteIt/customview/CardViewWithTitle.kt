@@ -41,5 +41,4 @@ class CardViewWithTitle: LinearLayout {
         title = arr.getString(R.styleable.CardViewWithTitle_title) ?: ""
         backgroundImage = arr.getDrawable(R.styleable.CardViewWithTitle_image)
     }
-
 }
