@@ -20,7 +20,6 @@ class SplashActivity : SuperActivity() {
 
     private val waitForResponseCoroutine = CoroutineScope(Dispatchers.Main)
     private var isAuthenticated: Boolean = false
-    private var mainContent: MainContent? = null
 
     override fun setAttr() = setLayout(R.layout.activity_splash)
 
@@ -50,8 +49,7 @@ class SplashActivity : SuperActivity() {
     private suspend fun getData(): Boolean {
         var timeLimit = 0
 
-        while (mainContent == null && timeLimit < 10 && isAuthenticated){
-            getCategoriesFromServer()
+        while (timeLimit < 10 && isAuthenticated){
             delay(2000)
             timeLimit += 2
         }
@@ -62,11 +60,7 @@ class SplashActivity : SuperActivity() {
     private fun startNextActivity(){
         when (isAuthenticated) {
             true -> {
-                val bundle = Bundle()
-                bundle.putSerializable(INTENT_MAIN_CONTENT, mainContent)
-
                 intent = Intent(this@SplashActivity, MainActivity::class.java)
-                intent.putExtras(bundle)
 
                 window.exitTransition = null
                 startActivity(intent)
@@ -86,25 +80,5 @@ class SplashActivity : SuperActivity() {
             }
         }
         supportFinishAfterTransition()
-    }
-
-    private fun getCategoriesFromServer() {
-        ApiService.getApi(applicationContext)
-                .getAllCategories()
-                .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(
-                            call: Call<List<Category>>, response: Response<List<Category>>) {
-                            when (response.code()) {
-                                200 -> {
-                                    mainContent = MainContent(response.body()
-                                            ?: arrayListOf())
-                                }
-                            }
-                    }
-
-                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
-                    }
-                })
     }
 }

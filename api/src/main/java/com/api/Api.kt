@@ -36,4 +36,7 @@ interface Api {
             @Body recipeRequest: SearchRecipeRequest,
             @Path("sort") sort: String
     ): Call<List<Recipe>>
+
+    @GET("$PATH/mainPage")
+    fun getMainPageContent(): Call<MainContent>
 }

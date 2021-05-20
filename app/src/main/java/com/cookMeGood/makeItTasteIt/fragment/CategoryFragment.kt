@@ -16,9 +16,13 @@ import com.cookMeGood.makeItTasteIt.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeListAdapter
+import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_FAST_AND_DELICIOUS
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_LOW_CALORIES
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goLongToast
 import kotlinx.android.synthetic.main.fragment_category.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,11 +47,26 @@ class CategoryFragment : SuperFragment() {
     }
 
     override fun initInterface(view: View?) {
-        (activity as SuperActivity).title = requireContext().getString(R.string.title_activity_category)
+        val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
+        (activity as SuperActivity).title = category.name
 
         categoryFragmentProgressBar.visibility = View.VISIBLE
 
-        val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
+        when (category.id) {
+            INTENT_CATEGORY_LOW_CALORIES -> {
+                recipeList = DataContainer.mainContent!!.lowCalorieRecipes!!
+            }
+            INTENT_CATEGORY_FAST_AND_DELICIOUS -> {
+                recipeList = DataContainer.mainContent!!.fastAndDeliciousRecipes!!
+            }
+            else -> {
+                getRecipesByCategoryIdFromServer(category.id!!)
+            }
+        }
+        if (recipeListAdapter == null) {
+            initListAdapter()
+        }
+        showList()
 
         getRecipesByCategoryIdFromServer(category.id!!)
 
@@ -57,11 +76,6 @@ class CategoryFragment : SuperFragment() {
     }
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
-
-        if (recipeListAdapter == null) {
-            initListAdapter()
-        }
-
         ApiService.getApi(requireContext())
                 .getRecipesByCategoryId(categoryId)
                 .enqueue(object : Callback<List<Recipe>> {
@@ -69,16 +83,10 @@ class CategoryFragment : SuperFragment() {
                             call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
                         if (response.isSuccessful) {
                             recipeList = response.body() ?: ContextUtils.getStubRecipeList()
-                            recipeListAdapter!!.onUpdateList(recipeList)
-                            showList()
                         }
                     }
-
                     override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
-                        recipeList = ContextUtils.getStubRecipeList()
-                        recipeListAdapter!!.onUpdateList(recipeList)
-                        showList()
+                        goLongToast(requireContext(), t.message.toString())
                     }
                 })
     }

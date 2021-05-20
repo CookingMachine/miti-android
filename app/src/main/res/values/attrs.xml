@@ -5,7 +5,7 @@
         <attr name="cardTheme" format="string"/>
         <attr name="cardTitle" format="string"/>
         <attr name="cardDescription" format="string"/>
-        <attr name="cardImage" format="reference"/>
+        <attr name="cardImage" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="CardViewWithTitle">

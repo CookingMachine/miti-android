@@ -18,10 +18,12 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
 import com.cookMeGood.makeItTasteIt.container.IntentContainer
 import com.cookMeGood.makeItTasteIt.container.LogContainer.RECIPE_ACTIVITY_INSERT_RECIPE
 import com.cookMeGood.makeItTasteIt.container.TextContainer
-import com.cookMeGood.makeItTasteIt.utils.*
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubIngredientsList
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubRestaurants
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getWindowHeight
+import com.cookMeGood.makeItTasteIt.utils.Mapper
+import com.cookMeGood.makeItTasteIt.utils.SaveContentHelper
 import com.database.AppDatabase
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -43,8 +45,6 @@ class RecipeActivity : SuperActivity() {
     private var recipeDialog: RecipeDescriptionDialogAdapter? = null
     private var ingredientsList = getStubIngredientsList()
     private var restaurantList: List<Restaurant> = getStubRestaurants()
-    private val data = arrayOf("Помидоры", "Салат", "Хлеб", "Майонез", "Чеснок", "Сыр", "Укроп", "Лук")
-    private val amount = arrayOf("400г", "200г", "1 буханка", "200г", "2 головки", "300г", "50г", "50г")
 
     private var database: AppDatabase? = null
 
@@ -220,12 +220,15 @@ class RecipeActivity : SuperActivity() {
                         .subscribe(object : DisposableSingleObserver<Long>() {
 
                             override fun onSuccess(t: Long) {
-                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE, "Successfully inserted recipe into DB.")
-                                ContextUtils.goShortToast(applicationContext, TextContainer.RECIPE_ACTIVITY_ADD_TO_CART)
+                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE,
+                                        "Successfully inserted recipe into DB.")
+                                ContextUtils.goShortToast(applicationContext,
+                                        TextContainer.RECIPE_ACTIVITY_ADD_TO_CART)
                             }
 
                             override fun onError(e: Throwable) {
-                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE, "Failed to insert recipe into DB!")
+                                Log.i(RECIPE_ACTIVITY_INSERT_RECIPE,
+                                        "Failed to insert recipe into DB!")
                             }
 
                         })
