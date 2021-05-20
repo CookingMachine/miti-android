@@ -5,7 +5,16 @@ import java.io.Serializable
 
 data class MainContent (
 
-        @SerializedName("categoryList")
-        var categoryList: List<Category>
+        @SerializedName("recipeOfTheDay")
+        var recipeOfTheDay: Recipe? = null,
 
-) : Serializable
+        @SerializedName("categoryList")
+        var categoryList: List<Category>? = null,
+
+        @SerializedName("lowCalories")
+        var lowCalorieRecipes: List<Recipe>? = null,
+
+        @SerializedName("fastAndDelicious")
+        var fastAndDeliciousRecipes: List<Recipe>? = null
+
+): Serializable

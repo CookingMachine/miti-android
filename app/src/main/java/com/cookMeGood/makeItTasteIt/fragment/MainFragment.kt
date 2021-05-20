@@ -13,26 +13,31 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
 import com.api.ApiService
 import com.api.dto.Category
+import com.api.dto.MainContent
 import com.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
+import com.cookMeGood.makeItTasteIt.container.DataContainer
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_FAST_AND_DELICIOUS
+import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_LOW_CALORIES
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_RECIPE
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubCategoryList
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubRecipe
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainFragment: SuperFragment() {
+class MainFragment : SuperFragment() {
 
     private var recipesListAdapter: CategoryListAdapter? = null
-    private var categoryList: List<Category> = listOf()
     private var dishOfTheDayRecipe: Recipe? = null
 
     private lateinit var animation: LayoutAnimationController
 
-    private var changeListener = object: OnFragmentChangeListener{
+    private var changeListener = object : OnFragmentChangeListener {
         override fun replaceFragment(fragment: Fragment, category: Category) {
 
             val bundle = Bundle()
@@ -54,10 +59,24 @@ class MainFragment: SuperFragment() {
         mainFragmentRecycler.visibility = View.GONE
 
         setHasOptionsMenu(true)
-        getAllCategoriesFromServer()
-        dishOfTheDayRecipe = getStubRecipe()
-        // выполняем запрос на mainContent
-        // и в нем получаем dishOfTheDay
+
+//        getMainPageContentFromServer()
+        DataContainer.mainContent = MainContent(getStubRecipe(),
+                listOf(Category("ddd", "fff")),
+                listOf(getStubRecipe()),
+                listOf(getStubRecipe()))
+        recipesListAdapter = CategoryListAdapter(
+                DataContainer.mainContent!!.categoryList!!,
+                changeListener
+        )
+        mainFragmentRecycler.layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+        )
+        mainFragmentRecycler.layoutAnimation = animation
+        mainFragmentRecycler.adapter = recipesListAdapter
+        showList()
 
         dishOfTheDayCard.setOnClickListener {
             val intent = Intent(context, RecipeActivity::class.java)
@@ -65,52 +84,60 @@ class MainFragment: SuperFragment() {
             startActivity(intent)
         }
 
-        noCaloriesCard.setOnClickListener{
+        noCaloriesCard.setOnClickListener {
             changeListener.replaceFragment(
                     CategoryFragment(),
-                    Category("low_calories", "Мало калорий")
+                    Category(INTENT_CATEGORY_LOW_CALORIES, "Мало калорий")
             )
         }
 
         fastAndDelicious.setOnClickListener {
             changeListener.replaceFragment(
                     CategoryFragment(),
-                    Category("fast_and_delicious", "Быстро и вкусно")
+                    Category(INTENT_CATEGORY_FAST_AND_DELICIOUS, "Быстро и вкусно")
             )
         }
     }
 
-    override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    }
+    override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) = Unit
 
     private fun showList() {
         mainFragmentProgressBar.visibility = View.GONE
         mainFragmentRecycler.visibility = View.VISIBLE
     }
 
-    private fun getAllCategoriesFromServer() {
+    private fun getMainPageContentFromServer() {
         ApiService.getApi(requireContext())
-                .getAllCategories()
-                .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                .getMainPageContent()
+                .enqueue(object : Callback<MainContent> {
+                    override fun onResponse(call: Call<MainContent>,
+                                            response: Response<MainContent>) {
                         if (response.isSuccessful) {
-                            categoryList = response.body() ?: emptyList()
+                            DataContainer.mainContent = response.body()
+                            dishOfTheDayCard.title = DataContainer.mainContent!!.recipeOfTheDay!!.name!!
 
                             if (recipesListAdapter == null) {
-                                recipesListAdapter = CategoryListAdapter(categoryList, changeListener)
-                                mainFragmentRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                                recipesListAdapter = CategoryListAdapter(
+                                        DataContainer.mainContent!!.categoryList!!,
+                                        changeListener
+                                )
+                                mainFragmentRecycler.layoutManager = LinearLayoutManager(
+                                        context,
+                                        LinearLayoutManager.HORIZONTAL,
+                                        false
+                                )
                                 mainFragmentRecycler.layoutAnimation = animation
                                 mainFragmentRecycler.adapter = recipesListAdapter
-                            }
-                            else {
-                                recipesListAdapter!!.onUpdateList(categoryList)
+                            } else {
+                                recipesListAdapter!!
+                                        .onUpdateList(DataContainer.mainContent!!.categoryList!!)
                             }
                             showList()
                         }
                     }
 
-                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                        Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
+                    override fun onFailure(call: Call<MainContent>, t: Throwable) {
+                        ContextUtils.goLongToast(requireContext(), t.message.toString())
                     }
                 })
     }
