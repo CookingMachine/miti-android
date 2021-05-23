@@ -1,7 +1,12 @@
 package com.api
 
 import com.api.dto.*
+import com.api.dto.request.LoginRequest
+import com.api.dto.request.RecipeAdditionRequest
+import com.api.dto.request.UserRegistrationRequest
 import com.api.dto.request.SearchRecipeRequest
+import com.api.dto.response.LoginResponse
+import com.api.dto.response.UserRegistrationResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -12,15 +17,16 @@ interface Api {
         const val PATH = "/server/api/v1"
     }
 
-    @Headers("Content-Type: application/json")
+    @Headers("Accept: application/json")
     @POST("$PATH/authorization")
-    fun authorize(@Body request: LoginRequest): Call<LoginResponse>
+    fun authorize(@Body request: LoginRequest): Call<String>
 
     @GET("$PATH/category")
     fun getAllCategories(): Call<List<Category>>
 
     @POST("$PATH/user")
-    fun addUser(@Body user: User): Call<User>
+    fun addUser(@Body userRegistrationRequest: UserRegistrationRequest):
+            Call<UserRegistrationResponse>
 
     @GET("$PATH/recipe/getByCategoryId/{id}")
     fun getRecipesByCategoryId(@Path("id") categoryId: String): Call<List<Recipe>>
@@ -33,8 +39,8 @@ interface Api {
 
     @GET("$PATH/searchRecipe")
     fun getRecipesByCriteria(
-            @Body recipeRequest: SearchRecipeRequest,
-            @Path("sort") sort: String
+        @Body recipeRequest: SearchRecipeRequest,
+        @Path("sort") sort: String
     ): Call<List<Recipe>>
 
     @GET("$PATH/mainPage")

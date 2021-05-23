@@ -30,7 +30,7 @@ import retrofit2.Response
 
 class CategoryFragment : SuperFragment() {
 
-    private var recipeList = listOf<Recipe>()
+    private var recipeList: List<Recipe>? = null
     private var recipeListAdapter: RecipeListAdapter? = null
 
     private val openRecipeListener = object : OnOpenRecipeListener {
@@ -43,8 +43,7 @@ class CategoryFragment : SuperFragment() {
 
     override fun setAttr() = setLayout(R.layout.fragment_category)
 
-    override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    }
+    override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) = Unit
 
     override fun initInterface(view: View?) {
         val category = requireArguments().getSerializable(INTENT_CATEGORY) as Category
@@ -55,20 +54,18 @@ class CategoryFragment : SuperFragment() {
         when (category.id) {
             INTENT_CATEGORY_LOW_CALORIES -> {
                 recipeList = DataContainer.mainContent!!.lowCalorieRecipes!!
+                initListAdapter()
+                showList()
             }
             INTENT_CATEGORY_FAST_AND_DELICIOUS -> {
                 recipeList = DataContainer.mainContent!!.fastAndDeliciousRecipes!!
+                initListAdapter()
+                showList()
             }
             else -> {
                 getRecipesByCategoryIdFromServer(category.id!!)
             }
         }
-        if (recipeListAdapter == null) {
-            initListAdapter()
-        }
-        showList()
-
-        getRecipesByCategoryIdFromServer(category.id!!)
 
         floatingButton.setOnClickListener {
             startActivity(Intent(context, SuggestActivity::class.java))
@@ -83,6 +80,8 @@ class CategoryFragment : SuperFragment() {
                             call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
                         if (response.isSuccessful) {
                             recipeList = response.body() ?: ContextUtils.getStubRecipeList()
+                            initListAdapter()
+                            showList()
                         }
                     }
                     override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
@@ -98,7 +97,7 @@ class CategoryFragment : SuperFragment() {
                 R.drawable.shape_default_devider)!!
         )
 
-        recipeListAdapter = RecipeListAdapter(recipeList, context, openRecipeListener)
+        recipeListAdapter = RecipeListAdapter(recipeList!!, context, openRecipeListener)
         categoryFragmentRecipeList.layoutManager = LinearLayoutManager(
                 context, LinearLayoutManager.VERTICAL, false)
         categoryFragmentRecipeList.addItemDecoration(dividerItemDecoration)

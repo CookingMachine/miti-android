@@ -15,9 +15,11 @@
 
     <TextView
         android:id="@+id/recipeTitleTextView"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/title_recipe"
         android:textColor="@color/colorBlack"
@@ -31,9 +33,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
-        android:gravity="center"
         android:background="@drawable/shape_recipe_stats"
         android:elevation="2dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -126,10 +128,10 @@
         <LinearLayout
             android:layout_width="@dimen/recipeStatsLayoutElementWidth"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+            android:layout_marginEnd="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,12 +156,11 @@
         android:id="@+id/recipeDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="40dp"
         android:layout_marginTop="@dimen/marginDefault"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="4dp"
-        android:layout_gravity="center"
-        android:lines="5"
         android:maxLines="5"
         android:singleLine="false"
         android:text="@string/text_recipe"
@@ -180,13 +181,14 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="horizontal"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/recipeButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
@@ -195,13 +197,13 @@
             android:background="@drawable/shape_button_rounded_white"
             android:fontFamily="@font/roboto"
             android:text="@string/title_recipe"
-            android:textColor="@color/primaryColor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSizeDef"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/textSizeDef" />
 
         <Button
             android:id="@+id/ingredButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
@@ -210,13 +212,13 @@
             android:background="@drawable/shape_button_rounded_white"
             android:fontFamily="@font/roboto"
             android:text="@string/title_ingredient"
-            android:textColor="@color/primaryColor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSizeDef"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/textSizeDef" />
 
         <Button
             android:id="@+id/restaurantsButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
@@ -225,10 +227,9 @@
             android:background="@drawable/shape_button_rounded_white"
             android:fontFamily="@font/roboto"
             android:text="@string/title_restaurants"
-            android:textColor="@color/primaryColor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSizeDef"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/textSizeDef" />
 
     </LinearLayout>
 
@@ -240,16 +241,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeStepList"
+        style="@android:style/Animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/marginDefault"
         android:layout_marginEnd="@dimen/marginDefault"
         android:overScrollMode="never"
-        android:visibility="gone"
-        style="@android:style/Animation"/>
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeIngredientsList"
+        style="@android:style/Animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
@@ -257,8 +259,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:overScrollMode="never"
-        android:visibility="gone"
-        style="@android:style/Animation"/>
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeRestaurantsList"
@@ -266,6 +267,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:orientation="vertical"
-        android:overScrollMode="never"/>
+        android:overScrollMode="never" />
 
 </LinearLayout>

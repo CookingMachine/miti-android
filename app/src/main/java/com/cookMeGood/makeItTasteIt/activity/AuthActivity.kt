@@ -7,13 +7,12 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.api.ApiService
 import com.api.ApiService.ACCESS_TOKEN_KEY
-import com.api.dto.LoginRequest
-import com.api.dto.LoginResponse
-import com.api.dto.User
+import com.api.dto.request.LoginRequest
+import com.api.dto.request.UserRegistrationRequest
+import com.api.dto.response.UserRegistrationResponse
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_AUTH
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_USER
-import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
@@ -30,7 +29,7 @@ class AuthActivity : SuperActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.navigationBarColor =
-                    ContextCompat.getColor(applicationContext, R.color.colorBlack)
+                ContextCompat.getColor(applicationContext, R.color.colorBlack)
         }
 
         authActivityLoginButton.setOnClickListener {
@@ -51,71 +50,95 @@ class AuthActivity : SuperActivity() {
             val password = authActivityRegisterPassword.text.toString()
 
             if (name.isEmpty()
-                    || username.isEmpty()
-                    || email.isEmpty()
-                    || password.isEmpty()) {
+                || username.isEmpty()
+                || email.isEmpty()
+                || password.isEmpty()
+            ) {
                 goShortToast(applicationContext, "Заполните все поля")
             } else {
-                registerUserOnServer(ContextUtils.getStubUser())
+                registerUserOnServer(
+                    UserRegistrationRequest(
+                        username, password, email, name
+                    )
+                )
             }
         }
     }
 
-    private fun registerUserOnServer(user: User) {
+    private fun registerUserOnServer(registrationRequest: UserRegistrationRequest) {
         ApiService.getApi(applicationContext)
-                .addUser(user)
-                .enqueue(object : Callback<User> {
-                    override fun onResponse(call: Call<User>, response: Response<User>) {
-                        when (response.code()) {
-                            200 -> {
-                                intent.putExtra(INTENT_USER, response.body())
-                                startActivity(Intent(
-                                        this@AuthActivity,
-                                        MainActivity::class.java))
-                            }
-                            else -> {
-                                goShortToast(applicationContext,
-                                        "Такой пользователь уже существует!")
-                            }
+            .addUser(registrationRequest)
+            .enqueue(object : Callback<UserRegistrationResponse> {
+                override fun onResponse(
+                    call: Call<UserRegistrationResponse>,
+                    response: Response<UserRegistrationResponse>
+                ) {
+                    when (response.code()) {
+                        200 -> {
+                            val sharedPreferences = applicationContext.getSharedPreferences(
+                                ApiService.PREF_NAME, Context.MODE_PRIVATE
+                            )
+                            sharedPreferences
+                                .edit()
+                                .putString(ACCESS_TOKEN_KEY, response.body()!!.jwtToken)
+                                .apply()
+                            intent.putExtra(INTENT_USER, response.body())
+                            startActivity(
+                                Intent(
+                                    this@AuthActivity,
+                                    MainActivity::class.java
+                                )
+                            )
+                        }
+                        else -> {
+                            goShortToast(
+                                applicationContext,
+                                "Такой пользователь уже существует!"
+                            )
                         }
                     }
+                }
 
-                    override fun onFailure(call: Call<User>, t: Throwable) {
-                        goShortToast(applicationContext, "Ошибка соединения с сервером")
-                    }
-                })
+                override fun onFailure(call: Call<UserRegistrationResponse>, t: Throwable) {
+                    goShortToast(applicationContext, "Ошибка соединения с сервером")
+                }
+            })
     }
 
     private fun loginUserOnServer(login: String, password: String) {
         ApiService.getApi(applicationContext)
-                .authorize(LoginRequest(login, password))
-                .enqueue(object : Callback<LoginResponse> {
-                    override fun onResponse(
-                            call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                        when (response.code()) {
-                            200 -> {
-                                val sharedPreferences = applicationContext.getSharedPreferences(
-                                        ApiService.PREF_NAME, Context.MODE_PRIVATE
+            .authorize(LoginRequest(login, password))
+            .enqueue(object : Callback<String> {
+                override fun onResponse(
+                    call: Call<String>, response: Response<String>
+                ) {
+                    when (response.code()) {
+                        200 -> {
+                            val sharedPreferences = applicationContext.getSharedPreferences(
+                                ApiService.PREF_NAME, Context.MODE_PRIVATE
+                            )
+                            sharedPreferences
+                                .edit()
+                                .putString(ACCESS_TOKEN_KEY, response.body())
+                                .apply()
+                            startActivity(
+                                Intent(
+                                    this@AuthActivity,
+                                    MainActivity::class.java
                                 )
-                                sharedPreferences
-                                        .edit()
-                                        .putString(ACCESS_TOKEN_KEY, response.body()!!.jwtToken)
-                                        .apply()
-                                startActivity(Intent(
-                                        this@AuthActivity,
-                                        MainActivity::class.java)
-                                )
-                            }
-                            500 -> {
-                                goShortToast(applicationContext, "Ошибка!")
-                            }
+                            )
+                        }
+                        500 -> {
+                            goShortToast(applicationContext, "Ошибка!")
                         }
                     }
+                }
 
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        goShortToast(applicationContext, t.message.toString())
-                    }
-                })
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    goShortToast(applicationContext, t.localizedMessage!!.toString())
+                    throw t
+                }
+            })
     }
 
     private fun showLoggingForm(isLoggingIn: Boolean) {

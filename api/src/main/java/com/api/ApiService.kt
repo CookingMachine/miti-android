@@ -1,6 +1,7 @@
 package com.api
 
 import android.content.Context
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,6 +21,7 @@ object ApiService {
         val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val jwtToken = sharedPreferences.getString(ACCESS_TOKEN_KEY, "") ?: ""
         val logging = HttpLoggingInterceptor()
+        val gson = GsonBuilder().setLenient().create()
 
         logging.level = HttpLoggingInterceptor.Level.HEADERS
 
@@ -35,7 +37,7 @@ object ApiService {
 
         retrofit = Retrofit.Builder()
                 .client(client.build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(Api.BASE_URL)
                 .build()
 
