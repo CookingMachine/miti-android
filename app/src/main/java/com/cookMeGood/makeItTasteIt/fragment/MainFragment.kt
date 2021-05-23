@@ -40,13 +40,9 @@ import retrofit2.Response
 
 class MainFragment : SuperFragment() {
 
-    private var recipesListAdapter: CategoryListAdapter? = null
-    private var dishOfTheDayRecipe: Recipe? = null
-
     private lateinit var animation: LayoutAnimationController
 
-    val activityScope = CoroutineScope(Dispatchers.Main)
-
+    private var recipesListAdapter: CategoryListAdapter? = null
     private var changeListener = object : OnFragmentChangeListener {
         override fun replaceFragment(fragment: Fragment, category: Category) {
 
@@ -76,21 +72,21 @@ class MainFragment : SuperFragment() {
 
         dishOfTheDayCard.setOnClickListener {
             val intent = Intent(context, RecipeActivity::class.java)
-            intent.putExtra(INTENT_RECIPE, dishOfTheDayRecipe)
+            intent.putExtra(INTENT_RECIPE, DataContainer.mainContent!!.recipeOfTheDay)
             startActivity(intent)
         }
 
         noCaloriesCard.setOnClickListener {
             changeListener.replaceFragment(
-                    CategoryFragment(),
-                    Category(INTENT_CATEGORY_LOW_CALORIES, "Мало калорий")
+                CategoryFragment(),
+                Category(INTENT_CATEGORY_LOW_CALORIES, "Мало калорий")
             )
         }
 
         fastAndDelicious.setOnClickListener {
             changeListener.replaceFragment(
-                    CategoryFragment(),
-                    Category(INTENT_CATEGORY_FAST_AND_DELICIOUS, "Быстро и вкусно")
+                CategoryFragment(),
+                Category(INTENT_CATEGORY_FAST_AND_DELICIOUS, "Быстро и вкусно")
             )
         }
     }
@@ -105,40 +101,38 @@ class MainFragment : SuperFragment() {
 
     private fun getMainPageContentFromServer() {
         ApiService.getApi(requireContext())
-                .getMainPageContent()
-                .enqueue(object : Callback<MainContent> {
-                    override fun onResponse(call: Call<MainContent>,
-                                            response: Response<MainContent>) {
-                        if (response.isSuccessful) {
-                            DataContainer.mainContent = response.body()
-                            dishOfTheDayCard.title = DataContainer.mainContent!!.recipeOfTheDay!!.name!!
+            .getMainPageContent()
+            .enqueue(object : Callback<MainContent> {
+                override fun onResponse(
+                    call: Call<MainContent>,
+                    response: Response<MainContent>
+                ) {
+                    if (response.isSuccessful) {
+                        DataContainer.mainContent = response.body()
+                        dishOfTheDayCard.title = DataContainer.mainContent!!.recipeOfTheDay!!.name!!
 
-                            if (recipesListAdapter == null) {
-                                recipesListAdapter = CategoryListAdapter(
-                                        DataContainer.mainContent!!.categoryList!!,
-                                        changeListener
-                                )
-                                mainFragmentRecycler.layoutManager = LinearLayoutManager(
-                                        context,
-                                        LinearLayoutManager.HORIZONTAL,
-                                        false
-                                )
-                                mainFragmentRecycler.layoutAnimation = animation
-                                mainFragmentRecycler.adapter = recipesListAdapter
-                            } else {
-                                recipesListAdapter!!
-                                        .onUpdateList(DataContainer.mainContent!!.categoryList!!)
-                            }
-                            activityScope.launch {
-                                delay(3000)
-                                showList()
-                            }
+                        if (recipesListAdapter == null) {
+                            recipesListAdapter = CategoryListAdapter(
+                                DataContainer.mainContent!!.categoryList!!,
+                                changeListener
+                            )
+                            mainFragmentRecycler.layoutManager = LinearLayoutManager(
+                                context,
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                            mainFragmentRecycler.layoutAnimation = animation
+                            mainFragmentRecycler.adapter = recipesListAdapter
+                        } else {
+                            recipesListAdapter!!
+                                .onUpdateList(DataContainer.mainContent!!.categoryList!!)
                         }
+                        showList()
                     }
-
-                    override fun onFailure(call: Call<MainContent>, t: Throwable) {
-                        ContextUtils.goLongToast(requireContext(), t.message.toString())
-                    }
-                })
+                }
+                override fun onFailure(call: Call<MainContent>, t: Throwable) {
+                    ContextUtils.goLongToast(requireContext(), t.message.toString())
+                }
+            })
     }
 }

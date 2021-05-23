@@ -2,6 +2,7 @@ package com.api.dto
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -20,7 +21,7 @@ data class Recipe (
         var time: String? = null,
 
         @SerializedName("createDate")
-        var createDate: Date? = null,
+        var createDate: String? = null,
 
         @SerializedName("kitchen")
         var kitchen: String? = null,

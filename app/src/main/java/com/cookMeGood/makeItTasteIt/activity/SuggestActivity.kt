@@ -23,7 +23,7 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAd
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.api.dto.Ingredient
 import com.api.dto.Recipe
-import com.api.dto.RecipeAdditionRequest
+import com.api.dto.request.RecipeAdditionRequest
 import com.api.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast

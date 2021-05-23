@@ -14,7 +14,7 @@ import com.cookMeGood.makeItTasteIt.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.item_main_category.view.*
 
 class CategoryListAdapter(private var categories: List<Category>?,
-                          var changeListener: OnFragmentChangeListener) :
+                          private var changeListener: OnFragmentChangeListener) :
         RecyclerView.Adapter<CategoryListAdapter.ViewHolder>() {
 
     private lateinit var listener: OnFragmentChangeListener

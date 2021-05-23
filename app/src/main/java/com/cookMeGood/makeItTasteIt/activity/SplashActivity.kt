@@ -25,8 +25,6 @@ class SplashActivity : SuperActivity() {
 
     override fun initInterface() {
 
-        window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
-
         waitForResponseCoroutine.launch {
             val call  = async { getData() }
 

@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.cookMeGood.makeItTasteIt.R
 import com.api.dto.Recipe
+import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.item_category_recipe.view.*
 
 class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?,
@@ -32,14 +33,21 @@ class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?
         holder.image.setImageResource(R.drawable.image_recipe_background)
         holder.name.text = recipe.name
         holder.kitchen.text = recipe.kitchen
-        holder.time.text = recipe.time
-        holder.rating.text = "Рейтинг: ${recipe.rating}"
+        if (!recipe.time.isNullOrEmpty()) {
+            holder.time.text = ContextUtils.convertSecondsToCorrectTime(recipe.time!!)
+        } else {
+            holder.time.visibility = View.GONE
+        }
+        if (!recipe.rating.isNullOrEmpty()) {
+            holder.rating.text = "Рейтинг: ${recipe.rating}"
+        } else {
+            holder.rating.visibility = View.GONE
+        }
 
         holder.categoryRecipeLayout.setOnClickListener {
             changeListener.openRecipe(recipe)
         }
     }
-
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val image = view.categoryPageRecipeImage!!
@@ -48,10 +56,5 @@ class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?
         val time = view.categoryPageRecipeTime!!
         val rating = view.categoryPageRecipeRating!!
         val categoryRecipeLayout = view.categoryPageRecipeLayout!!
-    }
-
-    fun onUpdateList(newList: List<Recipe>) {
-        this.recipes = newList
-        notifyDataSetChanged()
     }
 }

@@ -1,37 +1,39 @@
-package com.api.dto
+package com.api.dto.request
 
+import com.api.dto.*
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class RecipeAdditionRequest(
 
-        @SerializedName("name")
+    @SerializedName("name")
         var name: String? = null,
 
-        @SerializedName("description")
+    @SerializedName("description")
         var description: String? = null,
 
-        @SerializedName("time")
+    @SerializedName("time")
         var time: String? = null,
 
-        @SerializedName("kitchen")
+    @SerializedName("kitchen")
         var kitchen: String? = null,
 
-        @SerializedName("author")
+    @SerializedName("author")
         var author: User? = null,
 
-        @SerializedName("category")
+    @SerializedName("category")
         var category: Category? = null,
 
-        @SerializedName("contextIngredientList")
+    @SerializedName("contextIngredientList")
         var contextIngredientList: ArrayList<ContextIngredient>? = null,
 
-        @SerializedName("calorie")
+    @SerializedName("calorie")
         var calorieContent: CalorieContent? = null,
 
-        @SerializedName("image")
+    @SerializedName("image")
         var image: String? = null,
 
-        @SerializedName("steps")
+    @SerializedName("steps")
         var steps: ArrayList<Step>? = arrayListOf()
 
-)
+): Serializable

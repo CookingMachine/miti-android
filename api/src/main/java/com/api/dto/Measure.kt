@@ -1,5 +1,12 @@
 package com.api.dto
 
-enum class Measure {
-    Ml, Lit, Kg, Gr, Sht, St, Sl, Chl
+enum class Measure(var value: String) {
+    Ml("мл"),
+    Lit("л"),
+    Kg("кг"),
+    Gr("гр"),
+    Sht("шт"),
+    St("стак."),
+    Sl("ст.л."),
+    Chl("ч.л.")
 }
