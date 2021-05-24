@@ -62,20 +62,6 @@ object ContextUtils {
         return displayMetrics.widthPixels
     }
 
-    fun convertSecondsToCorrectTime(secondToParse: String): String {
-        val hours = secondToParse.toInt() / 3600
-        val minutes = secondToParse.toInt() / 60 % 60
-        return if (hours != 0) {
-            if (minutes != 0) {
-                "$hours ч $minutes мин"
-            } else {
-                "$hours ч"
-            }
-        } else {
-            "$minutes мин"
-        }
-    }
-
     fun getStubRecipe(): Recipe = Recipe(
         1, "Пицца", "Для большой компании",
         null, null, "Национальная", User(), Category(),
@@ -154,5 +140,11 @@ object ContextUtils {
         ContextIngredient(
             0, 10, Measure.Kg, Ingredient("Мука", "1"), Recipe()
         )
+    )
+
+    fun getStubStepList() = mutableListOf(
+        Step(0, "Неторопясь нарезаем вкусненькую отваренную курочку"),
+        Step(1, "Натераем сыр мелкой стружкой"),
+        Step(2, "Мелко режем зелень и добавляем в миску")
     )
 }

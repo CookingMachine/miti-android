@@ -1,5 +1,6 @@
 package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,7 @@ class CategoryListAdapter(private var categories: List<Category>?,
 
     override fun getItemCount(): Int = categories!!.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun onUpdateList(newCategories: List<Category>) {
         categories = newCategories
         notifyDataSetChanged()

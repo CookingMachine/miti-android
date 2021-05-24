@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
-import com.cookMeGood.makeItTasteIt.utils.ContextUtils
+import com.cookMeGood.makeItTasteIt.utils.TimeConverter
 import kotlinx.android.synthetic.main.item_category_recipe.view.*
 
 class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?,
@@ -34,7 +34,7 @@ class RecipeListAdapter(private var recipes: List<Recipe>, val context: Context?
         holder.name.text = recipe.name
         holder.kitchen.text = recipe.kitchen
         if (!recipe.time.isNullOrEmpty()) {
-            holder.time.text = ContextUtils.convertSecondsToCorrectTime(recipe.time!!)
+            holder.time.text = TimeConverter.convertSecondsToTimeFormat(recipe.time!!.toInt())
         } else {
             holder.time.visibility = View.GONE
         }

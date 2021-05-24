@@ -5,8 +5,9 @@ import com.api.dto.request.LoginRequest
 import com.api.dto.request.RecipeAdditionRequest
 import com.api.dto.request.UserRegistrationRequest
 import com.api.dto.request.SearchRecipeRequest
-import com.api.dto.response.LoginResponse
-import com.api.dto.response.UserRegistrationResponse
+import com.api.dto.response.UserResponse
+import okhttp3.Response
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -17,16 +18,29 @@ interface Api {
         const val PATH = "/server/api/v1"
     }
 
-    @Headers("Accept: application/json")
     @POST("$PATH/authorization")
-    fun authorize(@Body request: LoginRequest): Call<String>
+    fun authorize(@Body request: LoginRequest): Call<UserResponse>
+
+    @GET("$PATH/authorization/validate")
+    fun validateToken(@Header("Authorization") jwtToken: String): Call<UserResponse>
 
     @GET("$PATH/category")
     fun getAllCategories(): Call<List<Category>>
 
     @POST("$PATH/user")
-    fun addUser(@Body userRegistrationRequest: UserRegistrationRequest):
-            Call<UserRegistrationResponse>
+    fun addUser(@Body userRegistrationRequest: UserRegistrationRequest): Call<UserResponse>
+
+    @POST("$PATH/user/addFavouriteRecipe")
+    fun addFavouriteRecipe(
+        @Query("userId") userId: Long,
+        @Query("recipeId") recipeId: Long
+    ): Call<ResponseBody>
+
+    @DELETE("$PATH/user/deleteFavouriteRecipe")
+    fun deleteFavouriteRecipe(
+        @Query("userId") userId: Long,
+        @Query("recipeId") recipeId: Long
+    ): Call<ResponseBody>
 
     @GET("$PATH/recipe/getByCategoryId/{id}")
     fun getRecipesByCategoryId(@Path("id") categoryId: String): Call<List<Recipe>>
@@ -36,6 +50,9 @@ interface Api {
 
     @POST("$PATH/recipe/")
     fun addRecipe(@Body recipe: RecipeAdditionRequest): Call<Recipe>
+
+    @GET("$PATH/recipe/getFavourites/{userId}")
+    fun getFavouritesByUserId(@Path("userId") userId: Long): Call<List<Recipe>>
 
     @GET("$PATH/searchRecipe")
     fun getRecipesByCriteria(

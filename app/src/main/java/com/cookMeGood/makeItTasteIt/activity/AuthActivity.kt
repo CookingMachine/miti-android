@@ -2,17 +2,17 @@ package com.cookMeGood.makeItTasteIt.activity
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.content.SharedPreferences
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.api.ApiService
 import com.api.ApiService.ACCESS_TOKEN_KEY
 import com.api.dto.request.LoginRequest
 import com.api.dto.request.UserRegistrationRequest
-import com.api.dto.response.UserRegistrationResponse
+import com.api.dto.response.UserResponse
 import com.cookMeGood.makeItTasteIt.R
+import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_AUTH
-import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_USER
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
@@ -21,16 +21,19 @@ import retrofit2.Response
 
 class AuthActivity : SuperActivity() {
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun setAttr() = setLayout(R.layout.activity_auth)
 
     override fun initInterface() {
 
+        sharedPreferences = applicationContext.getSharedPreferences(
+            ApiService.PREF_NAME, Context.MODE_PRIVATE
+        )
+
         showLoggingForm(intent.extras!!.getBoolean(INTENT_AUTH))
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.navigationBarColor =
-                ContextCompat.getColor(applicationContext, R.color.colorBlack)
-        }
+        window.navigationBarColor = ContextCompat.getColor(applicationContext, R.color.colorBlack)
 
         authActivityLoginButton.setOnClickListener {
             val login = authActivityLoginEmail.text.toString()
@@ -66,23 +69,22 @@ class AuthActivity : SuperActivity() {
     }
 
     private fun registerUserOnServer(registrationRequest: UserRegistrationRequest) {
-        ApiService.getApi(applicationContext)
-            .addUser(registrationRequest)
-            .enqueue(object : Callback<UserRegistrationResponse> {
+        ApiService.getApi().addUser(registrationRequest)
+            .enqueue(object : Callback<UserResponse> {
                 override fun onResponse(
-                    call: Call<UserRegistrationResponse>,
-                    response: Response<UserRegistrationResponse>
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
                 ) {
                     when (response.code()) {
                         200 -> {
-                            val sharedPreferences = applicationContext.getSharedPreferences(
-                                ApiService.PREF_NAME, Context.MODE_PRIVATE
-                            )
                             sharedPreferences
                                 .edit()
                                 .putString(ACCESS_TOKEN_KEY, response.body()!!.jwtToken)
                                 .apply()
-                            intent.putExtra(INTENT_USER, response.body())
+
+                            DataContainer.currentUser = response.body()
+                            ApiService.jwtToken = DataContainer.currentUser!!.jwtToken
+
                             startActivity(
                                 Intent(
                                     this@AuthActivity,
@@ -99,28 +101,28 @@ class AuthActivity : SuperActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<UserRegistrationResponse>, t: Throwable) {
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                     goShortToast(applicationContext, "Ошибка соединения с сервером")
                 }
             })
     }
 
     private fun loginUserOnServer(login: String, password: String) {
-        ApiService.getApi(applicationContext)
-            .authorize(LoginRequest(login, password))
-            .enqueue(object : Callback<String> {
+        ApiService.getApi().authorize(LoginRequest(login, password))
+            .enqueue(object : Callback<UserResponse> {
                 override fun onResponse(
-                    call: Call<String>, response: Response<String>
+                    call: Call<UserResponse>, response: Response<UserResponse>
                 ) {
                     when (response.code()) {
                         200 -> {
-                            val sharedPreferences = applicationContext.getSharedPreferences(
-                                ApiService.PREF_NAME, Context.MODE_PRIVATE
-                            )
                             sharedPreferences
                                 .edit()
-                                .putString(ACCESS_TOKEN_KEY, response.body())
+                                .putString(ACCESS_TOKEN_KEY, response.body()!!.jwtToken)
                                 .apply()
+
+                            DataContainer.currentUser = response.body()!!
+                            ApiService.jwtToken = DataContainer.currentUser!!.jwtToken
+
                             startActivity(
                                 Intent(
                                     this@AuthActivity,
@@ -128,13 +130,13 @@ class AuthActivity : SuperActivity() {
                                 )
                             )
                         }
-                        500 -> {
-                            goShortToast(applicationContext, "Ошибка!")
+                        401 -> {
+                            goShortToast(applicationContext, "Unauthorized!")
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                     goShortToast(applicationContext, t.localizedMessage!!.toString())
                     throw t
                 }

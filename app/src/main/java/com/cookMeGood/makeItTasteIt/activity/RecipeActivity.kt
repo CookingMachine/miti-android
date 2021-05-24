@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.api.ApiService
 import com.api.dto.Recipe
 import com.api.dto.Restaurant
 import com.api.dto.Step
@@ -15,12 +16,15 @@ import com.cookMeGood.makeItTasteIt.adapter.dialog.RecipeDescriptionDialogAdapte
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipePageIngredientsListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeRestaurantListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.RecipeStepListAdapter
+import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.container.IntentContainer
-import com.cookMeGood.makeItTasteIt.container.LogContainer.RECIPE_ACTIVITY_INSERT_RECIPE
-import com.cookMeGood.makeItTasteIt.container.TextContainer
+import com.cookMeGood.makeItTasteIt.container.LogContainer.INFO_RECIPE_ACTIVITY_INSERT_RECIPE
+import com.cookMeGood.makeItTasteIt.container.MessageContainer
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubRestaurants
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getStubStepList
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.getWindowHeight
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import com.cookMeGood.makeItTasteIt.utils.Mapper
 import com.cookMeGood.makeItTasteIt.utils.SaveContentHelper
 import com.database.AppDatabase
@@ -30,6 +34,10 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RecipeActivity : SuperActivity() {
 
@@ -116,7 +124,8 @@ class RecipeActivity : SuperActivity() {
         }
 
         setPortionPicker()
-        setStepList()
+        stepList = getStubStepList()
+        // TODO: заменить на API
     }
 
     private fun initAdapters() {
@@ -205,19 +214,6 @@ class RecipeActivity : SuperActivity() {
         recipeRestaurantsList.visibility = View.VISIBLE
     }
 
-    private fun setStepList() {
-        if (stepList.isNullOrEmpty()) {
-            for (i in 1..4) {
-                stepList.add(
-                    Step(
-                        i,
-                        "Неторопясь нарезаем вкусненькую отваренную курочку"
-                    )
-                )
-            }
-        }
-    }
-
     private fun onChangeSheetHeight(pixels: Int) {
         recipeBottomSheet.layoutParams.height = pixels
     }
@@ -230,46 +226,61 @@ class RecipeActivity : SuperActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_cart -> {
-                val imageUri = SaveContentHelper.saveRecipeImageToInternalStorage(
-                    applicationContext, R.drawable.image_recipe_background, currentRecipe.id!!
-                )
-                val currentRecipeModel = Mapper.recipeDtoToRecipeModel(currentRecipe)
-                currentRecipeModel.image = imageUri.toString()
-                database!!.recipeDao().insert(currentRecipeModel)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object : DisposableSingleObserver<Long>() {
-
-                        override fun onSuccess(t: Long) {
-                            Log.i(
-                                RECIPE_ACTIVITY_INSERT_RECIPE,
-                                "Successfully inserted recipe into DB."
-                            )
-                            ContextUtils.goShortToast(
-                                applicationContext,
-                                TextContainer.RECIPE_ACTIVITY_ADD_TO_CART
-                            )
-                        }
-
-                        override fun onError(e: Throwable) {
-                            Log.i(
-                                RECIPE_ACTIVITY_INSERT_RECIPE,
-                                "Failed to insert recipe into DB!"
-                            )
-                        }
-
-                    })
-
+                onSaveRecipeToCartAndDatabase()
             }
             R.id.action_like -> {
-                ContextUtils.goShortToast(applicationContext, "Нравится!")
+                onAddRecipeToFavourites()
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setPortionPicker() {
+    private fun onSaveRecipeToCartAndDatabase() {
+        val imageUri = SaveContentHelper.saveRecipeImageToInternalStorage(
+            applicationContext, R.drawable.image_recipe_background, currentRecipe.id!!
+        )
+        val currentRecipeModel = Mapper.recipeDtoToRecipeModel(currentRecipe)
+        currentRecipeModel.image = imageUri.toString()
+        database!!.recipeDao().insert(currentRecipeModel)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableSingleObserver<Long>() {
 
+                override fun onSuccess(t: Long) {
+                    Log.i(
+                        INFO_RECIPE_ACTIVITY_INSERT_RECIPE,
+                        "Successfully inserted recipe into DB."
+                    )
+                    goShortToast(
+                        applicationContext,
+                        MessageContainer.SUCCESS_RECIPE_ACTIVITY_ADD_TO_CART
+                    )
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.i(
+                        INFO_RECIPE_ACTIVITY_INSERT_RECIPE,
+                        "Failed to insert recipe into DB!"
+                    )
+                }
+            })
+    }
+
+    private fun onAddRecipeToFavourites() {
+        ApiService.getApi().addFavouriteRecipe(DataContainer.currentUser!!.id!!, currentRecipe.id!!)
+            .enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    goShortToast(applicationContext, "Рецепт добавлен в Избранное.")
+                }
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    goShortToast(applicationContext, t.message.toString())
+                }
+            })
+    }
+
+
+    private fun setPortionPicker() {
         recipePortionPicker.maxValue = 100
         recipePortionPicker.minValue = 1
         recipePortionPicker.setFormatter { i -> "Порций: $i" }

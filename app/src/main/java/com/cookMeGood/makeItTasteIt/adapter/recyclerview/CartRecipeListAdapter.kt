@@ -2,6 +2,7 @@ package com.cookMeGood.makeItTasteIt.adapter.recyclerview
 
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +15,10 @@ import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.api.dto.Recipe
 import com.cookMeGood.makeItTasteIt.R
 import com.api.dto.Ingredient
 import com.cookMeGood.makeItTasteIt.adapter.dialog.CartRemoveDialogAdapter
-import com.cookMeGood.makeItTasteIt.adapter.listener.OnCartUpdateListener
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnUpdateCartListListener
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.database.model.RecipeModel
 import kotlinx.android.synthetic.main.item_cart_recipe.view.*
@@ -36,7 +36,8 @@ class CartRecipeListAdapter(private var recipes: List<RecipeModel>,
     private var originalHeight: Int = -1
     private var expandedHeight: Int = -1
 
-    private val cartUpdateListListener = object : OnCartUpdateListener {
+    private val cartUpdateListListener = object : OnUpdateCartListListener {
+        @SuppressLint("NotifyDataSetChanged")
         override fun update(recipe: RecipeModel) {
             (recipes as ArrayList).remove(recipe)
             notifyDataSetChanged()
