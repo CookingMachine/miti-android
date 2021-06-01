@@ -72,7 +72,7 @@ class FavouritesFragment : SuperFragment() {
         })
     }
 
-    private fun initOrUpdateAdapter() {
+    private fun updateAdapter() {
         if (recipeListAdapter == null) {
             recipeListAdapter =
                 FavouritesListAdapter(recipeList!!, onOpenRecipeListener, childFragmentManager)
@@ -105,7 +105,7 @@ class FavouritesFragment : SuperFragment() {
                     if (response.isSuccessful) {
                         recipeList = response.body()
                         if (recipeList!!.isNotEmpty()) {
-                            initOrUpdateAdapter()
+                            updateAdapter()
                         } else {
                             // TODO: показывать заглушку
                         }

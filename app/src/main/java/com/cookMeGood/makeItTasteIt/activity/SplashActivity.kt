@@ -10,7 +10,10 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +32,6 @@ class SplashActivity : SuperActivity() {
 
             try {
                 call.await()
-                delay(2000)
             } catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(
@@ -37,14 +39,12 @@ class SplashActivity : SuperActivity() {
                     "Server is unavailable\nTry again later",
                     Toast.LENGTH_SHORT
                 ).show()
-                delay(3000)
             }
             startNextActivity()
         }
     }
 
-    private suspend fun validateAccessToken(): Boolean {
-        var timeLimit = 0
+    private fun validateAccessToken(): Boolean {
 
         val sharedPreferences =
             applicationContext.getSharedPreferences(ApiService.PREF_NAME, Context.MODE_PRIVATE)
@@ -71,14 +71,8 @@ class SplashActivity : SuperActivity() {
                         ContextUtils.goLongToast(applicationContext, t.message.toString())
                     }
                 })
-
         } else {
             return false
-        }
-
-        while (timeLimit < 10 && isAuthenticated) {
-            delay(2000)
-            timeLimit += 2
         }
 
         return true
@@ -104,7 +98,6 @@ class SplashActivity : SuperActivity() {
 
                 window.exitTransition = null
                 startActivity(intent, options.toBundle())
-
             }
         }
         supportFinishAfterTransition()
