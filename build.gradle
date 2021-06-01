@@ -1,25 +1,51 @@
+ext {
+    appCompatVersion = '1.3.0'
+    fragmentKtxVersion = '1.3.4'
+    coreVersion = '1.5.0'
+    recyclerViewVersion = '1.2.0'
+    navigationVersion = '2.3.5'
+    jUnitVersion = '4.13.2'
+    extJUnitVersion = '1.1.2'
+    numberPickerVersion = '2.4.13'
+    roundedImageViewVersion = '2.3.0'
+    maskaraVersion = '1.0.0'
+    retrofitVersion = '2.9.0'
+    shimmerVersion = '0.5.0'
+    imageCropperVersion = '3.1.1'
+    rxAndroidVersion = '2.1.1'
+    rxJavaVersion = '2.2.21'
+    glideVersion = '4.12.0'
+    roomVersion = "2.4.0-alpha02"
+    okHttpVersion = '5.0.0-alpha.2'
+}
+
 buildscript {
-    ext.kotlin_version = '1.4.32'
+    ext.gradleVersion = '7.1.0-alpha01'
+    ext.kotlinVersion = '1.5.10'
+    ext.ktlintVersion = '10.0.0'
+
     repositories {
         google()
-        jcenter()
-        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    configurations {
+        ktlint
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlintVersion"
     }
 }
+
+apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

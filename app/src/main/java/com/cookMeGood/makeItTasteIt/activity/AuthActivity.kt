@@ -52,10 +52,10 @@ class AuthActivity : SuperActivity() {
             val email = authActivityRegisterEmail.text.toString()
             val password = authActivityRegisterPassword.text.toString()
 
-            if (name.isEmpty()
-                || username.isEmpty()
-                || email.isEmpty()
-                || password.isEmpty()
+            if (name.isEmpty() ||
+                username.isEmpty() ||
+                email.isEmpty() ||
+                password.isEmpty()
             ) {
                 goShortToast(applicationContext, "Заполните все поля")
             } else {
@@ -111,7 +111,8 @@ class AuthActivity : SuperActivity() {
         ApiService.getApi().authorize(LoginRequest(login, password))
             .enqueue(object : Callback<UserResponse> {
                 override fun onResponse(
-                    call: Call<UserResponse>, response: Response<UserResponse>
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
                 ) {
                     when (response.code()) {
                         200 -> {

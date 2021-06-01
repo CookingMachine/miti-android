@@ -107,7 +107,7 @@ class FavouritesFragment : SuperFragment() {
                         if (recipeList!!.isNotEmpty()) {
                             initOrUpdateAdapter()
                         } else {
-                            //TODO: показывать заглушку
+                            // TODO: показывать заглушку
                         }
                     }
                     favouritesFragmentProgressBar.visibility = View.GONE

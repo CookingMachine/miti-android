@@ -1,5 +1,6 @@
 package com.cookMeGood.makeItTasteIt.activity
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
@@ -15,19 +16,19 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.api.ApiService
+import com.api.dto.Ingredient
+import com.api.dto.Recipe
+import com.api.dto.Step
+import com.api.dto.request.RecipeAdditionRequest
+import com.canhub.cropper.CropImage
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.adapter.dialog.SuggestEditFieldDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListener
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
-import com.api.dto.Ingredient
-import com.api.dto.Recipe
-import com.api.dto.request.RecipeAdditionRequest
-import com.api.dto.Step
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
-import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_suggest.*
 import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.*
 import retrofit2.Call
@@ -36,7 +37,7 @@ import retrofit2.Response
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 import java.util.regex.Pattern
 
 class SuggestActivity : SuperActivity() {
@@ -93,7 +94,7 @@ class SuggestActivity : SuperActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = Color.BLACK
         }
 
@@ -153,7 +154,7 @@ class SuggestActivity : SuperActivity() {
             supportFragmentManager, ingredientList, suggestIngredientEditListener
         )
         suggestActivityIngredientList.layoutManager = LinearLayoutManager(this)
-        //suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
+        // suggestActivityIngredientList.layoutAnimation = stepListClickAnimation
         suggestActivityIngredientList.adapter = suggestIngredientListAdapter
     }
 
@@ -227,6 +228,7 @@ class SuggestActivity : SuperActivity() {
         itemTouchHelper.attachToRecyclerView(suggestActivityIngredientList)
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun createImageFile(): File {
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -305,7 +307,7 @@ class SuggestActivity : SuperActivity() {
                     }
                     CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                         val res = CropImage.getActivityResult(data)
-                        suggestActivityImage.setImageURI(res.uri)
+                        suggestActivityImage.setImageURI(res!!.originalUri)
                         suggestActivityAddImage.visibility = View.GONE
                     }
                 }
