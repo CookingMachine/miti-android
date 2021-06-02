@@ -4,15 +4,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "RECIPE")
-data class RecipeModel (
-        @PrimaryKey(autoGenerate = false)
-        var recipeid: Long? = null,
+data class RecipeModel(
 
-        var name: String? = null,
+    @PrimaryKey(autoGenerate = false)
+    var recipeId: Long? = null,
 
-        var kitchen: String? = null,
+    var name: String? = null,
 
-        var category: String? = null,
+    var kitchen: String? = null,
 
-        var image: String? = null
+    var category: String? = null,
+
+    var image: String? = null
 )

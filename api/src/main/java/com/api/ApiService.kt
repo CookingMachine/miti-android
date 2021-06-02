@@ -15,11 +15,10 @@ object ApiService {
 
     private var client = OkHttpClient.Builder()
     private var retrofit: Retrofit? = null
+    var jwtToken: String? = null
 
-    fun getApi(context: Context): Api {
+    fun getApi(): Api {
 
-        val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        val jwtToken = sharedPreferences.getString(ACCESS_TOKEN_KEY, "") ?: ""
         val logging = HttpLoggingInterceptor()
         val gson = GsonBuilder().setLenient().create()
 
@@ -29,7 +28,7 @@ object ApiService {
         client.addInterceptor { chain ->
             val request = chain.request().newBuilder()
 
-            if (jwtToken.isNotEmpty()) {
+            if (jwtToken != null) {
                 request.header(HEADER_AUTHORIZATION, "Bearer $jwtToken")
             }
             chain.proceed(request.build())

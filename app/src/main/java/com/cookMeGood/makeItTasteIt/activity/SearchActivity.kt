@@ -97,8 +97,8 @@ class SearchActivity : SuperActivity() {
         //getSearchListFromServer("")
 
         searchBackContent.measure(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
         )
 
         bottomSheetBehavior = BottomSheetBehavior.from(searchBottomSheet)
@@ -110,31 +110,31 @@ class SearchActivity : SuperActivity() {
         searchIngredientsCounter.text = ingredientsCounter.toString()
 
         searchContentAdapter = SearchContentAdapter(
-                searchContentList,
-                applicationContext,
-                openRecipeListener
+            searchContentList,
+            applicationContext,
+            openRecipeListener
         )
         searchActivityContentList.layoutManager = LinearLayoutManager(
-                applicationContext,
-                LinearLayoutManager.VERTICAL,
-                false
+            applicationContext,
+            LinearLayoutManager.VERTICAL,
+            false
         )
         searchActivityContentList.adapter = searchContentAdapter
 
         filterKitchenAdapter = SearchFilterAdapter(filterKitchenList, onKitchenFilterClickListener)
         searchKitchenList.layoutManager = LinearLayoutManager(
-                applicationContext,
-                LinearLayoutManager.HORIZONTAL,
-                false
+            applicationContext,
+            LinearLayoutManager.HORIZONTAL,
+            false
         )
         searchKitchenList.adapter = filterKitchenAdapter
 
         searchIngredientsAdapter =
-                SearchIngredientsAdapter(searchIngredientsList, onIngredientClickListener)
+            SearchIngredientsAdapter(searchIngredientsList, onIngredientClickListener)
         searchIngredientsRecyclerView.layoutManager = LinearLayoutManager(
-                applicationContext,
-                LinearLayoutManager.VERTICAL,
-                false
+            applicationContext,
+            LinearLayoutManager.VERTICAL,
+            false
         )
         searchIngredientsRecyclerView.adapter = searchIngredientsAdapter
 
@@ -198,10 +198,10 @@ class SearchActivity : SuperActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_filter) {
             bottomSheetBehavior.state =
-                    when (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                        true -> BottomSheetBehavior.STATE_COLLAPSED
-                        false -> BottomSheetBehavior.STATE_EXPANDED
-                    }
+                when (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                    true -> BottomSheetBehavior.STATE_COLLAPSED
+                    false -> BottomSheetBehavior.STATE_EXPANDED
+                }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -210,74 +210,78 @@ class SearchActivity : SuperActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             if (window.decorView.rootWindowInsets.displayCutout != null) {
                 setSheetHeight(
-                        getWindowHeight(windowManager) -
-                                ContextUtils.getActionBarSize(applicationContext))
+                    getWindowHeight(windowManager) -
+                            ContextUtils.getActionBarSize(applicationContext)
+                )
             } else {
                 setSheetHeight(
-                        getWindowHeight(windowManager) -
-                                ContextUtils.getStatusBarHeightInPixels(resources) -
-                                ContextUtils.getActionBarSize(applicationContext))
+                    getWindowHeight(windowManager) -
+                            ContextUtils.getStatusBarHeightInPixels(resources) -
+                            ContextUtils.getActionBarSize(applicationContext)
+                )
             }
         } else {
             setSheetHeight(
-                    getWindowHeight(windowManager) -
-                            ContextUtils.getStatusBarHeightInPixels(resources) -
-                            ContextUtils.getActionBarSize(applicationContext))
+                getWindowHeight(windowManager) -
+                        ContextUtils.getStatusBarHeightInPixels(resources) -
+                        ContextUtils.getActionBarSize(applicationContext)
+            )
         }
     }
 
     private fun getSearchListFromServer(sort: String) {
-        ApiService.getApi(applicationContext)
-                .getRecipesByCriteria(searchRecipeRequest, sort)
-                .enqueue(object : Callback<List<Recipe>> {
-                    override fun onResponse(
-                            call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
-                        if (response.isSuccessful) {
-                            searchContentList = response.body() ?: emptyList()
+        ApiService.getApi().getRecipesByCriteria(searchRecipeRequest, sort)
+            .enqueue(object : Callback<List<Recipe>> {
+                override fun onResponse(
+                    call: Call<List<Recipe>>, response: Response<List<Recipe>>
+                ) {
+                    if (response.isSuccessful) {
+                        searchContentList = response.body() ?: emptyList()
 
-                            if (searchContentList.isEmpty()) {
-                                searchActivityContentList.visibility = View.GONE
-                                searchNotFound.visibility = View.VISIBLE
-                            } else {
-                                searchActivityContentList.visibility = View.VISIBLE
-                                searchNotFound.visibility = View.GONE
-                            }
+                        if (searchContentList.isEmpty()) {
+                            searchActivityContentList.visibility = View.GONE
+                            searchNotFound.visibility = View.VISIBLE
+                        } else {
+                            searchActivityContentList.visibility = View.VISIBLE
+                            searchNotFound.visibility = View.GONE
                         }
                     }
+                }
 
-                    override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        searchActivityContentList.visibility = View.GONE
-                        searchNotFound.visibility = View.VISIBLE
-                    }
+                override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
+                    searchActivityContentList.visibility = View.GONE
+                    searchNotFound.visibility = View.VISIBLE
+                }
 
-                })
+            })
     }
 
     private fun getAllCategoriesFromServer() {
-        ApiService.getApi(applicationContext)
-                .getAllCategories()
-                .enqueue(object : Callback<List<Category>> {
-                    override fun onResponse(
-                            call: Call<List<Category>>, response: Response<List<Category>>) {
-                        if (response.isSuccessful) {
-                            filterCategoriesList = response.body()!!.map { category ->
-                                category.name!!
-                            }
-                            filterCategoryAdapter = SearchFilterAdapter(filterCategoriesList, onCategoryFilterClickListener)
-                            searchCategoryList.layoutManager = LinearLayoutManager(
-                                    applicationContext,
-                                    LinearLayoutManager.HORIZONTAL,
-                                    false
-                            )
-                            searchCategoryList.adapter = filterCategoryAdapter
+        ApiService.getApi().getAllCategories()
+            .enqueue(object : Callback<List<Category>> {
+                override fun onResponse(
+                    call: Call<List<Category>>, response: Response<List<Category>>
+                ) {
+                    if (response.isSuccessful) {
+                        filterCategoriesList = response.body()!!.map { category ->
+                            category.name!!
                         }
+                        filterCategoryAdapter =
+                            SearchFilterAdapter(filterCategoriesList, onCategoryFilterClickListener)
+                        searchCategoryList.layoutManager = LinearLayoutManager(
+                            applicationContext,
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                        searchCategoryList.adapter = filterCategoryAdapter
                     }
+                }
 
-                    override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                })
+                override fun onFailure(call: Call<List<Category>>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            })
     }
 
     private fun setSheetHeight(pixels: Int) {

@@ -2,6 +2,6 @@ package com.cookMeGood.makeItTasteIt.adapter.listener
 
 import com.database.model.RecipeModel
 
-interface OnCartUpdateListener {
+interface OnUpdateCartListListener {
     fun update(recipe: RecipeModel)
 }

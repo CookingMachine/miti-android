@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -36,7 +35,6 @@ abstract class SuperActivity : AppCompatActivity() {
         this.layout = layout
     }
 
-
     private fun setStatusBarBackgroundResource(colorResource: Int) {
         window.statusBarColor = ContextCompat.getColor(applicationContext, colorResource)
     }
@@ -47,9 +45,9 @@ abstract class SuperActivity : AppCompatActivity() {
             return
 
         window.decorView.systemUiVisibility =
-                if (dark)
-                    window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                else
-                    window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+            if (dark)
+                window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            else
+                window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
     }
 }

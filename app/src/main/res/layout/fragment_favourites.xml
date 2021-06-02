@@ -36,6 +36,16 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <ProgressBar
+        android:id="@+id/favouritesFragmentProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/primaryColor"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favouritesRecipeList"
         android:layout_width="match_parent"

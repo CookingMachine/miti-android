@@ -73,33 +73,37 @@ class CategoryFragment : SuperFragment() {
     }
 
     private fun getRecipesByCategoryIdFromServer(categoryId: String) {
-        ApiService.getApi(requireContext())
-                .getRecipesByCategoryId(categoryId)
-                .enqueue(object : Callback<List<Recipe>> {
-                    override fun onResponse(
-                            call: Call<List<Recipe>>, response: Response<List<Recipe>>) {
-                        if (response.isSuccessful) {
-                            recipeList = response.body() ?: ContextUtils.getStubRecipeList()
-                            initListAdapter()
-                            showList()
-                        }
+        ApiService.getApi().getRecipesByCategoryId(categoryId)
+            .enqueue(object : Callback<List<Recipe>> {
+                override fun onResponse(
+                    call: Call<List<Recipe>>, response: Response<List<Recipe>>
+                ) {
+                    if (response.isSuccessful) {
+                        recipeList = response.body() ?: ContextUtils.getStubRecipeList()
+                        initListAdapter()
+                        showList()
                     }
-                    override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        goLongToast(requireContext(), t.message.toString())
-                    }
-                })
+                }
+
+                override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
+                    goLongToast(requireContext(), t.message.toString())
+                }
+            })
     }
 
     private fun initListAdapter() {
         val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
-        dividerItemDecoration.setDrawable(AppCompatResources.getDrawable(
+        dividerItemDecoration.setDrawable(
+            AppCompatResources.getDrawable(
                 requireContext(),
-                R.drawable.shape_default_devider)!!
+                R.drawable.shape_default_devider
+            )!!
         )
 
         recipeListAdapter = RecipeListAdapter(recipeList!!, context, openRecipeListener)
         categoryFragmentRecipeList.layoutManager = LinearLayoutManager(
-                context, LinearLayoutManager.VERTICAL, false)
+            context, LinearLayoutManager.VERTICAL, false
+        )
         categoryFragmentRecipeList.addItemDecoration(dividerItemDecoration)
         categoryFragmentRecipeList.adapter = recipeListAdapter
     }

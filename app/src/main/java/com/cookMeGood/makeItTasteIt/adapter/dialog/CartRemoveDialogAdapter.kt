@@ -9,20 +9,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cookMeGood.makeItTasteIt.App
 import com.cookMeGood.makeItTasteIt.R
-import com.cookMeGood.makeItTasteIt.adapter.listener.OnCartUpdateListener
+import com.cookMeGood.makeItTasteIt.adapter.listener.OnUpdateCartListListener
 import com.database.model.RecipeModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.content_cart_dialog.*
 
-class CartRemoveDialogAdapter(private val recipe: RecipeModel,
-                              val listener: OnCartUpdateListener
-): DialogFragment() {
+class CartRemoveDialogAdapter(
+    private val recipe: RecipeModel,
+    val listListenerCart: OnUpdateCartListListener
+) : DialogFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         dialog?.setCancelable(true)
         dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -36,18 +38,19 @@ class CartRemoveDialogAdapter(private val recipe: RecipeModel,
         cartDialogButtonNo.setOnClickListener { dialog!!.dismiss() }
         cartDialogButtonYes.setOnClickListener {
             App.instance.getDataBase().recipeDao().delete(recipe)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object : DisposableSingleObserver<Int>() {
-                        override fun onSuccess(t: Int) {
-                            listener.update(recipe)
-                        }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : DisposableSingleObserver<Int>() {
+                    override fun onSuccess(t: Int) {
+                        listListenerCart.update(recipe)
+                        dialog!!.dismiss()
+                    }
 
-                        override fun onError(e: Throwable) {
-
-                        }
-                    })
-            dialog!!.dismiss()
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                        dialog!!.dismiss()
+                    }
+                })
         }
     }
 
