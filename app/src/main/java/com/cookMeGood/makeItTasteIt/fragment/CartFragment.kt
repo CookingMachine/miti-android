@@ -8,6 +8,7 @@ import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CartRecipeListAdapter
 import com.cookMeGood.makeItTasteIt.container.AnimationContainer
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.database.AppDatabase
 import com.database.model.RecipeModel
 import kotlinx.android.synthetic.main.fragment_cart.*
@@ -23,10 +24,13 @@ class CartFragment : SuperFragment() {
 
         database = App.instance.getDataBase()
         database!!.recipeDao().getAll()
-            .observe(this, {
-                if (cartListAdapter == null) initListAdapter(it)
-                else cartListAdapter!!.updateList(it)
-            })
+            .observe(
+                this,
+                {
+                    if (cartListAdapter == null) initListAdapter(it)
+                    else cartListAdapter!!.updateList(it)
+                }
+            )
     }
 
     override fun onResult(requestCode: Int, resultCode: Int, data: Intent?) = Unit
@@ -41,4 +45,9 @@ class CartFragment : SuperFragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as SuperActivity).supportActionBar!!.elevation =
+            ContextUtils.convertDpToPixel(4F, requireContext())
+    }
 }

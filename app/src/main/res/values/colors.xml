@@ -19,6 +19,10 @@
     <color name="colorWhite40">#40FFFFFF</color>
     <color name="colorWhite70">#70FFFFFF</color>
 
+    <color name="primaryTransparent70">#70fc3a3b</color>
+
+    <!-- METRO STATIONS -->
+
     <color name="colorMetroStation1">#ee1a36</color>
     <color name="colorMetroStation2">#3dbd5f</color>
     <color name="colorMetroStation3">#0377bc</color>

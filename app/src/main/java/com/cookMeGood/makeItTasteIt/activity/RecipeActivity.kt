@@ -32,8 +32,23 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_recipe.*
-import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.*
+import kotlinx.android.synthetic.main.activity_recipe.recipeImageView
+import kotlinx.android.synthetic.main.activity_recipe.recipeToolbar
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.btnDescription
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeBottomSheet
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeButton
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeButtonsLayout
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeCalories
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeCarbo
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeDescription
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeFats
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeIngredientsList
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeKBJULayout
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipePortionPicker
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeProteins
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeRestaurantsList
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeStepList
+import kotlinx.android.synthetic.main.content_recipe_bottom_sheet.recipeTitleTextView
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -75,7 +90,7 @@ class RecipeActivity : SuperActivity() {
 
         fillRecipeFields()
         initAdapters()
-        clickRecipe()
+        recipeButton.isChecked = true
 
         onChangeSheetHeight(screenHeight / 10 * 8)
 
@@ -114,9 +129,13 @@ class RecipeActivity : SuperActivity() {
         recipeKBJULayout.measure(0, 0)
         recipeDescription.measure(0, 0)
 
-        recipeButton.setOnClickListener { clickRecipe() }
-        restaurantsButton.setOnClickListener { clickRestaurant() }
-        ingredButton.setOnClickListener { clickIngredient() }
+        recipeButtonsLayout.setOnCheckedChangeListener { _, id ->
+            when (id) {
+                R.id.recipeButton -> showRecipe()
+                R.id.ingredButton -> showIngredient()
+                R.id.restaurantsButton -> showRestaurant()
+            }
+        }
 
         btnDescription.setOnClickListener {
             recipeDialog!!.show(supportFragmentManager, "Recipe dialog")
@@ -150,63 +169,21 @@ class RecipeActivity : SuperActivity() {
         recipeRestaurantsList.adapter = recipeRestaurantListAdapter
     }
 
-    private fun clickRecipe() {
-
-        recipeButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        recipeButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.colorWhite)
-        )
-        ingredButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
-        ingredButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.primaryColor)
-        )
-        restaurantsButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
-        restaurantsButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.primaryColor)
-        )
-
+    private fun showRecipe() {
         recipeStepList.visibility = View.VISIBLE
         recipeIngredientsList.visibility = View.GONE
         recipeRestaurantsList.visibility = View.GONE
         recipePortionPicker.visibility = View.GONE
     }
 
-    private fun clickIngredient() {
-
-        recipeButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
-        recipeButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.primaryColor)
-        )
-        ingredButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        ingredButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.colorWhite)
-        )
-        restaurantsButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
-        restaurantsButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.primaryColor)
-        )
-
+    private fun showIngredient() {
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.VISIBLE
         recipeRestaurantsList.visibility = View.GONE
         recipePortionPicker.visibility = View.VISIBLE
     }
 
-    private fun clickRestaurant() {
-
-        recipeButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
-        recipeButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.primaryColor)
-        )
-        ingredButton.setBackgroundResource(R.drawable.shape_button_rounded_white)
-        ingredButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.primaryColor)
-        )
-        restaurantsButton.setBackgroundResource(R.drawable.shape_round_button_pressed)
-        restaurantsButton.setTextColor(
-            ContextCompat.getColor(applicationContext, R.color.colorWhite)
-        )
-
+    private fun showRestaurant() {
         recipeStepList.visibility = View.GONE
         recipeIngredientsList.visibility = View.GONE
         recipePortionPicker.visibility = View.GONE
