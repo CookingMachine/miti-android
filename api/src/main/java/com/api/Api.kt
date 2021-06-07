@@ -1,21 +1,28 @@
 package com.api
 
-import com.api.dto.*
+import com.api.dto.Category
+import com.api.dto.MainContent
+import com.api.dto.Recipe
 import com.api.dto.request.LoginRequest
 import com.api.dto.request.RecipeAdditionRequest
-import com.api.dto.request.UserRegistrationRequest
 import com.api.dto.request.SearchRecipeRequest
+import com.api.dto.request.UserRegistrationRequest
 import com.api.dto.response.UserResponse
-import okhttp3.Response
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.DELETE
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface Api {
 
     companion object {
         const val BASE_URL = "http://194.58.111.240:8080"
-        const val PATH = "/server/api/v1"
+        const val PATH = "/test_server2/api/v1"
     }
 
     @POST("$PATH/authorization")

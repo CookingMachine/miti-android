@@ -5,7 +5,6 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.api.ApiService
 import com.api.dto.Recipe
-import com.cookMeGood.makeItTasteIt.App
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
@@ -15,7 +14,6 @@ import com.cookMeGood.makeItTasteIt.container.AnimationContainer
 import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.container.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
-import com.database.AppDatabase
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_favourites.*
 import retrofit2.Call
@@ -23,8 +21,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FavouritesFragment : SuperFragment() {
-
-    private lateinit var database: AppDatabase
 
     private var recipeList: List<Recipe>? = null
     private var recipeListAdapter: FavouritesListAdapter? = null
@@ -39,9 +35,6 @@ class FavouritesFragment : SuperFragment() {
 
     override fun initInterface(view: View?) {
         (activity as SuperActivity).title = getString(R.string.title_favourites)
-
-        database = App.instance.getDataBase()
-        recipeList = ContextUtils.getStubRecipeList()
 
         favouritesFragmentProgressBar.visibility = View.VISIBLE
         favouritesRecipeList.visibility = View.GONE

@@ -3,6 +3,7 @@ package com.cookMeGood.makeItTasteIt.activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.widget.Toast
 import com.api.ApiService
 import com.api.dto.response.UserResponse
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,10 +24,14 @@ class SplashActivity : SuperActivity() {
 
     private val waitForResponseCoroutine = CoroutineScope(Dispatchers.Main)
     private var isAuthenticated: Boolean = false
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun setAttr() = setLayout(R.layout.activity_splash)
 
     override fun initInterface() {
+
+        sharedPreferences =
+            applicationContext.getSharedPreferences(ApiService.PREF_NAME, Context.MODE_PRIVATE)
 
         waitForResponseCoroutine.launch {
             val call = async { validateAccessToken() }
@@ -40,18 +46,16 @@ class SplashActivity : SuperActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            startNextActivity()
         }
     }
 
-    private fun validateAccessToken(): Boolean {
+    private suspend fun validateAccessToken() {
 
-        val sharedPreferences =
-            applicationContext.getSharedPreferences(ApiService.PREF_NAME, Context.MODE_PRIVATE)
+        delay(1000)
+
         val jwtToken = sharedPreferences.getString(ApiService.ACCESS_TOKEN_KEY, "") ?: ""
 
         if (jwtToken.isNotEmpty()) {
-
             ApiService.getApi().validateToken("Bearer $jwtToken")
                 .enqueue(object : Callback<UserResponse> {
                     override fun onResponse(
@@ -71,17 +75,16 @@ class SplashActivity : SuperActivity() {
                         ContextUtils.goLongToast(applicationContext, t.message.toString())
                     }
                 })
+            isAuthenticated = true
         } else {
-            return false
+            isAuthenticated = false
         }
-
-        return true
+        startNextActivity()
     }
 
     private fun startNextActivity() {
         when (isAuthenticated) {
             true -> {
-                DataContainer
                 intent = Intent(this@SplashActivity, MainActivity::class.java)
 
                 window.exitTransition = null
