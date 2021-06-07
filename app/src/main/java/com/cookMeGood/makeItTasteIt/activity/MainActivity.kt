@@ -52,7 +52,6 @@ class MainActivity : SuperActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_activity_menu, menu)
-
         return super.onCreateOptionsMenu(menu)
     }
 

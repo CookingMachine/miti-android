@@ -22,6 +22,7 @@ import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_CATEGORY_LO
 import com.cookMeGood.makeItTasteIt.container.IntentContainer.INTENT_RECIPE
 import com.cookMeGood.makeItTasteIt.container.LogContainer.ERROR_MAIN_PAGE_RESPONSE
 import com.cookMeGood.makeItTasteIt.container.MessageContainer.ERROR_SERVER_UNAVAILABLE
+import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goLongToast
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.shimmer_fragment_main.*
@@ -130,5 +131,11 @@ class MainFragment : SuperFragment() {
             recipesListAdapter!!
                 .onUpdateList(DataContainer.mainContent!!.categoryList!!)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as SuperActivity).supportActionBar!!.elevation =
+            ContextUtils.convertDpToPixel(4F, requireContext())
     }
 }

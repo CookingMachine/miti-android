@@ -176,7 +176,7 @@
         android:background="@drawable/ic_recipe_description"
         android:contentDescription="@string/content_description_empty" />
 
-    <LinearLayout
+    <RadioGroup
         android:id="@+id/recipeButtonsLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -186,7 +186,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/recipeButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
@@ -194,50 +194,61 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:background="@drawable/shape_button_rounded_white"
+            android:background="@drawable/selector_button_background"
             android:fontFamily="@font/roboto"
             android:text="@string/title_recipe"
             android:textAllCaps="false"
-            android:textColor="@color/primaryColor"
+            android:button="@null"
+            android:textColor="@drawable/selector_button_color"
             android:textSize="@dimen/textSizeDef" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/ingredButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
+            android:button="@null"
             android:layout_height="37dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:background="@drawable/shape_button_rounded_white"
+            android:background="@drawable/selector_button_background"
             android:fontFamily="@font/roboto"
             android:text="@string/title_ingredient"
             android:textAllCaps="false"
-            android:textColor="@color/primaryColor"
+            android:textColor="@drawable/selector_button_color"
             android:textSize="@dimen/textSizeDef" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/restaurantsButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="37dp"
+            android:button="@null"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:background="@drawable/shape_button_rounded_white"
+            android:background="@drawable/selector_button_background"
             android:fontFamily="@font/roboto"
             android:text="@string/title_restaurants"
             android:textAllCaps="false"
-            android:textColor="@color/primaryColor"
+            android:textColor="@drawable/selector_button_color"
             android:textSize="@dimen/textSizeDef" />
 
-    </LinearLayout>
+    </RadioGroup>
 
-    <com.shawnlin.numberpicker.NumberPicker
-        android:id="@+id/recipePortionPicker"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center" />
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/recipePortionPicker"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipeRestaurantsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="vertical"
+            android:overScrollMode="never" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeStepList"
@@ -260,13 +271,5 @@
         android:layout_marginRight="5dp"
         android:overScrollMode="never"
         android:visibility="gone" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recipeRestaurantsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:orientation="vertical"
-        android:overScrollMode="never" />
 
 </LinearLayout>

@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.api.dto.Recipe
@@ -14,9 +13,13 @@ import com.cookMeGood.makeItTasteIt.adapter.dialog.FavouritesRemoveDialogAdapter
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnOpenRecipeListener
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnUpdateFavouritesListener
 import com.cookMeGood.makeItTasteIt.container.DataContainer
-import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.TimeConverter
-import kotlinx.android.synthetic.main.item_favourites_recipe.view.*
+import kotlinx.android.synthetic.main.item_favourites_recipe.view.favouritesImage
+import kotlinx.android.synthetic.main.item_favourites_recipe.view.favouritesLayout
+import kotlinx.android.synthetic.main.item_favourites_recipe.view.favouritesNationality
+import kotlinx.android.synthetic.main.item_favourites_recipe.view.favouritesRecipeTime
+import kotlinx.android.synthetic.main.item_favourites_recipe.view.favouritesRemoveButton
+import kotlinx.android.synthetic.main.item_favourites_recipe.view.favouritesTitle
 
 class FavouritesListAdapter(
     private var recipeList: List<Recipe>,
@@ -56,19 +59,6 @@ class FavouritesListAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipeList[position]
-
-        if (position == 0) {
-            val margin16 = ContextUtils.convertDpToPixel(16, context)
-            val margin64 = ContextUtils.convertDpToPixel(64, context)
-            val params = RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-            )
-            params.setMargins(margin16, margin64, margin16, 0)
-
-            holder.recipeLayout.layoutParams = params
-        }
-
         //TODO: выставить картинку
         holder.recipeName.text = recipe.name
         holder.recipeKitchen.text = "${recipe.kitchen} кухня"

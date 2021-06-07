@@ -15,7 +15,10 @@ import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.container.IntentContainer
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.fragment_favourites.*
+import kotlinx.android.synthetic.main.fragment_favourites.favouritesFragmentProgressBar
+import kotlinx.android.synthetic.main.fragment_favourites.favouritesRecipeList
+import kotlinx.android.synthetic.main.fragment_favourites.favouritesRestaurantList
+import kotlinx.android.synthetic.main.fragment_favourites.favouritesTabLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +38,7 @@ class FavouritesFragment : SuperFragment() {
 
     override fun initInterface(view: View?) {
         (activity as SuperActivity).title = getString(R.string.title_favourites)
+        (activity as SuperActivity).supportActionBar!!.elevation = 0F
 
         favouritesFragmentProgressBar.visibility = View.VISIBLE
         favouritesRecipeList.visibility = View.GONE

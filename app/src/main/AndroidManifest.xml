@@ -98,7 +98,7 @@
         <activity
             android:name="com.cookMeGood.makeItTasteIt.fragment.FavouritesFragment"
             android:label="@string/title_activity_favourites"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable"/>
 
         <activity
             android:name="com.cookMeGood.makeItTasteIt.fragment.MainFragment"
