@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/MaterialTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/MaterialTheme">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/mainFragmentNestedScroll"
-        android:overScrollMode="never"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -19,53 +18,68 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
-            <include layout="@layout/shimmer_fragment_main"/>
+            <include layout="@layout/shimmer_fragment_main" />
 
-        <LinearLayout
-            android:id="@+id/mainFragmentContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorWhite"
-            android:orientation="vertical">
-
-            <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
-                android:id="@+id/dishOfTheDayCard"
-                android:layout_width="match_parent"
-                android:layout_height="480dp"
-                app:cardTheme="@string/content_dish_of_the_day"
-                app:cardTitle="Свинина по-французски"
-                app:cardDescription="@string/content_dish_of_the_day_description"
-                app:cardImage="@drawable/image_dish_of_the_day"
-                android:visibility="visible"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/mainFragmentRecycler"
+            <LinearLayout
+                android:id="@+id/mainFragmentContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="-6dp"
-                android:overScrollMode="never"
-                android:layoutAnimation="@anim/anim_layout_list_swipe_right"
-                android:visibility="visible" />
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
 
-            <com.cookMeGood.makeItTasteIt.customview.CardViewWithTitle
-                android:id="@+id/noCaloriesCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="@string/title_low_calories"
-                app:image="@drawable/image_card_view_with_title"/>
+                <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
+                    android:id="@+id/dishOfTheDayCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="480dp"
+                    android:visibility="visible"
+                    app:cardDescription="@string/content_dish_of_the_day_description"
+                    app:cardImage="@drawable/image_dish_of_the_day"
+                    app:cardTheme="@string/content_dish_of_the_day"
+                    app:cardTitle="Свинина по-французски" />
 
-            <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
-                android:id="@+id/fastAndDelicious"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                app:cardImage="@drawable/image_fast_and_delicious"
-                app:cardTitle="@string/title_fast_and_delicious"
-                app:cardDescription="@string/text_fast_and_delicious"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mainFragmentRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-6dp"
+                    android:layoutAnimation="@anim/anim_layout_list_swipe_right"
+                    android:overScrollMode="never"
+                    android:visibility="visible" />
+
+                <com.cookMeGood.makeItTasteIt.customview.CardViewWithTitle
+                    android:id="@+id/noCaloriesCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:image="@drawable/image_card_view_with_title"
+                    app:title="@string/title_low_calories" />
+
+                <com.cookMeGood.makeItTasteIt.customview.CardViewWithDescription
+                    android:id="@+id/fastAndDelicious"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    app:cardDescription="@string/text_fast_and_delicious"
+                    app:cardImage="@drawable/image_fast_and_delicious"
+                    app:cardTitle="@string/title_fast_and_delicious" />
+
+            </LinearLayout>
 
         </LinearLayout>
-        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFragmentSuggestButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/marginDefault"
+        android:layout_marginBottom="@dimen/marginDefault"
+        android:backgroundTint="@color/primaryColor"
+        android:contentDescription="@string/content_description_empty"
+        app:fabCustomSize="@dimen/floatingButtonDef"
+        app:srcCompat="@drawable/ic_plus_red"
+        app:tint="@color/colorWhite"
+        app:elevation="12dp"/>
 
 </RelativeLayout>

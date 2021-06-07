@@ -11,6 +11,7 @@ import com.api.dto.Category
 import com.api.dto.MainContent
 import com.cookMeGood.makeItTasteIt.R
 import com.cookMeGood.makeItTasteIt.activity.RecipeActivity
+import com.cookMeGood.makeItTasteIt.activity.SuggestActivity
 import com.cookMeGood.makeItTasteIt.activity.SuperActivity
 import com.cookMeGood.makeItTasteIt.adapter.listener.OnFragmentChangeListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.CategoryListAdapter
@@ -31,6 +32,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainFragment : SuperFragment() {
+
+    private var intent: Intent? = null
 
     private var recipesListAdapter: CategoryListAdapter? = null
     private var changeListener = object : OnFragmentChangeListener {
@@ -60,8 +63,10 @@ class MainFragment : SuperFragment() {
         getMainPageContentFromServer()
 
         dishOfTheDayCard.setOnClickListener {
-            val intent = Intent(context, RecipeActivity::class.java)
-            intent.putExtra(INTENT_RECIPE, DataContainer.mainContent!!.recipeOfTheDay)
+            if (intent == null) {
+                intent = Intent(context, RecipeActivity::class.java)
+                intent!!.putExtra(INTENT_RECIPE, DataContainer.mainContent!!.recipeOfTheDay)
+            }
             startActivity(intent)
         }
 
@@ -77,6 +82,13 @@ class MainFragment : SuperFragment() {
                 CategoryFragment(),
                 Category(INTENT_CATEGORY_FAST_AND_DELICIOUS, "Быстро и вкусно")
             )
+        }
+
+        mainFragmentSuggestButton.setOnClickListener {
+            if (intent == null) {
+                intent = Intent(context, SuggestActivity::class.java)
+            }
+            startActivity(intent)
         }
     }
 

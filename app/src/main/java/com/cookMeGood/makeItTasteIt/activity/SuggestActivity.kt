@@ -29,8 +29,16 @@ import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAd
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
-import kotlinx.android.synthetic.main.activity_suggest.*
-import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.*
+import kotlinx.android.synthetic.main.activity_suggest.suggestActivityAddImage
+import kotlinx.android.synthetic.main.activity_suggest.suggestActivityImage
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityBottomSheetDescription
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityBottomSheetName
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityIngredientList
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityIngredientsButton
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityRecipeButton
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivitySaveButton
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityStepList
+import kotlinx.android.synthetic.main.content_suggest_recipe_bottom_sheet.suggestActivityTimePicker
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,6 +65,7 @@ class SuggestActivity : SuperActivity() {
     private var currentRecipe: RecipeAdditionRequest = RecipeAdditionRequest()
     private var ingredientList = arrayListOf(Ingredient("Ингредиент", "Кол-во"))
     private var stepList = arrayListOf(Step(1, "Описание"))
+    private var imageResource: CropImage.ActivityResult? = null
 
     private var suggestStepEditListener = object : SuggestStepEditListener {
 
@@ -306,8 +315,8 @@ class SuggestActivity : SuperActivity() {
                             .start(this)
                     }
                     CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
-                        val res = CropImage.getActivityResult(data)
-                        suggestActivityImage.setImageURI(res!!.originalUri)
+                        imageResource = CropImage.getActivityResult(data)
+                        suggestActivityImage.setImageURI(imageResource!!.originalUri)
                         suggestActivityAddImage.visibility = View.GONE
                     }
                 }
@@ -347,18 +356,25 @@ class SuggestActivity : SuperActivity() {
             goShortToast(applicationContext, "Поле 'Описание' не заполнено!")
             return false
         }
-        if (recipe.image.isNullOrEmpty()) {
+        if (imageResource == null) {
             goShortToast(applicationContext, "Картинка рецепта не выбрана!")
             return false
         }
-        if (recipe.contextIngredientList.isNullOrEmpty() or (recipe.contextIngredientList!!.size < 4)) {
-            goShortToast(
-                applicationContext,
-                "Список ингредиентов не заполнен или имеет менее 4-х шагов!"
-            )
-            return false
-        }
-
+//        if (recipe.contextIngredientList.isNullOrEmpty()) {
+//            goShortToast(
+//                applicationContext,
+//                "Список ингредиентов не заполнен."
+//            )
+//            return false
+//        } else {
+//            if (recipe.contextIngredientList!!.size < 4) {
+//                goShortToast(
+//                    applicationContext,
+//                    "Список ингредиентов имеет менее 4-х позиций."
+//                )
+//                return false
+//            }
+//        }
         return true
     }
 
