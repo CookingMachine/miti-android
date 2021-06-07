@@ -63,7 +63,7 @@ class RecipeActivity : SuperActivity() {
         currentRecipe = intent.extras!!
             .getSerializable(IntentContainer.INTENT_RECIPE) as Recipe
         currentRecipe.contextIngredientList = ContextUtils.getStubContextIngredientList()
-        //TODO: убрать после реализации ингредиента в ответе с сервера
+        // TODO: убрать после реализации ингредиента в ответе с сервера
 
         val bottomSheetBehavior = BottomSheetBehavior.from(recipeBottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -87,15 +87,14 @@ class RecipeActivity : SuperActivity() {
                 }
 
                 override fun onStateChanged(bottomSheet: View, newState: Int) {}
-
             })
 
         recipeDescription.post {
 
             val peekHeight = recipeTitleTextView.measuredHeight +
-                    recipeKBJULayout.measuredHeight +
-                    recipeDescription.measuredHeight +
-                    ContextUtils.convertDpToPixel(32, applicationContext)
+                recipeKBJULayout.measuredHeight +
+                recipeDescription.measuredHeight +
+                ContextUtils.convertDpToPixel(32, applicationContext)
 
             bottomSheetBehavior.setPeekHeight(peekHeight, true)
         }
@@ -269,7 +268,10 @@ class RecipeActivity : SuperActivity() {
     private fun onAddRecipeToFavourites() {
         ApiService.getApi().addFavouriteRecipe(DataContainer.currentUser!!.id!!, currentRecipe.id!!)
             .enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
                     goShortToast(applicationContext, "Рецепт добавлен в Избранное.")
                 }
 
@@ -278,7 +280,6 @@ class RecipeActivity : SuperActivity() {
                 }
             })
     }
-
 
     private fun setPortionPicker() {
         recipePortionPicker.maxValue = 100

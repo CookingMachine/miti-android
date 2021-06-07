@@ -86,6 +86,7 @@
     <!-- BUTTONS -->
 
     <string name="btn_signIn">Войти</string>
+    <string name="btn_signOut">Выйти</string>
     <string name="btn_register">Зарегистрироваться</string>
     <string name="btn_registration">Регистрация</string>
     <string name="btn_add">Добавить</string>
