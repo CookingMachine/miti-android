@@ -93,8 +93,8 @@ class SearchActivity : SuperActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         getAllCategoriesFromServer()
-        //getAllKitchensFromServer()
-        //getSearchListFromServer("")
+        // getAllKitchensFromServer()
+        // getSearchListFromServer("")
 
         searchBackContent.measure(
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -105,7 +105,7 @@ class SearchActivity : SuperActivity() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetBehavior.isDraggable = false
         bottomSheetBehavior.peekHeight = getWindowHeight(windowManager) -
-                searchBackContent.measuredHeight - 400
+            searchBackContent.measuredHeight - 400
 
         searchIngredientsCounter.text = ingredientsCounter.toString()
 
@@ -211,20 +211,20 @@ class SearchActivity : SuperActivity() {
             if (window.decorView.rootWindowInsets.displayCutout != null) {
                 setSheetHeight(
                     getWindowHeight(windowManager) -
-                            ContextUtils.getActionBarSize(applicationContext)
+                        ContextUtils.getActionBarSize(applicationContext)
                 )
             } else {
                 setSheetHeight(
                     getWindowHeight(windowManager) -
-                            ContextUtils.getStatusBarHeightInPixels(resources) -
-                            ContextUtils.getActionBarSize(applicationContext)
+                        ContextUtils.getStatusBarHeightInPixels(resources) -
+                        ContextUtils.getActionBarSize(applicationContext)
                 )
             }
         } else {
             setSheetHeight(
                 getWindowHeight(windowManager) -
-                        ContextUtils.getStatusBarHeightInPixels(resources) -
-                        ContextUtils.getActionBarSize(applicationContext)
+                    ContextUtils.getStatusBarHeightInPixels(resources) -
+                    ContextUtils.getActionBarSize(applicationContext)
             )
         }
     }
@@ -233,7 +233,8 @@ class SearchActivity : SuperActivity() {
         ApiService.getApi().getRecipesByCriteria(searchRecipeRequest, sort)
             .enqueue(object : Callback<List<Recipe>> {
                 override fun onResponse(
-                    call: Call<List<Recipe>>, response: Response<List<Recipe>>
+                    call: Call<List<Recipe>>,
+                    response: Response<List<Recipe>>
                 ) {
                     if (response.isSuccessful) {
                         searchContentList = response.body() ?: emptyList()
@@ -252,7 +253,6 @@ class SearchActivity : SuperActivity() {
                     searchActivityContentList.visibility = View.GONE
                     searchNotFound.visibility = View.VISIBLE
                 }
-
             })
     }
 
@@ -260,7 +260,8 @@ class SearchActivity : SuperActivity() {
         ApiService.getApi().getAllCategories()
             .enqueue(object : Callback<List<Category>> {
                 override fun onResponse(
-                    call: Call<List<Category>>, response: Response<List<Category>>
+                    call: Call<List<Category>>,
+                    response: Response<List<Category>>
                 ) {
                     if (response.isSuccessful) {
                         filterCategoriesList = response.body()!!.map { category ->

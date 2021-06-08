@@ -27,6 +27,7 @@ import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestIngredientEditListen
 import com.cookMeGood.makeItTasteIt.adapter.listener.SuggestStepEditListener
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestIngredientListAdapter
 import com.cookMeGood.makeItTasteIt.adapter.recyclerview.SuggestStepListAdapter
+import com.cookMeGood.makeItTasteIt.container.DataContainer
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils
 import com.cookMeGood.makeItTasteIt.utils.ContextUtils.goShortToast
 import kotlinx.android.synthetic.main.activity_suggest.suggestActivityAddImage
@@ -132,6 +133,8 @@ class SuggestActivity : SuperActivity() {
 
         suggestActivitySaveButton.setOnClickListener {
             currentRecipe.time = suggestActivityTimePicker.text.toString()
+            currentRecipe.authorId = DataContainer.currentUser!!.id
+            currentRecipe.category = "RUSSIAN"
             if (isRecipeFilledUpOrShowToast(currentRecipe)) {
                 sendRecipeAndImageToServer(currentRecipe)
             }

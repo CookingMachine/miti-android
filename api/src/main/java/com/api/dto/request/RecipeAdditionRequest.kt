@@ -1,10 +1,8 @@
 package com.api.dto.request
 
 import com.api.dto.CalorieContent
-import com.api.dto.Category
 import com.api.dto.ContextIngredient
 import com.api.dto.Step
-import com.api.dto.User
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -22,11 +20,11 @@ data class RecipeAdditionRequest(
     @SerializedName("kitchen")
     var kitchen: String? = null,
 
-    @SerializedName("author")
-    var author: User? = null,
+    @SerializedName("authorId")
+    var authorId: Long? = null,
 
     @SerializedName("category")
-    var category: Category? = null,
+    var category: String? = null,
 
     @SerializedName("contextIngredientList")
     var contextIngredientList: ArrayList<ContextIngredient>? = null,

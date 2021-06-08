@@ -7,7 +7,7 @@
         <item name="android:statusBarColor">@color/colorWhite</item>
         <item name="android:textColorPrimary">@color/colorBlack</item>
         <item name="android:textColorSecondary">@color/colorBlack80</item>
-
+        <item name="colorControlActivated">@color/colorBlack</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
@@ -31,9 +31,7 @@
     </style>
 
     <style name="MainActivityTheme" parent="AppTheme">
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryColor</item>
-        <item name="colorAccent">@color/primaryColor</item>
+        <item name="android:windowFullscreen">false</item>
     </style>
 
     <style name="RecipeActivityTheme" parent="AppTheme">

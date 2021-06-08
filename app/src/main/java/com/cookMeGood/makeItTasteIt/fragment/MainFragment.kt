@@ -52,7 +52,7 @@ class MainFragment : SuperFragment() {
     override fun setAttr() = setLayout(R.layout.fragment_main)
 
     override fun initInterface(view: View?) {
-        (activity as SuperActivity).title = getString(R.string.title_category)
+        (activity as SuperActivity).title = getString(R.string.title_main)
 
         mainFragmentRecycler.visibility = View.GONE
         mainFragmentContent.visibility = View.GONE
